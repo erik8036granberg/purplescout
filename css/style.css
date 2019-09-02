@@ -1,3 +1,5 @@
+/* general */
+
 :root {
   font-size: 62.5%;
   --bg_gray: #212121;
@@ -6,6 +8,11 @@
   --bg_purple_2: #b177ff;
   --bg_lightblue: #03e3fc;
   --font_color: #cccccc;
+}
+
+html {
+  scroll-behavior: Smooth;
+  overflow-x: hidden;
 }
 
 * {
@@ -35,9 +42,12 @@ body {
   min-height: 100%;
 }
 
+/* header */
+
 header {
   position: relative;
   z-index: 888;
+  transition: 1s;
 }
 
 #logo {
@@ -51,6 +61,12 @@ header {
   top: 2rem;
   left: 2rem;
   z-index: 999;
+  cursor: pointer;
+}
+
+#logo:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
 }
 
 .burger {
@@ -84,13 +100,14 @@ nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  margin-top: 20vh;
+  margin-top: 15vh;
 }
 
 nav li {
   padding: 3rem;
   cursor: pointer;
   border-bottom: 1px solid #fff;
+  cursor: pointer;
 }
 
 nav li:last-child {
@@ -140,24 +157,94 @@ nav.show {
   opacity: 0.97;
 }
 
-/* Rotate first bar */
+.hide_scroll_nav {
+  opacity: 0;
+  pointer-events: none;
+}
 
 .change .bar1 {
   -webkit-transform: rotate(-45deg) translate(-6px, 6px);
   transform: rotate(-45deg) translate(-6px, 6px);
 }
 
-/* Fade out the second bar */
-
 .change .bar2 {
   opacity: 0;
 }
 
-/* Rotate last bar */
-
 .change .bar3 {
   -webkit-transform: rotate(45deg) translate(-8px, -8px);
   transform: rotate(45deg) translate(-8px, -8px);
+}
+
+/* sections */
+
+#showreel,
+#what,
+#cases,
+#how,
+footer {
+  width: 100vw;
+  height: 100vh;
+  padding: 10vw;
+  position: relative;
+}
+
+#what {
+  background-color: var(--bg_purple_1);
+}
+
+#cases {
+  background-color: var(--bg_gray);
+}
+
+#how {
+  background-color: var(--bg_logo);
+}
+
+#contact {
+  background-color: var(--bg_gray);
+}
+
+#what::before,
+#cases::before,
+#how::before,
+#contact::before {
+  content: "";
+  width: 100%;
+  height: 20rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#what::before {
+  background-image: linear-gradient(var(--bg_gray), var(--bg_purple_1));
+}
+
+#cases::before {
+  background-image: linear-gradient(var(--bg_purple_1), var(--bg_gray));
+}
+
+#how::before {
+  background-image: linear-gradient(var(--bg_gray), var(--bg_logo));
+}
+
+#contact::before {
+  background-image: linear-gradient(var(--bg_logo), var(--bg_gray));
+}
+
+main h1,
+footer h1 {
+  font-size: 5rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: rotate(270deg);
+  transform-origin: 100% 100%;
+  text-transform: uppercase;
+  margin-top: 12rem;
+  margin-right: 2.4rem;
+  color: var(--bg_purple_2);
 }
 
 /*- - - - - - - - - - - - - media queries 991px - - - - - - - - - - - - -*/
