@@ -40,7 +40,7 @@ if (window.innerWidth < 900) {
         setTimeout(function() {
           document.querySelector("header").classList.remove("hide_scroll_nav");
           fadeMenu();
-        }, 1500);
+        }, 1250);
       }
     }
   }
