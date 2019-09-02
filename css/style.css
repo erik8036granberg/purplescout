@@ -1,0 +1,22 @@
+:root {
+  /* Colors go here */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* watch out for accecebility */
+*:focus {
+  outline: 0;
+}
+
+img,
+svg {
+  width: 100%;
+  height: auto;
+}
+
+body {
+  min-height: 100%;
+}
