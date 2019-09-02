@@ -1,5 +1,10 @@
 :root {
-  /* Colors go here */
+  font-size: 62.5%;
+  --bg_gray: #212121;
+  --bg_logo: #513675;
+  --bg_purple_1: #37264e;
+  --bg_purple_2: #b177ff;
+  --font_color: #cccccc;
 }
 
 * {
@@ -18,5 +23,200 @@ svg {
 }
 
 body {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  letter-spacing: 0.04rem;
+  color: var(--font_color);
   min-height: 100%;
+  background-color: var(--bg_gray);
+}
+
+header {
+  position: relative;
+  z-index: 888;
+}
+
+#logo {
+  width: 7rem;
+  height: 8rem;
+  position: fixed;
+  background-image: url(../img/dummy_logo.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  z-index: 999;
+}
+
+.burger {
+  cursor: pointer;
+  border: none;
+  position: fixed;
+  top: 4.5rem;
+  right: 4rem;
+  z-index: 888;
+  transform: scale(1.33);
+}
+
+.burger:hover .bar2 {
+  margin-left: 0;
+}
+
+nav {
+  height: 14rem;
+  width: 100vw;
+  overflow: hidden;
+  transition: 0.6s;
+  font-family: "Economica", sans-serif;
+  text-align: center;
+  top: 0;
+  position: fixed;
+  opacity: 0;
+  padding: 5rem;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 20vh;
+}
+
+nav li {
+  padding: 3rem;
+  cursor: pointer;
+  border-bottom: 1px solid #fff;
+}
+
+nav li:last-child {
+  padding: 3rem;
+  cursor: pointer;
+  border-bottom: none;
+}
+
+nav a {
+  font-size: 3rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.5s ease;
+  position: relative;
+}
+
+nav a:hover {
+  color: var(--bg_purple_2);
+  transition: 0.5s ease;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+  height: 2px;
+  margin: 8px 0;
+  transition: 0.4s;
+  background-color: #fff;
+}
+
+.bar1 {
+  width: 30px;
+}
+
+.bar2 {
+  width: 30px;
+}
+
+.bar3 {
+  width: 30px;
+}
+
+nav.show {
+  height: 100%;
+  background-color: var(--bg_purple_1);
+  opacity: 0.97;
+}
+
+/* Rotate first bar */
+
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-6px, 6px);
+  transform: rotate(-45deg) translate(-6px, 6px);
+}
+
+/* Fade out the second bar */
+
+.change .bar2 {
+  opacity: 0;
+}
+
+/* Rotate last bar */
+
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+
+/*- - - - - - - - - - - - - media queries 991px - - - - - - - - - - - - -*/
+
+@media screen and (min-width: 900px) {
+  /*Desktop menu*/
+
+  .burger {
+    display: none;
+  }
+
+  nav {
+    height: auto;
+    margin-right: 40px;
+    text-align: right;
+    transition: 0s;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    opacity: 1;
+  }
+
+  nav a {
+    font-size: 2.5rem;
+    font-weight: normal;
+  }
+
+  nav a::before {
+    display: block;
+    content: "";
+    width: 2px;
+    height: 3px;
+    background: var(--bg_purple_2);
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    opacity: 0;
+    transition: 0.5s;
+  }
+
+  nav a:hover:before {
+    width: 100%;
+    transition: 0.5s;
+    opacity: 1;
+  }
+
+  nav a::before {
+    height: 1px;
+  }
+
+  nav ul {
+    margin-right: 120px;
+    margin-top: 0;
+  }
+
+  nav li {
+    display: inline;
+    padding-left: 50px;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
 }
