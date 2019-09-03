@@ -7,4 +7,7 @@ function init() {
   document.querySelector("#logo").addEventListener("click", () => {
     window.location = "index.html#showreel";
   });
+  document.querySelector("#showreel .explore").addEventListener("click", () => {
+    window.location = "index.html#what";
+  });
 }
