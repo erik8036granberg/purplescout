@@ -186,6 +186,7 @@ footer {
   height: 100vh;
   padding: 10vw;
   position: relative;
+  overflow: hidden;
 }
 
 #what {
