@@ -7,8 +7,9 @@
   --bg_purple_1: #37264e;
   --bg_purple_2: #b177ff;
   --bg_purple_3: #9b54fb;
-  --bg_purple_4: #2d0e57;
+  --bg_purple_4: #331a57;
   --bg_lightblue: #03e3fc;
+  --bg_black_trs: #00000093;
   --font_color: #cccccc;
 }
 
@@ -74,7 +75,7 @@ header {
   position: absolute;
   width: 100vw;
   font-size: 2rem;
-  padding: 5rem;
+  padding: 4.5rem;
   font-weight: bold;
   color: #fff;
   text-align: center;
@@ -110,6 +111,7 @@ nav {
   position: fixed;
   opacity: 0;
   padding: 5rem;
+  color: #fff;
 }
 
 nav ul {
@@ -210,7 +212,7 @@ nav.show {
 footer {
   width: 100vw;
   min-height: 100vh;
-  padding: 10vw;
+  padding: 10vw 10vw;
   position: relative;
   overflow: hidden;
 }
@@ -273,15 +275,16 @@ footer h1 {
   transform-origin: right top;
   text-transform: uppercase;
   color: var(--bg_purple_2);
-  opacity: 0.75;
+  opacity: 0.6;
 }
 
-/* showreel */
+/* showreel section*/
 
 #showreel {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #fff;
 }
 
 #showreel .header {
@@ -303,7 +306,6 @@ footer h1 {
   text-align: center;
   cursor: pointer;
   z-index: 888;
-  color: #fff;
 }
 
 .explore:hover {
@@ -346,7 +348,7 @@ footer h1 {
   left: 0;
   bottom: 0;
   background-color: var(--bg_purple_4);
-  opacity: 0.75;
+  opacity: 0.6;
   z-index: 0;
 }
 
@@ -358,6 +360,17 @@ footer h1 {
   z-index: -1;
 }
 
+#showreel::before {
+  content: "";
+  width: 100vw;
+  height: 20rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(var(--bg_black_trs), transparent);
+  z-index: 100;
+}
+
 #showreel::after {
   content: "";
   width: 100vw;
@@ -366,6 +379,21 @@ footer h1 {
   bottom: 0;
   left: 0;
   background-image: linear-gradient(transparent, var(--bg_purple_4));
+}
+
+/* what section */
+
+h2,
+p {
+  position: relative;
+  max-width: 75vw;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0 0 1rem;
+  color: var(--bg_purple_2);
 }
 
 /*- - - - - - - - - - - - - media queries 991px - - - - - - - - - - - - -*/
@@ -416,7 +444,6 @@ footer h1 {
   }
 
   nav ul {
-    margin-right: 5rem;
     margin-top: 1rem;
   }
 
