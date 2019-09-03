@@ -23,6 +23,7 @@ if (window.innerWidth < 900) {
   function closeMenu() {
     document.querySelector(".burger").removeEventListener("click", closeMenu);
     document.querySelector(".burger").addEventListener("click", openMenu);
+
     document.querySelector(".burger").classList.remove("change");
     document.querySelector("nav").classList.remove("show");
     document.querySelector("header").classList.remove("show");
