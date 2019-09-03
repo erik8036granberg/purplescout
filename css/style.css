@@ -279,9 +279,7 @@ footer h1 {
   text-align: center;
   font-size: 4.5rem;
   line-height: 6rem;
-  width: 100vw;
-  padding: 6rem 6rem 10rem;
-  background-color: red;
+  width: 100%;
 }
 
 .explore {
