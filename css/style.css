@@ -68,6 +68,20 @@ header {
   transition: 0.5s;
 }
 
+#logotext {
+  position: absolute;
+  width: 100vw;
+  font-size: 2rem;
+  padding: 5rem;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+}
+
+main {
+  position: relative;
+}
+
 .burger {
   cursor: pointer;
   border: none;
@@ -348,12 +362,19 @@ footer h1 {
     border-bottom: none;
   }
 
-  main h1,
+  /* main h1,
   footer h1 {
     margin-right: 5.4rem;
-  }
+  } */
 
   #showreel .header {
     top: 35vh;
+  }
+
+  #logotext {
+    position: fixed;
+    width: auto;
+    padding: 4.5rem;
+    left: 5.5rem;
   }
 }
