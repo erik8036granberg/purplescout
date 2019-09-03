@@ -268,16 +268,21 @@ footer h1 {
 
 /* showreel */
 
+#showreel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 #showreel .header {
   font-family: "Economica", sans-serif;
   text-align: center;
   font-size: 4.5rem;
   line-height: 6rem;
-  position: absolute;
   width: 100%;
   top: 15vh;
   left: 0;
-  padding: 6rem;
+  padding: 6rem 6rem 10rem;
 }
 
 .explore {
@@ -382,15 +387,6 @@ footer h1 {
     padding-right: 0;
     padding-bottom: 0;
     border-bottom: none;
-  }
-
-  /* main h1,
-  footer h1 {
-    margin-right: 5.4rem;
-  } */
-
-  #showreel .header {
-    top: 35vh;
   }
 
   #logotext {
