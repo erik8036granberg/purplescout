@@ -246,6 +246,20 @@ footer h1 {
   color: var(--bg_purple_2);
 }
 
+/* showreel */
+
+#showreel .header {
+  font-family: "Economica", sans-serif;
+  text-align: center;
+  font-size: 5rem;
+  line-height: 6rem;
+  position: absolute;
+  width: 100%;
+  top: 20vh;
+  left: 0;
+  padding: 6rem;
+}
+
 .explore {
   width: 100%;
   height: auto;
@@ -262,12 +276,12 @@ footer h1 {
 }
 
 .arrow {
-  width: 3rem;
-  height: 4.5rem;
+  width: 2.5rem;
+  height: 3.5rem;
   background-image: url(../img/down_arrow.svg);
   background-size: cover;
   background-repeat: no-repeat;
-  margin: 1rem auto 2rem;
+  margin: 1rem auto 2.5rem;
 }
 
 /*- - - - - - - - - - - - - media queries 991px - - - - - - - - - - - - -*/
@@ -281,11 +295,11 @@ footer h1 {
 
   nav {
     height: auto;
-    margin-right: 40px;
+    margin-right: 0;
     text-align: right;
     transition: 0s;
-    padding-top: 30px;
-    padding-bottom: 20px;
+    padding-top: 5rem;
+    padding-bottom: 2rem;
     opacity: 1;
   }
 
@@ -318,16 +332,26 @@ footer h1 {
   }
 
   nav ul {
-    margin-right: 120px;
+    margin-right: 8rem;
     margin-top: 0;
   }
 
   nav li {
     display: inline;
-    padding-left: 50px;
+    padding-left: 4rem;
     padding-top: 0;
     padding-right: 0;
     padding-bottom: 0;
     border-bottom: none;
+  }
+
+  main h1,
+  footer h1 {
+    font-size: 5rem;
+    margin-right: 6rem;
+  }
+
+  #showreel .header {
+    top: 35vh;
   }
 }
