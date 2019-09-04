@@ -18,22 +18,6 @@ function init() {
   });
 }
 
-// function visibleTest() {
-//   // Intersection Observer API
-//   // https://usefulangle.com/post/113/javascript-detecting-element-visible-during-scroll
-
-//   console.log("visibleTest");
-//   var observer = new IntersectionObserver(
-//     function(entries) {
-//       if (entries[0].isIntersecting === true)
-//         console.log("Page header is visible");
-//     },
-//     { threshold: [1] }
-//   );
-
-//   observer.observe(document.querySelector("#showreel .header"));
-// }
-
 function visibleTest() {
   let inview;
   const observer = new IntersectionObserver(entries => {
@@ -41,7 +25,7 @@ function visibleTest() {
       if (entry.intersectionRatio > 0) {
         inview = true;
         setTimeout(() => {
-          if (inview == true && showreelButton != true) {
+          if (inview == true && showreelButton == false) {
             console.log("Seen for 3 sec for the first time");
             showreelButton = true;
             document.querySelector("#showreel .cta").classList.add("appear");
