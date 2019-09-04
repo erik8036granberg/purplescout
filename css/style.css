@@ -301,7 +301,29 @@ footer h1 {
   z-index: 100;
 }
 
-.explore {
+#showreel .cta {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--bg_purple_4);
+  background-color: #fff;
+  line-height: 0;
+  padding: 2rem 3rem 2.25rem;
+  margin: 3rem auto 0;
+  width: 20rem;
+  transform: scale(0);
+  cursor: pointer;
+}
+
+#showreel .cta:hover {
+  transform: scale(1.2);
+}
+
+#showreel .appear {
+  transform: scale(1);
+  transition: 0.5s;
+}
+
+#showreel .explore {
   width: 100%;
   height: auto;
   position: absolute;
@@ -312,12 +334,12 @@ footer h1 {
   z-index: 888;
 }
 
-.explore:hover {
+#showreel .explore:hover {
   transform: translateY(-2rem);
   transition: 1s;
 }
 
-.arrow {
+#showreel .arrow {
   width: 2.5rem;
   height: 3.5rem;
   background-image: url(../img/down_arrow.svg);
@@ -345,7 +367,7 @@ footer h1 {
   }
 }
 
-#overlay {
+#showreel #overlay {
   position: absolute;
   top: 0;
   right: 0;
