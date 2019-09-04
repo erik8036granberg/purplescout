@@ -15,6 +15,7 @@ if (window.innerWidth < 900) {
     document.querySelector(".burger").classList.add("change");
     document.querySelector("nav").classList.add("show");
     document.querySelector("header").classList.add("show");
+    document.querySelector("html").classList.add("fixed");
     document.querySelector(".burger").removeEventListener("click", openMenu);
     document.querySelector(".burger").addEventListener("click", closeMenu);
     mobileMenu = "open";
@@ -23,10 +24,10 @@ if (window.innerWidth < 900) {
   function closeMenu() {
     document.querySelector(".burger").removeEventListener("click", closeMenu);
     document.querySelector(".burger").addEventListener("click", openMenu);
-
     document.querySelector(".burger").classList.remove("change");
     document.querySelector("nav").classList.remove("show");
     document.querySelector("header").classList.remove("show");
+    document.querySelector("html").classList.remove("fixed");
     mobileMenu = "closed";
     fadeMenu();
   }

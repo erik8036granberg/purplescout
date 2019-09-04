@@ -175,6 +175,10 @@ nav.show {
   opacity: 0.9;
 }
 
+.fixed {
+  overflow: hidden;
+}
+
 .blur {
   filter: blur(10px);
   -webkit-filter: blur(10px);
@@ -309,8 +313,8 @@ footer h1 {
 }
 
 .explore:hover {
-  transform: scale(1.1);
-  transition: 0.5s;
+  transform: translateY(-2rem);
+  transition: 1s;
 }
 
 .arrow {
@@ -385,8 +389,8 @@ footer h1 {
 
 h2,
 p {
+  max-width: 70vw;
   position: relative;
-  max-width: 75vw;
 }
 
 h2 {
@@ -396,11 +400,23 @@ h2 {
   color: var(--bg_purple_2);
 }
 
-/*- - - - - - - - - - - - - media queries 991px - - - - - - - - - - - - -*/
+#what .area_wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5rem;
+  padding: 5rem 0 0;
+}
+
+#what .area_icon {
+  width: auto;
+  max-height: 7rem;
+  max-width: 10rem;
+  position: relative;
+}
+
+/*- - - - - - - - - - - - - media queries 900px - - - - - - - - - - - - -*/
 
 @media screen and (min-width: 900px) {
-  /*Desktop menu*/
-
   .burger {
     display: none;
   }
@@ -461,5 +477,17 @@ h2 {
     width: auto;
     padding: 4.5rem;
     left: 5.5rem;
+  }
+
+  #what .area_wrapper {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/*- - - - - - - - - - - - - media queries 900px - - - - - - - - - - - - -*/
+
+@media screen and (min-width: 1200px) {
+  #what .area_wrapper {
+    grid-gap: 5vw;
   }
 }
