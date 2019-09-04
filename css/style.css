@@ -273,7 +273,7 @@ footer h1 {
   padding: 0;
   line-height: 0;
   position: absolute;
-  top: 15rem;
+  top: 12rem;
   right: 3.5rem;
   transform: rotate(270deg);
   transform-origin: right top;
@@ -388,6 +388,7 @@ footer h1 {
 /* what section */
 
 h2,
+h3,
 p {
   max-width: 70vw;
   position: relative;
@@ -396,7 +397,7 @@ p {
 h2 {
   font-size: 2rem;
   font-weight: bold;
-  margin: 0 0 1rem;
+  margin: 0 0 2rem;
   color: var(--bg_purple_2);
 }
 
@@ -404,7 +405,7 @@ h2 {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 5rem;
-  padding: 5rem 0 0;
+  padding: 7rem 0 0;
 }
 
 #what .area_icon {
@@ -412,6 +413,21 @@ h2 {
   max-height: 7rem;
   max-width: 10rem;
   position: relative;
+}
+
+#what h3 {
+  font-size: 2rem;
+  color: var(--bg_lightblue);
+  margin: 2rem 0 2rem;
+  text-transform: uppercase;
+}
+
+/*- - - - - - - - - - - - - media queries 700px - - - - - - - - - - - - -*/
+
+@media screen and (min-width: 700px) {
+  #what .area_wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 /*- - - - - - - - - - - - - media queries 900px - - - - - - - - - - - - -*/
@@ -479,6 +495,14 @@ h2 {
     left: 5.5rem;
   }
 
+  #showreel,
+  #what,
+  #cases,
+  #how,
+  footer {
+    padding: 10rem 10vw;
+  }
+
   #what .area_wrapper {
     grid-template-columns: 1fr 1fr 1fr;
   }
@@ -488,6 +512,6 @@ h2 {
 
 @media screen and (min-width: 1200px) {
   #what .area_wrapper {
-    grid-gap: 5vw;
+    grid-gap: 6vw;
   }
 }

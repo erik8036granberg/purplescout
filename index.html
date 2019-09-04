@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Purple Scout microsite test</title>
     <link rel="stylesheet" href="css/reset.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Economica|Roboto&display=swap"
@@ -59,7 +60,7 @@
             </p>
           </div>
           <div class="area_wrapper">
-            <div class="area">
+            <div class="area" data-aos="fade-up" data-aos-duration="500">
               <img
                 src="img/animation_dummy.svg"
                 class="area_icon"
@@ -73,7 +74,7 @@
                 </p>
               </div>
             </div>
-            <div class="area">
+            <div class="area" data-aos="fade-up" data-aos-duration="500">
               <img src="img/vr_dummy.svg" class="area_icon" alt="Animation" />
               <div class="area_text">
                 <h3>Virtual Reality</h3>
@@ -83,7 +84,7 @@
                 </p>
               </div>
             </div>
-            <div class="area">
+            <div class="area" data-aos="fade-up" data-aos-duration="500">
               <img src="img/ar_dummy.svg" class="area_icon" alt="Animation" />
               <div class="area_text">
                 <h3>Augmented Reality</h3>
@@ -102,5 +103,9 @@
     <footer id="contact"><h1>Contact</h1></footer>
     <script src="js/index.js"></script>
     <script src="js/nav.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
   </body>
 </html>
