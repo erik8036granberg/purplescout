@@ -307,20 +307,23 @@ footer h1 {
   color: var(--bg_purple_4);
   background-color: #fff;
   line-height: 0;
-  padding: 2rem 3rem 2.25rem;
-  margin: 3rem auto 0;
-  width: 20rem;
+  width: 0;
+  overflow: hidden;
   transform: scale(0);
   cursor: pointer;
 }
 
 #showreel .cta:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 #showreel .appear {
   transform: scale(1);
   transition: 0.5s;
+  padding: 2rem 3rem 2.25rem;
+  margin: 3rem auto 0;
+  width: 20rem;
+  height: auto;
 }
 
 #showreel .explore {
