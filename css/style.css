@@ -2,7 +2,7 @@
 
 :root {
   font-size: 62.5%;
-  --bg_gray: #212121;
+  --bg_gray: #181818;
   --bg_logo: #513675;
   --bg_purple_1: #37264e;
   --bg_purple_2: #b177ff;
@@ -121,6 +121,11 @@ main {
   right: 4rem;
   z-index: 999;
   transform: scale(1.33);
+}
+
+.burger:hover {
+  transform: scale(1.66);
+  transition: 0.5s;
 }
 
 .burger:hover .bar2 {
@@ -468,6 +473,47 @@ h2 {
   text-transform: uppercase;
 }
 
+/* cases */
+
+#cases .showcase {
+  margin: 5rem 0 0;
+}
+
+#cases .case {
+  border: 2px solid var(--bg_purple_3);
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.5);
+  margin: 0 0 5rem;
+}
+
+#cases .case:hover {
+  color: var(--bg_purple_3);
+  transition: 0.5s;
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+#cases .label {
+  padding: 1rem 2rem 2rem;
+  position: relative;
+  background-color: var(--bg_gray);
+}
+
+#cases h3 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+#cases .arrow {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 4.75rem;
+  height: 3.5rem;
+  background-image: url(../img/case_arrow.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 /* footer */
 
 footer .content {
@@ -476,7 +522,7 @@ footer .content {
 }
 
 footer .content > div {
-  margin: 0 0 5rem;
+  margin: 0 0 4rem;
 }
 
 footer .contact .icon {
