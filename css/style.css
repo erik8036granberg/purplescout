@@ -67,6 +67,7 @@ header {
   left: 0;
   background-image: linear-gradient(var(--bg_black_trs), transparent);
   z-index: 500;
+  pointer-events: none;
 }
 
 #logo {
@@ -460,6 +461,7 @@ h2 {
 /* footer */
 
 footer .content {
+  display: grid;
   grid-template-columns: 1fr;
 }
 
@@ -504,13 +506,16 @@ footer .copyright {
   color: var(--bg_purple_3);
 }
 
+footer h2 {
+  color: #fff;
+}
+
 /*- - - - - - - - - - - - - media queries 700px - - - - - - - - - - - - -*/
 
 @media screen and (min-width: 700px) {
   #what .area_wrapper,
   footer .content {
     grid-template-columns: 1fr 1fr;
-    background-color: red;
   }
 
   footer .content {
@@ -594,6 +599,14 @@ footer .copyright {
   #what .area_wrapper {
     grid-template-columns: 1fr 1fr 1fr;
   }
+
+  footer .content {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  footer .copyright {
+    grid-column: 1 / -1;
+  }
 }
 
 /*- - - - - - - - - - - - - media queries 900px - - - - - - - - - - - - -*/
@@ -601,5 +614,13 @@ footer .copyright {
 @media screen and (min-width: 1200px) {
   #what .area_wrapper {
     grid-gap: 6vw;
+  }
+
+  footer .content {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  footer .copyright {
+    grid-column: 4 / 5;
   }
 }
