@@ -4,7 +4,7 @@
   font-size: 62.5%;
   --bg_gray: #181818;
   --bg_logo: #513675;
-  --bg_purple_1: #37264e;
+  --bg_purple_1: #362250;
   --bg_purple_2: #b177ff;
   --bg_purple_3: #9b54fb;
   --bg_purple_4: #331a57;
@@ -72,7 +72,7 @@ header {
   position: fixed;
   content: "";
   width: 100vw;
-  height: 25rem;
+  height: 20rem;
   top: 0;
   left: 0;
   background-image: linear-gradient(var(--bg_black_trs), transparent);
@@ -414,7 +414,7 @@ footer h1 {
   left: 0;
   bottom: 0;
   background-color: var(--bg_purple_4);
-  opacity: 0.6;
+  opacity: 0.8;
   z-index: 0;
 }
 
@@ -512,6 +512,17 @@ h2 {
   background-image: url(../img/case_arrow.svg);
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+/* how */
+
+.circle {
+  width: 80vw;
+  height: 80vw;
+  background-image: url(../img/circle_d5s.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 5rem 0 0;
 }
 
 /* footer */
