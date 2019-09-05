@@ -45,9 +45,19 @@ body {
   min-height: 100%;
 }
 
-a {
+a,
+a:link {
   color: var(--txt);
   text-decoration: none;
+}
+
+a:hover {
+  color: var(--bg_purple_3);
+  transition: 0.5s;
+}
+
+footer .copyright {
+  color: var(--bg_purple_3);
 }
 
 /* header */
@@ -471,6 +481,7 @@ footer .content > div {
 
 footer .contact .icon {
   margin: 0 0 1rem;
+  display: block;
 }
 
 footer .icon::before {
@@ -502,12 +513,23 @@ footer .some_icon {
   margin: 0 1rem 0 0;
 }
 
+footer .some_icon i:hover {
+  transform: scale(1.2);
+  transition: 0.5s;
+}
+
 footer .copyright {
   color: var(--bg_purple_3);
 }
 
 footer h2 {
   color: #fff;
+}
+
+footer a:hover {
+  color: #fff;
+  transform: scale(1.05);
+  transition: 0.5s;
 }
 
 /*- - - - - - - - - - - - - media queries 700px - - - - - - - - - - - - -*/
@@ -613,7 +635,7 @@ footer h2 {
 
 @media screen and (min-width: 1200px) {
   #what .area_wrapper {
-    grid-gap: 6vw;
+    grid-gap: 7vw;
   }
 
   footer .content {

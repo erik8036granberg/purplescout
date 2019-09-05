@@ -6,6 +6,7 @@ window.addEventListener("DOMContentLoaded", init);
 
 function init() {
   console.log("init");
+  document.querySelector(".year").innerHTML = new Date().getFullYear();
   visibleTest();
   document.querySelector("#logo").addEventListener("click", () => {
     window.location = "index.html#showreel";
