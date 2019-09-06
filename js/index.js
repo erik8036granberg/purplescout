@@ -8,6 +8,7 @@ function init() {
   console.log("init");
   document.querySelector(".year").innerHTML = new Date().getFullYear();
   visibleTest();
+  circleTurn();
   document.querySelector("#logo").addEventListener("click", () => {
     window.location = "index.html#showreel";
     if (mobileMenu === "open") {
@@ -39,4 +40,34 @@ function visibleTest() {
   });
 
   observer.observe(document.querySelector("#showreel .header"));
+}
+
+// function circleTurn() {
+//   console.log("circleTurn");
+//   document.querySelector("#data").addEventListener("click", rotateToData);
+
+//   function rotateToData() {
+//     document.querySelector(".orbit").style.transform = "rotateZ(72deg)";
+//     document.querySelector(".orbit").style.transition = "3s";
+//     document.querySelector(".item").style.transform = "rotate(-72deg)";
+//     document.querySelector(".item").style.transition = "3s";
+//   }
+// }
+
+function circleTurn() {
+  console.log("circleTurn");
+  document.querySelector("#data").addEventListener("click", rotateToData);
+
+  function rotateToData() {
+    const allOrbits = document.querySelectorAll(".orbit");
+    allOrbits.forEach(el => {
+      el.style.transform = "rotateZ(72deg)";
+      el.style.transition = "1.5s";
+    });
+    const allItems = document.querySelectorAll(".item");
+    allItems.forEach(el => {
+      el.style.transform = "rotate(-72deg)";
+      el.style.transition = "1.5s";
+    });
+  }
 }

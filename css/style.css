@@ -9,7 +9,7 @@
   --bg_purple_3: #9b54fb;
   --bg_purple_4: #331a57;
   --bg_lightblue: #03e3fc;
-  --bg_black_trs: #00000075;
+  --bg_black_trs: #000000b4;
   --font_color: #cccccc;
 }
 
@@ -526,8 +526,8 @@ h2 {
 
 .circle_wrapper {
   position: relative;
-  width: 40vw;
-  height: 40vw;
+  width: 50rem;
+  height: 50rem;
   margin: 10rem 0 0;
 }
 
@@ -549,11 +549,13 @@ h2 {
   left: 50%;
   width: auto;
   height: auto;
-  font-size: 4rem;
-  animation-name: stay_horisontal;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  animation-duration: 10s;
+  font-size: 3rem;
+  /* animation-name: stay_horisontal; */
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+  animation-duration: 2s;
+  z-index: 200;
+  cursor: pointer;
 }
 
 .orbit {
@@ -564,10 +566,10 @@ h2 {
   height: 100%;
   margin-top: -50%;
   margin-left: -50%;
-  animation-name: orbit;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  animation-duration: 10s;
+  /* animation-name: orbit; */
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+  animation-duration: 2s;
 }
 
 /* Animations */
@@ -576,7 +578,7 @@ h2 {
     transform: rotateZ(0deg);
   }
   100% {
-    transform: rotateZ(360deg);
+    transform: rotateZ(72deg);
   }
 }
 
@@ -585,34 +587,34 @@ h2 {
     transform: rotate(0deg);
   }
   100% {
-    transform: rotate(-360deg);
+    transform: rotate(-72deg);
   }
 }
 
-/* Planet starting positions */
+/* starting positions */
 #discover .item {
-  left: 90%;
+  left: 88%;
   top: 45%;
 }
 
 #data .item {
   left: 57%;
-  top: -2%;
+  top: 4%;
 }
 
 #design .item {
-  left: -5%;
-  top: 20%;
+  left: 0%;
+  top: 22%;
 }
 
 #develop .item {
-  left: -5%;
-  top: 77%;
+  left: -3%;
+  top: 73%;
 }
 
 #deliver .item {
-  left: 57%;
-  top: 92%;
+  left: 61%;
+  top: 90%;
 }
 
 /* footer */
