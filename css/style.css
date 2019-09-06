@@ -34,7 +34,7 @@ svg {
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 1.6rem;
@@ -545,17 +545,13 @@ h2 {
 
 .item {
   position: absolute;
-  top: 50%;
-  left: 50%;
   width: auto;
   height: auto;
-  font-size: 3rem;
-  /* animation-name: stay_horisontal; */
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-in-out;
-  animation-duration: 2s;
-  z-index: 200;
+  font-size: 4rem;
+  font-family: "Economica", sans-serif;
+  z-index: 500;
   cursor: pointer;
+  transition: 1.5s;
 }
 
 .orbit {
@@ -566,53 +562,31 @@ h2 {
   height: 100%;
   margin-top: -50%;
   margin-left: -50%;
-  /* animation-name: orbit; */
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-in-out;
-  animation-duration: 2s;
-}
-
-/* Animations */
-@keyframes orbit {
-  0% {
-    transform: rotateZ(0deg);
-  }
-  100% {
-    transform: rotateZ(72deg);
-  }
-}
-
-@keyframes stay_horisontal {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(-72deg);
-  }
+  transition: 1.5s;
 }
 
 /* starting positions */
-#discover .item {
-  left: 88%;
+#discover {
+  left: 89%;
   top: 45%;
 }
 
-#data .item {
+#data {
   left: 57%;
   top: 4%;
 }
 
-#design .item {
+#design {
   left: 0%;
   top: 22%;
 }
 
-#develop .item {
+#develop {
   left: -3%;
   top: 73%;
 }
 
-#deliver .item {
+#deliver {
   left: 61%;
   top: 90%;
 }

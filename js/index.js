@@ -1,6 +1,7 @@
 "use strict";
 
 let showreelButton = false;
+let circleItem;
 
 window.addEventListener("DOMContentLoaded", init);
 
@@ -42,32 +43,36 @@ function visibleTest() {
   observer.observe(document.querySelector("#showreel .header"));
 }
 
-// function circleTurn() {
-//   console.log("circleTurn");
-//   document.querySelector("#data").addEventListener("click", rotateToData);
-
-//   function rotateToData() {
-//     document.querySelector(".orbit").style.transform = "rotateZ(72deg)";
-//     document.querySelector(".orbit").style.transition = "3s";
-//     document.querySelector(".item").style.transform = "rotate(-72deg)";
-//     document.querySelector(".item").style.transition = "3s";
-//   }
-// }
-
 function circleTurn() {
   console.log("circleTurn");
-  document.querySelector("#data").addEventListener("click", rotateToData);
 
-  function rotateToData() {
+  document.querySelector("#discover").addEventListener("click", () => {
+    rotateTo("0deg", "discover");
+  });
+  document.querySelector("#data").addEventListener("click", () => {
+    rotateTo("72deg", "data");
+  });
+  document.querySelector("#design").addEventListener("click", () => {
+    rotateTo("144deg", "design");
+  });
+  document.querySelector("#develop").addEventListener("click", () => {
+    rotateTo("216deg", "develop");
+  });
+  document.querySelector("#deliver").addEventListener("click", () => {
+    rotateTo("288deg", "deliver");
+  });
+
+  function rotateTo(roteateDeg, id) {
+    circleItem = id;
+    console.log(circleItem);
     const allOrbits = document.querySelectorAll(".orbit");
     allOrbits.forEach(el => {
-      el.style.transform = "rotateZ(72deg)";
-      el.style.transition = "1.5s";
+      el.style.transform = `rotateZ(${roteateDeg})`;
     });
+
     const allItems = document.querySelectorAll(".item");
     allItems.forEach(el => {
-      el.style.transform = "rotate(-72deg)";
-      el.style.transition = "1.5s";
+      el.style.transform = `rotate(-${roteateDeg})`;
     });
   }
 }
