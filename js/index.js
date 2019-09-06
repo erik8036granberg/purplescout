@@ -27,11 +27,11 @@ function visibleTest() {
         inview = true;
         setTimeout(() => {
           if (inview == true && showreelButton == false) {
-            console.log("Seen for 3 sec for the first time");
+            console.log("Seen for 5 sec for the first time");
             showreelButton = true;
             document.querySelector("#showreel .cta").classList.add("appear");
           }
-        }, 3000);
+        }, 5000);
       } else {
         inview = false;
       }
