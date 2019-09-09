@@ -16,6 +16,12 @@ function init() {
       closeMenu();
     }
   });
+  document.querySelector("#robotech").addEventListener("click", () => {
+    window.location = "case.html?id=robotech";
+    if (mobileMenu === "open") {
+      closeMenu();
+    }
+  });
   document.querySelector("#showreel .explore").addEventListener("click", () => {
     window.location = "index.html#what";
   });
@@ -65,14 +71,18 @@ function circleTurn() {
   function rotateTo(roteateDeg, id) {
     circleItem = id;
     console.log(circleItem);
-    const allOrbits = document.querySelectorAll(".orbit");
-    allOrbits.forEach(el => {
-      el.style.transform = `rotateZ(${roteateDeg})`;
-    });
+    document.querySelector(".orbit").style.transform = `rotateZ(${roteateDeg})`;
 
     const allItems = document.querySelectorAll(".item");
     allItems.forEach(el => {
       el.style.transform = `rotate(-${roteateDeg})`;
     });
+
+    const removeActive = document.querySelectorAll(".active");
+    removeActive.forEach(el => {
+      el.classList.remove("active");
+    });
+
+    document.querySelector("#" + id).classList.add("active");
   }
 }
