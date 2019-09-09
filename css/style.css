@@ -556,7 +556,7 @@ h2 {
   position: absolute;
   width: auto;
   height: auto;
-  font-size: 3rem;
+  font-size: 6vw;
   font-family: "Economica", sans-serif;
   z-index: 500;
   cursor: pointer;
