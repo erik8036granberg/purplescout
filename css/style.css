@@ -533,14 +533,14 @@ h2 {
 
 /* how */
 
-.circle_wrapper {
+#how .circle_wrapper {
   position: relative;
   width: 90%;
   padding-bottom: 90%;
-  margin: 10rem 0 0;
+  margin: 5rem 0 0;
 }
 
-.circle {
+#how .circle {
   position: absolute;
   width: 87%;
   height: 87%;
@@ -552,7 +552,7 @@ h2 {
   background-repeat: no-repeat;
 }
 
-.item {
+#how .item {
   position: absolute;
   width: auto;
   height: auto;
@@ -564,11 +564,11 @@ h2 {
   transform-origin: center center;
 }
 
-.item:hover {
+#how .item:hover {
   color: var(--bg_lightblue);
 }
 
-.orbit {
+#how .orbit {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -713,6 +713,15 @@ footer a:hover {
 
   footer .content {
     grid-template-columns: 1fr 1fr;
+  }
+
+  #how .circle_wrapper {
+    width: 40rem;
+    padding-bottom: 40rem;
+  }
+
+  #how .item {
+    font-size: 3.5rem;
   }
 }
 
