@@ -235,6 +235,32 @@ nav.show {
   pointer-events: none;
 }
 
+.hide_gradiant {
+  animation: hidegradiant 1.25s forwards;
+}
+
+@keyframes hidegradiant {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-30rem);
+  }
+}
+
+.show_gradiant {
+  animation: showgradiant 0.5s forwards;
+}
+
+@keyframes showgradiant {
+  0% {
+    transform: translateY(-30rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .change .bar1 {
   -webkit-transform: rotate(-45deg) translate(-6px, 6px);
   transform: rotate(-45deg) translate(-6px, 6px);
@@ -538,6 +564,15 @@ h2 {
   width: 90%;
   padding-bottom: 90%;
   margin: 5rem 0 0;
+  transition: 0.5s;
+}
+
+#how .fixedholder.active {
+  position: fixed;
+  width: 80%;
+  height: 80%;
+  top: 0;
+  z-index: 100;
 }
 
 #how .circle {
@@ -577,63 +612,66 @@ h2 {
   margin-top: -50%;
   margin-left: -50%;
   transition: 1s;
-  /* border: 1px solid red; */
   border-radius: 50%;
 }
 
 /* starting positions */
 
-#discover {
+#how #discover {
   left: 88%;
   top: 47%;
 }
 
-#discover.active {
+#how #discover.active {
   left: 90%;
   top: 46%;
 }
 
-#data {
+#how #data {
   left: 59%;
   top: 0%;
 }
 
-#data.active {
+#how #data.active {
   left: 59%;
   top: -1%;
 }
 
-#design {
+#how #design {
   left: -1%;
   top: 18%;
 }
 
-#design.active {
+#how #design.active {
   margin-left: -1rem;
 }
 
-#develop {
+#how #develop {
   left: -2%;
   top: 77%;
 }
 
-#develop.active {
+#how #develop.active {
   left: -3%;
   top: 80%;
 }
 
-#deliver {
+#how #deliver {
   left: 56%;
   top: 95%;
 }
 
-#deliver.active {
+#how #deliver.active {
   left: 58%;
   top: 97%;
 }
 
-#discover.active {
+#how #discover.active {
   padding-left: 1rem;
+}
+
+#how #discover_text {
+  height: 50rem;
 }
 
 /* footer */
@@ -713,15 +751,6 @@ footer a:hover {
 
   footer .content {
     grid-template-columns: 1fr 1fr;
-  }
-
-  #how .circle_wrapper {
-    width: 40rem;
-    padding-bottom: 40rem;
-  }
-
-  #how .item {
-    font-size: 3.5rem;
   }
 }
 
@@ -808,6 +837,15 @@ footer a:hover {
 
   footer .copyright {
     grid-column: 1 / -1;
+  }
+
+  #how .circle_wrapper {
+    width: 40rem;
+    padding-bottom: 40rem;
+  }
+
+  #how .item {
+    font-size: 3.5rem;
   }
 }
 
