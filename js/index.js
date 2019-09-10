@@ -8,11 +8,11 @@ window.addEventListener("DOMContentLoaded", init);
 function init() {
   console.log("init");
   document.querySelector(".year").innerHTML = new Date().getFullYear();
-  visibleTest();
+  showreelCta();
   circleTurn();
-  if (window.innerWidth < 900) {
-    mobileHowCircle();
-  }
+  // if (window.innerWidth < 900) {
+  //   mobileHowCircle();
+  // }
   document.querySelector("#logo").addEventListener("click", () => {
     window.location = "index.html#showreel";
     if (mobileMenu === "open") {
@@ -21,16 +21,13 @@ function init() {
   });
   document.querySelector("#robotech").addEventListener("click", () => {
     window.location = "case.html?id=robotech";
-    if (mobileMenu === "open") {
-      closeMenu();
-    }
   });
   document.querySelector("#showreel .explore").addEventListener("click", () => {
     window.location = "index.html#what";
   });
 }
 
-function visibleTest() {
+function showreelCta() {
   let inview;
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -89,6 +86,8 @@ function circleTurn() {
     document.querySelector("#" + id).classList.add("active");
   }
 }
+
+// test of IntersectionObserver for how-circle behavior
 
 function mobileHowCircle() {
   const observer = new IntersectionObserver(entries => {
