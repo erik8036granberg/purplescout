@@ -7,7 +7,6 @@ window.addEventListener("DOMContentLoaded", init);
 
 function init() {
   console.log("init");
-  document.querySelector("#showreel #full").play();
   document.querySelector(".year").innerHTML = new Date().getFullYear();
   showreelCta();
   circleTurn();
@@ -31,6 +30,9 @@ function init() {
     .addEventListener("click", () => {
       fullVideo();
     });
+  document.querySelector("#showreel .cta").addEventListener("click", () => {
+    alert("CTA-showreel");
+  });
 }
 
 function showreelCta() {
@@ -59,6 +61,18 @@ function fullVideo() {
   document.querySelector("#showreel #videomodal").classList.add("show");
   document.querySelector("#showreel #reel").pause();
   document.querySelector("#showreel #full").play();
+  document
+    .querySelector("#showreel #videomodal .close")
+    .addEventListener("click", closeModal);
+  function closeModal() {
+    console.log("closeModal");
+    document
+      .querySelector("#showreel #videomodal .close")
+      .removeEventListener("click", closeModal);
+    document.querySelector("#showreel #full").pause();
+    document.querySelector("#showreel #reel").play();
+    document.querySelector("#showreel #videomodal").classList.remove("show");
+  }
 }
 
 function circleTurn() {

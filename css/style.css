@@ -440,6 +440,27 @@ footer h1 {
   opacity: 1;
 }
 
+#showreel #videomodal .close {
+  width: 5rem;
+  height: 5rem;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background-image: url(../img/close.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: var(--bg_black_trs);
+  border-radius: 50%;
+  z-index: 1010;
+  transition: 0.5s;
+  pointer-events: all;
+}
+
+#showreel #videomodal .close:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
 #showreel .modal_video {
   width: 100vw;
   max-width: 1200px;
