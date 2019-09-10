@@ -418,6 +418,37 @@ footer h1 {
   border: 0 none transparent;
 }
 
+#showreel #videomodal {
+  background-color: #000;
+  width: 0;
+  height: 0;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  pointer-events: 0;
+  opacity: 0;
+  transition: 1s;
+  overflow: hidden;
+}
+
+#showreel #videomodal.show {
+  width: 100vw;
+  height: 100vh;
+  pointer-events: all;
+  opacity: 1;
+}
+
+#showreel .modal_video {
+  width: 100vw;
+  max-width: 1200px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
 #showreel .appear {
   transform: scale(1);
   transition: 0.5s;

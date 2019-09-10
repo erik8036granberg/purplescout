@@ -44,6 +44,11 @@
     </header>
     <main>
       <section id="showreel">
+        <div id="videomodal">
+            <video loop controls class="modal_video" id="full">
+                <source src="video/testvideo_full.mp4" type="video/mp4" />
+              </video>
+        </div>
         <div class="header">
           Designing user experiences & applications for the future ...
           <div class="full_video">Full video</div>
@@ -54,7 +59,7 @@
           <div class="arrow"></div>
         </div>
         <div id="overlay"></div>
-        <video loop muted autoplay class="fullscreen-bg_video">
+        <video loop muted autoplay class="fullscreen-bg_video" id="reel">
           <source src="video/testvideo.mp4" type="video/mp4" />
         </video>
       </section>

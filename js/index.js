@@ -7,6 +7,7 @@ window.addEventListener("DOMContentLoaded", init);
 
 function init() {
   console.log("init");
+  document.querySelector("#showreel #full").play();
   document.querySelector(".year").innerHTML = new Date().getFullYear();
   showreelCta();
   circleTurn();
@@ -25,6 +26,11 @@ function init() {
   document.querySelector("#showreel .explore").addEventListener("click", () => {
     window.location = "index.html#what";
   });
+  document
+    .querySelector("#showreel .full_video")
+    .addEventListener("click", () => {
+      fullVideo();
+    });
 }
 
 function showreelCta() {
@@ -47,6 +53,12 @@ function showreelCta() {
   });
 
   observer.observe(document.querySelector("#showreel .header"));
+}
+
+function fullVideo() {
+  document.querySelector("#showreel #videomodal").classList.add("show");
+  document.querySelector("#showreel #reel").pause();
+  document.querySelector("#showreel #full").play();
 }
 
 function circleTurn() {
