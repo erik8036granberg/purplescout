@@ -46,8 +46,10 @@ body {
 }
 
 a,
-a:link {
-  color: var(--txt);
+a:link,
+a:active,
+a:visited {
+  color: #fff;
   text-decoration: none;
 }
 
@@ -56,7 +58,7 @@ a:hover {
   transition: 0.5s;
 }
 
-footer .copyright {
+footer #contact .copyright {
   color: var(--bg_purple_3);
 }
 
@@ -622,6 +624,11 @@ h2 {
   line-height: 2.6rem;
 }
 
+#cases .label p {
+  margin: 0;
+  padding: 0;
+}
+
 #cases h3 {
   font-size: 2rem;
   font-weight: bold;
@@ -1007,8 +1014,7 @@ footer a:hover {
 }
 
 #casepage #contact .copyright {
-  color: var(--bg_purple_4);
-  font-weight: bold;
+  color: var(--bg_purple_2);
 }
 
 /*- - - - - - - - - - - - - - - media queries - - - - - - - - - - - - - -*/
@@ -1024,6 +1030,10 @@ footer a:hover {
 
   footer .content {
     grid-template-columns: 1fr 1fr;
+  }
+
+  footer .copyright {
+    grid-column: 1 / -1;
   }
 
   #case .case_points {
@@ -1196,10 +1206,6 @@ footer a:hover {
 
   footer .content {
     grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-
-  footer .copyright {
-    grid-column: 4 / 5;
   }
 }
 
