@@ -594,8 +594,27 @@ h2 {
 
 /* cases */
 
+/* test */
+
+.case[data-scroll] {
+  transition: all 0.5s ease-in-out;
+  transform-origin: center top;
+}
+
+.case[data-scroll="in"] {
+  transform: translateY(0) scale(1);
+  z-index: 1000;
+}
+
+.case[data-scroll="out"] {
+  transform: translateY(0) scale(0.75);
+}
+
+/* test */
+
 #cases .showcase {
   margin: 5rem 0 0;
+  position: relative;
 }
 
 #cases img {
@@ -609,15 +628,6 @@ h2 {
   line-height: 0;
 }
 
-/* TEST */
-#cases .showcase {
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-/* TEST OVER*/
-
 #cases .case:hover {
   color: var(--bg_purple_3);
   transition: 0.5s;
@@ -627,7 +637,7 @@ h2 {
 
 #cases .label {
   border: 1px solid var(--bg_purple_3);
-  padding: 1rem 2rem 2rem;
+  padding: 2rem;
   position: relative;
   background-color: var(--bg_gray);
   line-height: 2.6rem;
@@ -652,6 +662,25 @@ h2 {
   background-image: url(../img/case_arrow.svg);
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+#cases .cta {
+  font-size: 3rem;
+  color: #fff;
+  font-family: "Economica", sans-serif;
+  border: 1px solid #fff;
+  line-height: 0;
+  padding: 2rem 3rem 2.25rem;
+  margin: 7rem auto 0;
+  cursor: pointer;
+  width: 20rem;
+  height: auto;
+  transition: 0.5s;
+  text-align: center;
+}
+
+#cases .cta:hover {
+  transform: scale(1.1);
 }
 
 /* how */

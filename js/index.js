@@ -10,6 +10,7 @@ function init() {
   document.querySelector(".year").innerHTML = new Date().getFullYear();
   showreelCta();
   circleTurn();
+  scrollOutTest();
   // if (window.innerWidth < 900) {
   //   mobileHowCircle();
   // }
@@ -129,4 +130,12 @@ function mobileHowCircle() {
   });
 
   observer.observe(document.querySelector("#how #discover_text"));
+}
+
+function scrollOutTest() {
+  ScrollOut({
+    targets: ".case",
+    threshold: 0.8,
+    once: false
+  });
 }
