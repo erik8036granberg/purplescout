@@ -877,7 +877,7 @@ footer a:hover {
 }
 
 #case .case_images img:last-child {
-  margin-bottom: -5rem;
+  margin-bottom: -6vw;
 }
 
 #case .point_text {
@@ -958,6 +958,45 @@ footer a:hover {
   padding: 1.5rem;
   margin: 1rem;
 }
+
+#case .case_contact h3 {
+  font-size: 2rem;
+  color: var(--bg_lightblue);
+  text-transform: uppercase;
+}
+
+#case .case_contact .more_info {
+  text-transform: uppercase;
+}
+
+#case .case_contact .icon {
+  margin: 0 0 1rem;
+  display: block;
+}
+
+#case .case_contact .icon::before {
+  display: inline-block;
+  position: relative;
+  top: 1rem;
+  margin-right: 1rem;
+  content: "";
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+#case .case_contact .phone {
+  color: var(--bg_lightblue);
+  font-size: 2rem;
+}
+
+#case .case_contact .phone::before {
+  background-image: url(../img/phone_lightblue.svg);
+  width: 2rem;
+  height: 3rem;
+}
+
+/* casepage footer */
 
 #casepage #contact {
   background-color: var(--bg_logo);
@@ -1091,8 +1130,9 @@ footer a:hover {
     font-size: 3.5rem;
   }
 
-  #case .case_info p {
-    padding: 0 10vw 0 0;
+  #case .case_info p,
+  #case .case_production_info p {
+    padding: 0 7vw 0 0;
   }
 }
 
@@ -1117,10 +1157,6 @@ footer a:hover {
   #case .case_info {
     grid-row: 1;
     grid-column: 1 / span 3;
-  }
-
-  #case .case_info p {
-    padding: 0 0 0 0;
   }
 
   #case .case_testimonial {
@@ -1151,6 +1187,11 @@ footer a:hover {
   #case .case_production_info {
     grid-row: 4;
     grid-column: 1 / span 3;
+  }
+
+  #case .case_contact {
+    grid-row: 4;
+    grid-column: 4 / span 2;
   }
 
   footer .content {
