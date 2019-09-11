@@ -609,6 +609,15 @@ h2 {
   line-height: 0;
 }
 
+/* TEST */
+#cases .showcase {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+/* TEST OVER*/
+
 #cases .case:hover {
   color: var(--bg_purple_3);
   transition: 0.5s;
