@@ -11,9 +11,9 @@ function init() {
   showreelCta();
   circleTurn();
   scrollOutTest();
-  // if (window.innerWidth < 900) {
-  //   mobileHowCircle();
-  // }
+  if (window.innerWidth < 900) {
+    mobileHowCircle();
+  }
   document.querySelector("#logo").addEventListener("click", () => {
     window.location = "index.html#showreel";
     if (mobileMenu === "open") {

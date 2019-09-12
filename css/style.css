@@ -804,6 +804,17 @@ h2 {
   height: 50rem;
 }
 
+#how .description {
+  margin: 5rem 0 0;
+}
+
+#how .description h3 {
+  color: var(--bg_lightblue);
+  font-size: 4rem;
+  font-family: "Economica", sans-serif;
+  margin: 0 0 2rem;
+}
+
 /* footer */
 
 footer .content {

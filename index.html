@@ -56,7 +56,7 @@
       <section id="showreel">
         <div id="videomodal">
           <div class="close"></div>
-          <video loop controls class="modal_video" id="full">
+          <video loop controls playsinline class="modal_video" id="full">
             <source src="video/testvideo_full.mp4" type="video/mp4" />
           </video>
         </div>
@@ -70,7 +70,14 @@
           <div class="arrow"></div>
         </div>
         <div id="overlay"></div>
-        <video loop muted autoplay class="fullscreen-bg_video" id="reel">
+        <video
+          loop
+          muted
+          autoplay
+          playsinline
+          class="fullscreen-bg_video"
+          id="reel"
+        >
           <source src="video/testvideo.mp4" type="video/mp4" />
         </video>
       </section>
@@ -202,7 +209,18 @@
                 <div class="item" id="deliver">Deliver</div>
               </div>
             </div>
-            <div id="discover_text"></div>
+            <div
+              id="discover_text"
+              class="description"
+              data-aos="fade-up"
+              data-aos-duration="500"
+            >
+              <h3>Discover</h3>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+              quis lectus quis sem lacinia nonummy. Adipiscing elit. Fusce quis
+              lectus quis sem lacinia nonummy. Hectus quis sem lacinia nonummy.
+              Adipiscing elit. Fusce quis lectus quis sem.
+            </div>
           </div>
         </div>
       </section>
