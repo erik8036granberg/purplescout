@@ -604,7 +604,7 @@ h2 {
 
 #cases .case[data-scroll="in"] {
   transform: translateY(0) scale(1);
-  z-index: 1000;
+  z-index: 60;
 }
 
 #cases .case[data-scroll="out"] {
@@ -627,6 +627,10 @@ h2 {
   margin: 0 0 5rem;
   line-height: 0;
 }
+
+/* #cases .case:not(:first-child) {
+  margin-top: -20vh;
+} */
 
 #cases .case:hover {
   color: var(--bg_purple_3);
@@ -1167,12 +1171,12 @@ footer a:hover {
 
   #cases .case:hover[data-scroll="in"] {
     transform: translateY(0) scale(1.05);
-    z-index: 1500;
+    z-index: 100;
   }
 
   #cases .case:hover[data-scroll="out"] {
     transform: translateY(0) scale(1.05);
-    z-index: 1500;
+    z-index: 60;
   }
 
   #cases .case[data-scroll="out"] {
@@ -1275,14 +1279,17 @@ footer a:hover {
 
   #cases .showcase .case:nth-child(1n) {
     grid-column: 1 / span 2;
+    transform-origin: left;
   }
 
   #cases .showcase .case:nth-child(2n) {
     grid-column: 2 / span 2;
+    transform-origin: center;
   }
 
   #cases .showcase .case:nth-child(3n) {
     grid-column: 3 / span 2;
+    transform-origin: right;
   }
 }
 

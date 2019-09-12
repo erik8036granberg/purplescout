@@ -62,17 +62,27 @@ function fullVideo() {
   document.querySelector("#showreel #videomodal").classList.add("show");
   document.querySelector("#showreel #reel").pause();
   document.querySelector("#showreel #full").play();
+  document.querySelector("html").classList.add("fixed");
+  let elem = document.documentElement;
+  console.log("requestFullscreen");
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  }
   document
     .querySelector("#showreel #videomodal .close")
     .addEventListener("click", closeModal);
   function closeModal() {
     console.log("closeModal");
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    }
     document
       .querySelector("#showreel #videomodal .close")
       .removeEventListener("click", closeModal);
     document.querySelector("#showreel #full").pause();
     document.querySelector("#showreel #reel").play();
     document.querySelector("#showreel #videomodal").classList.remove("show");
+    document.querySelector("html").classList.remove("fixed");
   }
 }
 
