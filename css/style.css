@@ -96,7 +96,7 @@ header {
   width: 7rem;
   height: 8rem;
   position: absolute;
-  background-image: url(../img/dummy_logo.png);
+  background-image: url(../img/logo.svg);
   background-size: cover;
   background-repeat: no-repeat;
   top: 2rem;
