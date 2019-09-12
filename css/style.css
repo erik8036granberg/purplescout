@@ -113,12 +113,20 @@ header {
 #logotext {
   position: absolute;
   width: 100vw;
-  font-size: 2rem;
-  padding: 4.5rem;
-  font-weight: bold;
-  color: #fff;
-  text-align: center;
   z-index: 888;
+}
+
+#logotext .holder {
+  width: 14rem;
+  height: 2.5rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 6rem 0 0;
+  transform: translate(-50%, -50%);
+  background-image: url(../img/logo_text.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 main {
@@ -628,10 +636,6 @@ h2 {
   line-height: 0;
 }
 
-/* #cases .case:not(:first-child) {
-  margin-top: -20vh;
-} */
-
 #cases .case:hover {
   color: var(--bg_purple_3);
   transition: 0.5s;
@@ -1135,9 +1139,7 @@ footer a:hover {
 
   #logotext {
     position: fixed;
-    width: auto;
-    padding: 4.5rem;
-    left: 5.5rem;
+    width: 35rem;
   }
 
   #showreel,
