@@ -771,14 +771,29 @@ h2 {
   top: 76%;
 }
 
+#how #design.active {
+  left: -2%;
+  top: 78%;
+}
+
 #how #develop {
   left: -3%;
   top: 18%;
 }
 
+#how #develop.active {
+  left: -6%;
+  top: 18%;
+}
+
 #how #deliver {
-  left: 56%;
+  left: 55%;
   top: -1%;
+}
+
+#how #deliver.active {
+  left: 54%;
+  top: -5%;
 }
 
 #how #discover_text {
@@ -1280,6 +1295,11 @@ footer a:hover {
   #cases .showcase .case:nth-child(3n) {
     grid-column: 3 / span 2;
     transform-origin: right;
+  }
+
+  #how .circle_wrapper {
+    width: 50rem;
+    padding-bottom: 50rem;
   }
 }
 
