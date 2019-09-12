@@ -21,8 +21,17 @@ function init() {
       closeMenu();
     }
   });
-  document.querySelector("#robotech").addEventListener("click", () => {
-    window.location = "case.html?id=robotech";
+  document.querySelector("#roskilde_kommune").addEventListener("click", () => {
+    window.location = "roskilde-kommune.html";
+  });
+  document.querySelector("#geopark_odsherred").addEventListener("click", () => {
+    window.location = "geopark-odsherred.html";
+  });
+  document.querySelector("#ambu").addEventListener("click", () => {
+    window.location = "ambu.html";
+  });
+  document.querySelector("#coop").addEventListener("click", () => {
+    window.location = "coop.html";
   });
   document.querySelector("#showreel .explore").addEventListener("click", () => {
     window.location = "index.html#what";
