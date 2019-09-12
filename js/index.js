@@ -109,9 +109,6 @@ function circleTurn() {
   function rotateTo(number, id) {
     circleItem = id;
     let roteateDeg = number * 72 + "deg";
-    console.log(roteateDeg);
-
-    console.log(roteateDeg);
     document.querySelector(
       ".orbit"
     ).style.transform = `rotateZ(-${roteateDeg})`;
