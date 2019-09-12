@@ -5,21 +5,21 @@
 <style type="text/css">
 	.st0{fill:none;}
 	.st1{fill:none;stroke:#03E3FC;}
+	.st2{fill:none;stroke:#03E3FC;stroke-miterlimit:10;}
 </style>
 <g>
-	<g>
-		<circle class="st0" cx="101" cy="101" r="97.3"/>
-	</g>
-	<g>
-		<g id="Ellipse_6" transform="translate(95 2837)">
-			<circle class="st0" cx="6" cy="-2736" r="84.8"/>
-			<circle class="st1" cx="6" cy="-2736" r="83.9"/>
-		</g>
-		<path id="Path_31" class="st1" d="M72.5,32.7l6.2-12.9l-12.9-6.2"/>
-		<path id="Path_31_1_" class="st1" d="M27.4,107.8L17,98l-9.8,10.4"/>
-		<path id="Path_31_2_" class="st1" d="M85.3,173.1L72.8,180l6.9,12.5"/>
-		<path id="Path_31_3_" class="st1" d="M164.7,139.1l2.6,14.1l14.1-2.6"/>
-		<path id="Path_31_4_" class="st1" d="M157.4,53.1l14.2,1.8l1.8-14.2"/>
-	</g>
+	<circle class="st0" cx="101" cy="101" r="97.3"/>
 </g>
+<g id="Ellipse_6" transform="translate(95 2837)">
+	
+		<ellipse transform="matrix(0.7071 -0.7071 0.7071 0.7071 1936.4015 -797.1132)" class="st0" cx="6" cy="-2736" rx="84.8" ry="84.8"/>
+	<path class="st1" d="M84.2-2766.5c6.8,17.4,7.8,37.2,1.6,56.4c-14.3,44.1-61.7,68.2-105.7,53.9s-68.2-61.7-53.9-105.7
+		s61.7-68.2,105.7-53.9c18.1,5.9,32.8,17.3,42.9,31.8"/>
+</g>
+<path id="Path_31" class="st1" d="M27.2,107l-10.4-9.9L7,107.5"/>
+<path id="Path_31_1_" class="st1" d="M84.7,173.1L72.2,180l6.9,12.5"/>
+<path id="Path_31_2_" class="st1" d="M164.7,138.2l2.7,14l14-2.7"/>
+<path id="Path_31_3_" class="st1" d="M155.7,52.1l14.3,1.2l1.2-14.3"/>
+<path id="Path_31_4_" class="st1" d="M72.9,32.6L79,19.6L66,13.5"/>
+<rect x="170.3" y="59" transform="matrix(-0.4063 -0.9137 0.9137 -0.4063 188.6141 252.7467)" class="st2" width="12.2" height="12.2"/>
 </svg>

@@ -2,6 +2,7 @@
 
 let showreelButton = false;
 let circleItem;
+let curentNumber;
 
 window.addEventListener("DOMContentLoaded", init);
 
@@ -11,9 +12,9 @@ function init() {
   showreelCta();
   circleTurn();
   scrollOutTest();
-  if (window.innerWidth < 900) {
-    mobileHowCircle();
-  }
+  // if (window.innerWidth < 900) {
+  //   mobileHowCircle();
+  // }
   document.querySelector("#logo").addEventListener("click", () => {
     window.location = "index.html#showreel";
     if (mobileMenu === "open") {
@@ -90,29 +91,34 @@ function circleTurn() {
   console.log("circleTurn");
 
   document.querySelector("#discover").addEventListener("click", () => {
-    rotateTo("0deg", "discover");
+    rotateTo("0", "discover");
   });
   document.querySelector("#data").addEventListener("click", () => {
-    rotateTo("72deg", "data");
+    rotateTo("1", "data");
   });
   document.querySelector("#design").addEventListener("click", () => {
-    rotateTo("144deg", "design");
+    rotateTo("2", "design");
   });
   document.querySelector("#develop").addEventListener("click", () => {
-    rotateTo("216deg", "develop");
+    rotateTo("3", "develop");
   });
   document.querySelector("#deliver").addEventListener("click", () => {
-    rotateTo("288deg", "deliver");
+    rotateTo("4", "deliver");
   });
 
-  function rotateTo(roteateDeg, id) {
+  function rotateTo(number, id) {
     circleItem = id;
-    console.log(circleItem);
-    document.querySelector(".orbit").style.transform = `rotateZ(${roteateDeg})`;
+    let roteateDeg = number * 72 + "deg";
+    console.log(roteateDeg);
+
+    console.log(roteateDeg);
+    document.querySelector(
+      ".orbit"
+    ).style.transform = `rotateZ(-${roteateDeg})`;
 
     const allItems = document.querySelectorAll(".item");
     allItems.forEach(el => {
-      el.style.transform = `rotate(-${roteateDeg})`;
+      el.style.transform = `rotate(${roteateDeg})`;
     });
 
     const removeActive = document.querySelectorAll(".active");
