@@ -729,17 +729,6 @@ h2 {
   transform-origin: center center;
 }
 
-#how .item:before {
-  content: "";
-  position: absolute;
-  height: 5px;
-  width: 5px;
-  background-color: red;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
 #how .item:hover {
   color: var(--bg_lightblue);
 }
@@ -753,7 +742,6 @@ h2 {
   margin-top: -50%;
   margin-left: -50%;
   transition: 1s;
-  border: 1px solid red;
   border-radius: 50%;
 }
 
