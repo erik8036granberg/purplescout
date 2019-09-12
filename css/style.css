@@ -597,17 +597,17 @@ h2 {
 
 /* test */
 
-.case[data-scroll] {
+#cases .case[data-scroll] {
   transition: all 0.5s ease-in-out;
   transform-origin: center top;
 }
 
-.case[data-scroll="in"] {
+#cases .case[data-scroll="in"] {
   transform: translateY(0) scale(1);
   z-index: 1000;
 }
 
-.case[data-scroll="out"] {
+#cases .case[data-scroll="out"] {
   transform: translateY(0) scale(0.75);
 }
 
@@ -1161,6 +1161,24 @@ footer a:hover {
     grid-template-columns: 1fr 1fr 1fr;
   }
 
+  #cases .case[data-scroll="in"] {
+    transform: translateY(0) scale(1);
+  }
+
+  #cases .case:hover[data-scroll="in"] {
+    transform: translateY(0) scale(1.05);
+    z-index: 1500;
+  }
+
+  #cases .case:hover[data-scroll="out"] {
+    transform: translateY(0) scale(1.05);
+    z-index: 1500;
+  }
+
+  #cases .case[data-scroll="out"] {
+    transform: translateY(0) scale(0.75);
+  }
+
   footer .content {
     grid-template-columns: 1fr 1fr 1fr;
   }
@@ -1244,6 +1262,27 @@ footer a:hover {
 
   footer .content {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  #cases .showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  #cases .showcase .case:not(:first-child) {
+    margin-top: -20vh;
+  }
+
+  #cases .showcase .case:nth-child(1n) {
+    grid-column: 1 / span 2;
+  }
+
+  #cases .showcase .case:nth-child(2n) {
+    grid-column: 2 / span 2;
+  }
+
+  #cases .showcase .case:nth-child(3n) {
+    grid-column: 3 / span 2;
   }
 }
 
