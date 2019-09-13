@@ -295,7 +295,7 @@ nav.show {
 }
 
 .content p {
-  margin: 2rem 0;
+  margin: 1.5rem 0;
 }
 
 #showreel,
@@ -583,7 +583,7 @@ h2 {
 #what .area_wrapper {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 5rem;
+  grid-gap: 7rem;
   padding: 7rem 0 0;
 }
 
@@ -697,7 +697,7 @@ h2 {
   position: relative;
   width: 90%;
   padding-bottom: 90%;
-  margin: 5rem 0 0;
+  margin: 5rem 0 5rem;
   transition: 0.5s;
 }
 
@@ -777,17 +777,17 @@ h2 {
 
 #how .discover.active {
   left: 103%;
-  top: 48%;
+  top: 48.5%;
 }
 
 #how .item.data {
   left: 70%;
-  top: 94%;
+  top: 91%;
 }
 
 #how .item.data.active {
   left: 68%;
-  top: 94%;
+  top: 99%;
 }
 
 #how .item.design {
@@ -796,8 +796,8 @@ h2 {
 }
 
 #how .item.design.active {
-  left: 10%;
-  top: 82%;
+  left: 9%;
+  top: 81%;
 }
 
 #how .item.develop {
@@ -810,8 +810,8 @@ h2 {
   top: 0%;
 }
 
-#how .item.deliver.active {
-  left: 66%;
+#how .item.deliver {
+  left: 65%;
   top: 0%;
 }
 
@@ -828,6 +828,10 @@ h2 {
   font-size: 4rem;
   font-family: "Economica", sans-serif;
   margin: 0 0 2rem;
+}
+
+#how .circle_arrow {
+  display: none;
 }
 
 /* footer */
@@ -1219,9 +1223,7 @@ footer a:hover {
   }
 
   #how .circle_wrapper {
-    width: 40rem;
-    padding-bottom: 40rem;
-    margin-top: 10rem;
+    margin: 10rem 0 10rem;
   }
 
   #how .itemholder {
@@ -1246,10 +1248,35 @@ footer a:hover {
 
   #what .area_wrapper {
     grid-gap: 7vw;
+    grid-gap: 3vw;
   }
 
   #case .content {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+
+  #cases .showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  #cases .showcase .case:not(:first-child) {
+    margin-top: -20vh;
+  }
+
+  #cases .showcase .case:nth-child(1n) {
+    grid-column: 1 / span 2;
+    transform-origin: left;
+  }
+
+  #cases .showcase .case:nth-child(2n) {
+    grid-column: 2 / span 2;
+    transform-origin: center;
+  }
+
+  #cases .showcase .case:nth-child(3n) {
+    grid-column: 3 / span 2;
+    transform-origin: right;
   }
 
   #case .case_info {
@@ -1296,28 +1323,41 @@ footer a:hover {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 
-  #cases .showcase {
+  #how .content {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 20% 30%;
   }
 
-  #cases .showcase .case:not(:first-child) {
-    margin-top: -20vh;
+  #how .content .section_info {
+    grid-column: 1 / -1;
   }
 
-  #cases .showcase .case:nth-child(1n) {
-    grid-column: 1 / span 2;
-    transform-origin: left;
+  #how .content .circle_container {
+    grid-column: 1 / span 1;
   }
 
-  #cases .showcase .case:nth-child(2n) {
-    grid-column: 2 / span 2;
-    transform-origin: center;
+  #how .circle_arrow {
+    display: block;
+    background-image: url(../img/down_arrow.svg);
+    background-size: 4rem auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transform: rotate(-90deg);
+    grid-column: 2;
   }
 
-  #cases .showcase .case:nth-child(3n) {
-    grid-column: 3 / span 2;
-    transform-origin: right;
+  #how #circle_text_holder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    grid-column: 3;
+    padding-right: 10%;
+  }
+
+  #how #circle_text_holder h3 {
+    font-size: 3rem;
+    margin: 0;
+    color: #fff;
   }
 }
 
