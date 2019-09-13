@@ -731,6 +731,7 @@ h2 {
   cursor: pointer;
   transition: 1s;
   transform-origin: center center;
+  line-height: 0;
 }
 
 #how .item:hover {
@@ -746,7 +747,6 @@ h2 {
   margin-top: -50%;
   margin-left: -50%;
   transition: 1s;
-  border-radius: 50%;
 }
 
 /* starting positions */
@@ -777,8 +777,8 @@ h2 {
 }
 
 #how #develop {
-  left: -3%;
-  top: 18%;
+  left: -4%;
+  top: 15%;
 }
 
 #how #develop.active {
@@ -1199,10 +1199,11 @@ footer a:hover {
   #how .circle_wrapper {
     width: 40rem;
     padding-bottom: 40rem;
+    margin-top: 10rem;
   }
 
   #how .item {
-    font-size: 3.5rem;
+    font-size: 4rem;
   }
 
   #case .case_info p,

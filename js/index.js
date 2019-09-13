@@ -33,6 +33,9 @@ function init() {
   document.querySelector("#coop").addEventListener("click", () => {
     window.location = "coop.html";
   });
+  document.querySelector("#novo_nordisk").addEventListener("click", () => {
+    window.location = "novo-nordisk.html";
+  });
   document.querySelector("#showreel .explore").addEventListener("click", () => {
     window.location = "index.html#what";
   });
