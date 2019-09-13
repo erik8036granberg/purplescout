@@ -1228,11 +1228,6 @@ footer a:hover {
     font-size: 3.5rem;
   }
 
-  #how .active {
-    color: #fff;
-    animation: pulse 3s infinite;
-  }
-
   #case .case_info p,
   #case .case_production_info p {
     padding: 0 7vw 0 0;
