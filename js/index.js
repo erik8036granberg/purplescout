@@ -1,8 +1,6 @@
 "use strict";
 
 let showreelButton = false;
-let circleItem;
-let curentNumber;
 
 window.addEventListener("DOMContentLoaded", init);
 
@@ -119,7 +117,6 @@ function circleTurn() {
   });
 
   function rotateTo(number, id) {
-    circleItem = id;
     let roteateDeg = number * 72 + "deg";
     document.querySelector(
       ".orbit"
@@ -135,7 +132,7 @@ function circleTurn() {
       el.classList.remove("active");
     });
 
-    document.querySelector("#" + id).classList.add("active");
+    document.querySelector("#how ." + id).classList.add("active");
   }
 }
 
