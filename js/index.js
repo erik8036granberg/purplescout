@@ -35,7 +35,7 @@ function init() {
     window.location = "novo-nordisk.html";
   });
   document.querySelector("#showreel .explore").addEventListener("click", () => {
-    window.location = "index.html#what";
+    window.location = "index.html#intro";
   });
   document
     .querySelector("#showreel .full_video")
