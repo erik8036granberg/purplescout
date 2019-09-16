@@ -118,6 +118,7 @@ function circleTurn() {
 
   function rotateTo(number, id) {
     let roteateDeg = number * 72 + "deg";
+    console.log(id);
     document.querySelector(
       ".orbit"
     ).style.transform = `rotateZ(-${roteateDeg})`;
@@ -133,6 +134,15 @@ function circleTurn() {
     });
 
     document.querySelector("#how ." + id).classList.add("active");
+    textItem(number);
+  }
+
+  function textItem(number) {
+    let slideValue = "-" + number * 100 + "%";
+    console.log(slideValue);
+    document.querySelector(
+      "#slider"
+    ).style.transform = `translateY(${slideValue})`;
   }
 }
 

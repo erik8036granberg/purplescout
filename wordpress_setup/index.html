@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-container>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -58,12 +58,19 @@
       <section id="showreel">
         <div id="videomodal">
           <div class="close"></div>
-          <video loop controls playsinline class="modal_video" id="full">
-            <source src="video/video_full.mp4" type="video/mp4" />
+          <video
+            loop
+            controls
+            playsinline
+            class="modal_video"
+            id="full"
+            data-show_reel_full_video
+          >
+            <source src="" type="video/mp4" />
           </video>
         </div>
         <div class="header">
-          Designing user experiences & applications for the future ...
+          <div data-show_reel_header></div>
           <div class="full_video">Full video</div>
           <div class="cta">Contact us</div>
         </div>
@@ -79,8 +86,9 @@
           playsinline
           class="fullscreen-bg_video"
           id="reel"
+          data-show_reel_video
         >
-          <source src="video/showreel.mp4" type="video/mp4" />
+          <source src="" type="video/mp4" />
         </video>
       </section>
       <section id="what">

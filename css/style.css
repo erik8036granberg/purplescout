@@ -717,7 +717,7 @@ h2 {
   height: 100%;
   margin-top: -50%;
   margin-left: -50%;
-  transition: 1s;
+  transition: 0.5s;
   /* border: 1px solid red; */
   border-radius: 50%;
 }
@@ -742,7 +742,7 @@ h2 {
   font-family: "Economica", sans-serif;
   z-index: 500;
   cursor: pointer;
-  transition: 1s;
+  transition: 0.5s;
   transform-origin: center center;
   line-height: 0;
   overflow: visible;
@@ -813,10 +813,6 @@ h2 {
 #how .item.deliver {
   left: 65%;
   top: 0%;
-}
-
-#how #discover_text {
-  height: 50rem;
 }
 
 #how .description {
@@ -1347,17 +1343,35 @@ footer a:hover {
   }
 
   #how #circle_text_holder {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     grid-column: 3;
     padding-right: 10%;
+    overflow: hidden;
+    position: relative;
+    background-color: orange;
+  }
+
+  #how #slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    width: 100%;
+    height: 500%;
+    grid-template-rows: 100% 100% 100% 100% 100%;
+    grid-template-columns: 100%;
+    transition: 0.5s;
   }
 
   #how #circle_text_holder h3 {
     font-size: 3rem;
     margin: 0;
     color: #fff;
+  }
+
+  #how .placeholder {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
   }
 }
 
