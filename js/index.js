@@ -134,16 +134,24 @@ function circleTurn() {
     });
 
     document.querySelector("#how ." + id).classList.add("active");
-    textItem(number);
+    textItem(number, id);
     changeBg(id);
   }
 
-  function textItem(number) {
+  function textItem(number, id) {
     let slideValue = "-" + number * 100 + "%";
     console.log(slideValue);
     document.querySelector(
       "#slider"
     ).style.transform = `translateY(${slideValue})`;
+    const textFade = document.querySelectorAll("#how .placeholder");
+    textFade.forEach(el => {
+      el.classList.add("hide");
+    });
+    setTimeout(() => {
+      console.log("#" + id + "_text");
+      document.querySelector("#" + id + "_text").classList.remove("hide");
+    }, 500);
   }
 
   function changeBg(id) {

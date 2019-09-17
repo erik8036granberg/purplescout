@@ -1436,6 +1436,7 @@ footer a:hover {
     align-items: center;
     justify-content: center;
     height: 20%;
+    transition: 1s;
   }
 
   #how .center {
