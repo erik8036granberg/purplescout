@@ -729,7 +729,7 @@ h2 {
   left: 0;
   bottom: 0;
   background-color: var(--bg_purple_4);
-  opacity: 0.95;
+  opacity: 0.9;
   z-index: 10;
 }
 
@@ -1530,8 +1530,7 @@ footer a:hover {
   }
 
   #what .area_wrapper {
-    grid-gap: 7vw;
-    grid-gap: 3vw;
+    grid-gap: 5vw;
   }
 
   #intro .content {
@@ -1571,6 +1570,20 @@ footer a:hover {
   #cases .showcase .case:nth-child(3n) {
     grid-column: 3 / span 2;
     transform-origin: right;
+  }
+
+  #what .area_header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 2rem;
+  }
+
+  #what .area_icon {
+    margin-bottom: 2rem;
+  }
+
+  #what .area_header h3 {
+    width: 80%;
   }
 
   #how #active_item {
