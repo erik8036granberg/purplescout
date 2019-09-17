@@ -53,6 +53,27 @@ a:visited {
   text-decoration: none;
 }
 
+h1 {
+  font-size: 10rem;
+  font-weight: bold;
+  font-family: "Economica", sans-serif;
+}
+
+h2 {
+  font-size: 4rem;
+  font-weight: bold;
+  font-family: "Economica", sans-serif;
+  padding-bottom: 1rem;
+  line-height: 4.5rem;
+}
+
+h3 {
+  font-size: 4rem;
+  font-family: "Economica", sans-serif;
+  padding-bottom: 1rem;
+  line-height: 3.5rem;
+}
+
 a:hover {
   color: var(--bg_purple_3);
   transition: 0.5s;
@@ -340,6 +361,7 @@ footer {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 15;
 }
 
 #intro::before {
@@ -359,14 +381,11 @@ footer {
 }
 
 #contact::before {
-  background-image: linear-gradient(var(--bg_logo), transparent);
+  background-image: linear-gradient(var(--bg_purple_4), transparent);
 }
 
 main h1,
 footer h1 {
-  font-size: 10rem;
-  font-weight: bold;
-  font-family: "Economica", sans-serif;
   padding: 0;
   line-height: 0;
   position: absolute;
@@ -580,7 +599,6 @@ p {
 }
 
 h2 {
-  font-size: 2rem;
   font-weight: bold;
   margin: 0 0 2rem;
   color: var(--bg_lightblue);
@@ -601,7 +619,7 @@ h2 {
 }
 
 #what h3 {
-  font-size: 2rem;
+  font-size: 3rem;
   color: var(--bg_lightblue);
   margin: 2rem 0 2rem;
   text-transform: uppercase;
@@ -659,7 +677,7 @@ h2 {
 }
 
 #cases h3 {
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: bold;
 }
 
@@ -720,6 +738,17 @@ h2 {
   background-size: cover;
   background-repeat: no-repeat;
   transition: 0.5s;
+}
+
+#how::after {
+  content: "";
+  width: 100vw;
+  height: 20rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(transparent, var(--bg_purple_4));
+  z-index: 15;
 }
 
 #how .circle_container {
@@ -1067,11 +1096,7 @@ footer a:hover {
 
 #case h2 {
   text-transform: uppercase;
-  margin-bottom: auto;
-}
-
-#case .company {
-  font-size: 3rem;
+  margin-bottom: 1rem;
 }
 
 #case .case_info .solution {
@@ -1116,6 +1141,10 @@ footer a:hover {
   margin: 0 0 1rem;
 }
 
+#case .case_testimonial {
+  font-family: "Economica", sans-serif;
+}
+
 #case .case_testimonial .bubble {
   background-color: var(--bg_logo);
   padding: 6rem;
@@ -1150,8 +1179,8 @@ footer a:hover {
 
 #case .case_testimonial .bubble .quote {
   text-transform: uppercase;
-  font-size: 3rem;
-  line-height: 3.5rem;
+  font-size: 6rem;
+  line-height: 6rem;
   margin: 0 0 2rem;
 }
 
@@ -1162,7 +1191,8 @@ footer a:hover {
 
 #case .case_testimonial .bubble .quote_person,
 #case .case_testimonial .bubble .quote_company {
-  font-size: 2rem;
+  font-size: 4rem;
+  line-height: 4rem;
   color: var(--bg_purple_2);
 }
 
