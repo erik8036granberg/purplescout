@@ -30,6 +30,7 @@ html {
 img,
 svg {
   width: 100%;
+  max-width: 100%;
   height: auto;
 }
 
@@ -43,6 +44,7 @@ body {
   color: var(--font_color);
   background-color: var(--bg_gray);
   min-height: 100%;
+  overflow-x: hidden;
 }
 
 a,
@@ -304,6 +306,7 @@ nav.show {
   position: relative;
   margin: 7rem auto 0;
   max-width: 1200px;
+  z-index: 75;
 }
 
 .content p {
@@ -979,7 +982,7 @@ h2 {
   overflow: hidden;
   position: relative;
   height: 40rem;
-  margin: 1rem 0 0;
+  margin: 4rem 0 0;
 }
 
 #how #slider {
@@ -1105,21 +1108,21 @@ footer a:hover {
 }
 
 #case .case_images img {
-  width: 70%;
+  width: 95%;
   position: relative;
 }
 
 #case .case_images img:nth-child(odd) {
-  margin: 0 30% 0 0;
+  margin: 0 0 0 0;
   z-index: 100;
 }
 
 #case .case_images img:nth-child(even) {
-  margin: 0 0 0 30%;
+  margin: 0 0 0 0;
 }
 
 #case .case_images img:not(:first-child) {
-  transform: translateY(-30%);
+  transform: translateY(0);
 }
 
 #case .case_images img:last-child {
@@ -1132,7 +1135,7 @@ footer a:hover {
 
 #case .case_points {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 5rem;
 }
 
@@ -1147,7 +1150,7 @@ footer a:hover {
 
 #case .case_testimonial .bubble {
   background-color: var(--bg_logo);
-  padding: 6rem;
+  padding: 6rem 4rem;
   position: relative;
   margin: 0 0 8.5rem;
 }
@@ -1179,8 +1182,8 @@ footer a:hover {
 
 #case .case_testimonial .bubble .quote {
   text-transform: uppercase;
-  font-size: 6rem;
-  line-height: 6rem;
+  font-size: 4rem;
+  line-height: 5rem;
   margin: 0 0 2rem;
 }
 
@@ -1202,11 +1205,11 @@ footer a:hover {
 }
 
 #case .case_workareas img {
-  max-width: 15vw;
-  max-height: 15vw;
+  max-width: 6rem;
+  max-height: 6rem;
   border: 1px solid var(--bg_lightblue);
   border-radius: 50%;
-  padding: 1.5rem;
+  padding: 1rem;
   margin: 1rem;
 }
 
@@ -1264,6 +1267,19 @@ footer a:hover {
 /*- - - - - - - - - - - - - - - media queries - - - - - - - - - - - - - -*/
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
+/*- - - - - - - - - - - - - media queries 500px - - - - - - - - - - - - -*/
+
+@media screen and (min-width: 500px) {
+  #case .case_workareas img {
+    max-width: 8rem;
+    max-height: 8rem;
+    border: 1px solid var(--bg_lightblue);
+    border-radius: 50%;
+    padding: 1.5rem;
+    margin: 2rem;
+  }
+}
+
 /*- - - - - - - - - - - - - media queries 700px - - - - - - - - - - - - -*/
 
 @media screen and (min-width: 700px) {
@@ -1280,17 +1296,29 @@ footer a:hover {
     grid-column: 1 / -1;
   }
 
+  #case .case_images img {
+    width: 70%;
+  }
+
+  #case .case_images img:nth-child(even) {
+    margin: 0 0 0 30%;
+  }
+
+  #case .case_images img:not(:first-child) {
+    transform: translateY(-30%);
+  }
+
   #case .case_points {
     grid-template-columns: 1fr 1fr 1fr;
   }
 
-  #case .case_workareas img {
-    margin: 2rem;
+  #case .case_testimonial .bubble {
+    padding: 6rem;
   }
 
-  #case .case_workareas img {
-    max-width: 8rem;
-    max-height: 8rem;
+  #case .case_testimonial .bubble .quote {
+    font-size: 6rem;
+    line-height: 6rem;
   }
 }
 
@@ -1479,6 +1507,10 @@ footer a:hover {
   #case .case_info p,
   #case .case_production_info p {
     padding: 0 7vw 0 0;
+  }
+
+  #case .case_points {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
