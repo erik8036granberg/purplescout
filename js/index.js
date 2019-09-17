@@ -135,6 +135,7 @@ function circleTurn() {
 
     document.querySelector("#how ." + id).classList.add("active");
     textItem(number);
+    changeBg(id);
   }
 
   function textItem(number) {
@@ -143,6 +144,14 @@ function circleTurn() {
     document.querySelector(
       "#slider"
     ).style.transform = `translateY(${slideValue})`;
+  }
+
+  function changeBg(id) {
+    const hideAllBgs = document.querySelectorAll("#how .background");
+    hideAllBgs.forEach(el => {
+      el.classList.add("hide");
+    });
+    document.querySelector("#how ." + id + "_bg").classList.remove("hide");
   }
 }
 
