@@ -115,6 +115,21 @@ function circleTurn() {
   document.querySelector("#deliver").addEventListener("click", () => {
     rotateTo("4", "deliver");
   });
+  document.querySelector(".blt_discover").addEventListener("click", () => {
+    rotateTo("0", "discover");
+  });
+  document.querySelector(".blt_data").addEventListener("click", () => {
+    rotateTo("1", "data");
+  });
+  document.querySelector(".blt_design").addEventListener("click", () => {
+    rotateTo("2", "design");
+  });
+  document.querySelector(".blt_develop").addEventListener("click", () => {
+    rotateTo("3", "develop");
+  });
+  document.querySelector(".blt_deliver").addEventListener("click", () => {
+    rotateTo("4", "deliver");
+  });
 
   function rotateTo(number, id) {
     let roteateDeg = number * 72 + "deg";
@@ -134,6 +149,7 @@ function circleTurn() {
     });
 
     document.querySelector("#how ." + id).classList.add("active");
+    document.querySelector("#how .blt_" + id).classList.add("active");
     textItem(number, id);
     changeBg(id);
   }

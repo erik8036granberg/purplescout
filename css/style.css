@@ -720,6 +720,9 @@ h2 {
   transition: 0.5s;
 }
 
+#how .circle_container {
+  position: relative;
+}
 #how .hide {
   opacity: 0;
 }
@@ -743,6 +746,45 @@ h2 {
 #how .deliver_bg {
   background-image: url(../img/how_deliver_dummy.jpg);
   z-index: 1;
+}
+
+#how #active_item {
+  position: absolute;
+  top: 10%;
+  right: -25%;
+  width: auto;
+  height: auto;
+  display: inline-flex;
+  z-index: 100;
+}
+
+#how #active_item .bullet {
+  position: relative;
+  height: 3rem;
+  width: 3rem;
+  border: 1px solid var(--bg_lightblue);
+  border-radius: 50%;
+  margin: 0.5rem;
+  line-height: 0;
+  cursor: pointer;
+}
+
+#how #active_item .fill {
+  height: 2rem;
+  width: 2rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--bg_lightblue);
+  border-radius: 50%;
+  opacity: 0;
+  transition: 0.25s;
+}
+
+#how #active_item .fill.active {
+  opacity: 1;
+  cursor: auto;
 }
 
 #how .circle_wrapper {
@@ -1436,7 +1478,7 @@ footer a:hover {
     align-items: center;
     justify-content: center;
     height: 20%;
-    transition: 1s;
+    transition: 0.5s;
   }
 
   #how .center {
