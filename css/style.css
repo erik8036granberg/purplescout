@@ -415,7 +415,7 @@ footer h1 {
   font-family: "Economica", sans-serif;
   text-align: center;
   font-size: 4.5rem;
-  line-height: 6rem;
+  line-height: 5rem;
   width: 100%;
   margin: 0 0 15vh;
   z-index: 500;
@@ -1270,6 +1270,18 @@ footer a:hover {
 /*- - - - - - - - - - - - - media queries 500px - - - - - - - - - - - - -*/
 
 @media screen and (min-width: 500px) {
+  #case .case_images img {
+    width: 70%;
+  }
+
+  #case .case_images img:nth-child(even) {
+    margin: 0 0 0 30%;
+  }
+
+  #case .case_images img:not(:first-child) {
+    transform: translateY(-30%);
+  }
+
   #case .case_workareas img {
     max-width: 8rem;
     max-height: 8rem;
@@ -1283,6 +1295,10 @@ footer a:hover {
 /*- - - - - - - - - - - - - media queries 700px - - - - - - - - - - - - -*/
 
 @media screen and (min-width: 700px) {
+  #showreel .header {
+    line-height: 6rem;
+  }
+
   #what .area_wrapper,
   footer .content {
     grid-template-columns: 1fr 1fr;
@@ -1294,18 +1310,6 @@ footer a:hover {
 
   footer .copyright {
     grid-column: 1 / -1;
-  }
-
-  #case .case_images img {
-    width: 70%;
-  }
-
-  #case .case_images img:nth-child(even) {
-    margin: 0 0 0 30%;
-  }
-
-  #case .case_images img:not(:first-child) {
-    transform: translateY(-30%);
   }
 
   #case .case_points {
