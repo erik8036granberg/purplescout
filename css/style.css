@@ -1204,6 +1204,8 @@ footer a:hover {
 #case .case_workareas img {
   max-width: 8rem;
   max-height: 8rem;
+  min-width: 4rem;
+  min-height: 4rem;
   border: 1px solid var(--bg_lightblue);
   border-radius: 50%;
   padding: 1.5rem;
