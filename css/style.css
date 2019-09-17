@@ -615,10 +615,11 @@ h2 {
 }
 
 #what .area_icon {
-  width: auto;
-  max-height: 7rem;
-  max-width: 10rem;
-  position: relative;
+  width: 10rem;
+  height: 10rem;
+  border: 1px solid var(--bg_lightblue);
+  border-radius: 50%;
+  padding: 2rem;
 }
 
 #what h3 {
