@@ -304,6 +304,7 @@ footer {
 #case,
 #how {
   width: 100vw;
+  min-height: 50vh;
   padding: 10vw 10vw;
   position: relative;
   overflow: hidden;
@@ -320,7 +321,9 @@ footer {
 }
 
 #how {
-  background-color: var(--bg_logo);
+  background-image: url(../img/how_discover_dummy.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #contact {
@@ -342,23 +345,23 @@ footer {
 }
 
 #intro::before {
-  background-image: linear-gradient(var(--bg_purple_4), var(--bg_purple_1));
+  background-image: linear-gradient(var(--bg_purple_4), transparent);
 }
 
 #what::before {
-  background-image: linear-gradient(var(--bg_purple_4), var(--bg_purple_1));
+  background-image: linear-gradient(var(--bg_gray), transparent);
 }
 
 #cases::before {
-  background-image: linear-gradient(var(--bg_purple_1), var(--bg_gray));
+  background-image: linear-gradient(var(--bg_purple_1), transparent);
 }
 
 #how::before {
-  background-image: linear-gradient(var(--bg_gray), var(--bg_logo));
+  background-image: linear-gradient(var(--bg_purple_1), transparent);
 }
 
 #contact::before {
-  background-image: linear-gradient(var(--bg_logo), var(--bg_gray));
+  background-image: linear-gradient(var(--bg_logo), transparent);
 }
 
 main h1,
@@ -607,8 +610,6 @@ h2 {
 
 /* cases */
 
-/* test */
-
 #cases .case[data-scroll] {
   transition: all 0.5s ease-in-out;
   transform-origin: center top;
@@ -622,8 +623,6 @@ h2 {
 #cases .case[data-scroll="out"] {
   transform: translateY(0) scale(0.75);
 }
-
-/* test */
 
 #cases .showcase {
   margin: 5rem 0 0;
@@ -696,6 +695,17 @@ h2 {
 }
 
 /* how */
+
+#how .overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: var(--bg_purple_4);
+  opacity: 0.95;
+  z-index: 0;
+}
 
 #how .circle_wrapper {
   position: relative;
@@ -1352,7 +1362,6 @@ footer a:hover {
     padding-right: 10%;
     overflow: hidden;
     position: relative;
-    background-color: orange;
   }
 
   #how #slider {
@@ -1364,7 +1373,7 @@ footer a:hover {
     height: 500%;
     grid-template-rows: 100% 100% 100% 100% 100%;
     grid-template-columns: 100%;
-    transition: 0.5s;
+    transition: 0.5s ease-in-out;
   }
 
   #how #circle_text_holder h3 {
@@ -1375,7 +1384,13 @@ footer a:hover {
 
   #how .placeholder {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 20%;
+  }
+
+  #how .center {
+    height: auto;
   }
 }
 
