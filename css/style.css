@@ -1087,7 +1087,7 @@ footer a:hover {
 #case .content {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 5rem;
+  grid-gap: 5vw;
 }
 
 #case h1 {
@@ -1360,10 +1360,6 @@ footer a:hover {
   #how,
   footer {
     padding: 10rem 10vw;
-  }
-
-  #what .area_wrapper {
-    grid-template-columns: 1fr 1fr 1fr;
   }
 
   #cases .case[data-scroll="in"] {
