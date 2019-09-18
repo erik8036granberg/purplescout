@@ -744,17 +744,6 @@ h2 {
   z-index: 10;
 }
 
-#how .background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  transition: 0.5s;
-}
-
 #how::before {
   content: "";
   width: 100vw;
@@ -779,28 +768,41 @@ h2 {
 #how .circle_container {
   position: relative;
 }
+
 #how .hide {
   opacity: 0;
 }
 
+#how .background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: 0.5s;
+}
+
 #how .discover_bg {
-  background-image: url(../img/how_discover_dummy.jpg);
+  background-image: url(../img/how_discover.jpg);
   z-index: 5;
 }
 #how .data_bg {
-  background-image: url(../img/how_data_dummy.jpg);
+  background-image: url(../img/how_data.jpg);
   z-index: 4;
 }
 #how .design_bg {
-  background-image: url(../img/how_design_dummy.jpg);
+  background-image: url(../img/how_design.jpg);
   z-index: 3;
 }
 #how .develop_bg {
-  background-image: url(../img/how_develup_dummy.jpg);
+  background-image: url(../img/how_develup.jpg);
   z-index: 2;
 }
 #how .deliver_bg {
-  background-image: url(../img/how_deliver_dummy.jpg);
+  background-image: url(../img/how_deliver.jpg);
   z-index: 1;
 }
 
