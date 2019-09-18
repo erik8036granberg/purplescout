@@ -209,22 +209,22 @@ function casesScollEffect() {
 function logoSwap() {
   console.log("logoSwap");
   const logoArray = [
-    { id: "1", image: "img/logo/virksomhed_1.png" },
-    { id: "2", image: "img/logo/virksomhed_2.png" },
-    { id: "3", image: "img/logo/virksomhed_3.png" },
-    { id: "4", image: "img/logo/virksomhed_4.png" },
-    { id: "5", image: "img/logo/virksomhed_5.png" },
-    { id: "6", image: "img/logo/virksomhed_6.png" },
-    { id: "7", image: "img/logo/virksomhed_7.png" },
-    { id: "8", image: "img/logo/virksomhed_8.png" },
-    { id: "9", image: "img/logo/virksomhed_9.png" },
-    { id: "10", image: "img/logo/virksomhed_10.png" },
-    { id: "11", image: "img/logo/virksomhed_11.png" },
-    { id: "12", image: "img/logo/virksomhed_12.png" },
-    { id: "13", image: "img/logo/virksomhed_13.png" },
-    { id: "14", image: "img/logo/virksomhed_14.png" },
-    { id: "15", image: "img/logo/virksomhed_15.png" },
-    { id: "16", image: "img/logo/virksomhed_16.png" }
+    { id: "id-1", image: "img/logo/company_1.png", company: "company_1" },
+    { id: "id-2", image: "img/logo/company_2.png", company: "company_2" },
+    { id: "id-3", image: "img/logo/company_3.png", company: "company_3" },
+    { id: "id-4", image: "img/logo/company_4.png", company: "company_4" },
+    { id: "id-5", image: "img/logo/company_5.png", company: "company_5" },
+    { id: "id-6", image: "img/logo/company_6.png", company: "company_6" },
+    { id: "id-7", image: "img/logo/company_7.png", company: "company_7" },
+    { id: "id-8", image: "img/logo/company_8.png", company: "company_8" },
+    { id: "id-9", image: "img/logo/company_9.png", company: "company_9" },
+    { id: "id-10", image: "img/logo/company_10.png", company: "company_10" },
+    { id: "id-11", image: "img/logo/company_11.png", company: "company_11" },
+    { id: "id-12", image: "img/logo/company_12.png", company: "company_12" },
+    { id: "id-13", image: "img/logo/company_13.png", company: "company_13" },
+    { id: "id-14", image: "img/logo/company_14.png", company: "company_14" },
+    { id: "id-15", image: "img/logo/company_15.png", company: "company_15" },
+    { id: "id-16", image: "img/logo/company_16.png", company: "company_16" }
   ];
   // possible random sort
   logoArray.sort(function() {
@@ -237,8 +237,18 @@ function logoSwap() {
   let hiddenArray = logoArray.slice(showLogos, numberOfLogos);
   console.log(activeArray);
   console.log(hiddenArray);
+  activeArray.forEach(displayLogos);
 
   // generate images to DOM
+  function displayLogos(logo) {
+    const template = document.querySelector("[data-logo_template]").content;
+    const clone = template.cloneNode(true);
+    clone.querySelector("[data-logo]").setAttribute("id", logo.id);
+    clone.querySelector("[data-logo]").setAttribute("src", logo.image);
+    clone.querySelector("[data-logo]").setAttribute("alt", logo.company);
+    document.querySelector("[data-logos]").appendChild(clone);
+    swapShow();
+  }
 
   function swapShow() {
     // set a timer
@@ -246,8 +256,23 @@ function logoSwap() {
       //do stuff after 5 sec
     }, 5000);
     // get a random id from the active array to pick a DOM element
+    let random_index = Math.floor(Math.random() * showLogos);
+    let randomObject = activeArray[random_index];
+    console.log(randomObject);
+    let random_id = randomObject.id;
+    let random_image = randomObject.image;
+    console.log(randomObject);
+    console.log(random_id);
     // start disappear animation
+    document.querySelector("#" + random_id).classList.add(".logo_out");
+    // get the first item in the hidden array and delete it
+    let newLogo = hiddenArray.slice(0, 1);
+    console.log(newLogo);
+    hiddenArray.shift();
+    console.log(hiddenArray);
     // replace id & image path with first item in the hidden array
+    document.querySelector("#" + random_id).setAttribute("id", newLogo.id);
+
     // Find and remove new item from the activ array and put it last in the hidden array
     // delete the moved item from the hidden array
     // start appear animation

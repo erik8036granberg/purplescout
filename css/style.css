@@ -715,6 +715,17 @@ h2 {
   transform: scale(1.1);
 }
 
+#cases .logo_wrapper .logo_out {
+  color: red;
+}
+
+#cases #logo_wrapper {
+  margin: 10rem 0 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 5rem;
+}
+
 /* how */
 #how .content {
   display: grid;
