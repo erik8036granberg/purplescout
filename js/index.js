@@ -9,7 +9,8 @@ function init() {
   document.querySelector(".year").innerHTML = new Date().getFullYear();
   showreelCta();
   circleTurn();
-  scrollOutTest();
+  casesScollEffect();
+  logoSwap();
   // if (window.innerWidth < 900) {
   //   mobileHowCircle();
   // }
@@ -197,10 +198,59 @@ function mobileHowCircle() {
   observer.observe(document.querySelector("#how #discover_text"));
 }
 
-function scrollOutTest() {
+function casesScollEffect() {
   ScrollOut({
     targets: ".case",
     threshold: 0.8,
     once: false
   });
+}
+
+function logoSwap() {
+  console.log("logoSwap");
+  const logoArray = [
+    { id: "1", image: "img/logo/virksomhed_1.png" },
+    { id: "2", image: "img/logo/virksomhed_2.png" },
+    { id: "3", image: "img/logo/virksomhed_3.png" },
+    { id: "4", image: "img/logo/virksomhed_4.png" },
+    { id: "5", image: "img/logo/virksomhed_5.png" },
+    { id: "6", image: "img/logo/virksomhed_6.png" },
+    { id: "7", image: "img/logo/virksomhed_7.png" },
+    { id: "8", image: "img/logo/virksomhed_8.png" },
+    { id: "9", image: "img/logo/virksomhed_9.png" },
+    { id: "10", image: "img/logo/virksomhed_10.png" },
+    { id: "11", image: "img/logo/virksomhed_11.png" },
+    { id: "12", image: "img/logo/virksomhed_12.png" },
+    { id: "13", image: "img/logo/virksomhed_13.png" },
+    { id: "14", image: "img/logo/virksomhed_14.png" },
+    { id: "15", image: "img/logo/virksomhed_15.png" },
+    { id: "16", image: "img/logo/virksomhed_16.png" }
+  ];
+  // possible random sort
+  logoArray.sort(function() {
+    return 0.5 - Math.random();
+  });
+  // Divide logos to visible and hidden
+  let showLogos = 8;
+  let numberOfLogos = logoArray.length;
+  let activeArray = logoArray.slice(0, showLogos);
+  let hiddenArray = logoArray.slice(showLogos, numberOfLogos);
+  console.log(activeArray);
+  console.log(hiddenArray);
+
+  // generate images to DOM
+
+  function swapShow() {
+    // set a timer
+    setTimeout(() => {
+      //do stuff after 5 sec
+    }, 5000);
+    // get a random id from the active array to pick a DOM element
+    // start disappear animation
+    // replace id & image path with first item in the hidden array
+    // Find and remove new item from the activ array and put it last in the hidden array
+    // delete the moved item from the hidden array
+    // start appear animation
+    // Do it again!!
+  }
 }

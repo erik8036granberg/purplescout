@@ -1438,7 +1438,7 @@ footer a:hover {
   }
 
   #how .circle_wrapper {
-    margin: 10rem 0 10rem;
+    margin: 10vh 0 10vh;
   }
 
   #how .itemholder {
@@ -1464,8 +1464,23 @@ footer a:hover {
     background-size: 4rem auto;
     background-repeat: no-repeat;
     background-position: center center;
-    transform: rotate(-90deg);
     grid-column: 2;
+    animation: activepulse_frames 2s infinite ease-in-out;
+  }
+
+  @keyframes activepulse_frames {
+    0% {
+      transform: rotate(-90deg) scale(1);
+    }
+    80% {
+      transform: rotate(-90deg) scale(1);
+    }
+    90% {
+      transform: rotate(-90deg) scale(1.2);
+    }
+    100% {
+      transform: rotate(-90deg) scale(1);
+    }
   }
 
   #how #circle_text_holder {
@@ -1510,7 +1525,8 @@ footer a:hover {
 
   #how #active_item {
     position: absolute;
-    top: 5%;
+    transform: translateX(0) scale(0.75);
+    top: 90%;
     right: -25%;
     left: auto;
     bottom: auto;
@@ -1599,18 +1615,6 @@ footer a:hover {
 
   #what .area_header div {
     align-items: center;
-  }
-
-  #how #active_item {
-    position: absolute;
-    top: 20%;
-    right: -25%;
-    left: auto;
-    bottom: auto;
-    width: auto;
-    height: auto;
-    display: inline-flex;
-    z-index: 100;
   }
 
   #case .case_info {
