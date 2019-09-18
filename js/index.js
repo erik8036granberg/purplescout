@@ -235,9 +235,8 @@ function logoSwap() {
   let numberOfLogos = logoArray.length;
   let activeArray = logoArray.slice(0, showLogos);
   let hiddenArray = logoArray.slice(showLogos, numberOfLogos);
-  console.log(activeArray);
-  console.log(hiddenArray);
   activeArray.forEach(displayLogos);
+  swapShow();
 
   // generate images to DOM
   function displayLogos(logo) {
@@ -247,46 +246,35 @@ function logoSwap() {
     clone.querySelector("[data-logo]").setAttribute("src", logo.image);
     clone.querySelector("[data-logo]").setAttribute("alt", logo.company);
     document.querySelector("[data-logos]").appendChild(clone);
-    swapShow();
   }
 
   function swapShow() {
     // set a timer
     setTimeout(() => {
-      console.log("time's up 1 sec");
       // get a random id from the active array to pick a DOM element
       let random = Math.floor(Math.random() * showLogos);
-      let randomObject = activeArray[random];
-      console.log(randomObject);
-    }, 1000);
+      let randomLogo = activeArray[random];
+      // remove from the active array
+      activeArray.splice(random, 1);
+      // disappear animation
+      document.querySelector("#" + randomLogo.id).style.opacity = "0";
+      // get the first item in the hidden array and delete it
+      let newLogo = hiddenArray[0];
+      hiddenArray.shift();
+      // replace id & image path with with new logo
+      setTimeout(() => {
+        document
+          .querySelector("#" + randomLogo.id)
+          .setAttribute("id", newLogo.id);
+        document
+          .querySelector("#" + newLogo.id)
+          .setAttribute("src", newLogo.image);
+        document.querySelector("#" + newLogo.id).style.opacity = "0.25";
+      }, 1000);
+      // add new logo to active array and random logo to hidden array
+      activeArray.push(newLogo);
+      hiddenArray.push(randomLogo);
+      swapShow();
+    }, 5000);
   }
-}
-
-function temp() {
-  // set a timer
-  setTimeout(() => {
-    // get a random id from the active array to pick a DOM element
-    let random_index = Math.floor(Math.random() * showLogos);
-    let randomObject = activeArray[random_index];
-    console.log(randomObject);
-
-    let random_id = randomObject.id;
-    let random_image = randomObject.image;
-    console.log(randomObject);
-    console.log(random_id);
-    // start disappear animation
-    document.querySelector("#" + random_id).classList.add(".logo_out");
-    // get the first item in the hidden array and delete it
-    let newLogo = hiddenArray.slice(0, 1);
-    console.log(newLogo);
-    hiddenArray.shift();
-    console.log(hiddenArray);
-    // replace id & image path with first item in the hidden array
-    document.querySelector("#" + random_id).setAttribute("id", newLogo.id);
-
-    // Find and remove new item from the activ array and put it last in the hidden array
-    // delete the moved item from the hidden array
-    // start appear animation
-    // Do it again!!
-  }, 5000);
 }

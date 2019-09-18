@@ -715,8 +715,25 @@ h2 {
   transform: scale(1.1);
 }
 
-#cases .logo_wrapper .logo_out {
-  border: 1px solid red;
+#cases #logo_wrapper img {
+  transition: 1s;
+  opacity: 0.25;
+}
+
+.logofade {
+  animation: logofade_frames 3s forwards;
+}
+
+@keyframes logofade_frames {
+  0% {
+    opacity: 0.25 !important;
+  }
+  100% {
+    opacity: 0 !important;
+  }
+  100% {
+    opacity: 0.25 !important;
+  }
 }
 
 #cases #logo_wrapper {
