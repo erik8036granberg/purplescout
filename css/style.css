@@ -720,26 +720,10 @@ h2 {
   opacity: 0.25;
 }
 
-.logofade {
-  animation: logofade_frames 3s forwards;
-}
-
-@keyframes logofade_frames {
-  0% {
-    opacity: 0.25 !important;
-  }
-  100% {
-    opacity: 0 !important;
-  }
-  100% {
-    opacity: 0.25 !important;
-  }
-}
-
 #cases #logo_wrapper {
   margin: 10rem 0 0;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 5rem;
 }
 
@@ -1339,6 +1323,10 @@ footer a:hover {
 @media screen and (min-width: 700px) {
   #showreel .header {
     line-height: 6rem;
+  }
+
+  #cases #logo_wrapper {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 
   #what .area_wrapper,

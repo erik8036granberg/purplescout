@@ -230,15 +230,21 @@ function logoSwap() {
   logoArray.sort(function() {
     return 0.5 - Math.random();
   });
-  // Divide logos to visible and hidden
-  let showLogos = 8;
+  // visible logos - mobile or larger
+  let showLogos;
+  if (window.innerWidth < 700) {
+    showLogos = 4;
+  } else {
+    showLogos = 8;
+  }
+  // Divide logos to visible and hidden array
   let numberOfLogos = logoArray.length;
   let activeArray = logoArray.slice(0, showLogos);
   let hiddenArray = logoArray.slice(showLogos, numberOfLogos);
   activeArray.forEach(displayLogos);
   swapShow();
 
-  // generate images to DOM
+  // display logos in DOM
   function displayLogos(logo) {
     const template = document.querySelector("[data-logo_template]").content;
     const clone = template.cloneNode(true);
@@ -269,6 +275,10 @@ function logoSwap() {
         document
           .querySelector("#" + newLogo.id)
           .setAttribute("src", newLogo.image);
+        document
+          .querySelector("#" + newLogo.id)
+          .setAttribute("alt", newLogo.company);
+
         document.querySelector("#" + newLogo.id).style.opacity = "0.25";
       }, 1000);
       // add new logo to active array and random logo to hidden array
