@@ -253,12 +253,23 @@ function logoSwap() {
   function swapShow() {
     // set a timer
     setTimeout(() => {
-      //do stuff after 5 sec
-    }, 5000);
+      console.log("time's up 1 sec");
+      // get a random id from the active array to pick a DOM element
+      let random = Math.floor(Math.random() * showLogos);
+      let randomObject = activeArray[random];
+      console.log(randomObject);
+    }, 1000);
+  }
+}
+
+function temp() {
+  // set a timer
+  setTimeout(() => {
     // get a random id from the active array to pick a DOM element
     let random_index = Math.floor(Math.random() * showLogos);
     let randomObject = activeArray[random_index];
     console.log(randomObject);
+
     let random_id = randomObject.id;
     let random_image = randomObject.image;
     console.log(randomObject);
@@ -277,5 +288,5 @@ function logoSwap() {
     // delete the moved item from the hidden array
     // start appear animation
     // Do it again!!
-  }
+  }, 5000);
 }

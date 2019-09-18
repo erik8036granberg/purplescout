@@ -716,7 +716,7 @@ h2 {
 }
 
 #cases .logo_wrapper .logo_out {
-  color: red;
+  border: 1px solid red;
 }
 
 #cases #logo_wrapper {
