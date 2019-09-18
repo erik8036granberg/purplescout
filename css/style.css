@@ -708,6 +708,7 @@ h2 {
   height: auto;
   transition: 0.5s;
   text-align: center;
+  z-index: 500;
 }
 
 #cases .cta:hover {
@@ -794,7 +795,8 @@ h2 {
 
 #how #active_item {
   position: absolute;
-  left: 0;
+  left: 50%;
+  transform: translateX(-55%);
   bottom: -2rem;
   width: auto;
   height: auto;
@@ -1582,17 +1584,21 @@ footer a:hover {
   }
 
   #what .area_header {
-    display: grid;
+    display: inline-grid;
     grid-template-columns: auto 1fr;
     grid-gap: 2rem;
-  }
-
-  #what .area_icon {
+    align-items: center;
     margin-bottom: 2rem;
   }
 
   #what .area_header h3 {
-    width: 80%;
+    align-items: center;
+    width: 75%;
+    padding: 0 0 0.3rem;
+  }
+
+  #what .area_header div {
+    align-items: center;
   }
 
   #how #active_item {
