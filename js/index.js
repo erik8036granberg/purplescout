@@ -241,17 +241,25 @@ function logoSwap() {
     },
     { id: "id-4", image: "img/logo/arla.svg", company: "Arla" },
     { id: "id-5", image: "img/logo/carlsberg.svg", company: "Carlsberg" },
-    { id: "id-6", image: "img/logo/chrhansen.svg", company: "Chr. Hansen" },
+    { id: "id-6", image: "img/logo/chr_hansen.svg", company: "Chr. Hansen" },
     { id: "id-7", image: "img/logo/coloplast.svg", company: "Coloplast" },
     { id: "id-8", image: "img/logo/coop.svg", company: "Coop" },
-    { id: "id-9", image: "img/logo/company_9.svg", company: "company_9" },
-    { id: "id-10", image: "img/logo/company_10.svg", company: "company_10" },
-    { id: "id-11", image: "img/logo/company_11.svg", company: "company_11" },
-    { id: "id-12", image: "img/logo/company_12.svg", company: "company_12" },
-    { id: "id-13", image: "img/logo/company_13.svg", company: "company_13" },
-    { id: "id-14", image: "img/logo/company_14.svg", company: "company_14" },
-    { id: "id-15", image: "img/logo/company_15.svg", company: "company_15" },
-    { id: "id-16", image: "img/logo/company_16.svg", company: "company_16" }
+    { id: "id-9", image: "img/logo/dako.svg", company: "Dako" },
+    { id: "id-10", image: "img/logo/danske_bank.svg", company: "Danske Bank" },
+    {
+      id: "id-11",
+      image: "img/logo/dansk_industri.svg",
+      company: "Dansk Industri"
+    },
+    {
+      id: "id-12",
+      image: "img/logo/dansk_naturfredningsforening.svg",
+      company: "Dansk Naturfredningsforening"
+    },
+    { id: "id-13", image: "img/logo/dvs.svg", company: "DVS" },
+    { id: "id-14", image: "img/logo/dtu.svg", company: "DTU" },
+    { id: "id-15", image: "img/logo/gynzone.svg", company: "Gynzone" },
+    { id: "id-16", image: "img/logo/kraft.svg", company: "Kraft" }
   ];
   // // possible random sort
   // logoArray.sort(function() {
@@ -306,7 +314,7 @@ function logoSwap() {
           .querySelector("#" + newLogo.id)
           .setAttribute("alt", newLogo.company);
 
-        document.querySelector("#" + newLogo.id).style.opacity = "0.3";
+        document.querySelector("#" + newLogo.id).style.opacity = "0.25";
       }, 1000);
       // add new logo to active array and random logo to hidden array
       activeArray.push(newLogo);
