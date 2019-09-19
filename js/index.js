@@ -232,27 +232,31 @@ function casesScollEffect() {
 function logoSwap() {
   console.log("logoSwap");
   const logoArray = [
-    { id: "id-1", image: "img/logo/company_1.png", company: "company_1" },
-    { id: "id-2", image: "img/logo/company_2.png", company: "company_2" },
-    { id: "id-3", image: "img/logo/company_3.png", company: "company_3" },
-    { id: "id-4", image: "img/logo/company_4.png", company: "company_4" },
-    { id: "id-5", image: "img/logo/company_5.png", company: "company_5" },
-    { id: "id-6", image: "img/logo/company_6.png", company: "company_6" },
-    { id: "id-7", image: "img/logo/company_7.png", company: "company_7" },
-    { id: "id-8", image: "img/logo/company_8.png", company: "company_8" },
-    { id: "id-9", image: "img/logo/company_9.png", company: "company_9" },
-    { id: "id-10", image: "img/logo/company_10.png", company: "company_10" },
-    { id: "id-11", image: "img/logo/company_11.png", company: "company_11" },
-    { id: "id-12", image: "img/logo/company_12.png", company: "company_12" },
-    { id: "id-13", image: "img/logo/company_13.png", company: "company_13" },
-    { id: "id-14", image: "img/logo/company_14.png", company: "company_14" },
-    { id: "id-15", image: "img/logo/company_15.png", company: "company_15" },
-    { id: "id-16", image: "img/logo/company_16.png", company: "company_16" }
+    { id: "id-1", image: "img/logo/nasa.svg", company: "Nasa" },
+    { id: "id-2", image: "img/logo/ambu.svg", company: "Ambu" },
+    {
+      id: "id-3",
+      image: "img/logo/arbejdstilsynet.svg",
+      company: "Arbejdstilsynet"
+    },
+    { id: "id-4", image: "img/logo/arla.svg", company: "Arla" },
+    { id: "id-5", image: "img/logo/carlsberg.svg", company: "Carlsberg" },
+    { id: "id-6", image: "img/logo/chrhansen.svg", company: "Chr. Hansen" },
+    { id: "id-7", image: "img/logo/coloplast.svg", company: "Coloplast" },
+    { id: "id-8", image: "img/logo/coop.svg", company: "Coop" },
+    { id: "id-9", image: "img/logo/company_9.svg", company: "company_9" },
+    { id: "id-10", image: "img/logo/company_10.svg", company: "company_10" },
+    { id: "id-11", image: "img/logo/company_11.svg", company: "company_11" },
+    { id: "id-12", image: "img/logo/company_12.svg", company: "company_12" },
+    { id: "id-13", image: "img/logo/company_13.svg", company: "company_13" },
+    { id: "id-14", image: "img/logo/company_14.svg", company: "company_14" },
+    { id: "id-15", image: "img/logo/company_15.svg", company: "company_15" },
+    { id: "id-16", image: "img/logo/company_16.svg", company: "company_16" }
   ];
-  // possible random sort
-  logoArray.sort(function() {
-    return 0.5 - Math.random();
-  });
+  // // possible random sort
+  // logoArray.sort(function() {
+  //   return 0.5 - Math.random();
+  // });
   // visible logos - mobile or larger
   let showLogos;
   if (window.innerWidth < 700) {
@@ -302,7 +306,7 @@ function logoSwap() {
           .querySelector("#" + newLogo.id)
           .setAttribute("alt", newLogo.company);
 
-        document.querySelector("#" + newLogo.id).style.opacity = "0.25";
+        document.querySelector("#" + newLogo.id).style.opacity = "0.3";
       }, 1000);
       // add new logo to active array and random logo to hidden array
       activeArray.push(newLogo);
