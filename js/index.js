@@ -1,6 +1,7 @@
 "use strict";
 
 let showreelButton = false;
+let currantNumber = "0";
 
 window.addEventListener("DOMContentLoaded", init);
 
@@ -98,43 +99,67 @@ function fullVideo() {
   }
 }
 
-function circleTurn() {
-  console.log("circleTurn");
+let target;
+let turnId;
 
+function circleTurn() {
   document.querySelector("#discover").addEventListener("click", () => {
-    rotateTo("0", "discover");
+    turnId = "discover";
+    target = "0";
+    turnCircle();
   });
   document.querySelector("#data").addEventListener("click", () => {
-    rotateTo("1", "data");
+    turnId = "data";
+    target = "1";
+    turnCircle();
   });
   document.querySelector("#design").addEventListener("click", () => {
-    rotateTo("2", "design");
+    turnId = "design";
+    target = "2";
+    turnCircle();
   });
   document.querySelector("#develop").addEventListener("click", () => {
-    rotateTo("3", "develop");
+    turnId = "develop";
+    target = "3";
+    turnCircle();
   });
   document.querySelector("#deliver").addEventListener("click", () => {
-    rotateTo("4", "deliver");
+    turnId = "deliver";
+    target = "4";
+    turnCircle();
   });
   document.querySelector(".blt_discover").addEventListener("click", () => {
-    rotateTo("0", "discover");
+    turnId = "discover";
+    target = "0";
+    turnCircle();
   });
   document.querySelector(".blt_data").addEventListener("click", () => {
-    rotateTo("1", "data");
+    turnId = "data";
+    target = "1";
+    turnCircle();
   });
   document.querySelector(".blt_design").addEventListener("click", () => {
-    rotateTo("2", "design");
+    turnId = "design";
+    target = "2";
+    turnCircle();
   });
   document.querySelector(".blt_develop").addEventListener("click", () => {
-    rotateTo("3", "develop");
+    turnId = "develop";
+    target = "3";
+    turnCircle();
   });
   document.querySelector(".blt_deliver").addEventListener("click", () => {
-    rotateTo("4", "deliver");
+    turnId = "deliver";
+    target = "4";
+    turnCircle();
   });
+
+  function turnCircle() {
+    rotateTo(target, turnId);
+  }
 
   function rotateTo(number, id) {
     let roteateDeg = number * 72 + "deg";
-    console.log(id);
     document.querySelector(
       ".orbit"
     ).style.transform = `rotateZ(-${roteateDeg})`;
@@ -157,7 +182,6 @@ function circleTurn() {
 
   function textItem(number, id) {
     let slideValue = "-" + number * 100 + "%";
-    console.log(slideValue);
     document.querySelector(
       "#slider"
     ).style.transform = `translateY(${slideValue})`;
@@ -166,7 +190,6 @@ function circleTurn() {
       el.classList.add("hide");
     });
     setTimeout(() => {
-      console.log("#" + id + "_text");
       document.querySelector("#" + id + "_text").classList.remove("hide");
     }, 500);
   }
@@ -288,3 +311,52 @@ function logoSwap() {
     }, 5000);
   }
 }
+
+// autorunCircle();
+
+// function autorunCircle() {
+//   console.log("autorunCircle");
+//   let runitems = [
+//     "discover",
+//     "data",
+//     "design",
+//     "develop",
+//     "deliver",
+//     "return"
+//   ];
+//   runitems.forEach((id, i) => {
+//     console.log(id);
+//     console.log(i);
+//     setTimeout(() => {
+//       rotateTo(i, id);
+//       if (id === "return") {
+//         autorunCircle();
+//       }
+//     }, i * 1000);
+//   });
+// }
+
+// function runCircle(number, id) {
+//   console.log("runCircle");
+//   rotateTo(number, id);
+//   let timer;
+//   clearTimeout(timer);
+//   timer = setTimeout(autoTurn, 5000);
+//   function autoTurn() {
+//     if (number == "0") {
+//       runCircle("1", "data");
+//     }
+//     if (number == "1") {
+//       runCircle("2", "design");
+//     }
+//     if (number == "2") {
+//       runCircle("3", "develop");
+//     }
+//     if (number == "3") {
+//       runCircle("4", "deliver");
+//     }
+//     if (number == "4") {
+//       runCircle("0", "discover");
+//     }
+//   }
+// }
