@@ -256,10 +256,43 @@ function logoSwap() {
       image: "img/logo/dansk_naturfredningsforening.svg",
       company: "Dansk Naturfredningsforening"
     },
-    { id: "id-13", image: "img/logo/dvs.svg", company: "DVS" },
+    { id: "id-13", image: "img/logo/dsv.svg", company: "DVS" },
     { id: "id-14", image: "img/logo/dtu.svg", company: "DTU" },
     { id: "id-15", image: "img/logo/gynzone.svg", company: "Gynzone" },
-    { id: "id-16", image: "img/logo/kraft.svg", company: "Kraft" }
+    { id: "id-16", image: "img/logo/kraft.svg", company: "Kraft" },
+    { id: "id-17", image: "img/logo/danfoss.svg", company: "Danfoss" },
+    {
+      id: "id-18",
+      image: "img/logo/louis_poulsen.svg",
+      company: "Louis Poulsen"
+    },
+    { id: "id-19", image: "img/logo/lundbeck.svg", company: "Lundbeck" },
+    { id: "id-20", image: "img/logo/nonozymes.svg", company: "Nonozymes" },
+    { id: "id-21", image: "img/logo/novartis.svg", company: "Novartis" },
+    { id: "id-22", image: "img/logo/phillips.svg", company: "Phillips" },
+    {
+      id: "id-23",
+      image: "img/logo/region_syddanmark.svg",
+      company: "Region Syddanmark"
+    },
+    {
+      id: "id-24",
+      image: "img/logo/ringsted_kommune.svg",
+      company: "Ringsted Kommune"
+    },
+    {
+      id: "id-25",
+      image: "img/logo/roskilde_kommune.svg",
+      company: "Roskilde Kommune"
+    },
+    { id: "id-26", image: "img/logo/seeland.svg", company: "Seeland" },
+    {
+      id: "id-27",
+      image: "img/logo/tandlaegeforeningen.svg",
+      company: "Tandlægeforeningen"
+    },
+    { id: "id-28", image: "img/logo/telia.svg", company: "Telia" },
+    { id: "id-29", image: "img/logo/visma.svg", company: "Visma" }
   ];
   // // possible random sort
   // logoArray.sort(function() {
@@ -277,6 +310,8 @@ function logoSwap() {
   let activeArray = logoArray.slice(0, showLogos);
   let hiddenArray = logoArray.slice(showLogos, numberOfLogos);
   activeArray.forEach(displayLogos);
+  console.log(activeArray);
+  console.log(hiddenArray);
   swapShow();
 
   // display logos in DOM

@@ -713,26 +713,28 @@ h2 {
   transform: scale(1.1);
 }
 
+#cases #logo_wrapper {
+  margin: 10rem 0 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 8vw;
+  grid-row-gap: 2vh;
+}
+
 #cases #logo_wrapper div {
   height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 #cases #logo_wrapper img {
   transition: 1s;
   opacity: 0.25;
-  height: 75%;
-}
-
-#cases #logo_wrapper {
-  margin: 10rem 0 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 18vh 18vh;
-  grid-gap: 5rem;
+  height: 100%;
+  filter: brightness(0.8) sepia(1) hue-rotate(210deg) saturate(10);
 }
 
 /* how */
