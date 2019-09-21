@@ -309,7 +309,7 @@ function logoSwap() {
       company: "Visma"
     },
     {
-      id: "id-36",
+      id: "id-37",
       image: "img/logo/novo_nordisk.svg",
       company: "Novo Nordisk"
     },
@@ -331,6 +331,19 @@ function logoSwap() {
       company: "GSK"
     }
   ];
+
+  function svgImport() {
+    fetch("img/template_1.svg")
+      .then(response => response.text())
+      .then(svgdata => {
+        console.log("loadSVGtemplate_1");
+        document
+          .querySelector("#temp")
+          .insertAdjacentHTML("afterbegin", svgdata);
+        loadSVGtemplate2();
+      });
+  }
+
   // // possible random sort
   // logoArray.sort(function() {
   //   return 0.5 - Math.random();
@@ -390,7 +403,7 @@ function logoSwap() {
           .setAttribute("alt", newLogo.company);
 
         document.querySelector("#" + newLogo.id).style.opacity = "0.25";
-      }, 1000);
+      }, 1500);
       // add new logo to active array and random logo to hidden array
       activeArray.push(newLogo);
       hiddenArray.push(randomLogo);
