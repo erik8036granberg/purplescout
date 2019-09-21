@@ -1336,7 +1336,7 @@ footer a:hover {
   }
 
   #cases #logo_wrapper {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
   #what .area_wrapper,
@@ -1455,6 +1455,10 @@ footer a:hover {
 
   #cases .case[data-scroll="out"] {
     transform: translateY(0) scale(0.75);
+  }
+
+  #cases #logo_wrapper {
+    grid-column-gap: 8vw;
   }
 
   footer .content {
@@ -1625,6 +1629,12 @@ footer a:hover {
   #cases .showcase .case:nth-child(3n) {
     grid-column: 3 / span 2;
     transform-origin: right;
+  }
+
+  #cases #logo_wrapper {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 6vw;
+    grid-row-gap: 2vh;
   }
 
   #what .area_header {

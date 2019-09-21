@@ -292,7 +292,8 @@ function logoSwap() {
       company: "Tandlægeforeningen"
     },
     { id: "id-28", image: "img/logo/telia.svg", company: "Telia" },
-    { id: "id-29", image: "img/logo/visma.svg", company: "Visma" }
+    { id: "id-29", image: "img/logo/visma.svg", company: "Visma" },
+    { id: "id-30", image: "img/logo/contura.svg", company: "Contura" }
   ];
   // // possible random sort
   // logoArray.sort(function() {
@@ -300,8 +301,11 @@ function logoSwap() {
   // });
   // visible logos - mobile or larger
   let showLogos;
+
   if (window.innerWidth < 700) {
     showLogos = 4;
+  } else if (window.innerWidth < 1200) {
+    showLogos = 6;
   } else {
     showLogos = 8;
   }
