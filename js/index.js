@@ -253,8 +253,8 @@ function logoSwap() {
     },
     {
       id: "id-12",
-      image: "img/logo/dansk_naturfredningsforening.svg",
-      company: "Dansk Naturfredningsforening"
+      image: "img/logo/danmarks_naturfredningsforening.svg",
+      company: "Danmarks Naturfredningsforening"
     },
     { id: "id-13", image: "img/logo/dsv.svg", company: "DVS" },
     { id: "id-14", image: "img/logo/dtu.svg", company: "DTU" },
@@ -267,7 +267,7 @@ function logoSwap() {
       company: "Louis Poulsen"
     },
     { id: "id-19", image: "img/logo/lundbeck.svg", company: "Lundbeck" },
-    { id: "id-20", image: "img/logo/nonozymes.svg", company: "Nonozymes" },
+    { id: "id-20", image: "img/logo/novozymes.svg", company: "Novozymes" },
     { id: "id-21", image: "img/logo/novartis.svg", company: "Novartis" },
     { id: "id-22", image: "img/logo/phillips.svg", company: "Phillips" },
     {
@@ -293,7 +293,43 @@ function logoSwap() {
     },
     { id: "id-28", image: "img/logo/telia.svg", company: "Telia" },
     { id: "id-29", image: "img/logo/visma.svg", company: "Visma" },
-    { id: "id-30", image: "img/logo/contura.svg", company: "Contura" }
+    { id: "id-30", image: "img/logo/contura.svg", company: "Contura" },
+    { id: "id-31", image: "img/logo/cowi.svg", company: "Cowi" },
+    {
+      id: "id-32",
+      image: "img/logo/fisher_scientific.svg",
+      company: "Fisher Scientific"
+    },
+    { id: "id-33", image: "img/logo/genmap.svg", company: "Genmap" },
+    { id: "id-34", image: "img/logo/gn.svg", company: "GN" },
+    { id: "id-35", image: "img/logo/isover.svg", company: "Isover" },
+    {
+      id: "id-36",
+      image: "img/logo/oejenlaegeforeningen.svg",
+      company: "Visma"
+    },
+    {
+      id: "id-36",
+      image: "img/logo/novo_nordisk.svg",
+      company: "Novo Nordisk"
+    },
+    { id: "id-38", image: "img/logo/politi.svg", company: "Politi" },
+    { id: "id-39", image: "img/logo/rockwool.svg", company: "Rockwool" },
+    {
+      id: "id-40",
+      image: "img/logo/videncenter_for_allergi.svg",
+      company: "Videncenter for allergi"
+    },
+    {
+      id: "id-41",
+      image: "img/logo/videncenter_for_arbejdsmiljoe.svg",
+      company: "Videncenter for arbejdsmiljø"
+    },
+    {
+      id: "id-42",
+      image: "img/logo/gsk.svg",
+      company: "GSK"
+    }
   ];
   // // possible random sort
   // logoArray.sort(function() {
@@ -359,7 +395,7 @@ function logoSwap() {
       activeArray.push(newLogo);
       hiddenArray.push(randomLogo);
       swapShow();
-    }, 5000);
+    }, 3000);
   }
 }
 
