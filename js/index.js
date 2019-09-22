@@ -439,50 +439,6 @@ function logoSwap() {
           .insertAdjacentHTML("afterbegin", svgdata);
       });
   }
-
-  // display logos in DOM
-  function displayLogos(logo) {
-    const template = document.querySelector("[data-logo_template]").content;
-    const clone = template.cloneNode(true);
-    clone.querySelector("[data-logo]").setAttribute("id", logo.id);
-    clone.querySelector("[data-logo]").setAttribute("src", logo.image);
-    clone.querySelector("[data-logo]").setAttribute("alt", logo.company);
-    document.querySelector("[data-logos]").appendChild(clone);
-  }
-
-  function swapShow() {
-    // set a timer
-    setTimeout(() => {
-      // get a random id from the active array to pick a DOM element
-      let random = Math.floor(Math.random() * showLogos);
-      let randomLogo = activeArray[random];
-      // remove from the active array
-      activeArray.splice(random, 1);
-      // disappear animation
-      document.querySelector("#" + randomLogo.id).style.opacity = "0";
-      // get the first item in the hidden array and delete it
-      let newLogo = hiddenArray[0];
-      hiddenArray.shift();
-      // replace id & image path with with new logo
-      setTimeout(() => {
-        document
-          .querySelector("#" + randomLogo.id)
-          .setAttribute("id", newLogo.id);
-        document
-          .querySelector("#" + newLogo.id)
-          .setAttribute("src", newLogo.image);
-        document
-          .querySelector("#" + newLogo.id)
-          .setAttribute("alt", newLogo.company);
-
-        document.querySelector("#" + newLogo.id).style.opacity = "0.25";
-      }, 1500);
-      // add new logo to active array and random logo to hidden array
-      activeArray.push(newLogo);
-      hiddenArray.push(randomLogo);
-      swapShow();
-    }, 3000);
-  }
 }
 
 // autorunCircle();

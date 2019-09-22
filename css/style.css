@@ -723,6 +723,10 @@ h2 {
   grid-row-gap: 2vh;
 }
 
+#hiddenlogos {
+  display: none;
+}
+
 #cases #logo_wrapper div,
 #activelogos div,
 #hiddenlogos div {
@@ -739,9 +743,6 @@ h2 {
 #cases #activelogos svg {
   transition: 1s;
   height: 100%;
-  /* filter: brightness(0.8) sepia(1) hue-rotate(210deg) saturate(10); */
-  /* filter: opasity(0.5) drop-shadow(0 0 0 var(--bg_logo)); */
-  /* filter: opasity(1) drop-shadow(0 0 0 crimson); */
 }
 
 #cases #activelogos .cls-1,
@@ -753,19 +754,6 @@ h2 {
 #cases #activelogos text,
 #cases #hiddenlogos text {
   fill: var(--bg_logo) !important;
-}
-
-.hidelogo {
-  animation: hildelogo 1s forwards;
-}
-
-@keyframes hidelogo {
-  0% {
-    opacity: 1 !important;
-  }
-  100% {
-    opacity: 0 !important;
-  }
 }
 
 /* how */
@@ -1366,7 +1354,9 @@ footer a:hover {
     line-height: 6rem;
   }
 
-  #cases #logo_wrapper {
+  #cases #logo_wrapper,
+  #activelogos,
+  #hiddenlogos {
     grid-template-columns: 1fr 1fr 1fr;
   }
 
@@ -1488,7 +1478,9 @@ footer a:hover {
     transform: translateY(0) scale(0.75);
   }
 
-  #cases #logo_wrapper {
+  #cases #logo_wrapper,
+  #activelogos,
+  #hiddenlogos {
     grid-column-gap: 8vw;
   }
 
@@ -1662,7 +1654,9 @@ footer a:hover {
     transform-origin: right;
   }
 
-  #cases #logo_wrapper {
+  #cases #logo_wrapper,
+  #activelogos,
+  #hiddenlogos {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-column-gap: 6vw;
     grid-row-gap: 2vh;
