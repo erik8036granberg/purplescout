@@ -332,22 +332,11 @@ function logoSwap() {
     }
   ];
 
-  function svgImport() {
-    fetch("img/template_1.svg")
-      .then(response => response.text())
-      .then(svgdata => {
-        console.log("loadSVGtemplate_1");
-        document
-          .querySelector("#temp")
-          .insertAdjacentHTML("afterbegin", svgdata);
-        loadSVGtemplate2();
-      });
-  }
-
   // // possible random sort
   // logoArray.sort(function() {
   //   return 0.5 - Math.random();
   // });
+
   // visible logos - mobile or larger
   let showLogos;
 
@@ -362,10 +351,40 @@ function logoSwap() {
   let numberOfLogos = logoArray.length;
   let activeArray = logoArray.slice(0, showLogos);
   let hiddenArray = logoArray.slice(showLogos, numberOfLogos);
-  activeArray.forEach(displayLogos);
+  activeArray.forEach(svgImportActive);
+  hiddenArray.forEach(svgImportHidden);
+
+  function svgImportActive(displayLogo) {
+    fetch(displayLogo.image)
+      .then(response => response.text())
+      .then(svgdata => {
+        console.log("logo imported");
+        const makeDiv = document.createElement("DIV");
+        makeDiv.setAttribute("id", displayLogo.id);
+        document.querySelector("#activelogos").appendChild(makeDiv);
+        document
+          .querySelector("#" + displayLogo.id)
+          .insertAdjacentHTML("afterbegin", svgdata);
+      });
+  }
+
+  function svgImportHidden(displayLogo) {
+    fetch(displayLogo.image)
+      .then(response => response.text())
+      .then(svgdata => {
+        console.log("logo imported");
+        const makeDiv = document.createElement("DIV");
+        makeDiv.setAttribute("id", displayLogo.id);
+        document.querySelector("#hiddenlogos").appendChild(makeDiv);
+        document
+          .querySelector("#" + displayLogo.id)
+          .insertAdjacentHTML("afterbegin", svgdata);
+      });
+  }
+
   console.log(activeArray);
   console.log(hiddenArray);
-  swapShow();
+  // swapShow();
 
   // display logos in DOM
   function displayLogos(logo) {
