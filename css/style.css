@@ -732,11 +732,12 @@ h2 {
   align-items: center;
   justify-content: center;
   position: relative;
+  transition: 1s;
 }
 
-#cases #logo_wrapper img {
+#cases #logo_wrapper img,
+#cases #activelogos svg {
   transition: 1s;
-  opacity: 0.25;
   height: 100%;
   /* filter: brightness(0.8) sepia(1) hue-rotate(210deg) saturate(10); */
   /* filter: opasity(0.5) drop-shadow(0 0 0 var(--bg_logo)); */
@@ -747,9 +748,24 @@ h2 {
 #cases #hiddenlogos .cls-1,
 #cases #activelogos .cls-2,
 #cases #hiddenlogos .cls-2,
+#cases #activelogos .cls-3,
+#cases #hiddenlogos .cls-3,
 #cases #activelogos text,
 #cases #hiddenlogos text {
   fill: var(--bg_logo) !important;
+}
+
+.hidelogo {
+  animation: hildelogo 1s forwards;
+}
+
+@keyframes hidelogo {
+  0% {
+    opacity: 1 !important;
+  }
+  100% {
+    opacity: 0 !important;
+  }
 }
 
 /* how */

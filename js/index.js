@@ -351,8 +351,66 @@ function logoSwap() {
   let numberOfLogos = logoArray.length;
   let activeArray = logoArray.slice(0, showLogos);
   let hiddenArray = logoArray.slice(showLogos, numberOfLogos);
+  //import svg to DOM
   activeArray.forEach(svgImportActive);
   hiddenArray.forEach(svgImportHidden);
+  // swapShow();
+  setTimeout(() => {
+    swapShowSVG();
+  }, 3000);
+
+  function swapShowSVG() {
+    console.log("swapShowSVG");
+    console.log(activeArray);
+    console.log(hiddenArray);
+    // set a timer
+    setTimeout(() => {
+      // get a random id from the active array to pick a DOM element
+      let random = Math.floor(Math.random() * showLogos);
+      let randomLogo = activeArray[random];
+      // disappear animation
+      document.querySelector("#activelogos ." + randomLogo.id).style.opacity =
+        "0";
+      // get the first item in the hidden array and delete it
+      let newLogoSvg = document.querySelector(
+        "#hiddenlogos ." + hiddenArray[0].id
+      ).innerHTML;
+      let newLogo = hiddenArray[0];
+      let newLogoID = hiddenArray[0].id;
+      console.log(newLogoID);
+      setTimeout(() => {
+        let randomID = activeArray[random].id;
+        let randomSvg = document.querySelector("#activelogos ." + randomID)
+          .innerHTML;
+        let newLogoRemove = document.querySelector(
+          "#hiddenlogos ." + hiddenArray[0].id
+        );
+        newLogoRemove.remove();
+        // replace id & image path with with new logo
+        const makeDiv = document.createElement("DIV");
+        makeDiv.setAttribute("class", randomID);
+        document.querySelector("#hiddenlogos").appendChild(makeDiv);
+        document.querySelector(
+          "#hiddenlogos ." + randomID
+        ).innerHTML = randomSvg;
+        document.querySelector(
+          "#activelogos ." + randomLogo.id
+        ).innerHTML = newLogoSvg;
+        document
+          .querySelector("#activelogos ." + randomLogo.id)
+          .setAttribute("class", newLogoID);
+        document.querySelector("#activelogos ." + newLogoID).style.opacity =
+          "1";
+        // add new logo to active array and random logo to hidden array
+        // remove from the active array
+        activeArray.splice(random, 1);
+        activeArray.push(newLogo);
+        hiddenArray.shift();
+        hiddenArray.push(randomLogo);
+        swapShowSVG();
+      }, 1000);
+    }, 1000);
+  }
 
   function svgImportActive(displayLogo) {
     fetch(displayLogo.image)
@@ -360,10 +418,10 @@ function logoSwap() {
       .then(svgdata => {
         console.log("logo imported");
         const makeDiv = document.createElement("DIV");
-        makeDiv.setAttribute("id", displayLogo.id);
+        makeDiv.setAttribute("class", displayLogo.id);
         document.querySelector("#activelogos").appendChild(makeDiv);
         document
-          .querySelector("#" + displayLogo.id)
+          .querySelector("." + displayLogo.id)
           .insertAdjacentHTML("afterbegin", svgdata);
       });
   }
@@ -374,17 +432,13 @@ function logoSwap() {
       .then(svgdata => {
         console.log("logo imported");
         const makeDiv = document.createElement("DIV");
-        makeDiv.setAttribute("id", displayLogo.id);
+        makeDiv.setAttribute("class", displayLogo.id);
         document.querySelector("#hiddenlogos").appendChild(makeDiv);
         document
-          .querySelector("#" + displayLogo.id)
+          .querySelector("." + displayLogo.id)
           .insertAdjacentHTML("afterbegin", svgdata);
       });
   }
-
-  console.log(activeArray);
-  console.log(hiddenArray);
-  // swapShow();
 
   // display logos in DOM
   function displayLogos(logo) {
