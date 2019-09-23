@@ -10,6 +10,7 @@
   --bg_purple_4: #331a57;
   --bg_lightblue: #03e3fc;
   --bg_black_trs: #000000b4;
+  --bg_white_trs: rgba(255, 255, 255, 0.9);
   --font_color: #cccccc;
 }
 
@@ -486,6 +487,18 @@ footer h1 {
   height: 50vh;
   pointer-events: all;
   opacity: 1;
+  background-color: var(--bg_white_trs);
+  z-index: 2000;
+}
+
+#cta_modal .modal_content {
+  padding: 5vw;
+  color: #000;
+}
+
+.blur {
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
 }
 
 #showreel #videomodal .close,

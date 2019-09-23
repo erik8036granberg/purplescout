@@ -101,12 +101,14 @@ function fullVideo() {
 
 function CtaModal() {
   document.querySelector("#cta_modal").classList.add("show");
+  document.querySelector("#showreel #reel").pause();
   document.querySelector("html").classList.add("fixed");
   document
     .querySelector("#cta_modal .close")
     .addEventListener("click", closeCtaModal);
   function closeCtaModal() {
     console.log("closeCtaModal");
+    document.querySelector("#showreel #reel").play();
     document
       .querySelector("#cta_modal .close")
       .removeEventListener("click", closeCtaModal);
