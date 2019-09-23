@@ -6,7 +6,7 @@
   }
 
   #case .case_images img:nth-child(even) {
-    margin: 0 0 0 0; */
+    margin: 0 0 0 0;
   }
 
   #case .case_images {
@@ -20,7 +20,7 @@
     padding-left: 0;
   }
 
- #case .case_images img:nth-child(1) {
+  #case .case_images img:nth-child(1) {
     grid-column: 1 / span 2;
   }
 
