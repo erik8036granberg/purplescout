@@ -361,8 +361,6 @@ function logoSwap() {
 
   function swapShowSVG() {
     console.log("swapShowSVG");
-    console.log(activeArray);
-    console.log(hiddenArray);
     // set a timer
     setTimeout(() => {
       // get a random id from the active array to pick a DOM element
@@ -371,28 +369,17 @@ function logoSwap() {
       // disappear animation
       document.querySelector("#activelogos ." + randomLogo.id).style.opacity =
         "0";
-      // get the first item in the hidden array and delete it
+      // get new logo array, id & content
+      let newLogo = hiddenArray[0];
+      let newLogoID = hiddenArray[0].id;
       let newLogoSvg = document.querySelector(
         "#hiddenlogos ." + hiddenArray[0].id
       ).innerHTML;
-      let newLogo = hiddenArray[0];
-      let newLogoID = hiddenArray[0].id;
-      console.log(newLogoID);
       setTimeout(() => {
+        //insert new logo
         let randomID = activeArray[random].id;
         let randomSvg = document.querySelector("#activelogos ." + randomID)
           .innerHTML;
-        let newLogoRemove = document.querySelector(
-          "#hiddenlogos ." + hiddenArray[0].id
-        );
-        newLogoRemove.remove();
-        // replace id & image path with with new logo
-        const makeDiv = document.createElement("DIV");
-        makeDiv.setAttribute("class", randomID);
-        document.querySelector("#hiddenlogos").appendChild(makeDiv);
-        document.querySelector(
-          "#hiddenlogos ." + randomID
-        ).innerHTML = randomSvg;
         document.querySelector(
           "#activelogos ." + randomLogo.id
         ).innerHTML = newLogoSvg;
@@ -401,8 +388,20 @@ function logoSwap() {
           .setAttribute("class", newLogoID);
         document.querySelector("#activelogos ." + newLogoID).style.opacity =
           "1";
-        // add new logo to active array and random logo to hidden array
-        // remove from the active array
+
+        //remove hidden logo and insert replaced
+        let newLogoRemove = document.querySelector(
+          "#hiddenlogos ." + hiddenArray[0].id
+        );
+        newLogoRemove.remove();
+        const makeDiv = document.createElement("DIV");
+        makeDiv.setAttribute("class", randomID);
+        document.querySelector("#hiddenlogos").appendChild(makeDiv);
+        document.querySelector(
+          "#hiddenlogos ." + randomID
+        ).innerHTML = randomSvg;
+
+        // rearrange arrays
         activeArray.splice(random, 1);
         activeArray.push(newLogo);
         hiddenArray.shift();
