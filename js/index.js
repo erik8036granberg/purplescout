@@ -45,7 +45,7 @@ function init() {
       fullVideo();
     });
   document.querySelector("#showreel .cta").addEventListener("click", () => {
-    alert("CTA-showreel");
+    CtaModal();
   });
 }
 
@@ -95,6 +95,22 @@ function fullVideo() {
     document.querySelector("#showreel #full").pause();
     document.querySelector("#showreel #reel").play();
     document.querySelector("#showreel #videomodal").classList.remove("show");
+    document.querySelector("html").classList.remove("fixed");
+  }
+}
+
+function CtaModal() {
+  document.querySelector("#cta_modal").classList.add("show");
+  document.querySelector("html").classList.add("fixed");
+  document
+    .querySelector("#cta_modal .close")
+    .addEventListener("click", closeCtaModal);
+  function closeCtaModal() {
+    console.log("closeCtaModal");
+    document
+      .querySelector("#cta_modal .close")
+      .removeEventListener("click", closeCtaModal);
+    document.querySelector("#cta_modal").classList.remove("show");
     document.querySelector("html").classList.remove("fixed");
   }
 }

@@ -458,7 +458,8 @@ footer h1 {
   border: 0 none transparent;
 }
 
-#showreel #videomodal {
+#showreel #videomodal,
+#cta_modal {
   background-color: #000;
   width: 0;
   height: 0;
@@ -480,7 +481,15 @@ footer h1 {
   opacity: 1;
 }
 
-#showreel #videomodal .close {
+#cta_modal.show {
+  width: 50vw;
+  height: 50vh;
+  pointer-events: all;
+  opacity: 1;
+}
+
+#showreel #videomodal .close,
+#cta_modal .close {
   width: 5rem;
   height: 5rem;
   position: absolute;
@@ -494,9 +503,10 @@ footer h1 {
   z-index: 1010;
   transition: 0.5s;
   pointer-events: all;
+  cursor: pointer;
 }
 
-#showreel #videomodal .close:hover {
+#showreel #videomodal .close:hover #cta_modal .close:hover {
   transform: scale(1.1);
   cursor: pointer;
 }
