@@ -305,7 +305,7 @@ nav.show {
   position: relative;
   margin: 7rem auto 0;
   max-width: 1200px;
-  z-index: 75;
+  z-index: 300;
 }
 
 .content p {
@@ -706,7 +706,7 @@ h2 {
   height: auto;
   transition: 0.5s;
   text-align: center;
-  z-index: 500;
+  z-index: 999;
 }
 
 #cases .cta:hover {
