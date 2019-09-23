@@ -700,7 +700,7 @@ h2 {
   border: 1px solid #fff;
   line-height: 0;
   padding: 2rem 3rem 2.25rem;
-  margin: 7rem auto 0;
+  margin: 0 auto 0;
   cursor: pointer;
   width: 20rem;
   height: auto;
@@ -716,7 +716,7 @@ h2 {
 #cases #logo_wrapper,
 #activelogos,
 #hiddenlogos {
-  margin: 10rem 0 0;
+  margin: 5rem 0 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 8vw;
@@ -1165,6 +1165,11 @@ footer a:hover {
 #case .case_images img {
   width: 95%;
   position: relative;
+  border: 2px solid var(--bg_logo);
+}
+
+#case .case_images .noborder {
+  border: 0 none transparent;
 }
 
 #case .case_images img:nth-child(odd) {
@@ -1360,6 +1365,25 @@ footer a:hover {
     grid-template-columns: 1fr 1fr 1fr;
   }
 
+  #cases .showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  #cases .showcase .case:not(:first-child) {
+    margin-top: -15vh;
+  }
+
+  #cases .showcase .case:nth-child(odd) {
+    grid-column: 1 / span 2;
+    transform-origin: left;
+  }
+
+  #cases .showcase .case:nth-child(even) {
+    grid-column: 2 / span 2;
+    transform-origin: right;
+  }
+
   #what .area_wrapper,
   footer .content {
     grid-template-columns: 1fr 1fr;
@@ -1458,6 +1482,30 @@ footer a:hover {
   #how,
   footer {
     padding: 10rem 10vw;
+  }
+
+  #cases .showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  #cases .showcase .case:not(:first-child) {
+    margin-top: -15vh;
+  }
+
+  #cases .showcase .case:nth-child(1n) {
+    grid-column: 1 / span 2;
+    transform-origin: left;
+  }
+
+  #cases .showcase .case:nth-child(2n) {
+    grid-column: 2 / span 2;
+    transform-origin: center;
+  }
+
+  #cases .showcase .case:nth-child(3n) {
+    grid-column: 3 / span 2;
+    transform-origin: right;
   }
 
   #cases .case[data-scroll="in"] {
@@ -1617,8 +1665,12 @@ footer a:hover {
 
   #intro .content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 3vw;
+  }
+
+  #intro .content .intro_text {
+    grid-column: 1 / span 3;
   }
 
   #intro .top {
@@ -1628,30 +1680,6 @@ footer a:hover {
 
   #case .content {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  }
-
-  #cases .showcase {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-
-  #cases .showcase .case:not(:first-child) {
-    margin-top: -20vh;
-  }
-
-  #cases .showcase .case:nth-child(1n) {
-    grid-column: 1 / span 2;
-    transform-origin: left;
-  }
-
-  #cases .showcase .case:nth-child(2n) {
-    grid-column: 2 / span 2;
-    transform-origin: center;
-  }
-
-  #cases .showcase .case:nth-child(3n) {
-    grid-column: 3 / span 2;
-    transform-origin: right;
   }
 
   #cases #logo_wrapper,
