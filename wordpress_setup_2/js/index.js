@@ -7,6 +7,7 @@ window.addEventListener("DOMContentLoaded", init);
 
 function init() {
   console.log("init");
+  getPageContent();
   document.querySelector(".year").innerHTML = new Date().getFullYear();
   showreelCta();
   circleTurn();
@@ -47,6 +48,30 @@ function init() {
   document.querySelector("#showreel .cta").addEventListener("click", () => {
     CtaModal();
   });
+}
+
+function getPageContent() {
+  console.log("getPageContent");
+  fetch("http://erik-crg.dk/purplescout/wordpress/wp-json/wp/v2/pages/6")
+    .then(response => response.json())
+    .then(myJson => {
+      const pageContent = myJson;
+      console.log(pageContent);
+      InsertPageContent(pageContent);
+    });
+}
+
+function InsertPageContent(pageContent) {
+  let dest = document.querySelector("[data-container]");
+  //	Show reel
+  dest.querySelector("[data-show_reel_header]").textContent =
+    pageContent.acf.show_reel_header;
+  dest
+    .querySelector("[data-show_reel_video]")
+    .setAttribute("src", pageContent.acf.show_reel_video);
+  dest
+    .querySelector("[data-show_reel_full_video]")
+    .setAttribute("src", pageContent.acf.show_reel_full_video);
 }
 
 function showreelCta() {
