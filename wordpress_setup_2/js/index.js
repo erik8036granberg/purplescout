@@ -63,7 +63,9 @@ function getPageContent() {
 
 function InsertPageContent(pageContent) {
   let dest = document.querySelector("[data-container]");
-  //	Show reel
+
+  // - - - - - - - - - - - Show reel - - - - - - - - - - -
+
   dest.querySelector("[data-show_reel_header]").textContent =
     pageContent.acf.show_reel_header;
 
@@ -92,6 +94,20 @@ function InsertPageContent(pageContent) {
       .querySelector("[data-show_reel_full_video]")
       .setAttribute("src", pageContent.acf.show_reel_full_video_large);
   }
+
+  // - - - - - - - - - - - intro section  - - - - - - - - - - -
+
+  dest.querySelector("[data-intro_header]").textContent =
+    pageContent.acf.intro_header;
+  dest.querySelector("[data-intro_text]").innerHTML =
+    pageContent.acf.intro_text;
+
+  // - - - - - - - - - - - cases section  - - - - - - - - - - -
+
+  dest.querySelector("[data-cases_header]").textContent =
+    pageContent.acf.cases_header;
+  dest.querySelector("[data-cases_text]").innerHTML =
+    pageContent.acf.cases_text;
 }
 
 function showreelCta() {
@@ -294,133 +310,161 @@ function casesScollEffect() {
 
 function logoSwap() {
   console.log("logoSwap");
-  const logoArray = [
-    { id: "id-1", image: "img/logo/nasa.svg", company: "Nasa" },
-    { id: "id-2", image: "img/logo/ambu.svg", company: "Ambu" },
-    {
-      id: "id-3",
-      image: "img/logo/arbejdstilsynet.svg",
-      company: "Arbejdstilsynet"
-    },
-    { id: "id-4", image: "img/logo/arla.svg", company: "Arla" },
-    { id: "id-5", image: "img/logo/carlsberg.svg", company: "Carlsberg" },
-    { id: "id-6", image: "img/logo/chr_hansen.svg", company: "Chr. Hansen" },
-    { id: "id-7", image: "img/logo/coloplast.svg", company: "Coloplast" },
-    { id: "id-8", image: "img/logo/coop.svg", company: "Coop" },
-    { id: "id-9", image: "img/logo/dako.svg", company: "Dako" },
-    { id: "id-10", image: "img/logo/danske_bank.svg", company: "Danske Bank" },
-    {
-      id: "id-11",
-      image: "img/logo/dansk_industri.svg",
-      company: "Dansk Industri"
-    },
-    {
-      id: "id-12",
-      image: "img/logo/danmarks_naturfredningsforening.svg",
-      company: "Danmarks Naturfredningsforening"
-    },
-    { id: "id-13", image: "img/logo/dsv.svg", company: "DVS" },
-    { id: "id-14", image: "img/logo/dtu.svg", company: "DTU" },
-    { id: "id-15", image: "img/logo/gynzone.svg", company: "Gynzone" },
-    { id: "id-16", image: "img/logo/kraft.svg", company: "Kraft" },
-    { id: "id-17", image: "img/logo/danfoss.svg", company: "Danfoss" },
-    {
-      id: "id-18",
-      image: "img/logo/louis_poulsen.svg",
-      company: "Louis Poulsen"
-    },
-    { id: "id-19", image: "img/logo/lundbeck.svg", company: "Lundbeck" },
-    { id: "id-20", image: "img/logo/novozymes.svg", company: "Novozymes" },
-    { id: "id-21", image: "img/logo/novartis.svg", company: "Novartis" },
-    { id: "id-22", image: "img/logo/phillips.svg", company: "Phillips" },
-    {
-      id: "id-23",
-      image: "img/logo/region_syddanmark.svg",
-      company: "Region Syddanmark"
-    },
-    {
-      id: "id-24",
-      image: "img/logo/ringsted_kommune.svg",
-      company: "Ringsted Kommune"
-    },
-    {
-      id: "id-25",
-      image: "img/logo/roskilde_kommune.svg",
-      company: "Roskilde Kommune"
-    },
-    { id: "id-26", image: "img/logo/seeland.svg", company: "Seeland" },
-    {
-      id: "id-27",
-      image: "img/logo/tandlaegeforeningen.svg",
-      company: "Tandlægeforeningen"
-    },
-    { id: "id-28", image: "img/logo/telia.svg", company: "Telia" },
-    { id: "id-29", image: "img/logo/visma.svg", company: "Visma" },
-    { id: "id-30", image: "img/logo/contura.svg", company: "Contura" },
-    { id: "id-31", image: "img/logo/cowi.svg", company: "Cowi" },
-    {
-      id: "id-32",
-      image: "img/logo/fisher_scientific.svg",
-      company: "Fisher Scientific"
-    },
-    { id: "id-33", image: "img/logo/genmap.svg", company: "Genmap" },
-    { id: "id-34", image: "img/logo/gn.svg", company: "GN" },
-    { id: "id-35", image: "img/logo/isover.svg", company: "Isover" },
-    {
-      id: "id-36",
-      image: "img/logo/oejenlaegeforeningen.svg",
-      company: "Visma"
-    },
-    {
-      id: "id-37",
-      image: "img/logo/novo_nordisk.svg",
-      company: "Novo Nordisk"
-    },
-    { id: "id-38", image: "img/logo/politi.svg", company: "Politi" },
-    { id: "id-39", image: "img/logo/rockwool.svg", company: "Rockwool" },
-    {
-      id: "id-40",
-      image: "img/logo/videncenter_for_allergi.svg",
-      company: "Videncenter for allergi"
-    },
-    {
-      id: "id-41",
-      image: "img/logo/videncenter_for_arbejdsmiljoe.svg",
-      company: "Videncenter for arbejdsmiljø"
-    },
-    {
-      id: "id-42",
-      image: "img/logo/gsk.svg",
-      company: "GSK"
-    }
-  ];
+
+  let logoArray = [];
+
+  // get logos
+  fetch("http://erik-crg.dk/purplescout/wordpress/wp-json/wp/v2/logo")
+    .then(response => response.json())
+    .then(myJson => {
+      let getLogos = myJson;
+      console.log("logos:");
+      //fix id
+
+      getLogos.forEach(logo => {
+        logo.id =
+          "id-" + logo.title.rendered.replace(/\s+/g, "-").toLowerCase();
+      });
+
+      logoArray = getLogos;
+      console.log("logoArray at fetch");
+      console.log(logoArray);
+      arrangeArrays();
+    });
+
+  // const logoArray = [
+  //   { id: "id-1", image: "img/logo/nasa.svg", company: "Nasa" },
+  //   { id: "id-2", image: "img/logo/ambu.svg", company: "Ambu" },
+  //   {
+  //     id: "id-3",
+  //     image: "img/logo/arbejdstilsynet.svg",
+  //     company: "Arbejdstilsynet"
+  //   },
+  //   { id: "id-4", image: "img/logo/arla.svg", company: "Arla" },
+  //   { id: "id-5", image: "img/logo/carlsberg.svg", company: "Carlsberg" },
+  //   { id: "id-6", image: "img/logo/chr_hansen.svg", company: "Chr. Hansen" },
+  //   { id: "id-7", image: "img/logo/coloplast.svg", company: "Coloplast" },
+  //   { id: "id-8", image: "img/logo/coop.svg", company: "Coop" },
+  //   { id: "id-9", image: "img/logo/dako.svg", company: "Dako" },
+  //   { id: "id-10", image: "img/logo/danske_bank.svg", company: "Danske Bank" },
+  //   {
+  //     id: "id-11",
+  //     image: "img/logo/dansk_industri.svg",
+  //     company: "Dansk Industri"
+  //   },
+  //   {
+  //     id: "id-12",
+  //     image: "img/logo/danmarks_naturfredningsforening.svg",
+  //     company: "Danmarks Naturfredningsforening"
+  //   },
+  //   { id: "id-13", image: "img/logo/dsv.svg", company: "DVS" },
+  //   { id: "id-14", image: "img/logo/dtu.svg", company: "DTU" },
+  //   { id: "id-15", image: "img/logo/gynzone.svg", company: "Gynzone" },
+  //   { id: "id-16", image: "img/logo/kraft.svg", company: "Kraft" },
+  //   { id: "id-17", image: "img/logo/danfoss.svg", company: "Danfoss" },
+  //   {
+  //     id: "id-18",
+  //     image: "img/logo/louis_poulsen.svg",
+  //     company: "Louis Poulsen"
+  //   },
+  //   { id: "id-19", image: "img/logo/lundbeck.svg", company: "Lundbeck" },
+  //   { id: "id-20", image: "img/logo/novozymes.svg", company: "Novozymes" },
+  //   { id: "id-21", image: "img/logo/novartis.svg", company: "Novartis" },
+  //   { id: "id-22", image: "img/logo/phillips.svg", company: "Phillips" },
+  //   {
+  //     id: "id-23",
+  //     image: "img/logo/region_syddanmark.svg",
+  //     company: "Region Syddanmark"
+  //   },
+  //   {
+  //     id: "id-24",
+  //     image: "img/logo/ringsted_kommune.svg",
+  //     company: "Ringsted Kommune"
+  //   },
+  //   {
+  //     id: "id-25",
+  //     image: "img/logo/roskilde_kommune.svg",
+  //     company: "Roskilde Kommune"
+  //   },
+  //   { id: "id-26", image: "img/logo/seeland.svg", company: "Seeland" },
+  //   {
+  //     id: "id-27",
+  //     image: "img/logo/tandlaegeforeningen.svg",
+  //     company: "Tandlægeforeningen"
+  //   },
+  //   { id: "id-28", image: "img/logo/telia.svg", company: "Telia" },
+  //   { id: "id-29", image: "img/logo/visma.svg", company: "Visma" },
+  //   { id: "id-30", image: "img/logo/contura.svg", company: "Contura" },
+  //   { id: "id-31", image: "img/logo/cowi.svg", company: "Cowi" },
+  //   {
+  //     id: "id-32",
+  //     image: "img/logo/fisher_scientific.svg",
+  //     company: "Fisher Scientific"
+  //   },
+  //   { id: "id-33", image: "img/logo/genmap.svg", company: "Genmap" },
+  //   { id: "id-34", image: "img/logo/gn.svg", company: "GN" },
+  //   { id: "id-35", image: "img/logo/isover.svg", company: "Isover" },
+  //   {
+  //     id: "id-36",
+  //     image: "img/logo/oejenlaegeforeningen.svg",
+  //     company: "Visma"
+  //   },
+  //   {
+  //     id: "id-37",
+  //     image: "img/logo/novo_nordisk.svg",
+  //     company: "Novo Nordisk"
+  //   },
+  //   { id: "id-38", image: "img/logo/politi.svg", company: "Politi" },
+  //   { id: "id-39", image: "img/logo/rockwool.svg", company: "Rockwool" },
+  //   {
+  //     id: "id-40",
+  //     image: "img/logo/videncenter_for_allergi.svg",
+  //     company: "Videncenter for allergi"
+  //   },
+  //   {
+  //     id: "id-41",
+  //     image: "img/logo/videncenter_for_arbejdsmiljoe.svg",
+  //     company: "Videncenter for arbejdsmiljø"
+  //   },
+  //   {
+  //     id: "id-42",
+  //     image: "img/logo/gsk.svg",
+  //     company: "GSK"
+  //   }
+  // ];
 
   // // possible random sort
   // logoArray.sort(function() {
   //   return 0.5 - Math.random();
   // });
 
-  // visible logos - mobile or larger
-  let showLogos;
+  function arrangeArrays() {
+    console.log("arrangeArrays");
 
-  if (window.innerWidth < 700) {
-    showLogos = 4;
-  } else if (window.innerWidth < 1200) {
-    showLogos = 6;
-  } else {
-    showLogos = 8;
+    // visible logos - mobile or larger
+    let showLogos;
+
+    if (window.innerWidth < 700) {
+      showLogos = 4;
+    } else if (window.innerWidth < 1200) {
+      showLogos = 6;
+    } else {
+      showLogos = 8;
+    }
+
+    // Divide logos to visible and hidden array
+    let numberOfLogos = logoArray.length;
+    let activeArray = logoArray.slice(0, showLogos);
+    let hiddenArray = logoArray.slice(showLogos, numberOfLogos);
+    //import svg to DOM
+    activeArray.forEach(svgImportActive);
+    // hiddenArray.forEach(svgImportHidden);
+    console.log("activeArray:");
+    console.log(activeArray);
+    setTimeout(() => {
+      // swapShowSVG();
+    }, 3000);
   }
-  // Divide logos to visible and hidden array
-  let numberOfLogos = logoArray.length;
-  let activeArray = logoArray.slice(0, showLogos);
-  let hiddenArray = logoArray.slice(showLogos, numberOfLogos);
-  //import svg to DOM
-  activeArray.forEach(svgImportActive);
-  hiddenArray.forEach(svgImportHidden);
-  // swapShow();
-  setTimeout(() => {
-    swapShowSVG();
-  }, 3000);
 
   function swapShowSVG() {
     console.log("swapShowSVG");
@@ -475,7 +519,8 @@ function logoSwap() {
   }
 
   function svgImportActive(displayLogo) {
-    fetch(displayLogo.image)
+    console.log(displayLogo.acf.logo_image);
+    fetch(displayLogo.acf.logo_image)
       .then(response => response.text())
       .then(svgdata => {
         console.log("logo imported");
@@ -489,7 +534,7 @@ function logoSwap() {
   }
 
   function svgImportHidden(displayLogo) {
-    fetch(displayLogo.image)
+    fetch(displayLogo.acf.logo_image)
       .then(response => response.text())
       .then(svgdata => {
         console.log("logo imported");

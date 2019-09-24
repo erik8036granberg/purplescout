@@ -1783,12 +1783,12 @@ footer a:hover {
   #intro .content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 3vw;
+    grid-column-gap: 3vw;
   }
 
-  #intro .top {
+  #intro .intro_header {
     grid-column: 1 / 3;
-    margin-bottom: -3vw;
+    margin: 0;
   }
 
   #intro .content .intro_text {
