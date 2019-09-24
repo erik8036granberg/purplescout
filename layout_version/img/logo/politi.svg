@@ -1,0 +1,27 @@
+<svg id="politi" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="110" height="92" viewBox="0 0 110 92">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <title>politi</title>
+  <g id="Logo-versioner">
+    <g id="logo">
+      <path id="Fill-1" class="cls-1" d="M11.71,35.82h9.74c6.63,0,7.07,1,7.07,6.49,0,6.13-.79,7-6.56,7H19l1.38-4.24h0c2.24,0,2.24,0,2.24-2.6S22.58,40,20.33,40H17.58V53.79H11.71Z"/>
+      <path id="Fill-3" class="cls-1" d="M39.1,50c2.58,0,2.7,0,2.7-5.23s-.12-5.24-2.7-5.24-2.69,0-2.69,5.24S36.53,50,39.1,50m0-14.79c6.48,0,8.28.32,8.28,9.55s-1.92,9.55-8.28,9.55-8.26-.32-8.26-9.55,1.79-9.55,8.26-9.55"/>
+      <path id="Fill-6" class="cls-1" d="M61,53.79H50v-18h5.53V49.16H61Z"/>
+      <g class="cls-1">
+        <path id="Fill-8" class="cls-1" d="M63.29,53.79h6.38v-18H63.29Z"/>
+      </g>
+      <g class="cls-1">
+        <path id="Fill-10" class="cls-1" d="M83.26,40.46V53.79H77.52V40.46h-5V35.82H88.22v4.64Z"/>
+      </g>
+      <g class="cls-1">
+        <path id="Fill-11" class="cls-1" d="M90,53.79h6.37v-18H90Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1253,7 +1253,7 @@ footer a:hover {
 }
 
 #case .case_images {
-  margin: 0 0 -15%;
+  margin: 0 0 -12%;
 }
 
 #case .case_images img {
@@ -1472,7 +1472,7 @@ footer a:hover {
   }
 
   #cases .showcase .case:not(:first-child) {
-    margin-top: -15vw;
+    margin-top: -12vw;
   }
 
   #cases .showcase .case:nth-child(odd) {
