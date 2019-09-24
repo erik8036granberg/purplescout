@@ -666,7 +666,7 @@ footer h1 {
   width: 12rem;
   height: 7rem;
   position: absolute;
-  background-image: url(../img/testimonial_bubble_white.svg);
+  background-image: url(../img/testimonial_bubble_outline.svg);
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -1235,7 +1235,7 @@ footer a:hover {
 #case .content {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 4vw;
+  grid-gap: 10vw;
 }
 
 #case h1 {
@@ -1247,9 +1247,13 @@ footer a:hover {
   margin-bottom: 1rem;
 }
 
-#case .case_info .solution {
+#case .case_header .solution {
   text-transform: uppercase;
   color: var(--bg_lightblue);
+}
+
+#case .case_images {
+  margin: 0 0 -15%;
 }
 
 #case .case_images img {
@@ -1296,13 +1300,15 @@ footer a:hover {
 
 #case .case_testimonial {
   font-family: "Economica", sans-serif;
+  margin: 0 0 -5vw;
 }
 
 #case .case_testimonial .bubble {
-  background-color: var(--bg_logo);
-  padding: 6rem 4rem;
+  background-color: var(--bg_purple_4);
+  padding: 6rem 4rem 5rem 5rem;
   position: relative;
   margin: 0 0 8.5rem;
+  border: 1px solid var(--bg_purple_3);
 }
 
 #case .case_testimonial .bubble::before {
@@ -1320,21 +1326,21 @@ footer a:hover {
 #case .case_testimonial .bubble::after {
   content: "";
   position: absolute;
-  bottom: -8.5rem;
+  bottom: -6.999rem;
   left: 5rem;
-  width: 15rem;
-  height: 8.5rem;
+  width: 12rem;
+  height: 7rem;
   position: absolute;
-  background-image: url(../img/testimonial_bubble.svg);
+  background-image: url(../img/testimonial_bubble_case_outline.svg);
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 #case .case_testimonial .bubble .quote {
   text-transform: uppercase;
-  font-size: 4rem;
-  line-height: 5rem;
-  margin: 0 0 2rem;
+  font-size: 3rem;
+  line-height: 4rem;
+  margin: 0 0 1.5rem;
 }
 
 #case .case_testimonial .bubble .quote::after {
@@ -1344,8 +1350,8 @@ footer a:hover {
 
 #case .case_testimonial .bubble .quote_person,
 #case .case_testimonial .bubble .quote_company {
-  font-size: 4rem;
-  line-height: 4rem;
+  font-size: 3rem;
+  line-height: 3rem;
   color: var(--bg_purple_2);
 }
 
@@ -1501,8 +1507,10 @@ footer a:hover {
   }
 
   #case .case_testimonial .bubble .quote {
-    font-size: 6rem;
-    line-height: 6rem;
+    text-transform: uppercase;
+    font-size: 3rem;
+    line-height: 4rem;
+    margin: 0 0 1.5rem;
   }
 }
 
@@ -1748,7 +1756,7 @@ footer a:hover {
     z-index: 100;
   }
 
-  #case .case_info p,
+  #case .case_text p,
   #case .case_production_info p {
     padding: 0 7vw 0 0;
   }
@@ -1792,10 +1800,6 @@ footer a:hover {
     grid-column: 4 / span 2;
   }
 
-  #case .content {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  }
-
   #cases #logo_wrapper,
   #activelogos,
   #hiddenlogos {
@@ -1822,19 +1826,30 @@ footer a:hover {
     align-items: center;
   }
 
-  #case .case_info {
-    grid-row: 1;
-    grid-column: 1 / span 3;
+  #case .content {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 5vw;
+    grid-row-gap: 4vw;
   }
 
-  #case .case_testimonial {
+  #case .case_header {
     grid-row: 1;
-    grid-column: 4 / span 2;
+    grid-column: 1 / -1;
+  }
+
+  #case .case_text {
+    grid-row: 2 / span 1;
+    grid-column: 1 / span 4;
+  }
+
+  #case .case_text p,
+  #case .case_production_info p {
+    padding: 0 4vw 0 0;
   }
 
   #case .case_points {
-    grid-row: 2;
-    grid-column: 1 / span 1;
+    grid-row: 2 / span 2;
+    grid-column: 5 / span 1;
     display: block;
   }
 
@@ -1844,23 +1859,34 @@ footer a:hover {
 
   #case .case_images {
     position: relative;
-    grid-row: 2;
-    grid-column: 2 / span 4;
-    padding-left: 10%;
+    grid-row: 3;
+    grid-column: 1 / span 4;
+  }
+
+  #case .case_testimonial {
+    grid-row: 4;
+    grid-column: 1 / -1;
+  }
+
+  #case .case_testimonial .bubble .quote {
+    text-transform: uppercase;
+    font-size: 3.5rem;
+    line-height: 4.5rem;
+    margin: 0 0 1.5rem;
   }
 
   #case .case_workareas {
-    grid-row: 3;
-    grid-column: 1 / span 5;
+    grid-row: 5;
+    grid-column: 1 / -1;
   }
 
   #case .case_production_info {
-    grid-row: 4;
+    grid-row: 6;
     grid-column: 1 / span 3;
   }
 
   #case .case_contact {
-    grid-row: 4;
+    grid-row: 6;
     grid-column: 4 / span 2;
   }
 
