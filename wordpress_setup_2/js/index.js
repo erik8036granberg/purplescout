@@ -66,12 +66,32 @@ function InsertPageContent(pageContent) {
   //	Show reel
   dest.querySelector("[data-show_reel_header]").textContent =
     pageContent.acf.show_reel_header;
-  dest
-    .querySelector("[data-show_reel_video]")
-    .setAttribute("src", pageContent.acf.show_reel_video);
-  dest
-    .querySelector("[data-show_reel_full_video]")
-    .setAttribute("src", pageContent.acf.show_reel_full_video);
+
+  if (window.innerWidth < 500) {
+    console.log("Small video");
+    dest
+      .querySelector("[data-show_reel_video]")
+      .setAttribute("src", pageContent.acf.show_reel_video_small);
+    dest
+      .querySelector("[data-show_reel_full_video]")
+      .setAttribute("src", pageContent.acf.show_reel_full_video_small);
+  } else if (window.innerWidth >= 500 && window.innerWidth < 1200) {
+    console.log("Medium video");
+    dest
+      .querySelector("[data-show_reel_video]")
+      .setAttribute("src", pageContent.acf.show_reel_video_medium);
+    dest
+      .querySelector("[data-show_reel_full_video]")
+      .setAttribute("src", pageContent.acf.show_reel_full_video_medium);
+  } else {
+    console.log("Large video");
+    dest
+      .querySelector("[data-show_reel_video]")
+      .setAttribute("src", pageContent.acf.show_reel_video_large);
+    dest
+      .querySelector("[data-show_reel_full_video]")
+      .setAttribute("src", pageContent.acf.show_reel_full_video_large);
+  }
 }
 
 function showreelCta() {
