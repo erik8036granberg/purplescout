@@ -23,7 +23,9 @@ function init() {
       closeMenu();
     }
   });
-
+  document.querySelector("#showreel .explore").addEventListener("click", () => {
+    window.location = "index.html#intro";
+  });
   document
     .querySelector("#showreel .full_video")
     .addEventListener("click", () => {
