@@ -1,11 +1,17 @@
 "use strict";
 
+//	URL stuff
+let urlParams = new URLSearchParams(window.location.search);
+let urlCase = urlParams.get("id");
+console.log("urlCase er: " + urlCase);
+
 let showreelButton = false;
 
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
   console.log("init");
+  getPageContent();
   document.querySelector(".year").innerHTML = new Date().getFullYear();
   showreelCta();
   document.querySelector("#logo").addEventListener("click", () => {
@@ -17,6 +23,19 @@ function init() {
   document.querySelector("#showreel .explore").addEventListener("click", () => {
     window.location = "case.html#case";
   });
+}
+
+function getPageContent() {
+  console.log("getPageContent");
+  fetch(
+    `http://erik-crg.dk/purplescout/wordpress/wp-json/wp/v2/case?slug=${urlCase}`
+  )
+    .then(response => response.json())
+    .then(myJson => {
+      const pageContent = myJson;
+      console.log("pageContent from URL-filter");
+      console.log(pageContent);
+    });
 }
 
 function showreelCta() {

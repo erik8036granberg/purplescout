@@ -134,7 +134,7 @@ function showCases(caseItem) {
   clone.querySelector("[data-company]").textContent = caseItem.acf.company;
   clone.querySelector("[data-solution]").textContent = caseItem.acf.solution;
   clone.querySelector("[data-id]").addEventListener("click", () => {
-    window.location.href = "cases.html?id=" + caseItem.slug;
+    window.location.href = "case.html?id=" + caseItem.slug;
   });
   document.querySelector("[data-cases_container]").appendChild(clone);
 }
