@@ -95,6 +95,24 @@ function InsertPageContent(pageContent) {
       pageContent.acf.solution + " for " + pageContent.acf.company
     );
 
+  // - - - - - - - - - - - fact points - - - - - - - - - - -
+
+  dest
+    .querySelector("[data-fact_1_symbol]")
+    .setAttribute("src", pageContent.acf.fact_1_symbol);
+  dest.querySelector("[data-fact_1_text]").textContent =
+    pageContent.acf.fact_1_text;
+  dest
+    .querySelector("[data-fact_2_symbol]")
+    .setAttribute("src", pageContent.acf.fact_2_symbol);
+  dest.querySelector("[data-fact_2_text]").textContent =
+    pageContent.acf.fact_1_text;
+  dest
+    .querySelector("[data-fact_3_symbol]")
+    .setAttribute("src", pageContent.acf.fact_3_symbol);
+  dest.querySelector("[data-fact_3_text]").textContent =
+    pageContent.acf.fact_1_text;
+
   // - - - - - - - - - - - testimonial - - - - - - - - - - -
 
   if (pageContent.acf.testimonial_quote) {
