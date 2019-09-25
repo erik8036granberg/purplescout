@@ -39,63 +39,73 @@
           <div class="pulse">Explore</div>
           <div class="arrow"></div>
         </div>
-        <video loop muted autoplay class="fullscreen-bg_video">
-          <source src="video/case_roskilde_kommune.mp4" type="video/mp4" />
+        <video
+          loop
+          muted
+          autoplay
+          playsinline
+          class="fullscreen-bg_video"
+          id="reel"
+          data-showreel_video
+        >
+          <source src="" type="video/mp4" />
         </video>
       </section>
       <section id="case">
         <h1>case</h1>
         <div class="content">
           <div class="case_header" data-aos="fade-up" data-aos-duration="500">
-            <h2 class="company">Roskilde Kommune</h2>
-            <div class="solution">AR-app</div>
+            <h2 class="company" data-company></h2>
+            <div class="solution" data-solution></div>
           </div>
-          <div class="case_text" data-aos="fade-up" data-aos-duration="500">
-            <p>
-              Purple Scout aided Roskilde Kommune in a campaign that showcased
-              the libraries' digital offerings via augmented reality. For this,
-              they used a unique AR experience with a hologram effect. This
-              shows a giant smartphone on the floor where newspapers and
-              magazines are pouring out and allows the consumer to discover and
-              see how large their digital selection is. This is currently an
-              interactive screen installation at the libraries in the Roskilde
-              Municipality.
-            </p>
-            <p>
-              Purple Scout helped with the production of the AR experience for
-              the event space, integrated the library database so that it is
-              always the most recent newspapers and magazines displayed,
-              established a physical event space in the libraries to attract
-              attention and produced teaser movies, as a screensaver on other
-              libraries' screens.
-            </p>
-          </div>
+          <div
+            class="case_text"
+            data-main_text
+            data-aos="fade-up"
+            data-aos-duration="500"
+          ></div>
           <div class="case_images" data-aos="fade-up" data-aos-duration="500">
             <img
-              src="img/case_roskilde_kommune_1.png"
-              alt="test-image-1"
+              src=""
+              alt=""
+              data-image_1
               data-aos="fade-up"
               data-aos-duration="500"
             />
             <img
-              src="img/case_roskilde_kommune_2.png"
-              alt="test-image-2"
+              src=""
+              alt=""
+              data-image_2
               data-aos="fade-up"
               data-aos-duration="500"
             />
           </div>
           <div class="case_points">
             <div class="point" data-aos="fade-up" data-aos-duration="500">
-              <img src="img/point_2_dummy.svg" alt="point-1" />
-              <div class="point_text">Faster something</div>
+              <img
+                src="img/point_2_dummy.svg"
+                alt="point-1"
+                data-fact_1_symbol
+              />
+              <div class="point_text" data-fact_1_text>Faster something</div>
             </div>
             <div class="point" data-aos="fade-up" data-aos-duration="500">
-              <img src="img/point_1_dummy.svg" alt="point-2" />
-              <div class="point_text">Better Something else</div>
+              <img
+                src="img/point_1_dummy.svg"
+                alt="point-2"
+                data-fact_2_symbol
+              />
+              <div class="point_text" data-fact_2_text>
+                Better Something else
+              </div>
             </div>
             <div class="point" data-aos="fade-up" data-aos-duration="500">
-              <img src="img/point_3_dummy.svg" alt="point-3" />
-              <div class="point_text">More efficient</div>
+              <img
+                src="img/point_3_dummy.svg"
+                alt="point-3"
+                data-fact_3_symbol
+              />
+              <div class="point_text" data-fact_3_text>More efficient</div>
             </div>
           </div>
           <div
@@ -104,14 +114,12 @@
             data-aos-duration="500"
           >
             <div class="bubble">
-              <div class="quote">
-                Sed ut perspiciatis unde omnis iste natus error sit
-              </div>
-              <div class="quote_person">Ullamco Laboris</div>
-              <div class="quote_company">Nostrum Exercitationem</div>
+              <div class="quote" data-testimonial_quote></div>
+              <div class="quote_person" data-testimonial_person></div>
+              <div class="quote_company" data-testimonial_company></div>
             </div>
           </div>
-          <div class="case_workareas">
+          <div class="case_workareas" data-work_areas_symbols>
             <img
               src="img/animation_dummy.svg"
               alt="workarea-1"
@@ -142,31 +150,20 @@
             data-aos="fade-up"
             data-aos-duration="500"
           >
-            <h2>Lorum opti est</h2>
-            <div class="production_text">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip.
-              </p>
-              <p>
-                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-                aut fugit, sed quia conse magni dolores eos qui.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt.
-              </p>
-            </div>
+            <h2 data-tech_header>Lorum opti est</h2>
+            <div class="production_text" data-tech_text></div>
           </div>
           <div class="case_contact" data-aos="fade-up" data-aos-duration="500">
             <h3>For more information about this case:</h3>
             <p class="more_info">
               Talk to:<br />
-              <span class="contakt_person">Niels Østergaard</span>
+              <span class="contakt_person" data-case_contact_name></span>
             </p>
-            <a href="tel:+45 26744609" class="icon phone">+45 2674 4609</a>
+            <a
+              href="tel:+45 26744609"
+              class="icon phone"
+              data-case_contact_phone
+            ></a>
           </div>
         </div>
       </section>
