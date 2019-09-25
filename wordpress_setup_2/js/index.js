@@ -94,6 +94,33 @@ function InsertPageContent(pageContent) {
     pageContent.acf.cases_header;
   dest.querySelector("[data-cases_text]").innerHTML =
     pageContent.acf.cases_text;
+
+  // - - - - - - - - - - - how section  - - - - - - - - - - -
+
+  dest.querySelector("[data-how_discover_header]").textContent =
+    pageContent.acf.how_discover_header;
+  dest.querySelector("[data-how_discover_text]").innerHTML =
+    pageContent.acf.how_discover_text;
+
+  dest.querySelector("[data-how_data_header]").textContent =
+    pageContent.acf.how_data_header;
+  dest.querySelector("[data-how_data_text]").innerHTML =
+    pageContent.acf.how_data_text;
+
+  dest.querySelector("[data-how_design_header]").textContent =
+    pageContent.acf.how_design_header;
+  dest.querySelector("[data-how_design_text]").innerHTML =
+    pageContent.acf.how_design_text;
+
+  dest.querySelector("[data-how_develop_header]").textContent =
+    pageContent.acf.how_develop_header;
+  dest.querySelector("[data-how_develop_text]").innerHTML =
+    pageContent.acf.how_develop_text;
+
+  dest.querySelector("[data-how_deliver_header]").textContent =
+    pageContent.acf.how_deliver_header;
+  dest.querySelector("[data-how_deliver_text]").innerHTML =
+    pageContent.acf.how_deliver_text;
 }
 
 // - - - - - - - - - - - get cases content  - - - - - - - - - - -

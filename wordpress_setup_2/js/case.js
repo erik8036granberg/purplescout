@@ -106,12 +106,12 @@ function InsertPageContent(pageContent) {
     .querySelector("[data-fact_2_symbol]")
     .setAttribute("src", pageContent.acf.fact_2_symbol);
   dest.querySelector("[data-fact_2_text]").textContent =
-    pageContent.acf.fact_1_text;
+    pageContent.acf.fact_2_text;
   dest
     .querySelector("[data-fact_3_symbol]")
     .setAttribute("src", pageContent.acf.fact_3_symbol);
   dest.querySelector("[data-fact_3_text]").textContent =
-    pageContent.acf.fact_1_text;
+    pageContent.acf.fact_3_text;
 
   // - - - - - - - - - - - testimonial - - - - - - - - - - -
 
