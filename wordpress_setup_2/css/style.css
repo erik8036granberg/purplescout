@@ -784,7 +784,8 @@ h2 {
 
 #cases .arrow {
   position: absolute;
-  top: 2rem;
+  top: 50%;
+  transform: translate(0, -50%);
   right: 2rem;
   width: 4.75rem;
   height: 3.5rem;

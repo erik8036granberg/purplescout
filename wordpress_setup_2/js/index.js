@@ -69,6 +69,8 @@ function InsertPageContent(pageContent) {
   dest.querySelector("[data-show_reel_header]").textContent =
     pageContent.acf.show_reel_header;
 
+  // - - - - - - - - - - - video - - - - - - - - - - -
+
   if (window.innerWidth < 500) {
     console.log("Small video");
     dest
