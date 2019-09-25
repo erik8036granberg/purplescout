@@ -8,6 +8,7 @@ window.addEventListener("DOMContentLoaded", init);
 function init() {
   console.log("init");
   getPageContent();
+  getCaseContent();
   document.querySelector(".year").innerHTML = new Date().getFullYear();
   showreelCta();
   circleTurn();
@@ -22,24 +23,7 @@ function init() {
       closeMenu();
     }
   });
-  document.querySelector("#roskilde_kommune").addEventListener("click", () => {
-    window.location = "roskilde-kommune.html";
-  });
-  document.querySelector("#geopark_odsherred").addEventListener("click", () => {
-    window.location = "geopark-odsherred.html";
-  });
-  document.querySelector("#ambu").addEventListener("click", () => {
-    window.location = "ambu.html";
-  });
-  document.querySelector("#coop").addEventListener("click", () => {
-    window.location = "coop.html";
-  });
-  document.querySelector("#novo_nordisk").addEventListener("click", () => {
-    window.location = "novo-nordisk.html";
-  });
-  document.querySelector("#showreel .explore").addEventListener("click", () => {
-    window.location = "index.html#intro";
-  });
+
   document
     .querySelector("#showreel .full_video")
     .addEventListener("click", () => {
@@ -110,6 +94,49 @@ function InsertPageContent(pageContent) {
     pageContent.acf.cases_header;
   dest.querySelector("[data-cases_text]").innerHTML =
     pageContent.acf.cases_text;
+}
+
+// - - - - - - - - - - - get cases content  - - - - - - - - - - -
+
+function getCaseContent() {
+  console.log("getCaseContent");
+  let caseArray = [];
+
+  // get cases
+  fetch(
+    "http://erik-crg.dk/purplescout/wordpress/wp-json/wp/v2/case?per_page=100"
+  )
+    .then(response => response.json())
+    .then(myJson => {
+      let getCases = myJson;
+      //fix id
+      getCases.forEach(caseItem => {
+        caseItem.id = caseItem.slug;
+      });
+      caseArray = getCases;
+      console.log(caseArray);
+      caseArray.forEach(showCases);
+    });
+}
+
+// - - - - - - - - - - - - - display cases - - - - - - - - - - - - -
+
+function showCases(caseItem) {
+  const template = document.querySelector("[data-cases_template]").content;
+  const clone = template.cloneNode(true);
+  clone.querySelector("[data-id]").setAttribute("id", caseItem.slug);
+  clone
+    .querySelector("[data-video_still_image]")
+    .setAttribute("src", caseItem.acf.video_still_image.sizes.medium_large);
+  clone
+    .querySelector("[data-video_still_image]")
+    .setAttribute("alt", caseItem.acf.company);
+  clone.querySelector("[data-company]").textContent = caseItem.acf.company;
+  clone.querySelector("[data-solution]").textContent = caseItem.acf.solution;
+  clone.querySelector("[data-id]").addEventListener("click", () => {
+    window.location.href = "cases.html?id=" + caseItem.slug;
+  });
+  document.querySelector("[data-cases_container]").appendChild(clone);
 }
 
 function showreelCta() {
@@ -329,19 +356,6 @@ function logoSwap() {
         const converted = convert(logo.title.rendered);
         logo.id = "id-" + converted.toLowerCase();
       });
-      function convert(str) {
-        str = str.replace(/æ/g, "ae");
-        str = str.replace(/ø/g, "oe");
-        str = str.replace(/å/g, "aa");
-        str = str.replace(/Æ/g, "ae");
-        str = str.replace(/Ø/g, "oe");
-        str = str.replace(/Å/g, "aa");
-        str = str.replace(/\s+/g, "-");
-        str = str.replace(/&/g, "&amp;");
-        str = str.replace(/"/g, "&quot;");
-        str = str.replace(/'/g, "&#039;");
-        return str;
-      }
       logoArray = getLogos;
       arrangeArrays();
     });
@@ -451,4 +465,18 @@ function logoSwap() {
           .insertAdjacentHTML("afterbegin", svgdata);
       });
   }
+}
+
+function convert(str) {
+  str = str.replace(/æ/g, "ae");
+  str = str.replace(/ø/g, "oe");
+  str = str.replace(/å/g, "aa");
+  str = str.replace(/Æ/g, "ae");
+  str = str.replace(/Ø/g, "oe");
+  str = str.replace(/Å/g, "aa");
+  str = str.replace(/\s+/g, "-");
+  str = str.replace(/&/g, "&amp;");
+  str = str.replace(/"/g, "&quot;");
+  str = str.replace(/'/g, "&#039;");
+  return str;
 }
