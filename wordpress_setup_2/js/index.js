@@ -18,13 +18,13 @@ function init() {
   //   mobileHowCircle();
   // }
   document.querySelector("#logo").addEventListener("click", () => {
-    window.location = "/index.html#showreel";
+    window.location = "#showreel";
     if (mobileMenu === "open") {
       closeMenu();
     }
   });
   document.querySelector("#showreel .explore").addEventListener("click", () => {
-    window.location = "/index.html#intro";
+    window.location = "#intro";
   });
   document
     .querySelector("#showreel .full_video")

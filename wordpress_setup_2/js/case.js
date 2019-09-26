@@ -1,6 +1,10 @@
 "use strict";
 
-const urlCase = sessionStorage.getItem("pageLink");
+//	URL stuff
+// let urlParams = new URLSearchParams(window.location.search);
+// let urlCase = urlParams.get("id");
+// console.log("urlCase er: " + urlCase);
+let urlCase = sessionStorage.getItem("pageLink");
 console.log(urlCase);
 
 let showreelButton = false;
@@ -19,7 +23,7 @@ function init() {
     }
   });
   document.querySelector("#showreel .explore").addEventListener("click", () => {
-    window.location = "/case.html#case";
+    window.location = "#case";
   });
 }
 
