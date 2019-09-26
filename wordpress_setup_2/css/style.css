@@ -1120,6 +1120,14 @@ h2 {
   color: #fff;
 }
 
+#how #circle_text_holder .mobile_header {
+  font-family: "Economica", sans-serif;
+  font-size: 2rem;
+  color: var(--bg_lightblue);
+  text-transform: uppercase;
+  margin: 0 0 2rem;
+}
+
 #how .placeholder {
   display: block;
   height: 20%;
@@ -1730,6 +1738,10 @@ footer a:hover {
     font-size: 3rem;
     margin: 0;
     color: #fff;
+  }
+
+  #how #circle_text_holder .mobile_header {
+    display: none;
   }
 
   #how .placeholder {
