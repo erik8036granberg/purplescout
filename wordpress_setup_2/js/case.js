@@ -1,12 +1,11 @@
 "use strict";
 
 //	URL stuff
-let urlParams = new URLSearchParams(window.location.search);
-let urlCase = urlParams.get("id");
-console.log("urlCase er: " + urlCase);
-if (urlCase == undefined || urlCase === null) {
-  window.location.href = "index.html";
-}
+// let urlParams = new URLSearchParams(window.location.search);
+// let urlCase = urlParams.get("id");
+// console.log("urlCase er: " + urlCase);
+const urlCase = sessionStorage.getItem("pageLink");
+console.log(urlCase);
 
 let showreelButton = false;
 
@@ -30,9 +29,7 @@ function init() {
 
 function getPageContent() {
   console.log("getPageContent");
-  fetch(
-    `http://erik-crg.dk/purplescout/wordpress/wp-json/wp/v2/case?slug=${urlCase}`
-  )
+  fetch(`/wordpress/wp-json/wp/v2/case?slug=${urlCase}`)
     .then(response => response.json())
     .then(myJson => {
       const pageContent = myJson[0];

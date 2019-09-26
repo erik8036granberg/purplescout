@@ -38,7 +38,7 @@ function init() {
 
 function getPageContent() {
   console.log("getPageContent");
-  fetch("http://erik-crg.dk/purplescout/wordpress/wp-json/wp/v2/pages/6")
+  fetch("/wordpress/wp-json/wp/v2/pages/6")
     .then(response => response.json())
     .then(myJson => {
       const pageContent = myJson;
@@ -132,9 +132,7 @@ function getCaseContent() {
   let caseArray = [];
 
   // get cases
-  fetch(
-    "http://erik-crg.dk/purplescout/wordpress/wp-json/wp/v2/case?per_page=100"
-  )
+  fetch("/wordpress/wp-json/wp/v2/case?per_page=100")
     .then(response => response.json())
     .then(myJson => {
       let getCases = myJson;
@@ -164,6 +162,7 @@ function showCases(caseItem) {
   clone.querySelector("[data-solution]").textContent = caseItem.acf.solution;
   clone.querySelector("[data-id]").addEventListener("click", () => {
     window.location.href = "case.html?id=" + caseItem.slug;
+    window.sessionStorage.setItem("pageLink", caseItem.slug);
   });
   document.querySelector("[data-cases_container]").appendChild(clone);
 }
@@ -374,9 +373,7 @@ function logoSwap() {
   let hiddenArray = [];
 
   // get logos
-  fetch(
-    "http://erik-crg.dk/purplescout/wordpress/wp-json/wp/v2/logo?per_page=100"
-  )
+  fetch("/wordpress/wp-json/wp/v2/logo?per_page=100")
     .then(response => response.json())
     .then(myJson => {
       let getLogos = myJson;
