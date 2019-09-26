@@ -9,11 +9,11 @@ const pageHeader = `
       </div>
       <nav>
         <ul>
-          <li><a href="index.html#showreel">Home</a></li>
-          <li><a href="index.html#cases">Cases</a></li>
-          <li><a href="index.html#what">What</a></li>
-          <li><a href="index.html#how">How</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="/index.html#showreel">Home</a></li>
+          <li><a href="/index.html#cases">Cases</a></li>
+          <li><a href="/index.html#what">What</a></li>
+          <li><a href="/index.html#how">How</a></li>
+          <li><a href="/index.html#contact">Contact</a></li>
         </ul>
       </nav>
       <div id="logotext">
