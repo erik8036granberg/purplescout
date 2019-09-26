@@ -1,9 +1,11 @@
 "use strict";
 
 //	URL stuff
-// let urlParams = new URLSearchParams(window.location.search);
-// let urlCase = urlParams.get("id");
-// console.log("urlCase er: " + urlCase);
+let urlParams = new URLSearchParams(window.location.search);
+let urlID = urlParams.get("id");
+console.log("urlID er: " + urlID);
+
+// sessionStorrage pagelink
 let urlCase = sessionStorage.getItem("pageLink");
 console.log(urlCase);
 
