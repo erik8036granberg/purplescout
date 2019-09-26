@@ -13,13 +13,13 @@ function init() {
   document.querySelector(".year").innerHTML = new Date().getFullYear();
   showreelCta();
   document.querySelector("#logo").addEventListener("click", () => {
-    window.location = "index.html#showreel";
+    window.location = "/index.html#showreel";
     if (mobileMenu === "open") {
       closeMenu();
     }
   });
   document.querySelector("#showreel .explore").addEventListener("click", () => {
-    window.location = "case.html#case";
+    window.location = "/case.html#case";
   });
 }
 
