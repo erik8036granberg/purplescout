@@ -1758,10 +1758,10 @@ footer a:hover {
 
   #how #active_item {
     position: absolute;
-    transform: translateX(0) scale(0.6);
-    top: 90%;
-    right: -25%;
-    left: auto;
+    transform: translateX(0);
+    left: 45%;
+    top: 95%;
+    transform: translate(-50%, 0) scale(0.6);
     bottom: auto;
     width: auto;
     height: auto;

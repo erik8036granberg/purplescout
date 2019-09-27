@@ -313,7 +313,7 @@ function changeBg(id) {
 }
 
 let autoTurnOn = "on";
-let autoTurnTime = 5000;
+let autoTurnTime = 7000;
 document.querySelector("#how .content").addEventListener("click", () => {
   autoTurnOn = "off";
 });
