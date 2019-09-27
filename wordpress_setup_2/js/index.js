@@ -332,12 +332,14 @@ function autoTurn() {
     i++;
     setTimeout(() => {
       if (autoTurnOn == "on") {
-        if (i < 5) {
+        if (i <= 4) {
           rotateTo(i, circleArray[i].id);
+          autoTurn();
         } else {
           i = 0;
+          rotateTo(i, circleArray[i].id);
+          autoTurn();
         }
-        autoTurn();
       }
     }, autoTurnTime);
   } else {
