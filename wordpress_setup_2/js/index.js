@@ -101,6 +101,10 @@ function InsertPageContent(pageContent) {
 
   // - - - - - - - - - - - how section  - - - - - - - - - - -
 
+  dest.querySelector("[data-how_header]").textContent =
+    pageContent.acf.how_header;
+  dest.querySelector("[data-how_text]").innerHTML = pageContent.acf.how_text;
+
   dest.querySelector("[data-how_discover_header]").textContent =
     pageContent.acf.how_discover_header;
   dest.querySelector("[data-how_discover_text]").innerHTML =
