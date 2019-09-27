@@ -142,6 +142,34 @@ function InsertPageContent(pageContent) {
   dest
     .querySelector("[data-case_contact_phone]")
     .setAttribute("href", "tel:" + pageContent.acf.case_contact_phone);
+
+  // - - - - - - - - - - - Work area symbols - - - - - - - - - - -
+
+  let workAreas = pageContent.acf.work_areas_symbols;
+  workAreas.forEach(getWorkareas);
+  let workAreaArray = [];
+
+  function getWorkareas(workarea_id) {
+    console.log("getWorkareas");
+    fetch(`/wordpress/wp-json/wp/v2/workareas/${workarea_id}`)
+      .then(response => response.json())
+      .then(myJson => {
+        let workarea = myJson;
+        workAreaArray.push(workarea);
+        if (workAreaArray.length === workAreas.length) {
+          insertWorkaraSymbols();
+        }
+      });
+  }
+
+  function insertWorkaraSymbols() {
+    workAreaArray.forEach(workareaItem => {
+      const makeImg = document.createElement("IMG");
+      makeImg.setAttribute("src", workareaItem.acf.area_symbol);
+      makeImg.setAttribute("alt", workareaItem.acf.area_header);
+      document.querySelector("[data-work_areas_symbols]").appendChild(makeImg);
+    });
+  }
 }
 
 // - - - - - - - - - - - Showreel CTA - - - - - - - - - - -

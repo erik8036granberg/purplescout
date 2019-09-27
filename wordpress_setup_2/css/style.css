@@ -1373,7 +1373,6 @@ footer a:hover {
   max-height: 6rem;
   border: 1px solid var(--bg_lightblue);
   border-radius: 50%;
-  padding: 1rem;
   margin: 1rem;
 }
 
@@ -1456,7 +1455,6 @@ footer a:hover {
     max-height: 8rem;
     border: 1px solid var(--bg_lightblue);
     border-radius: 50%;
-    padding: 1.5rem;
     margin: 2rem;
   }
 }
