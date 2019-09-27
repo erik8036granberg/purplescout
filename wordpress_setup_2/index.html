@@ -129,16 +129,6 @@
             <p data-cases_text></p>
           </div>
           <div class="showcase" data-cases_container></div>
-          <template data-cases_template>
-            <div class="case" id="" data-id>
-              <img src="" alt="" data-video_still_image />
-              <div class="label">
-                <h3 data-company></h3>
-                <p class="type" data-solution></p>
-                <div class="arrow"></div>
-              </div>
-            </div>
-          </template>
           <div class="cta" data-aos="fade-up" data-aos-duration="500">
             Contact us
           </div>
@@ -148,6 +138,17 @@
           </div>
         </div>
       </section>
+
+      <template data-cases_template>
+        <div class="case" id="" data-id>
+          <img src="" alt="" data-video_still_image />
+          <div class="label">
+            <h3 data-company></h3>
+            <p class="type" data-solution></p>
+            <div class="arrow"></div>
+          </div>
+        </div>
+      </template>
 
       <section id="what">
         <h1>What</h1>
@@ -159,109 +160,28 @@
               solutions. Bringing tomorrow’s technologies to you, today
             </p>
           </div>
-          <div class="area_wrapper">
-            <div class="area" data-aos="fade-up" data-aos-duration="500">
-              <div class="area_header">
-                <img src="img/vr_dummy.svg" class="area_icon" alt="Animation" />
-                <h3>UI/UX, Graphics & Experience Design</h3>
-              </div>
-              <div class="area_text" data-aos="fade-up" data-aos-duration="750">
-                At Purple Scout, graphic design is as much a matter of
-                effortless visual communication as the aesthetics of a website
-                or app. We care about the quality of experience and scope of use
-                you want to give your customers.
-              </div>
-            </div>
-            <div class="area" data-aos="fade-up" data-aos-duration="500">
-              <div class="area_header">
-                <img
-                  src="img/animation_dummy.svg"
-                  class="area_icon"
-                  alt="Animation"
-                />
-                <h3>App, mobile development & digital solutions</h3>
-              </div>
-              <div class="area_text" data-aos="fade-up" data-aos-duration="750">
-                We love creating solutions that will be a joy for your customer
-                to use. We help you identify the real needs of your users and
-                create applications, websites and other digital solutions that
-                make a difference to both parties.
-              </div>
-            </div>
-            <div class="area" data-aos="fade-up" data-aos-duration="500">
-              <div class="area_header">
-                <img src="img/ar_dummy.svg" class="area_icon" alt="Animation" />
-                <h3>Film, 3D animation & motion graphics</h3>
-              </div>
-              <div class="area_text" data-aos="fade-up" data-aos-duration="750">
-                Moving pictures are often the easiest way to explain a complex
-                subject. We work with both 2D and 3D animation, film, editing
-                and post-production. Through close dialog, together we will find
-                the best solutions aimed at the right target audience.
-              </div>
-            </div>
-            <div class="area" data-aos="fade-up" data-aos-duration="500">
-              <div class="area_header">
-                <img src="img/ar_dummy.svg" class="area_icon" alt="Animation" />
-                <h3>AR/VR/MR</h3>
-              </div>
-              <div class="area_text" data-aos="fade-up" data-aos-duration="750">
-                Purple Scout works with digital technologies such as AR and VR
-                to provide businesses with innovative and fun ways of delivering
-                information to their customers. In the future, these solutions
-                will not only open brand new worlds but also provide us with fun
-                ways to increase customer engagement. It will save businesses
-                billions of dollars in the coming years - from reconstructing
-                travel and lifestyle to energy consumption cuts.
-              </div>
-            </div>
-            <div class="area" data-aos="fade-up" data-aos-duration="500">
-              <div class="area_header">
-                <img src="img/ar_dummy.svg" class="area_icon" alt="Animation" />
-                <h3>Cloud Solutions & AWS partner</h3>
-              </div>
-              <div class="area_text" data-aos="fade-up" data-aos-duration="750">
-                With its nearly 1000 different services, AWS Cloud can feel
-                nearly impossible to get an overview of. At Purple Scout, we
-                help our customers on a daily basis to get a better view of the
-                technology and costs of these services. Purple Scout is Standard
-                Consulting Partner with Amazon AWS. Since 2012, we have been
-                actively working with AWS Cloud.
-              </div>
-            </div>
-            <div class="area" data-aos="fade-up" data-aos-duration="500">
-              <div class="area_header">
-                <img src="img/ar_dummy.svg" class="area_icon" alt="Animation" />
-                <h3>AI & machine learning</h3>
-              </div>
-              <div class="area_text" data-aos="fade-up" data-aos-duration="750">
-                To succeed with AI requires an understanding of what works as
-                well as what is likely to go wrong. At Purple Scout, we help you
-                to start using your data not only to explain what has already
-                happened but to make educated guesses about what will happen in
-                the future.
-              </div>
-            </div>
-            <div class="area" data-aos="fade-up" data-aos-duration="500">
-              <div class="area_header">
-                <img src="img/ar_dummy.svg" class="area_icon" alt="Animation" />
-                <h3>
-                  Concept Creation & Design Sprints
-                </h3>
-              </div>
-              <div class="area_text" data-aos="fade-up" data-aos-duration="750">
-                We know that its difficult to know exactly what you want based
-                on the problems you are facing and we want to help you. We hold
-                sessions where you present the problems you are facing, we
-                present what we can offer and ultimately, lead to a conclusion
-                that satisfies your need. During our weeklong Design Sprints, we
-                create a prototype of the desired solution before going on to
-                creating it.
-              </div>
-            </div>
-          </div>
-        </div>
+          <div class="area_wrapper" data-workareas_container></div>
       </section>
+
+      <template data-workareas_template>
+        <div
+          class="area"
+          data-aos="fade-up"
+          data-aos-duration="500"
+          data-area_id
+        >
+          <div class="area_header">
+            <img src="" class="area_symbol" alt="" data-area_symbol />
+            <h3 data-area_header></h3>
+          </div>
+          <div
+            class="area_text"
+            data-area_abstract
+            data-aos="fade-up"
+            data-aos-duration="750"
+          ></div>
+        </div>
+      </template>
 
       <section id="how">
         <div class="overlay"></div>

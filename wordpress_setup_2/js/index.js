@@ -9,6 +9,7 @@ function init() {
   console.log("init");
   getPageContent();
   getCaseContent();
+  getWorkareaContent();
   document.querySelector(".year").innerHTML = new Date().getFullYear();
   showreelCta();
   circleTurn();
@@ -167,6 +168,48 @@ function showCases(caseItem) {
   });
   document.querySelector("[data-cases_container]").appendChild(clone);
 }
+
+// - - - - - - - - - - - get work areas content  - - - - - - - - - - -
+
+function getWorkareaContent() {
+  console.log("getWorkareaContent");
+  let workareaArray = [];
+
+  // get cases
+  fetch("/wordpress/wp-json/wp/v2/workareas?per_page=100")
+    .then(response => response.json())
+    .then(myJson => {
+      let getWorkareas = myJson;
+      //fix id
+      getWorkareas.forEach(workareaItem => {
+        workareaItem.id = workareaItem.slug;
+      });
+      workareaArray = getWorkareas;
+      console.log(workareaArray);
+      workareaArray.forEach(showWorkareas);
+    });
+}
+
+// - - - - - - - - - - - - - display work areas - - - - - - - - - - - - -
+
+function showWorkareas(workareaItem) {
+  const template = document.querySelector("[data-workareas_template]").content;
+  const clone = template.cloneNode(true);
+  clone.querySelector("[data-area_id]").setAttribute("id", workareaItem.slug);
+  clone.querySelector("[data-area_header]").textContent =
+    workareaItem.acf.area_header;
+  clone
+    .querySelector("[data-area_symbol]")
+    .setAttribute("src", workareaItem.acf.area_symbol);
+  clone
+    .querySelector("[data-area_symbol]")
+    .setAttribute("alt", workareaItem.acf.area_header);
+  clone.querySelector("[data-area_abstract]").innerHTML =
+    workareaItem.acf.area_abstract;
+  document.querySelector("[data-workareas_container]").appendChild(clone);
+}
+
+// - - - - - - - - - - - - - show reel CTA - - - - - - - - - - - - -
 
 function showreelCta() {
   let inview;
