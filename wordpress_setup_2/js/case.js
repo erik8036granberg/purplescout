@@ -150,7 +150,6 @@ function InsertPageContent(pageContent) {
   let workAreaArray = [];
 
   function getWorkareas(workarea_id) {
-    console.log("getWorkareas");
     fetch(`/wordpress/wp-json/wp/v2/workareas/${workarea_id}`)
       .then(response => response.json())
       .then(myJson => {
@@ -161,6 +160,8 @@ function InsertPageContent(pageContent) {
         }
       });
   }
+
+  // - - - - - - - - - - - insert Work area symbols - - - - - - - - - - -
 
   function insertWorkaraSymbols() {
     workAreaArray.forEach(workareaItem => {

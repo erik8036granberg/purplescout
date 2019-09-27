@@ -1,7 +1,6 @@
 "use strict";
 
 let showreelButton = false;
-let currantNumber = "0";
 
 window.addEventListener("DOMContentLoaded", init);
 
