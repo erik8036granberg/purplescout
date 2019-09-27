@@ -12,6 +12,7 @@ function init() {
   document.querySelector(".year").innerHTML = new Date().getFullYear();
   showreelCta();
   circleTurn();
+  autoTurn();
   casesScollEffect();
   logoSwap();
   // if (window.innerWidth < 900) {
@@ -235,107 +236,106 @@ function CtaModal() {
   }
 }
 
-let target;
-let turnId;
-
 function circleTurn() {
   document.querySelector("#discover").addEventListener("click", () => {
-    turnId = "discover";
-    target = "0";
-    turnCircle();
+    rotateTo("0", "discover");
   });
   document.querySelector("#data").addEventListener("click", () => {
-    turnId = "data";
-    target = "1";
-    turnCircle();
+    rotateTo("1", "data");
   });
   document.querySelector("#design").addEventListener("click", () => {
-    turnId = "design";
-    target = "2";
-    turnCircle();
+    rotateTo("2", "design");
   });
   document.querySelector("#develop").addEventListener("click", () => {
-    turnId = "develop";
-    target = "3";
-    turnCircle();
+    rotateTo("3", "develop");
   });
   document.querySelector("#deliver").addEventListener("click", () => {
-    turnId = "deliver";
-    target = "4";
-    turnCircle();
+    rotateTo("4", "deliver");
   });
+
   document.querySelector(".blt_discover").addEventListener("click", () => {
-    turnId = "discover";
-    target = "0";
-    turnCircle();
+    rotateTo("0", "discover");
   });
   document.querySelector(".blt_data").addEventListener("click", () => {
-    turnId = "data";
-    target = "1";
-    turnCircle();
+    rotateTo("1", "data");
   });
   document.querySelector(".blt_design").addEventListener("click", () => {
-    turnId = "design";
-    target = "2";
-    turnCircle();
+    rotateTo("2", "design");
   });
   document.querySelector(".blt_develop").addEventListener("click", () => {
-    turnId = "develop";
-    target = "3";
-    turnCircle();
+    rotateTo("3", "develop");
   });
   document.querySelector(".blt_deliver").addEventListener("click", () => {
-    turnId = "deliver";
-    target = "4";
-    turnCircle();
+    rotateTo("4", "deliver");
+  });
+}
+
+function rotateTo(number, id) {
+  let roteateDeg = number * 72 + "deg";
+  document.querySelector(".orbit").style.transform = `rotateZ(-${roteateDeg})`;
+
+  const allItems = document.querySelectorAll(".item");
+  allItems.forEach(el => {
+    el.style.transform = `rotate(${roteateDeg})`;
   });
 
-  function turnCircle() {
-    rotateTo(target, turnId);
-  }
+  const removeActive = document.querySelectorAll(".active");
+  removeActive.forEach(el => {
+    el.classList.remove("active");
+  });
 
-  function rotateTo(number, id) {
-    let roteateDeg = number * 72 + "deg";
-    document.querySelector(
-      ".orbit"
-    ).style.transform = `rotateZ(-${roteateDeg})`;
+  document.querySelector("#how ." + id).classList.add("active");
+  document.querySelector("#how .blt_" + id).classList.add("active");
+  textItem(number, id);
+  changeBg(id);
+}
 
-    const allItems = document.querySelectorAll(".item");
-    allItems.forEach(el => {
-      el.style.transform = `rotate(${roteateDeg})`;
-    });
+function textItem(number, id) {
+  let slideValue = "-" + number * 100 + "%";
+  document.querySelector(
+    "#slider"
+  ).style.transform = `translateY(${slideValue})`;
+  const textFade = document.querySelectorAll("#how .placeholder");
+  textFade.forEach(el => {
+    el.classList.add("hide");
+  });
+  setTimeout(() => {
+    document.querySelector("#" + id + "_text").classList.remove("hide");
+  }, 500);
+}
 
-    const removeActive = document.querySelectorAll(".active");
-    removeActive.forEach(el => {
-      el.classList.remove("active");
-    });
+function changeBg(id) {
+  const hideAllBgs = document.querySelectorAll("#how .background");
+  hideAllBgs.forEach(el => {
+    el.classList.add("hide");
+  });
+  document.querySelector("#how ." + id + "_bg").classList.remove("hide");
+}
 
-    document.querySelector("#how ." + id).classList.add("active");
-    document.querySelector("#how .blt_" + id).classList.add("active");
-    textItem(number, id);
-    changeBg(id);
-  }
+let autoTurnOn = "on";
 
-  function textItem(number, id) {
-    let slideValue = "-" + number * 100 + "%";
-    document.querySelector(
-      "#slider"
-    ).style.transform = `translateY(${slideValue})`;
-    const textFade = document.querySelectorAll("#how .placeholder");
-    textFade.forEach(el => {
-      el.classList.add("hide");
-    });
+const circleArray = [
+  { number: "0", id: "discover" },
+  { number: "1", id: "data" },
+  { number: "2", id: "design" },
+  { number: "3", id: "develop" },
+  { number: "4", id: "deliver" }
+];
+
+let i;
+function autoTurn() {
+  console.log("autoTurn");
+  if (autoTurnOn == "on") {
+    i++;
     setTimeout(() => {
-      document.querySelector("#" + id + "_text").classList.remove("hide");
-    }, 500);
-  }
-
-  function changeBg(id) {
-    const hideAllBgs = document.querySelectorAll("#how .background");
-    hideAllBgs.forEach(el => {
-      el.classList.add("hide");
-    });
-    document.querySelector("#how ." + id + "_bg").classList.remove("hide");
+      rotateTo(i, circleArray[i].id);
+      if (i == 4) {
+        i = 0;
+      }
+      autoTurn();
+    }, 5000);
+  } else {
+    return;
   }
 }
 
