@@ -99,6 +99,12 @@ function InsertPageContent(pageContent) {
   dest.querySelector("[data-cases_text]").innerHTML =
     pageContent.acf.cases_text;
 
+  // - - - - - - - - - - - what section  - - - - - - - - - - -
+
+  dest.querySelector("[data-what_header]").textContent =
+    pageContent.acf.what_header;
+  dest.querySelector("[data-what_text]").innerHTML = pageContent.acf.what_text;
+
   // - - - - - - - - - - - how section  - - - - - - - - - - -
 
   dest.querySelector("[data-how_header]").textContent =
