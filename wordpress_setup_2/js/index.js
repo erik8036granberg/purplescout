@@ -313,6 +313,10 @@ function changeBg(id) {
 }
 
 let autoTurnOn = "on";
+let autoTurnTime = 5000;
+document.querySelector("#how .content").addEventListener("click", () => {
+  autoTurnOn = "off";
+});
 
 const circleArray = [
   { number: "0", id: "discover" },
@@ -322,18 +326,20 @@ const circleArray = [
   { number: "4", id: "deliver" }
 ];
 
-let i;
+let i = 0;
 function autoTurn() {
-  console.log("autoTurn");
   if (autoTurnOn == "on") {
     i++;
     setTimeout(() => {
-      rotateTo(i, circleArray[i].id);
-      if (i == 4) {
-        i = 0;
+      if (autoTurnOn == "on") {
+        if (i < 5) {
+          rotateTo(i, circleArray[i].id);
+        } else {
+          i = 0;
+        }
+        autoTurn();
       }
-      autoTurn();
-    }, 5000);
+    }, autoTurnTime);
   } else {
     return;
   }
