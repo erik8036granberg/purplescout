@@ -57,31 +57,42 @@ function InsertPageContent(pageContent) {
     pageContent.acf.show_reel_header;
 
   // - - - - - - - - - - - video - - - - - - - - - - -
+  let fullVideo = dest.querySelector("[data-show_reel_full_video]");
+  let fullVideoSource = document.createElement("source");
 
-  if (window.innerWidth < 500) {
-    console.log("Small video");
-    dest
-      .querySelector("[data-show_reel_video]")
-      .setAttribute("src", pageContent.acf.show_reel_video_small);
-    dest
-      .querySelector("[data-show_reel_full_video]")
-      .setAttribute("src", pageContent.acf.show_reel_full_video_small);
-  } else if (window.innerWidth >= 500 && window.innerWidth < 1200) {
-    console.log("Medium video");
-    dest
-      .querySelector("[data-show_reel_video]")
-      .setAttribute("src", pageContent.acf.show_reel_video_medium);
-    dest
-      .querySelector("[data-show_reel_full_video]")
-      .setAttribute("src", pageContent.acf.show_reel_full_video_medium);
-  } else {
+  if (window.innerWidth > 1200) {
     console.log("Large video");
     dest
       .querySelector("[data-show_reel_video]")
       .setAttribute("src", pageContent.acf.show_reel_video_large);
+    fullVideoSource.setAttribute(
+      "src",
+      pageContent.acf.show_reel_full_video_large
+    );
+    fullVideoSource.setAttribute("type", "video/mp4");
+    fullVideo.appendChild(fullVideoSource);
+  } else if (window.innerWidth > 500) {
+    console.log("Medium video");
     dest
-      .querySelector("[data-show_reel_full_video]")
-      .setAttribute("src", pageContent.acf.show_reel_full_video_large);
+      .querySelector("[data-show_reel_video]")
+      .setAttribute("src", pageContent.acf.show_reel_video_medium);
+    fullVideoSource.setAttribute(
+      "src",
+      pageContent.acf.show_reel_full_video_medium
+    );
+    fullVideoSource.setAttribute("type", "video/mp4");
+    fullVideo.appendChild(fullVideoSource);
+  } else {
+    console.log("Small video");
+    dest
+      .querySelector("[data-show_reel_video]")
+      .setAttribute("src", pageContent.acf.show_reel_video_small);
+    fullVideoSource.setAttribute(
+      "src",
+      pageContent.acf.show_reel_full_video_small
+    );
+    fullVideoSource.setAttribute("type", "video/mp4");
+    fullVideo.appendChild(fullVideoSource);
   }
 
   // - - - - - - - - - - - intro section  - - - - - - - - - - -

@@ -97,6 +97,7 @@ function InsertPageContent(pageContent) {
   // - - - - - - - - - - - fact points - - - - - - - - - - -
 
   let factPoints = pageContent.acf.fact_points;
+  console.log(factPoints);
   factPoints.forEach(getFactPoints);
   let factArray = [];
   console.log(factArray);
