@@ -1295,14 +1295,26 @@ footer a:hover {
   text-transform: uppercase;
 }
 
+#case .point_procentage {
+  color: var(--bg_purple_3);
+  font-weight: bold;
+  font-size: 5rem;
+  line-height: 0;
+  height: 7rem;
+  margin: 0 0 1rem;
+  padding-top: 5rem;
+}
+
 #case .case_points {
   display: grid;
+  align-items: end;
   grid-template-columns: 1fr;
   grid-gap: 5rem;
 }
 
 #case .point img {
-  width: 10rem;
+  width: auto;
+  height: 7rem;
   margin: 0 0 1rem;
 }
 

@@ -96,21 +96,48 @@ function InsertPageContent(pageContent) {
 
   // - - - - - - - - - - - fact points - - - - - - - - - - -
 
-  dest
-    .querySelector("[data-fact_1_symbol]")
-    .setAttribute("src", pageContent.acf.fact_1_symbol);
-  dest.querySelector("[data-fact_1_text]").textContent =
-    pageContent.acf.fact_1_text;
-  dest
-    .querySelector("[data-fact_2_symbol]")
-    .setAttribute("src", pageContent.acf.fact_2_symbol);
-  dest.querySelector("[data-fact_2_text]").textContent =
-    pageContent.acf.fact_2_text;
-  dest
-    .querySelector("[data-fact_3_symbol]")
-    .setAttribute("src", pageContent.acf.fact_3_symbol);
-  dest.querySelector("[data-fact_3_text]").textContent =
-    pageContent.acf.fact_3_text;
+  let factPoints = pageContent.acf.fact_points;
+  factPoints.forEach(getFactPoints);
+  let factArray = [];
+  console.log(factArray);
+  function getFactPoints(factPoint_id) {
+    fetch(`/wordpress/wp-json/wp/v2/facts/${factPoint_id}`)
+      .then(response => response.json())
+      .then(myJson => {
+        let factPoint = myJson;
+        factArray.push(factPoint);
+        if (factArray.length === factPoints.length) {
+          insertFact();
+        }
+      });
+  }
+
+  // - - - - - - - - - - - insert fact points - - - - - - - - - - -
+
+  function insertFact() {
+    console.log("insertFact");
+    console.log(factArray);
+    factArray.forEach(factItem => {
+      const newFactPoint = document.createElement("DIV");
+      newFactPoint.setAttribute("class", "point");
+      document.querySelector("[data-fact_points]").appendChild(newFactPoint);
+      if (factItem.acf.fact_symbol) {
+        const newFactSymbol = document.createElement("IMG");
+        newFactSymbol.setAttribute("src", factItem.acf.fact_symbol);
+        newFactPoint.appendChild(newFactSymbol);
+      } else if (factItem.acf.fact_procentage) {
+        const newFactProcentage = document.createElement("DIV");
+        newFactProcentage.textContent = factItem.acf.fact_procentage;
+        newFactProcentage.setAttribute("class", "point_procentage");
+        newFactPoint.appendChild(newFactProcentage);
+      }
+      const newFactText = document.createElement("DIV");
+      newFactText.textContent = factItem.acf.fact_text;
+      newFactText.setAttribute("class", "point_text");
+      newFactPoint.appendChild(newFactText);
+      document.querySelector("[data-fact_points]").appendChild(newFactPoint);
+    });
+  }
 
   // - - - - - - - - - - - testimonial - - - - - - - - - - -
 
