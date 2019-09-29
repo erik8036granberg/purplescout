@@ -218,14 +218,26 @@ function showWorkareas(workareaItem) {
   clone.querySelector("[data-area_id]").setAttribute("id", workareaItem.slug);
   clone.querySelector("[data-area_header]").textContent =
     workareaItem.acf.area_header;
+  clone.querySelector("[data-area_header]").addEventListener("click", () => {
+    window.location.href = "workarea.html?id=" + workareaItem.slug;
+    window.sessionStorage.setItem("workAreaLink", workareaItem.slug);
+  });
   clone
     .querySelector("[data-area_symbol]")
     .setAttribute("src", workareaItem.acf.area_symbol);
+  clone.querySelector("[data-area_symbol]").addEventListener("click", () => {
+    window.location.href = "workarea.html?id=" + workareaItem.slug;
+    window.sessionStorage.setItem("workAreaLink", workareaItem.slug);
+  });
   clone
     .querySelector("[data-area_symbol]")
     .setAttribute("alt", workareaItem.acf.area_header);
   clone.querySelector("[data-area_abstract]").innerHTML =
     workareaItem.acf.area_abstract;
+  clone.querySelector("[data-workarea_arrow]").addEventListener("click", () => {
+    window.location.href = "workarea.html?id=" + workareaItem.slug;
+    window.sessionStorage.setItem("workAreaLink", workareaItem.slug);
+  });
   document.querySelector("[data-workareas_container]").appendChild(clone);
 }
 

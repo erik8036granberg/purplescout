@@ -716,6 +716,7 @@ h2 {
   height: 10rem;
   border: 1px solid var(--bg_lightblue);
   border-radius: 50%;
+  cursor: pointer;
 }
 
 #what h3 {
@@ -723,6 +724,21 @@ h2 {
   color: var(--bg_lightblue);
   margin: 2rem 0 2rem;
   text-transform: uppercase;
+  cursor: pointer;
+}
+
+#what .arrow {
+  width: 7rem;
+  height: 3rem;
+  background-image: url(../img/what_arrow.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#what .arrow:hover {
+  margin-left: 3rem;
+  transition: 1s;
+  cursor: pointer;
 }
 
 /* cases */
