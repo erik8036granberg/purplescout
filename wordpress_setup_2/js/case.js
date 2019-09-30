@@ -200,6 +200,10 @@ function InsertPageContent(pageContent) {
       const makeImg = document.createElement("IMG");
       makeImg.setAttribute("src", workareaItem.acf.area_symbol);
       makeImg.setAttribute("alt", workareaItem.acf.area_header);
+      makeImg.addEventListener("click", () => {
+        window.location.href = "/workarea.html?id=" + workareaItem.slug;
+        window.sessionStorage.setItem("workAreaLink", workareaItem.slug);
+      });
       document.querySelector("[data-work_areas_symbols]").appendChild(makeImg);
     });
   }

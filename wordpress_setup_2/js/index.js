@@ -441,11 +441,13 @@ function mobileHowCircle() {
 }
 
 function casesScollEffect() {
-  ScrollOut({
-    targets: ".case",
-    threshold: 0.8,
-    once: false
-  });
+  setTimeout(() => {
+    ScrollOut({
+      targets: ".case",
+      threshold: 0.8,
+      once: false
+    });
+  }, 2000);
 }
 
 function logoSwap() {

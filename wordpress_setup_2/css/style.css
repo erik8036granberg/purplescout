@@ -1402,6 +1402,12 @@ footer a:hover {
   border: 1px solid var(--bg_lightblue);
   border-radius: 50%;
   margin: 1rem;
+  cursor: pointer;
+}
+
+#case .case_workareas img:hover {
+  transform: scale(1.1);
+  transition: 1s;
 }
 
 #case .case_contact h3 {
@@ -1665,12 +1671,12 @@ footer a:hover {
 
   #cases .case:hover[data-scroll="in"] {
     transform: translateY(0) scale(1.05);
-    z-index: 100;
+    z-index: 200;
   }
 
   #cases .case:hover[data-scroll="out"] {
     transform: translateY(0) scale(1.05);
-    z-index: 60;
+    z-index: 100;
   }
 
   #cases .case[data-scroll="out"] {
