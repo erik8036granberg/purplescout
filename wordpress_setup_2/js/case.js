@@ -44,6 +44,14 @@ function getPageContent() {
 function InsertPageContent(pageContent) {
   let dest = document.querySelector("[data-container]");
 
+  // - - - - - - - - - - - page title & description - - - - - - - - - - -
+
+  dest.querySelector("[data-page_title]").textContent =
+    "Showcase - " + pageContent.acf.company;
+  dest
+    .querySelector("[data-seo_description]")
+    .setAttribute("content", pageContent.acf.seo_description);
+
   // - - - - - - - - - - - video - - - - - - - - - - -
 
   if (window.innerWidth > 1200) {
