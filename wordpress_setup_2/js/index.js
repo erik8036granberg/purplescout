@@ -50,6 +50,14 @@ function getPageContent() {
 function InsertPageContent(pageContent) {
   let dest = document.querySelector("[data-container]");
 
+  // - - - - - - - - - - - page title & description - - - - - - - - - - -
+
+  dest.querySelector("[data-page_title]").textContent =
+    "Showcase - " + pageContent.acf.page_title;
+  dest
+    .querySelector("[data-seo_description]")
+    .setAttribute("content", pageContent.acf.seo_description);
+
   // - - - - - - - - - - - Show reel - - - - - - - - - - -
 
   dest.querySelector("[data-show_reel_header]").textContent =
