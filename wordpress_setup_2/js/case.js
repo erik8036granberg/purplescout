@@ -142,17 +142,21 @@ function InsertPageContent(pageContent) {
 
   // - - - - - - - - - - - testimonial - - - - - - - - - - -
 
-  if (pageContent.acf.testimonial_quote) {
-    dest.querySelector("[data-testimonial_quote]").innerHTML =
-      pageContent.acf.testimonial_quote;
-  }
-  if (pageContent.acf.testimonial_person) {
-    dest.querySelector("[data-testimonial_person]").innerHTML =
-      pageContent.acf.testimonial_person;
-  }
-  if (pageContent.acf.testimonial_company) {
-    dest.querySelector("[data-testimonial_company]").innerHTML =
-      pageContent.acf.testimonial_company;
+  if (pageContent.acf.testimonial_quote === "") {
+    dest.querySelector(".case_testimonial").style.display = "none";
+  } else {
+    if (pageContent.acf.testimonial_quote) {
+      dest.querySelector("[data-testimonial_quote]").innerHTML =
+        pageContent.acf.testimonial_quote;
+    }
+    if (pageContent.acf.testimonial_person) {
+      dest.querySelector("[data-testimonial_person]").innerHTML =
+        pageContent.acf.testimonial_person;
+    }
+    if (pageContent.acf.testimonial_company) {
+      dest.querySelector("[data-testimonial_company]").innerHTML =
+        pageContent.acf.testimonial_company;
+    }
   }
 
   // - - - - - - - - - - - Tech text section - - - - - - - - - - -

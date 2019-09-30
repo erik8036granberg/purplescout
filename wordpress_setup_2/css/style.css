@@ -1902,7 +1902,7 @@ footer a:hover {
   }
 
   #case .case_testimonial {
-    grid-row: 4;
+    grid-row: auto;
     grid-column: 1 / -1;
   }
 
@@ -1914,17 +1914,17 @@ footer a:hover {
   }
 
   #case .case_workareas {
-    grid-row: 5;
+    grid-row: auto;
     grid-column: 1 / -1;
   }
 
   #case .case_production_info {
-    grid-row: 6;
+    grid-row: auto;
     grid-column: 1 / span 3;
   }
 
   #case .case_contact {
-    grid-row: 6;
+    grid-row: auto;
     grid-column: 4 / span 2;
   }
 
