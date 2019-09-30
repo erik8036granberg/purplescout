@@ -7,6 +7,9 @@ window.addEventListener("DOMContentLoaded", init);
 
 function init() {
   console.log("init");
+  alert(
+    "github site early layout only - See WP-site at http://purplescout.erik-crg.dk"
+  );
   document.querySelector(".year").innerHTML = new Date().getFullYear();
   showreelCta();
   circleTurn();
