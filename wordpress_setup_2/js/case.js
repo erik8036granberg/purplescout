@@ -46,21 +46,21 @@ function InsertPageContent(pageContent) {
 
   // - - - - - - - - - - - video - - - - - - - - - - -
 
-  if (window.innerWidth < 500) {
-    console.log("Small video");
+  if (window.innerWidth > 1200) {
+    console.log("Large video");
     dest
       .querySelector("[data-showreel_video]")
-      .setAttribute("src", pageContent.acf.showreel_video_small);
-  } else if (window.innerWidth >= 500 && window.innerWidth < 1200) {
+      .setAttribute("src", pageContent.acf.showreel_video_large);
+  } else if (window.innerWidth > 500) {
     console.log("Medium video");
     dest
       .querySelector("[data-showreel_video]")
       .setAttribute("src", pageContent.acf.showreel_video_medium);
   } else {
-    console.log("Large video");
+    console.log("Small video");
     dest
       .querySelector("[data-showreel_video]")
-      .setAttribute("src", pageContent.acf.showreel_video_large);
+      .setAttribute("src", pageContent.acf.showreel_video_small);
   }
 
   // - - - - - - - - - - - case header - - - - - - - - - - -

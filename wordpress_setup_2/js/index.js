@@ -13,7 +13,6 @@ function init() {
   showreelCta();
   circleTurn();
   autoTurn();
-  casesScollEffect();
   logoSwap();
   // if (window.innerWidth < 900) {
   //   mobileHowCircle();
@@ -165,6 +164,9 @@ function getCaseContent() {
       caseArray = getCases;
       console.log(caseArray);
       caseArray.forEach(showCases);
+      if (caseArray.length === getCases.length) {
+        casesScollEffect();
+      }
     });
 }
 
@@ -441,13 +443,11 @@ function mobileHowCircle() {
 }
 
 function casesScollEffect() {
-  setTimeout(() => {
-    ScrollOut({
-      targets: ".case",
-      threshold: 0.8,
-      once: false
-    });
-  }, 2000);
+  ScrollOut({
+    targets: ".case",
+    threshold: 0.8,
+    once: false
+  });
 }
 
 function logoSwap() {
