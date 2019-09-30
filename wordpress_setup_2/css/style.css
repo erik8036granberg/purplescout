@@ -1465,7 +1465,7 @@ footer a:hover {
   color: var(--bg_purple_2);
 }
 
-/*- - - - - - - - - - - - - - - work area pag- - - - - - - - - - - - - -*/
+/*- - - - - - - - - - - - - - - workarea page - - - - - - - - - - - - - -*/
 
 #workareapage #showreel_image {
   position: absolute;
@@ -1476,18 +1476,24 @@ footer a:hover {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  animation: zoom 20s infinite linear;
+  animation: zoom 30s infinite linear;
 }
 
 @keyframes zoom {
   0% {
     transform: scale(1);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
   }
   95% {
     transform: scale(1.5);
+    opacity: 1;
   }
   100% {
     transform: scale(1);
+    opacity: 0;
   }
 }
 
@@ -1500,6 +1506,35 @@ footer a:hover {
   background-color: var(--bg_purple_4);
   opacity: 0.8;
   z-index: 100;
+}
+
+#workareapage .area_symbol {
+  width: 10rem;
+  height: 10rem;
+  border: 1px solid var(--bg_lightblue);
+  border-radius: 50%;
+}
+
+#workareapage h3 {
+  font-size: 3rem;
+  color: var(--bg_lightblue);
+  margin: 2rem 0 2rem;
+  text-transform: uppercase;
+}
+
+#workareapage .related_case {
+  margin: 2rem 1rem 0 0;
+  display: inline-flex;
+}
+
+#workareapage .arrow {
+  width: 3.5rem;
+  height: 2.5rem;
+  background-image: url(../img/related_arrow.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: inline-flex;
+  margin: 1rem 0 0;
 }
 
 /*- - - - - - - - - - - - - - - media queries - - - - - - - - - - - - - -*/
@@ -1849,6 +1884,36 @@ footer a:hover {
   #case .case_points {
     grid-template-columns: 1fr 1fr 1fr;
   }
+
+  #workareapage .area_header {
+    display: inline-grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 2rem;
+    align-items: center;
+    margin-bottom: 2rem;
+    grid-column: 1 / -1;
+  }
+
+  #workareapage .area_header h3 {
+    align-items: center;
+    width: auto;
+    padding: 0 0 0.3rem;
+  }
+
+  #workareapage .area_header div {
+    align-items: center;
+  }
+
+  #workareapage .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 4vw;
+    grid-row-gap: 1vw;
+  }
+
+  #workareapage .related_areas {
+    margin: 0 0 0 5vw;
+  }
 }
 
 /*- - - - - - - - - - - - - media queries 1200px - - - - - - - - - - - - -*/
@@ -1977,6 +2042,22 @@ footer a:hover {
 
   footer .content {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  #workareapage .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 5vw;
+    grid-row-gap: 1vw;
+  }
+
+  #workareapage .main_text {
+    grid-column: 1 / span 3;
+  }
+
+  #workareapage .related_areas {
+    grid-column: 4 / span 2;
+    margin: 0 0 0 5vw;
   }
 }
 

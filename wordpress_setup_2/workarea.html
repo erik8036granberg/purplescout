@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Site description goes here"
+      content=""
       data-seo_description
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -86,12 +86,20 @@
             data-aos-duration="500"
           ></div>
           <div
-            class="case_points"
-            data-area_related
+            class="related_areas"
             data-aos="fade-up"
             data-aos-duration="500"
-          ></div>
+          >
+          <h3>Related cases</h3>
+          <div data-related_container></div>
+        </div>
       </section>
+      <template data-related_template>
+          <div>
+            <div class="related_case" data-related_case></div>
+            <div class="arrow" data-related_case_arrow></div>
+          </div>
+      </template>
     </main>
     <footer id="contact"></footer>
     <script src="/js/nav.js"></script>
