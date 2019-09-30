@@ -76,6 +76,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
   document.querySelector("footer").innerHTML = pageFooter;
   navMenu();
   fadeMenu();
+  document.querySelector("#logo").addEventListener("click", () => {
+    window.location = "/index.html#showreel";
+    if (mobileMenu === "open") {
+      closeMenu();
+    }
+  });
   document.querySelector(".year").innerHTML = new Date().getFullYear();
 });
 

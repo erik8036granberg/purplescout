@@ -16,12 +16,6 @@ function init() {
   // if (window.innerWidth < 900) {
   //   mobileHowCircle();
   // }
-  document.querySelector("#logo").addEventListener("click", () => {
-    window.location = "#showreel";
-    if (mobileMenu === "open") {
-      closeMenu();
-    }
-  });
   document.querySelector("#showreel .explore").addEventListener("click", () => {
     window.location = "#intro";
   });

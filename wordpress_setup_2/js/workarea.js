@@ -6,8 +6,8 @@ let urlID = urlParams.get("id");
 console.log("urlID er: " + urlID);
 
 // sessionStorrage pagelink
-let urlCase = sessionStorage.getItem("caseLink");
-console.log(urlCase);
+let urlWorkarea = sessionStorage.getItem("workAreaLink");
+console.log(urlWorkarea);
 
 let showreelButton = false;
 
@@ -17,12 +17,6 @@ function init() {
   console.log("init");
   getPageContent();
   showreelCta();
-  document.querySelector("#logo").addEventListener("click", () => {
-    window.location = "/index.html#showreel";
-    if (mobileMenu === "open") {
-      closeMenu();
-    }
-  });
   document.querySelector("#showreel .explore").addEventListener("click", () => {
     window.location = "#case";
   });
