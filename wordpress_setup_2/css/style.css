@@ -112,9 +112,6 @@ header {
   height: 8rem;
   width: 100vw;
   background-image: linear-gradient(var(--bg_black_trs), transparent);
-  /* background-image: url(../img/gradient_nav.png);
-  background-size: auto 100%;
-  background-repeat: repeat-x; */
   pointer-events: none;
 }
 
@@ -329,7 +326,8 @@ footer {
 #what,
 #cases,
 #case,
-#how {
+#how,
+#workarea {
   width: 100vw;
   min-height: 30vh;
   padding: 10vw 10vw;
@@ -343,7 +341,8 @@ footer {
 }
 
 #cases,
-#case {
+#case,
+#workarea {
   background-color: var(--bg_gray);
 }
 
@@ -359,7 +358,8 @@ footer {
 #what::before,
 #cases::before,
 #case::before,
-#contact::before {
+#contact::before,
+#workarea::before {
   content: "";
   width: 100vw;
   height: 20rem;
@@ -369,7 +369,8 @@ footer {
   z-index: 15;
 }
 
-#intro::before {
+#intro::before,
+#workarea::before {
   background-image: linear-gradient(var(--bg_purple_4), transparent);
 }
 
@@ -1447,17 +1448,20 @@ footer a:hover {
   height: 3rem;
 }
 
-/* casepage footer */
+/* casepage & workarea footer */
 
-#casepage #contact {
+#casepage #contact,
+#workareapage #contact {
   background-color: var(--bg_logo);
 }
 
-#casepage #contact::before {
+#casepage #contact::before,
+#workareapage #contact::before {
   background-image: linear-gradient(var(--bg_gray), var(--bg_logo));
 }
 
-#casepage #contact .copyright {
+#casepage #contact .copyright,
+#workareapage #contact .copyright {
   color: var(--bg_purple_2);
 }
 
@@ -1472,6 +1476,19 @@ footer a:hover {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  animation: zoom 20s infinite linear;
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+  95% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 #workareapage #overlay {
@@ -1646,6 +1663,7 @@ footer a:hover {
   #cases,
   #case,
   #how,
+  #workarea,
   footer {
     padding: 10rem 10vw;
   }

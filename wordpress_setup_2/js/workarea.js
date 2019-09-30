@@ -17,7 +17,7 @@ function init() {
   console.log("init");
   getPageContent();
   document.querySelector("#showreel .explore").addEventListener("click", () => {
-    window.location = "#case";
+    window.location = "#workarea";
   });
 }
 
