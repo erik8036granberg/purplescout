@@ -58,102 +58,39 @@
     <meta name="msapplication-TileColor" content="#513575" />
     <meta name="theme-color" content="#513575" />
   </head>
-  <body id="casepage">
+  <body id="workareapage">
     <header></header>
     <main>
       <section id="showreel">
         <div class="header">
-          <div class="cta">Contact us</div>
+          <div data-showreel_header></div>
         </div>
         <div class="explore">
           <div class="pulse">Explore</div>
           <div class="arrow"></div>
         </div>
-        <video
-          loop
-          muted
-          autoplay
-          playsinline
-          class="fullscreen-bg_video"
-          id="reel"
-          data-showreel_video
-        >
-          <source src="" type="video/mp4" />
-        </video>
+        <div id="overlay"></div>
+        <div id="showreel_image" data-showreel_image></div>
       </section>
-      <section id="case">
-        <h1>case</h1>
+      <section id="what">
+        <h1>Workarea</h1>
         <div class="content">
-          <div class="case_header" data-aos="fade-up" data-aos-duration="500">
-            <h2 class="company" data-company></h2>
-            <div class="solution" data-solution></div>
+          <div class="area_header">
+            <img src="" class="area_symbol" alt="" data-area_symbol />
+            <h3 data-area_header></h3>
           </div>
           <div
-            class="case_text"
-            data-main_text
+            class="main_text"
+            data-area_main_text
             data-aos="fade-up"
             data-aos-duration="500"
           ></div>
-          <div class="case_images" data-aos="fade-up" data-aos-duration="500">
-            <img
-              src=""
-              alt=""
-              data-image_1
-              data-aos="fade-up"
-              data-aos-duration="500"
-            />
-            <img
-              src=""
-              alt=""
-              data-image_2
-              data-aos="fade-up"
-              data-aos-duration="500"
-            />
-          </div>
           <div
             class="case_points"
-            data-fact_points
+            data-area_related
             data-aos="fade-up"
             data-aos-duration="500"
           ></div>
-          <div
-            class="case_testimonial"
-            data-aos="fade-up"
-            data-aos-duration="500"
-          >
-            <div class="bubble">
-              <div class="quote" data-testimonial_quote></div>
-              <div class="quote_person" data-testimonial_person></div>
-              <div class="quote_company" data-testimonial_company></div>
-            </div>
-          </div>
-          <div
-            class="case_workareas"
-            data-work_areas_symbols
-            data-aos="fade-up"
-            data-aos-duration="500"
-          ></div>
-          <div
-            class="case_production_info"
-            data-aos="fade-up"
-            data-aos-duration="500"
-          >
-            <h2 data-tech_header>Lorum opti est</h2>
-            <div class="production_text" data-tech_text></div>
-          </div>
-          <div class="case_contact" data-aos="fade-up" data-aos-duration="500">
-            <h3>For more information about this case:</h3>
-            <p class="more_info">
-              Talk to:<br />
-              <span class="contakt_person" data-case_contact_name></span>
-            </p>
-            <a
-              href="tel:+45 26744609"
-              class="icon phone"
-              data-case_contact_phone
-            ></a>
-          </div>
-        </div>
       </section>
     </main>
     <footer id="contact"></footer>
