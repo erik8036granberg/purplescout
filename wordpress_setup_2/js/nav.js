@@ -76,6 +76,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   document.querySelector("footer").innerHTML = pageFooter;
   navMenu();
   fadeMenu();
+  document.querySelector(".year").innerHTML = new Date().getFullYear();
 });
 
 function navMenu() {

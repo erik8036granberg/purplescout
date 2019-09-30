@@ -9,7 +9,6 @@ function init() {
   getPageContent();
   getCaseContent();
   getWorkareaContent();
-  document.querySelector(".year").innerHTML = new Date().getFullYear();
   showreelCta();
   circleTurn();
   autoTurn();
@@ -53,7 +52,7 @@ function InsertPageContent(pageContent) {
   // - - - - - - - - - - - page title & description - - - - - - - - - - -
 
   dest.querySelector("[data-page_title]").textContent =
-    "Showcase - " + pageContent.acf.page_title;
+    pageContent.acf.page_title;
   dest
     .querySelector("[data-seo_description]")
     .setAttribute("content", pageContent.acf.seo_description);
@@ -194,7 +193,7 @@ function showCases(caseItem) {
   clone.querySelector("[data-solution]").textContent = caseItem.acf.solution;
   clone.querySelector("[data-id]").addEventListener("click", () => {
     window.location.href = "case.html?id=" + caseItem.slug;
-    window.sessionStorage.setItem("pageLink", caseItem.slug);
+    window.sessionStorage.setItem("caseLink", caseItem.slug);
   });
   document.querySelector("[data-cases_container]").appendChild(clone);
 }
