@@ -748,6 +748,15 @@ h2 {
   padding-left: 3rem;
 }
 
+#what .area_header {
+  transition: 0.5s;
+  transform-origin: left center;
+}
+
+#what .area_header:hover {
+  transform: scale(1.05);
+}
+
 /* cases */
 
 #cases .case[data-scroll] {
@@ -1482,7 +1491,7 @@ footer a:hover {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  animation: zoom 30s infinite linear;
+  animation: zoom 15s infinite linear;
 }
 
 @keyframes zoom {
@@ -1525,6 +1534,10 @@ footer a:hover {
   height: 10rem;
   border: 1px solid var(--bg_lightblue);
   border-radius: 50%;
+}
+
+#workareapage #workarea h1 {
+  color: var(--bg_lightblue);
 }
 
 #workareapage h3 {
@@ -1941,6 +1954,10 @@ footer a:hover {
   #workareapage .related_areas {
     margin: 0 0 0 5vw;
   }
+
+  #workareapage #showreel_image {
+    animation: zoom 20s infinite linear;
+  }
 }
 
 /*- - - - - - - - - - - - - media queries 1200px - - - - - - - - - - - - -*/
@@ -2085,6 +2102,10 @@ footer a:hover {
   #workareapage .related_areas {
     grid-column: 4 / span 2;
     margin: 0 0 0 5vw;
+  }
+
+  #workareapage #showreel_image {
+    animation: zoom 25s infinite linear;
   }
 }
 
