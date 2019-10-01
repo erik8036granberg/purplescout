@@ -36,8 +36,8 @@ const pageFooter = `
   </div>
   <div class="contact">
     <a href="tel:+45 2674 4609" class="icon phone">+45 2674 4609</a>
-    <a href="mailto:hi-there@purplescout.dk" class="icon mail"
-      >hi-there@purplescout.dk</a
+    <a href="mailto:niels.ostergaard@purplescout.dk" class="icon mail"
+      >niels.ostergaard@purplescout.dk</a
     >
   </div>
   <div class="some">
@@ -77,6 +77,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
   navMenu();
   fadeMenu();
   document.querySelector("#logo").addEventListener("click", () => {
+    window.location = "/index.html#showreel";
+    if (mobileMenu === "open") {
+      closeMenu();
+    }
+  });
+  document.querySelector("#logotext .holder").addEventListener("click", () => {
     window.location = "/index.html#showreel";
     if (mobileMenu === "open") {
       closeMenu();

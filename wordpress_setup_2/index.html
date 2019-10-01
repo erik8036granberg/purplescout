@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" data-container>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Site description goes here"
+      data-seo_description
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title data-page_title></title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Economica&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+      crossorigin="anonymous"
+    />
+    <script src="https://unpkg.com/scroll-out/dist/scroll-out.min.js"></script>
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="mask-icon"
+      href="/favicon/safari-pinned-tab.svg"
+      color="#513575"
+    />
+    <meta name="msapplication-TileColor" content="#513575" />
+    <meta name="theme-color" content="#513575" />
+    <script src="https://unpkg.com/scroll-out/dist/scroll-out.min.js"></script>
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <div id="cta_modal">
+        <div class="close"></div>
+        <div class="modal_content">
+          This is the CTA-modal!
+        </div>
+      </div>
+      <section id="showreel">
+        <div id="videomodal">
+          <div class="close"></div>
+          <video
+            loop
+            controls
+            playsinline
+            class="modal_video"
+            id="full"
+            data-show_reel_full_video
+          >
+            <!-- <source src="" type="video/mp4" /> -->
+          </video>
+        </div>
+        <div class="header">
+          <div data-show_reel_header></div>
+          <div class="full_video">Full video</div>
+          <div class="cta">Contact us</div>
+        </div>
+        <div class="explore">
+          <div class="pulse">Explore</div>
+          <div class="arrow"></div>
+        </div>
+        <div id="overlay"></div>
+        <video
+          loop
+          muted
+          autoplay
+          playsinline
+          class="fullscreen-bg_video"
+          id="reel"
+          data-show_reel_video
+        >
+          <source src="" type="video/mp4" />
+        </video>
+      </section>
+
+      <section id="intro">
+        <!-- <h1>Intro</h1> -->
+        <div class="content">
+          <h2 class="intro_header" data-intro_header>Lorem ipsum dolor sit</h2>
+          <div class="intro_text" data-intro_text></div>
+          <div
+            class="case_testimonial"
+            data-aos="fade-up"
+            data-aos-duration="500"
+          >
+            <div class="bubble">
+              <div class="quote">
+                Sed ut perspiciatis unde omnis iste natus error sit
+              </div>
+              <div class="quote_person">Ullamco Laboris</div>
+              <div class="quote_company">Nostrum Exercitationem</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="cases">
+        <h1>Cases</h1>
+        <div class="content">
+          <div class="section_info">
+            <h2 class="top" data-cases_header></h2>
+            <p data-cases_text></p>
+          </div>
+          <div class="showcase" data-cases_container></div>
+          <div class="cta" data-aos="fade-up" data-aos-duration="500">
+            Contact us
+          </div>
+          <div id="logowrapper">
+            <div id="activelogos"></div>
+            <div id="hiddenlogos"></div>
+          </div>
+        </div>
+      </section>
+
+      <template data-cases_template>
+        <div class="case" id="" data-id>
+          <img src="" alt="" data-video_still_image />
+          <div class="label">
+            <h3 data-company></h3>
+            <p class="type" data-solution></p>
+            <div class="arrow"></div>
+          </div>
+        </div>
+      </template>
+
+      <section id="what">
+        <h1>What</h1>
+        <div class="content">
+          <div class="section_info">
+            <h2 class="top" data-what_header></h2>
+            <div data-what_text></div>
+          </div>
+          <div class="area_wrapper" data-workareas_container></div>
+      </section>
+
+      <template data-workareas_template>
+        <div
+          class="area"
+          data-aos="fade-up"
+          data-aos-duration="500"
+          data-area_id
+        >
+          <div class="area_header">
+            <img src="" class="area_symbol" alt="" data-area_symbol />
+            <h3 data-area_header></h3>
+          </div>
+          <div
+            class="area_text"
+            data-area_abstract
+            data-aos="fade-up"
+            data-aos-duration="750"
+          ></div>
+          <div class="arrow_wrapper" data-workarea_arrow data-aos="fade-up"
+          data-aos-duration="500">
+          <div class="arrow"></div>
+        </div>
+        </div>
+      </template>
+
+      <section id="how">
+        <div class="overlay"></div>
+        <h1>How</h1>
+        <div class="content">
+          <div class="section_info">
+            <h2 class="top" data-how_header></h2>
+            <div data-how_text></div>
+          </div>
+          <div
+            class="circle_container"
+            data-aos="fade-up"
+            data-aos-duration="500"
+          >
+            <div id="active_item">
+              <div class="bullet">
+                <div class="fill blt_discover active"></div>
+              </div>
+              <div class="bullet"><div class="fill blt_data"></div></div>
+              <div class="bullet"><div class="fill blt_design"></div></div>
+              <div class="bullet"><div class="fill blt_develop"></div></div>
+              <div class="bullet"><div class="fill blt_deliver"></div></div>
+            </div>
+            <div class="circle_wrapper">
+              <div class="orbit">
+                <div class="circle"></div>
+                <div class="item discover active">
+                  <div class="itemholder" id="discover">
+                    Discover
+                  </div>
+                </div>
+                <div class="item data">
+                  <div class="itemholder" id="data">Data</div>
+                </div>
+                <div class="item design">
+                  <div class="itemholder" id="design">Design</div>
+                </div>
+                <div class="item develop">
+                  <div class="itemholder" id="develop">Develop</div>
+                </div>
+                <div class="item deliver">
+                  <div class="itemholder" id="deliver">Deliver</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="circle_arrow"></div>
+          <div
+            id="circle_text_holder"
+            data-aos="fade-up"
+            data-aos-duration="500"
+          >
+            <div id="slider">
+              <div id="discover_text" class="placeholder">
+                <div class="center">
+                  <div class="mobile_header">Discover</div>
+                  <h3 data-how_discover_header></h3>
+                  <div data-how_discover_text></div>
+                </div>
+              </div>
+              <div id="data_text" class="placeholder">
+                <div class="center">
+                  <div class="mobile_header">Data</div>
+                  <h3 data-how_data_header></h3>
+                  <div data-how_data_text></div>
+                </div>
+              </div>
+              <div id="design_text" class="placeholder">
+                <div class="center">
+                  <div class="mobile_header">Design</div>
+                  <h3 data-how_design_header></h3>
+                  <div data-how_design_text></div>
+                </div>
+              </div>
+              <div id="develop_text" class="placeholder">
+                <div class="center">
+                  <div class="mobile_header">Develop</div>
+                  <h3 data-how_develop_header></h3>
+                  <div data-how_develop_text></div>
+                </div>
+              </div>
+              <div id="deliver_text" class="placeholder">
+                <div class="center">
+                  <div class="mobile_header">Deliver</div>
+                  <h3 data-how_deliver_header></h3>
+                  <div data-how_deliver_text></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="background discover_bg"></div>
+        <div class="background data_bg hide"></div>
+        <div class="background design_bg hide"></div>
+        <div class="background develop_bg hide"></div>
+        <div class="background deliver_bg hide"></div>
+      </section>
+    </main>
+    <footer id="contact"></footer>
+    <script src="js/index.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>

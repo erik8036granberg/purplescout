@@ -150,6 +150,12 @@ header {
   background-image: url(../img/logo_text.svg);
   background-size: cover;
   background-repeat: no-repeat;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+#logotext .holder:hover {
+  transform: translate(-50%, -50%) scale(1.1);
 }
 
 main {
@@ -1523,13 +1529,13 @@ footer a:hover {
   z-index: 100;
 }
 
-#workareapage .content {
+#workareapage #workarea .content {
   display: grid;
   grid-template-columns: 1fr;
   grid-row-gap: 5rem;
 }
 
-#workareapage .area_symbol {
+#workareapage #workarea .area_symbol {
   width: 10rem;
   height: 10rem;
   border: 1px solid var(--bg_lightblue);
@@ -1540,26 +1546,44 @@ footer a:hover {
   color: var(--bg_lightblue);
 }
 
-#workareapage h3 {
+#workarea .main_text h1,
+#workarea .main_text h2,
+#workarea .main_text h3,
+#workarea .main_text h4,
+#workarea .main_text h5,
+#workarea .main_text h6 {
+  color: var(--bg_lightblue);
+  font-size: 2.5rem;
+  padding: 2rem 0 0;
+}
+
+#workareapage #workarea h2 {
   font-size: 3rem;
   color: var(--bg_lightblue);
   margin: 1rem 0 2rem;
   text-transform: uppercase;
 }
 
-#workareapage .related_wrapper {
+#workareapage #workarea .related_wrapper {
   transform-origin: left center;
   width: auto;
 }
 
-#workareapage .related_case {
+#workareapage #workarea .related_case {
   font-size: 2rem;
   margin: 2rem 1rem 0 0;
   display: inline-flex;
   cursor: pointer;
 }
 
-#workareapage .related_wrapper:hover {
+#workareapage #workarea .related_areas h3 {
+  font-size: 3rem;
+  color: var(--bg_lightblue);
+  margin: 1rem 0 2rem;
+  text-transform: uppercase;
+}
+
+#workareapage #workarea .related_wrapper:hover {
   transform: scale(1.1);
   color: var(--bg_lightblue);
   transition: 0.5s;
@@ -1575,6 +1599,23 @@ footer a:hover {
   position: relative;
   top: 0.5rem;
   cursor: pointer;
+}
+
+#workareapage #workarea ul li {
+  list-style: none;
+  margin: 0 0 1rem 1rem;
+  padding: 0 0 0 1rem;
+  position: relative;
+}
+
+#workareapage #workarea ul li::before {
+  color: var(--bg_lightblue);
+  content: "\2022";
+  display: inline-block;
+  font-size: 2.5rem;
+  left: -1.1225rem;
+  position: absolute;
+  top: 0rem;
 }
 
 /*- - - - - - - - - - - - - - - media queries - - - - - - - - - - - - - -*/
@@ -1647,6 +1688,7 @@ footer a:hover {
 
   footer .content {
     grid-template-columns: 1fr 1fr;
+    grid-gap: 3rem;
   }
 
   footer .copyright {
@@ -1925,7 +1967,7 @@ footer a:hover {
     grid-template-columns: 1fr 1fr 1fr;
   }
 
-  #workareapage .area_header {
+  #workareapage #workarea .area_header {
     display: inline-grid;
     grid-template-columns: auto 1fr;
     grid-gap: 2rem;
@@ -1934,24 +1976,24 @@ footer a:hover {
     grid-column: 1 / -1;
   }
 
-  #workareapage .area_header h3 {
+  #workareapage #workarea .area_header h2 {
     align-items: center;
     width: auto;
     padding: 0 0 0.3rem;
   }
 
-  #workareapage .area_header div {
+  #workareapage #workarea .area_header div {
     align-items: center;
   }
 
-  #workareapage .content {
+  #workareapage #workarea .content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 4vw;
     grid-row-gap: 1vw;
   }
 
-  #workareapage .related_areas {
+  #workareapage #workarea .related_areas {
     margin: 0 0 0 5vw;
   }
 
@@ -2088,7 +2130,7 @@ footer a:hover {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 
-  #workareapage .content {
+  #workarea .content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-column-gap: 5vw;
