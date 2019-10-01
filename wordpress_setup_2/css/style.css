@@ -738,10 +738,14 @@ h2 {
   background-repeat: no-repeat;
 }
 
-#what .arrow:hover {
-  margin-left: 3rem;
-  transition: 1s;
+#what .arrow_wrapper {
   cursor: pointer;
+  transition: 1s;
+  display: inline-block;
+}
+
+#what .arrow_wrapper:hover {
+  padding-left: 3rem;
 }
 
 /* cases */
