@@ -554,7 +554,9 @@ footer h1 {
   transition: 1s;
 }
 
-#showreel .arrow {
+#showreel .arrow,
+#workareapage #showreel .arrow,
+#casepage #showreel .arrow {
   width: 2.5rem;
   height: 3.5rem;
   background-image: url(../img/down_arrow.svg);
@@ -1508,6 +1510,12 @@ footer a:hover {
   z-index: 100;
 }
 
+#workareapage .content {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 5rem;
+}
+
 #workareapage .area_symbol {
   width: 10rem;
   height: 10rem;
@@ -1518,23 +1526,36 @@ footer a:hover {
 #workareapage h3 {
   font-size: 3rem;
   color: var(--bg_lightblue);
-  margin: 2rem 0 2rem;
+  margin: 1rem 0 2rem;
   text-transform: uppercase;
 }
 
+#workareapage .related_wrapper {
+  cursor: pointer;
+  transform-origin: left center;
+}
+
 #workareapage .related_case {
+  font-size: 2rem;
   margin: 2rem 1rem 0 0;
   display: inline-flex;
 }
 
-#workareapage .arrow {
+#workareapage .related_wrapper:hover {
+  transform: scale(1.1);
+  color: var(--bg_lightblue);
+  transition: 0.5s;
+}
+
+#workareapage #workarea .arrow {
   width: 3.5rem;
   height: 2.5rem;
   background-image: url(../img/related_arrow.svg);
   background-size: cover;
   background-repeat: no-repeat;
   display: inline-flex;
-  margin: 1rem 0 0;
+  position: relative;
+  top: 0.5rem;
 }
 
 /*- - - - - - - - - - - - - - - media queries - - - - - - - - - - - - - -*/

@@ -87,23 +87,14 @@ function InsertPageContent(pageContent) {
 
 function showRelatedCases(caseItem) {
   console.log("showRelatedCases");
+  console.log("Case match workarea-ID");
+  console.log(caseItem);
   const template = document.querySelector("[data-related_template]").content;
   const clone = template.cloneNode(true);
-
   clone.querySelector("[data-related_case]").textContent = caseItem.acf.company;
-
-  // clone.querySelector("[data-id]").setAttribute("id", caseItem.slug);
-  // clone
-  //   .querySelector("[data-video_still_image]")
-  //   .setAttribute("src", caseItem.acf.video_still_image.sizes.medium_large);
-  // clone
-  //   .querySelector("[data-video_still_image]")
-  //   .setAttribute("alt", caseItem.acf.company);
-  // clone.querySelector("[data-company]").textContent = caseItem.acf.company;
-  // clone.querySelector("[data-solution]").textContent = caseItem.acf.solution;
-  // clone.querySelector("[data-id]").addEventListener("click", () => {
-  //   window.location.href = "case.html?id=" + caseItem.slug;
-  //   window.sessionStorage.setItem("caseLink", caseItem.slug);
-  // });
+  clone.querySelector("[data-related_link]").addEventListener("click", () => {
+    window.location.href = "/case.html?id=" + caseItem.slug;
+    window.sessionStorage.setItem("caseLink", caseItem.slug);
+  });
   document.querySelector("[data-related_container]").appendChild(clone);
 }
