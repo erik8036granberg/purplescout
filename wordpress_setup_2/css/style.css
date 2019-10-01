@@ -1531,14 +1531,15 @@ footer a:hover {
 }
 
 #workareapage .related_wrapper {
-  cursor: pointer;
   transform-origin: left center;
+  width: auto;
 }
 
 #workareapage .related_case {
   font-size: 2rem;
   margin: 2rem 1rem 0 0;
   display: inline-flex;
+  cursor: pointer;
 }
 
 #workareapage .related_wrapper:hover {
@@ -1556,6 +1557,7 @@ footer a:hover {
   display: inline-flex;
   position: relative;
   top: 0.5rem;
+  cursor: pointer;
 }
 
 /*- - - - - - - - - - - - - - - media queries - - - - - - - - - - - - - -*/
@@ -1887,9 +1889,9 @@ footer a:hover {
   #how #active_item {
     position: absolute;
     transform: translateX(0);
-    left: 45%;
-    top: 95%;
-    transform: translate(-50%, 0) scale(0.6);
+    left: 50%;
+    top: 100%;
+    transform: translate(-55%, 0) scale(0.6);
     bottom: auto;
     width: auto;
     height: auto;
