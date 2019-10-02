@@ -11,6 +11,7 @@
   --bg_lightblue: #03e3fc;
   --bg_black_trs: #000000b4;
   --bg_white_trs: rgba(255, 255, 255, 0.9);
+  --bg_cta: #185387fa;
   --font_color: #cccccc;
 }
 
@@ -494,7 +495,7 @@ footer h1 {
   height: 50vh;
   pointer-events: all;
   opacity: 1;
-  background-color: var(--bg_white_trs);
+  background-color: var(--bg_cta);
   z-index: 2000;
 }
 
@@ -502,6 +503,39 @@ footer h1 {
   padding: 5vw;
   color: #000;
 }
+
+#cta_modal .more_info {
+  text-transform: uppercase;
+}
+
+#cta_modal .contact .icon {
+  margin: 0 0 1rem;
+  display: block;
+}
+
+#case .case_contact .icon::before {
+  display: inline-block;
+  position: relative;
+  top: 1rem;
+  margin-right: 1rem;
+  content: "";
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+#case .case_contact .phone {
+  color: var(--bg_lightblue);
+  font-size: 2rem;
+}
+
+#case .case_contact .phone::before {
+  background-image: url(../img/phone_lightblue.svg);
+  width: 2rem;
+  height: 3rem;
+}
+
+
 
 #showreel #videomodal .close,
 #cta_modal .close {
