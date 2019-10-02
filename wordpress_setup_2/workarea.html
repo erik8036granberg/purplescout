@@ -91,13 +91,17 @@
             data-aos-duration="500"
           >
           <h3>Related cases</h3>
-          <div data-related_container></div>
+          <div class="related_cases" data-related_container></div>
         </div>
       </section>
       <template data-related_template>
           <div class="related_wrapper" data-related_link>
-            <div class="related_case" data-related_case></div>
-            <div class="arrow" data-related_case_arrow></div>
+            <img src="" alt="" data-case_thumbnail>
+            <div class="thumb_info">
+              <h4 data-company></h4>
+              <div class="description" data-thumb_description></div>
+              <div class="solution" data-solution></div>
+            </div>
           </div>
       </template>
     </main>

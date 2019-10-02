@@ -1287,7 +1287,7 @@ h2 {
   padding-right: 10%;
   overflow: hidden;
   position: relative;
-  height: 35rem;
+  height: 45rem;
   margin: 4rem 0 0;
 }
 
@@ -1675,29 +1675,31 @@ footer a:hover {
   text-transform: uppercase;
 }
 
+#workareapage #workarea .related_cases {
+  margin: 5rem 0 0;
+}
+
 #workareapage #workarea .related_wrapper {
-  transform-origin: left center;
-  width: auto;
-}
-
-#workareapage #workarea .related_case {
-  font-size: 2rem;
-  margin: 2rem 1rem 0 0;
-  display: inline-flex;
+  display: grid;
+  grid-template-columns: 8rem auto;
+  grid-gap: 2rem;
   cursor: pointer;
-}
-
-#workareapage #workarea .related_areas h3 {
-  font-size: 3rem;
-  color: var(--bg_lightblue);
-  margin: 1rem 0 2rem;
-  text-transform: uppercase;
+  margin: 0 0 3rem;
+  transition: 0.5s;
+  transform-origin: left center;
 }
 
 #workareapage #workarea .related_wrapper:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
+}
+
+#workareapage #workarea .related_wrapper img:hover {
+  border: 1px solid var(--bg_lightblue);
+}
+
+#workareapage #workarea .related_wrapper h4 {
   color: var(--bg_lightblue);
-  transition: 0.5s;
+  text-transform: uppercase;
 }
 
 #workareapage #workarea .arrow {
@@ -2291,7 +2293,7 @@ footer a:hover {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 
-  #workarea .content {
+  #workareapage #workarea .content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-column-gap: 5vw;

@@ -91,7 +91,19 @@ function showRelatedCases(caseItem) {
   console.log(caseItem);
   const template = document.querySelector("[data-related_template]").content;
   const clone = template.cloneNode(true);
-  clone.querySelector("[data-related_case]").textContent = caseItem.acf.company;
+  clone
+    .querySelector("[data-case_thumbnail]")
+    .setAttribute("src", caseItem.acf.case_thumbnail.sizes.medium);
+  clone
+    .querySelector("[data-case_thumbnail]")
+    .setAttribute(
+      "alt",
+      caseItem.acf.solution + " for " + caseItem.acf.company
+    );
+  clone.querySelector("[data-company]").textContent = caseItem.acf.company;
+  clone.querySelector("[data-thumb_description]").textContent =
+    caseItem.acf.thumb_description;
+  clone.querySelector("[data-solution]").textContent = caseItem.acf.solution;
   clone.querySelector("[data-related_link]").addEventListener("click", () => {
     window.location.href = "/case.html?id=" + caseItem.slug;
     window.sessionStorage.setItem("caseLink", caseItem.slug);
