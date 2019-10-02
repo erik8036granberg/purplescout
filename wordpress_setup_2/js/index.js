@@ -298,6 +298,7 @@ function fullVideo() {
 
 function CtaModal() {
   document.querySelector("#cta_modal").classList.add("show");
+  document.querySelector("#cta_modal .modal_content").classList.add("show");
   document.querySelector("#showreel #reel").pause();
   document.querySelector("html").classList.add("fixed");
   document
@@ -310,6 +311,9 @@ function CtaModal() {
       .querySelector("#cta_modal .close")
       .removeEventListener("click", closeCtaModal);
     document.querySelector("#cta_modal").classList.remove("show");
+    document
+      .querySelector("#cta_modal .modal_content")
+      .classList.remove("show");
     document.querySelector("html").classList.remove("fixed");
   }
 }

@@ -11,7 +11,7 @@
   --bg_lightblue: #03e3fc;
   --bg_black_trs: #000000b4;
   --bg_white_trs: rgba(255, 255, 255, 0.9);
-  --bg_cta: #185387fa;
+  --bg_cta: #513675;
   --font_color: #cccccc;
 }
 
@@ -294,7 +294,6 @@ nav.show {
 }
 
 .change .bar1 {
-  -webkit-transform: rotate(-45deg) translate(-6px, 6px);
   transform: rotate(-45deg) translate(-6px, 6px);
 }
 
@@ -303,7 +302,6 @@ nav.show {
 }
 
 .change .bar3 {
-  -webkit-transform: rotate(45deg) translate(-8px, -8px);
   transform: rotate(45deg) translate(-8px, -8px);
 }
 
@@ -467,41 +465,81 @@ footer h1 {
   border: 0 none transparent;
 }
 
-#showreel #videomodal,
-#cta_modal {
+#showreel #videomodal.show {
+  pointer-events: all;
+  opacity: 1;
+}
+
+#showreel #videomodal {
   background-color: #000;
-  width: 0;
-  height: 0;
+  width: 100vw;
+  height: 100vh;
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 1000;
-  pointer-events: 0;
+  pointer-events: none;
   opacity: 0;
   transition: 1s;
   overflow: hidden;
 }
 
-#showreel #videomodal.show {
+#cta_modal {
+  background-color: var(--bg_black_trs);
   width: 100vw;
   height: 100vh;
-  pointer-events: all;
-  opacity: 1;
-}
-
-#cta_modal.show {
-  width: 50vw;
-  height: 50vh;
-  pointer-events: all;
-  opacity: 1;
-  background-color: var(--bg_cta);
-  z-index: 2000;
+  position: fixed;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transition: 1s;
+  overflow: auto;
 }
 
 #cta_modal .modal_content {
-  padding: 5vw;
-  color: #000;
+  max-width: 1200px;
+  height: auto;
+  margin: 3rem;
+  transform: translateY(-100vh);
+  padding: 3rem;
+  color: #fff;
+  pointer-events: none;
+  transition: 1s;
+  opacity: 0;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 2rem;
+}
+
+#cta_modal.show {
+  pointer-events: all;
+  width: 100vw;
+  height: 100vh;
+  opacity: 1;
+  z-index: 2000;
+  pointer-events: all;
+  opacity: 1;
+}
+
+#cta_modal .modal_content.show {
+  opacity: 1;
+  z-index: 2000;
+  background-color: var(--bg_cta);
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+#cta_modal .contact {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 2rem;
+}
+
+#cta_modal h3 {
+  color: var(--bg_lightblue);
+  max-width: 80%;
 }
 
 #cta_modal .more_info {
@@ -513,32 +551,65 @@ footer h1 {
   display: block;
 }
 
-#case .case_contact .icon::before {
-  display: inline-block;
+#cta_modal .icon::before {
+  display: block;
   position: relative;
   top: 1rem;
-  margin-right: 1rem;
+  margin: 1rem 0 1.5rem;
   content: "";
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 }
 
-#case .case_contact .phone {
+#cta_modal .phone,
+#cta_modal .mail {
   color: var(--bg_lightblue);
   font-size: 2rem;
+  word-break: break-all;
 }
 
-#case .case_contact .phone::before {
+#cta_modal .phone::before {
   background-image: url(../img/phone_lightblue.svg);
   width: 2rem;
   height: 3rem;
 }
 
+#cta_modal .mail::before {
+  background-image: url(../img/mail_lightblue.svg);
+  width: 3rem;
+  height: 3rem;
+}
 
+#cta_modal .some_icon {
+  font-size: 4rem;
+  color: #fff;
+  margin: 0 1rem 0 0;
+}
 
-#showreel #videomodal .close,
+#cta_modal .some_icon i:hover {
+  transform: scale(1.2);
+  transition: 0.5s;
+}
+
 #cta_modal .close {
+  width: 5rem;
+  height: 5rem;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background-image: url(../img/close_modal.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: var(--bg_white_trs);
+  border-radius: 50%;
+  z-index: 1010;
+  transition: 0.5s;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+#showreel #videomodal .close {
   width: 5rem;
   height: 5rem;
   position: absolute;
@@ -1247,10 +1318,10 @@ footer .contact .icon {
 }
 
 footer .icon::before {
-  display: inline-block;
+  display: block;
   position: relative;
   top: 1rem;
-  margin-right: 1rem;
+  margin: 1rem 0 1.5rem;
   content: "";
   background-size: cover;
   background-repeat: no-repeat;
@@ -1261,6 +1332,10 @@ footer .phone::before {
   background-image: url(../img/phone.svg);
   width: 2rem;
   height: 3rem;
+}
+
+footer .mail {
+  word-break: break-all;
 }
 
 footer .mail::before {
@@ -1657,6 +1732,38 @@ footer a:hover {
 /*- - - - - - - - - - - - - media queries 500px - - - - - - - - - - - - -*/
 
 @media screen and (min-width: 500px) {
+  #cta_modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #cta_modal .modal_content {
+    padding: 5vw;
+  }
+
+  footer .icon::before {
+    display: inline-block;
+    position: relative;
+    top: 1rem;
+    margin: 1rem 1rem 0 0;
+    content: "";
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  #cta_modal .icon::before {
+    display: inline-block;
+    position: relative;
+    top: 1rem;
+    margin: 0 1rem 0 0;
+    content: "";
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
   #case .case_images img {
     width: 70%;
   }
@@ -1817,6 +1924,10 @@ footer a:hover {
   #workarea,
   footer {
     padding: 10rem 10vw;
+  }
+
+  #cta_modal .cta_text {
+    max-width: 80%;
   }
 
   #intro .content {
@@ -2044,6 +2155,20 @@ footer a:hover {
     bottom: 8rem;
     right: 8rem;
     pointer-events: all;
+  }
+
+  #cta_modal .cta_text {
+    max-width: 100%;
+  }
+
+  #cta_modal .modal_content {
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 5vw;
+    grid-row-gap: 2vw;
+  }
+
+  #cta_modal h3 {
+    grid-column: 1 / -1;
   }
 
   #what .area_wrapper {
