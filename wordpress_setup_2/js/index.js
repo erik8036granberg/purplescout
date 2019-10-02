@@ -290,7 +290,7 @@ function ctaButtons() {
   ctaArray.forEach(CtaButtonDelay);
 }
 
-// - - - - - - - - - - - - - CTA display delay - - - - - - - - - - - - -
+// - - - - - - - - - - - - - CTA pop up delay - - - - - - - - - - - - -
 
 function CtaButtonDelay(ctaButon) {
   let inview;
@@ -319,6 +319,8 @@ function CtaButtonDelay(ctaButon) {
   observer.observe(document.querySelector(ctaButon.target));
 }
 
+// - - - - - - - - - - - Cta button clicked  - - - - - - - - - - -
+
 function ctaClicked(button_id) {
   let cta_id;
   if (button_id === "showreelCta") {
@@ -331,9 +333,12 @@ function ctaClicked(button_id) {
   CtaModal();
 }
 
+// - - - - - - - - - - - display Cta content   - - - - - - - - - - -
+
 function displayCta(ctaItem) {
   console.log("displayCta");
   console.log(ctaItem);
+  document.querySelector("[data-cta_container]").innerHTML = "";
   const template = document.querySelector("[data-cta_template]").content;
   const clone = template.cloneNode(true);
   clone.querySelector("[data-cta_header]").textContent = ctaItem.acf.cta_header;
@@ -348,6 +353,8 @@ function displayCta(ctaItem) {
   document.querySelector("[data-cta_container]").appendChild(clone);
   document.querySelector("#cta_modal .some").innerHTML = pageSome;
 }
+
+// - - - - - - - - - - - Cta modal show / hide  - - - - - - - - - - -
 
 function CtaModal() {
   document.querySelector("#cta_modal").classList.add("show");
