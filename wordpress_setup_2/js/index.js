@@ -1,7 +1,5 @@
 "use strict";
 
-let showreelButton = false;
-
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
@@ -9,7 +7,7 @@ function init() {
   getPageContent();
   getCaseContent();
   getWorkareaContent();
-  showreelCta();
+  getCtaContent();
   circleTurn();
   autoTurn();
   logoSwap();
@@ -24,10 +22,9 @@ function init() {
     .addEventListener("click", () => {
       fullVideo();
     });
-  document.querySelector("#showreel .cta").addEventListener("click", () => {
-    CtaModal();
-  });
 }
+
+// - - - - - - - - - - - get page content  - - - - - - - - - - -
 
 function getPageContent() {
   console.log("getPageContent");
@@ -244,30 +241,6 @@ function showWorkareas(workareaItem) {
   document.querySelector("[data-workareas_container]").appendChild(clone);
 }
 
-// - - - - - - - - - - - - - show reel CTA - - - - - - - - - - - - -
-
-function showreelCta() {
-  let inview;
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.intersectionRatio > 0) {
-        inview = true;
-        setTimeout(() => {
-          if (inview == true && showreelButton == false) {
-            console.log("Seen for 5 sec for the first time");
-            showreelButton = true;
-            document.querySelector("#showreel .cta").classList.add("appear");
-          }
-        }, 5000);
-      } else {
-        inview = false;
-      }
-    });
-  });
-
-  observer.observe(document.querySelector("#showreel .header"));
-}
-
 function fullVideo() {
   document.querySelector("#showreel #videomodal").classList.add("show");
   document.querySelector("#showreel #reel").pause();
@@ -296,6 +269,87 @@ function fullVideo() {
   }
 }
 
+// - - - - - - - - - - - get cta content  - - - - - - - - - - -
+
+let getCtaArray;
+
+function getCtaContent() {
+  // get getCtaContent
+  fetch("/wordpress/wp-json/wp/v2/cta?per_page=100")
+    .then(response => response.json())
+    .then(myJson => {
+      getCtaArray = myJson;
+      console.log("getCtaArray");
+      console.log(getCtaArray);
+      ctaButtons();
+    });
+}
+
+// - - - - - - - - - - - - - set CTA elements - - - - - - - - - - - - -
+
+let showreelButtonSeen = false;
+
+function ctaButtons() {
+  const ctaArray = [
+    {
+      id: "showreelCta",
+      seen: showreelButtonSeen,
+      path: "#showreel .cta",
+      target: "#showreel .header",
+      time: "5000"
+    }
+  ];
+  ctaArray.forEach(CtaButtonDelay);
+}
+
+// - - - - - - - - - - - - - CTA display delay - - - - - - - - - - - - -
+
+function CtaButtonDelay(ctaButon) {
+  let button_id = ctaButon.id;
+  let button_seen = ctaButon.seen;
+  let button_path = ctaButon.path;
+  let button_target = ctaButon.target;
+  let button_time = ctaButon.time;
+  let inview;
+
+  document.querySelector(button_path).addEventListener("click", () => {
+    ctaClicked(button_id);
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.intersectionRatio > 0) {
+        inview = true;
+        setTimeout(() => {
+          if (inview == true && button_seen == false) {
+            console.log("Seen for 5 sec for the first time");
+            button_seen = true;
+            document.querySelector(button_path).classList.add("appear");
+          }
+        }, button_time);
+      } else {
+        inview = false;
+      }
+    });
+  });
+
+  observer.observe(document.querySelector(button_target));
+}
+
+function ctaClicked(button_id) {
+  console.log("ctaClicked");
+  console.log(button_id);
+  if (button_id === "showreelCta") {
+    //todo: filter array
+  }
+  CtaModal();
+}
+
+function displayCta(ctaItem) {
+  console.log("displayCta");
+  console.log(ctaItem);
+}
+
 function CtaModal() {
   document.querySelector("#cta_modal").classList.add("show");
   document.querySelector("#cta_modal .modal_content").classList.add("show");
@@ -303,13 +357,13 @@ function CtaModal() {
   document.querySelector("html").classList.add("fixed");
   document
     .querySelector("#cta_modal .close")
-    .addEventListener("click", closeCtaModal);
-  function closeCtaModal() {
-    console.log("closeCtaModal");
+    .addEventListener("click", closeModal);
+  function closeModal() {
+    console.log("closeModal");
     document.querySelector("#showreel #reel").play();
     document
       .querySelector("#cta_modal .close")
-      .removeEventListener("click", closeCtaModal);
+      .removeEventListener("click", closeModal);
     document.querySelector("#cta_modal").classList.remove("show");
     document
       .querySelector("#cta_modal .modal_content")
@@ -317,6 +371,8 @@ function CtaModal() {
     document.querySelector("html").classList.remove("fixed");
   }
 }
+
+// - - - - - - - - - - - How circle  - - - - - - - - - - -
 
 function circleTurn() {
   document.querySelector("#discover").addEventListener("click", () => {
@@ -454,6 +510,8 @@ function casesScollEffect() {
     once: false
   });
 }
+
+// - - - - - - - - - - - Case logo swap - - - - - - - - - - -
 
 function logoSwap() {
   console.log("logoSwap");
