@@ -466,14 +466,16 @@ footer h1 {
 }
 
 #showreel #videomodal.show {
+  width: 100vw;
+  height: 100vh;
   pointer-events: all;
   opacity: 1;
 }
 
 #showreel #videomodal {
   background-color: #000;
-  width: 100vw;
-  height: 100vh;
+  width: 0;
+  height: 0;
   position: fixed;
   left: 50%;
   top: 50%;
@@ -504,6 +506,7 @@ footer h1 {
   transform: translateY(-100vh);
   padding: 3rem;
   color: #fff;
+  border: 1px solid #fff;
   pointer-events: none;
   transition: 1s;
   opacity: 0;
