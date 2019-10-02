@@ -3,7 +3,6 @@
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
-  console.log("init");
   getPageContent();
   getCaseContent();
   getWorkareaContent();
@@ -27,12 +26,10 @@ function init() {
 // - - - - - - - - - - - get page content  - - - - - - - - - - -
 
 function getPageContent() {
-  console.log("getPageContent");
   fetch("/wordpress/wp-json/wp/v2/pages/6")
     .then(response => response.json())
     .then(myJson => {
       const pageContent = myJson;
-      console.log(pageContent);
       InsertPageContent(pageContent);
     });
 }
@@ -58,7 +55,6 @@ function InsertPageContent(pageContent) {
   let fullVideoSource = document.createElement("source");
 
   if (window.innerWidth > 1200) {
-    console.log("Large video");
     dest
       .querySelector("[data-show_reel_video]")
       .setAttribute("src", pageContent.acf.show_reel_video_large);
@@ -69,7 +65,6 @@ function InsertPageContent(pageContent) {
     fullVideoSource.setAttribute("type", "video/mp4");
     fullVideo.appendChild(fullVideoSource);
   } else if (window.innerWidth > 500) {
-    console.log("Medium video");
     dest
       .querySelector("[data-show_reel_video]")
       .setAttribute("src", pageContent.acf.show_reel_video_medium);
@@ -80,7 +75,6 @@ function InsertPageContent(pageContent) {
     fullVideoSource.setAttribute("type", "video/mp4");
     fullVideo.appendChild(fullVideoSource);
   } else {
-    console.log("Small video");
     dest
       .querySelector("[data-show_reel_video]")
       .setAttribute("src", pageContent.acf.show_reel_video_small);
@@ -147,7 +141,6 @@ function InsertPageContent(pageContent) {
 // - - - - - - - - - - - get cases content  - - - - - - - - - - -
 
 function getCaseContent() {
-  console.log("getCaseContent");
   let caseArray = [];
 
   // get cases
@@ -160,7 +153,6 @@ function getCaseContent() {
         caseItem.id = caseItem.slug;
       });
       caseArray = getCases;
-      console.log(caseArray);
       caseArray.forEach(showCases);
       if (caseArray.length === getCases.length) {
         casesScollEffect();
@@ -192,7 +184,6 @@ function showCases(caseItem) {
 // - - - - - - - - - - - get work areas content  - - - - - - - - - - -
 
 function getWorkareaContent() {
-  console.log("getWorkareaContent");
   let workareaArray = [];
 
   // get cases
@@ -205,7 +196,6 @@ function getWorkareaContent() {
         workareaItem.id = workareaItem.slug;
       });
       workareaArray = getWorkareas;
-      console.log(workareaArray);
       workareaArray.forEach(showWorkareas);
     });
 }
@@ -247,7 +237,6 @@ function fullVideo() {
   document.querySelector("#showreel #full").play();
   document.querySelector("html").classList.add("fixed");
   let elem = document.documentElement;
-  console.log("requestFullscreen");
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
   }
@@ -255,7 +244,6 @@ function fullVideo() {
     .querySelector("#showreel #videomodal .close")
     .addEventListener("click", closeModal);
   function closeModal() {
-    console.log("closeModal");
     if (document.fullscreenElement) {
       document.exitFullscreen();
     }
@@ -305,15 +293,10 @@ function ctaButtons() {
 // - - - - - - - - - - - - - CTA display delay - - - - - - - - - - - - -
 
 function CtaButtonDelay(ctaButon) {
-  let button_id = ctaButon.id;
-  let button_seen = ctaButon.seen;
-  let button_path = ctaButon.path;
-  let button_target = ctaButon.target;
-  let button_time = ctaButon.time;
   let inview;
 
-  document.querySelector(button_path).addEventListener("click", () => {
-    ctaClicked(button_id);
+  document.querySelector(ctaButon.path).addEventListener("click", () => {
+    ctaClicked(ctaButon.id);
   });
 
   const observer = new IntersectionObserver(entries => {
@@ -321,33 +304,49 @@ function CtaButtonDelay(ctaButon) {
       if (entry.intersectionRatio > 0) {
         inview = true;
         setTimeout(() => {
-          if (inview == true && button_seen == false) {
+          if (inview == true && ctaButon.seen == false) {
             console.log("Seen for 5 sec for the first time");
-            button_seen = true;
-            document.querySelector(button_path).classList.add("appear");
+            ctaButon.seen = true;
+            document.querySelector(ctaButon.path).classList.add("appear");
           }
-        }, button_time);
+        }, ctaButon.time);
       } else {
         inview = false;
       }
     });
   });
 
-  observer.observe(document.querySelector(button_target));
+  observer.observe(document.querySelector(ctaButon.target));
 }
 
 function ctaClicked(button_id) {
-  console.log("ctaClicked");
-  console.log(button_id);
+  let cta_id;
   if (button_id === "showreelCta") {
-    //todo: filter array
+    cta_id = "293";
   }
+  let ctaFilter = getCtaArray.filter(function(ctaItem) {
+    return ctaItem.id == cta_id;
+  });
+  ctaFilter.forEach(displayCta);
   CtaModal();
 }
 
 function displayCta(ctaItem) {
   console.log("displayCta");
   console.log(ctaItem);
+  const template = document.querySelector("[data-cta_template]").content;
+  const clone = template.cloneNode(true);
+  clone.querySelector("[data-cta_header]").textContent = ctaItem.acf.cta_header;
+  clone.querySelector("[data-cta_text]").innerHTML = ctaItem.acf.cta_text;
+  clone.querySelector("[data-cta_contact_person]").textContent =
+    ctaItem.acf.cta_contact_person;
+  clone.querySelector("[data-cta_phone]").textContent = ctaItem.acf.cta_phone;
+  clone.querySelector("[data-cta_mail]").textContent = ctaItem.acf.cta_mail;
+  clone
+    .querySelector("[data-cta_mail]")
+    .setAttribute("href", "mailto:" + ctaItem.acf.cta_mail);
+  document.querySelector("[data-cta_container]").appendChild(clone);
+  document.querySelector("#cta_modal .some").innerHTML = pageSome;
 }
 
 function CtaModal() {
@@ -514,7 +513,6 @@ function casesScollEffect() {
 // - - - - - - - - - - - Case logo swap - - - - - - - - - - -
 
 function logoSwap() {
-  console.log("logoSwap");
   let logoArray = [];
   let showLogos;
   let activeArray = [];
@@ -535,8 +533,6 @@ function logoSwap() {
     });
 
   function arrangeArrays() {
-    console.log("arrangeArrays");
-
     // visible logos - mobile or larger
     if (window.innerWidth < 700) {
       showLogos = 4;
@@ -553,15 +549,12 @@ function logoSwap() {
     //import svg to DOM
     activeArray.forEach(svgImportActive);
     hiddenArray.forEach(svgImportHidden);
-    console.log(activeArray);
-    console.log(hiddenArray);
     setTimeout(() => {
       swapShowSVG();
     }, 3000);
   }
 
   function swapShowSVG() {
-    console.log("swapShowSVG");
     // set a timer
     setTimeout(() => {
       // get a random id from the active array to pick a DOM element
@@ -616,7 +609,6 @@ function logoSwap() {
     fetch(displayLogo.acf.logo_image)
       .then(response => response.text())
       .then(svgdata => {
-        console.log("logo imported");
         const makeDiv = document.createElement("DIV");
         makeDiv.setAttribute("class", displayLogo.id);
         document.querySelector("#activelogos").appendChild(makeDiv);
@@ -630,7 +622,6 @@ function logoSwap() {
     fetch(displayLogo.acf.logo_image)
       .then(response => response.text())
       .then(svgdata => {
-        console.log("logo imported");
         const makeDiv = document.createElement("DIV");
         makeDiv.setAttribute("class", displayLogo.id);
         document.querySelector("#hiddenlogos").appendChild(makeDiv);

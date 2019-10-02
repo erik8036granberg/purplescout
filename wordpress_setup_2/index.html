@@ -64,54 +64,26 @@
     <header></header>
     <main>
       <div id="cta_modal">
-        <div class="modal_content">
-            <div class="close"></div>
-          <h3>DO YOU WANT TO HEAR MORE ABOUT (WHATEVER) ?</h3>
-          <div class="cta_text">
-            <p>Lorem ipsum dolor sit amet, consect adipiscing elit, sed do mod?</p>  
-            <p>Tempor incididunt ut labore et dolore magna aliqua..Nemo enim ipsam voluptatem quia voluptas sit aspernatur. Dolor sit amet, consectetur adipiscing elit ipsam voluptatem quia voluptas.
-                ipsum dolor sit amet adipis.</p>
-          </div>
+        <div class="modal_content" data-cta_container></div>
+      </div>
+
+      <template data-cta_template>
+          <div class="close"></div>
+          <h3 data-cta_header></h3>
+          <div class="cta_text" data-cta_text></div>
           <div class="contact">
               <p class="more_info">
                   Talk to:<br />
-                  <span class="contakt_person" data-case_contact_name>Anders Andersen</span>
-                </p>
-                <div>
-            <a href="tel:+45 2674 4609" class="icon phone">+45 2674 4609</a>
-            <a href="mailto:niels.ostergaard@purplescout.dk" class="icon mail"
-              >niels.ostergaard@purplescout.dk</a
-            >
+                  <span class="contakt_person" data-cta_contact_person></span>
+              </p>
+            <div>
+              <a href="" class="icon phone" data-cta_phone></a>
+              <a href="" class="icon mail" data-cta_mail></a>
+            </div>
+            <div class="some"></div>
           </div>
-            <div class="some">
-                <a
-                  href="https://da-dk.facebook.com/purplescout"
-                  target="_blank"
-                  class="some_icon"
-                  ><i class="fab fa-facebook-square"></i
-                ></a>
-                <a
-                  href="http://www.instagram.com/purple_scout_ab"
-                  target="_blank"
-                  class="some_icon"
-                  ><i class="fab fa-instagram"></i
-                ></a>
-                <a
-                  href="https://twitter.com/purplescout"
-                  target="_blank"
-                  class="some_icon"
-                  ><i class="fab fa-twitter-square"></i
-                ></a>
-                <a
-                  href="https://www.linkedin.com/company/purple-scout-ab"
-                  target="_blank"
-                  class="some_icon"
-                  ><i class="fab fa-linkedin"></i
-                ></a>
-              </div>
-          </div>
-        </div>
-      </div>
+      </template>
+
       <section id="showreel">
         <div id="videomodal">
           <div class="close"></div>

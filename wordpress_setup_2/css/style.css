@@ -506,7 +506,6 @@ footer h1 {
   transform: translateY(-100vh);
   padding: 3rem;
   color: #fff;
-  border: 1px solid #fff;
   pointer-events: none;
   transition: 1s;
   opacity: 0;

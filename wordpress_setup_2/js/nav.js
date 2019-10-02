@@ -40,8 +40,14 @@ const pageFooter = `
       >niels.ostergaard@purplescout.dk</a
     >
   </div>
-  <div class="some">
-    <a
+  <div class="some"></div>
+  <div class="copyright">
+    Copyright <span class="year"></span> © Purple Scout ApS
+  </div>
+</div>`;
+
+const pageSome = `
+<a
       href="https://da-dk.facebook.com/purplescout"
       target="_blank"
       class="some_icon"
@@ -65,15 +71,12 @@ const pageFooter = `
       class="some_icon"
       ><i class="fab fa-linkedin"></i
     ></a>
-  </div>
-  <div class="copyright">
-    Copyright <span class="year"></span> © Purple Scout ApS
-  </div>
-</div>`;
+`;
 
 document.addEventListener("DOMContentLoaded", function(event) {
   document.querySelector("header").innerHTML = pageHeader;
   document.querySelector("footer").innerHTML = pageFooter;
+  document.querySelector("footer .some").innerHTML = pageSome;
   navMenu();
   fadeMenu();
   document.querySelector("#logo").addEventListener("click", () => {
