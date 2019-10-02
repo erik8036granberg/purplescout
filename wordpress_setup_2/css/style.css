@@ -1676,7 +1676,7 @@ footer a:hover {
 }
 
 #workareapage #workarea .related_cases {
-  margin: 5rem 0 0;
+  margin: 3rem 0 0;
 }
 
 #workareapage #workarea .related_wrapper {
@@ -2144,6 +2144,12 @@ footer a:hover {
 
   #workareapage #workarea .related_areas {
     margin: 0 0 0 5vw;
+  }
+
+  #workareapage #workarea .related_areas h3 {
+    color: var(--bg_lightblue);
+    font-size: 3rem;
+    text-transform: uppercase;
   }
 
   #workareapage #showreel_image {
