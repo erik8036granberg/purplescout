@@ -421,7 +421,7 @@ footer h1 {
   font-size: 4.5rem;
   line-height: 5rem;
   width: 100%;
-  margin: 0 0 15vh;
+  margin: 0 0 5vh;
   z-index: 500;
 }
 
@@ -671,7 +671,7 @@ footer h1 {
   background-image: url(../img/down_arrow.svg);
   background-size: cover;
   background-repeat: no-repeat;
-  margin: 1rem auto 7rem;
+  margin: 1rem auto 5vh;
 }
 
 .pulse {
@@ -1814,6 +1814,10 @@ footer .copyright {
     grid-template-columns: 1fr 1fr;
     grid-gap: 7vw;
   }
+
+  footer .localtion_map {
+    max-width: 80%;
+  }
 }
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - media queries 700px - - - - - - - - - - - - - - - - - - - - - - - - - -*/
@@ -1854,10 +1858,6 @@ footer .copyright {
 
   footer .copyright {
     grid-column: 1 / -1;
-  }
-
-  footer .localtion_map {
-    max-width: 80%;
   }
 
   footer .address_wrapper {
