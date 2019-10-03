@@ -50,40 +50,32 @@ const pageFooter = `
     We’re extraordinarily good at understanding what our customers truly need. Purple Scout’s superpower is our flexibility. As a customer, you can rest assured that our industry-leading consultants always will create the perfect solution for your projects. 
     </p>
   </div>
-  <div class="location">
-    <div class="map"></div>
+  <div class="location_wrapper">
+  <img src="../img/location_map.svg" alt="map" class="localtion_map">
     <div class="address_wrapper">
       <div class="address">
       <h3>Copenhangen</h3>
-      <p>
       Njalsgade 21G, 3rd fl.<br>
       2300 København S<br>
       Denmark
-      </p>
       </div>
       <div class="address">
       <h3>Malmö</h3>
-      <p>
       Stortorget 29<br>
       211 34  Malmö<br>
       Sweden
-      </p>
       </div>
       <div class="address">
       <h3>Gothenburg</h3>
-      <p>
       Västra Hamngatan 10<br>
       411 17  Göteborg<br>
       Sweden
-      </p>
       </div>
       <div class="address">
       <h3>Borås</h3>
-      <p>
       Västerlånggatan 30-32<br>
       03 30  Borås<br>
       Sweden
-      </p>
       </div>
     </div>
   </div>
