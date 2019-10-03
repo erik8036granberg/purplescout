@@ -1409,10 +1409,6 @@ footer a:hover {
   color: var(--bg_lightblue);
 }
 
-#case .case_images {
-  margin: 0 0 -12%;
-}
-
 #case .case_images img {
   width: 95%;
   position: relative;
@@ -1424,7 +1420,7 @@ footer a:hover {
 }
 
 #case .case_images img:nth-child(odd) {
-  margin: 0 0 0 0;
+  margin: 0 0 0 4rem;
   z-index: 100;
 }
 
@@ -1436,9 +1432,9 @@ footer a:hover {
   transform: translateY(0);
 }
 
-#case .case_images img:last-child {
+/* #case .case_images img:last-child {
   margin-bottom: -6vw;
-}
+} */
 
 #case .point_text {
   text-transform: uppercase;

@@ -74,6 +74,9 @@ const pageSome = `
 `;
 
 document.addEventListener("DOMContentLoaded", function(event) {
+  // response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+  // response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+  // response.setHeader("Expires", "0"); // Proxies.
   document.querySelector("header").innerHTML = pageHeader;
   document.querySelector("footer").innerHTML = pageFooter;
   document.querySelector("footer .some").innerHTML = pageSome;
@@ -136,3 +139,19 @@ function fadeMenu() {
     }
   }
 }
+
+// force lastest version
+
+document
+  .querySelector("[data-css_version]")
+  .setAttribute(
+    "href",
+    "css/style.css" + "?version=" + Math.floor(Math.random() * 100000)
+  );
+
+document
+  .querySelector("[data-nav_version]")
+  .setAttribute(
+    "href",
+    "/js/nav.js" + "?version=" + Math.floor(Math.random() * 100000)
+  );

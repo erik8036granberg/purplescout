@@ -3,6 +3,7 @@
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
+  latestVersion();
   getPageContent();
   getCaseContent();
   getWorkareaContent();
@@ -651,4 +652,30 @@ function convert(str) {
   str = str.replace(/"/g, "&quot;");
   str = str.replace(/'/g, "&#039;");
   return str;
+}
+
+function latestVersion() {
+  console.log("latestVersion");
+  // force lastest version
+
+  document
+    .querySelector("[data-css_version]")
+    .setAttribute(
+      "href",
+      "css/style.css" + "?version=" + Math.floor(Math.random() * 100000)
+    );
+
+  document
+    .querySelector("[data-nav_version]")
+    .setAttribute(
+      "href",
+      "/js/nav.js" + "?version=" + Math.floor(Math.random() * 100000)
+    );
+
+  document
+    .querySelector("[data-index_version]")
+    .setAttribute(
+      "href",
+      "js/index.js" + "?version=" + Math.floor(Math.random() * 100000)
+    );
 }
