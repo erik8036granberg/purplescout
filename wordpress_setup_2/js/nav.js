@@ -28,19 +28,65 @@ const pageHeader = `
 const pageFooter = `
 <h1>Contact</h1>
 <div class="content">
-  <div class="address">
-    <h2>Purple Scout</h2>
-    <p>Njalsgade 21G, 3rd fl.</p>
-    <p>2300 København S</p>
-    <p>Denmark</p>
-  </div>
+<div class="contact_wrapper">
   <div class="contact">
+    <h2>Purple Scout Copenhagen</h2>
     <a href="tel:+45 2674 4609" class="icon phone">+45 2674 4609</a>
-    <a href="mailto:niels.ostergaard@purplescout.dk" class="icon mail"
-      >niels.ostergaard@purplescout.dk</a
-    >
+    <a href="mailto:niels.ostergaard@purplescout.dk" class="icon mail">niels.ostergaard@purplescout.dk</a>
   </div>
+  <div class="links">
+    <h2>Purple Scout corporate website</h2>
+    <a href="https://www.purplescout.se/" class="icon link">www.purplescout.se/</a>
+    <a href="https://www.purplescout.dk/" class="icon link">www.purplescout.dk/</a>
   <div class="some"></div>
+  </div>
+  </div>
+  <div class="about">
+  <h2>About</h2>
+    <p>
+    Purple Scout is a consulting company specialized in programming and problem-solving. We are based in Sweden and Denmark.
+    </p>
+    <p>
+    We’re extraordinarily good at understanding what our customers truly need. Purple Scout’s superpower is our flexibility. As a customer, you can rest assured that our industry-leading consultants always will create the perfect solution for your projects. 
+    </p>
+  </div>
+  <div class="location">
+    <div class="map"></div>
+    <div class="address_wrapper">
+      <div class="address">
+      <h3>Copenhangen</h3>
+      <p>
+      Njalsgade 21G, 3rd fl.<br>
+      2300 København S<br>
+      Denmark
+      </p>
+      </div>
+      <div class="address">
+      <h3>Malmö</h3>
+      <p>
+      Stortorget 29<br>
+      211 34  Malmö<br>
+      Sweden
+      </p>
+      </div>
+      <div class="address">
+      <h3>Gothenburg</h3>
+      <p>
+      Västra Hamngatan 10<br>
+      411 17  Göteborg<br>
+      Sweden
+      </p>
+      </div>
+      <div class="address">
+      <h3>Borås</h3>
+      <p>
+      Västerlånggatan 30-32<br>
+      03 30  Borås<br>
+      Sweden
+      </p>
+      </div>
+    </div>
+  </div>
   <div class="copyright">
     Copyright <span class="year"></span> © Purple Scout ApS
   </div>
