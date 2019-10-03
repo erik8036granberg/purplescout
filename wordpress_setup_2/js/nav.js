@@ -139,19 +139,3 @@ function fadeMenu() {
     }
   }
 }
-
-// force lastest version
-
-document
-  .querySelector("[data-css_version]")
-  .setAttribute(
-    "href",
-    "css/style.css" + "?version=" + Math.floor(Math.random() * 100000)
-  );
-
-document
-  .querySelector("[data-nav_version]")
-  .setAttribute(
-    "href",
-    "/js/nav.js" + "?version=" + Math.floor(Math.random() * 100000)
-  );

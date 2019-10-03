@@ -15,7 +15,6 @@ window.addEventListener("DOMContentLoaded", init);
 
 function init() {
   console.log("init");
-  latestVersion();
   getPageContent();
   document.querySelector("#showreel .explore").addEventListener("click", () => {
     window.location = "#workarea";
@@ -110,29 +109,4 @@ function showRelatedCases(caseItem) {
     window.sessionStorage.setItem("caseLink", caseItem.slug);
   });
   document.querySelector("[data-related_container]").appendChild(clone);
-}
-
-function latestVersion() {
-  // force lastest version
-
-  document
-    .querySelector("[data-css_version]")
-    .setAttribute(
-      "href",
-      "css/style.css" + "?version=" + Math.floor(Math.random() * 100000)
-    );
-
-  document
-    .querySelector("[data-nav_version]")
-    .setAttribute(
-      "href",
-      "/js/nav.js" + "?version=" + Math.floor(Math.random() * 100000)
-    );
-
-  document
-    .querySelector("[data-workarea_version]")
-    .setAttribute(
-      "href",
-      "/js/workarea.js" + "?version=" + Math.floor(Math.random() * 100000)
-    );
 }
