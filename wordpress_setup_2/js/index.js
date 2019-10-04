@@ -4,6 +4,7 @@ window.addEventListener("DOMContentLoaded", init);
 
 function init() {
   getPageContent();
+  getTestimonialContent();
   getCaseContent();
   getWorkareaContent();
   getCtaContent();
@@ -93,55 +94,6 @@ function InsertPageContent(pageContent) {
   dest.querySelector("[data-intro_text]").innerHTML =
     pageContent.acf.intro_text;
 
-  // - - - - - - - - - - - get Testimonials content  - - - - - - - - - - -
-
-  let testimonialArray = [];
-  console.log("get Testimonials content");
-
-  fetch("/wordpress/wp-json/wp/v2/testimonial?per_page=100")
-    .then(response => response.json())
-    .then(myJson => {
-      testimonialArray = myJson;
-      console.log(testimonialArray);
-      console.log("testimonialArray");
-      displayTestimonial(testimonialArray[0]);
-      swapTestimonials();
-    });
-
-  let swapTime = 3000;
-  let i = 0;
-  function swapTestimonials() {
-    i++;
-    console.log("swapTestimonials");
-    setTimeout(() => {
-      if (i <= testimonialArray.length - 1) {
-        displayTestimonial(testimonialArray[i]);
-        swapTestimonials();
-      } else {
-        i = 0;
-        swapTestimonials();
-      }
-    }, swapTime);
-  }
-
-  function displayTestimonial(testimonial) {
-    console.log("displayTestimonial");
-
-    dest.querySelector("[data-testimonial_quote]").textContent =
-      testimonial.acf.testimonial_quote;
-    dest.querySelector("[data-testimonial_name]").textContent =
-      testimonial.acf.testimonial_name;
-    if (testimonial.acf.testimonial_title) {
-      dest.querySelector("[data-testimonial_company]").textContent =
-        testimonial.acf.testimonial_title +
-        ", " +
-        testimonial.acf.testimonial_company;
-    } else {
-      dest.querySelector("[data-testimonial_company]").textContent =
-        testimonial.acf.testimonial_company;
-    }
-  }
-
   // - - - - - - - - - - - cases section  - - - - - - - - - - -
 
   dest.querySelector("[data-cases_header]").textContent =
@@ -185,6 +137,87 @@ function InsertPageContent(pageContent) {
     pageContent.acf.how_deliver_header;
   dest.querySelector("[data-how_deliver_text]").innerHTML =
     pageContent.acf.how_deliver_text;
+}
+
+// - - - - - - - - - - - get Testimonials content  - - - - - - - - - - -
+
+let testimonialArray = [];
+
+function getTestimonialContent() {
+  console.log("get Testimonials content");
+
+  fetch("/wordpress/wp-json/wp/v2/testimonial?per_page=100")
+    .then(response => response.json())
+    .then(myJson => {
+      testimonialArray = myJson;
+      console.log(testimonialArray);
+      console.log("testimonialArray");
+      displayTestimonial(testimonialArray[0]);
+    });
+}
+
+function displayTestimonial(testimonial) {
+  console.log("displayTestimonial");
+
+  document.querySelector("#intro .bubble").style.opacity = "0";
+  document.querySelector("[data-testimonial_name]").style.maxHeight = "0";
+  document.querySelector("[data-testimonial_company]").style.maxHeight = "0";
+  setTimeout(() => {
+    document.querySelector("[data-testimonial_quote]").innerHTML = "";
+    document.querySelector("[data-testimonial_name]").innerHTML = "";
+    document.querySelector("[data-testimonial_company]").innerHTML = "";
+    document.querySelector("#intro .bubble").style.opacity = "1";
+    document.querySelector("[data-testimonial_name]").textContent =
+      testimonial.acf.testimonial_name;
+    if (testimonial.acf.testimonial_title) {
+      document.querySelector("[data-testimonial_company]").textContent =
+        testimonial.acf.testimonial_title +
+        ", " +
+        testimonial.acf.testimonial_company;
+    } else {
+      document.querySelector("[data-testimonial_company]").textContent =
+        testimonial.acf.testimonial_company;
+    }
+
+    let nr = 0;
+    let speed = 15;
+    let quote = testimonial.acf.testimonial_quote;
+
+    typeWriter();
+
+    function typeWriter() {
+      if (nr < quote.length) {
+        document.querySelector(
+          "[data-testimonial_quote]"
+        ).innerHTML += quote.charAt(nr);
+        nr++;
+        setTimeout(typeWriter, speed);
+      } else {
+        setTimeout(() => {
+          document.querySelector("[data-testimonial_name]").style.opacity = "1";
+          document.querySelector("[data-testimonial_name]").style.maxHeight =
+            "20rem";
+          document.querySelector("[data-testimonial_company]").style.opacity =
+            "1";
+          document.querySelector("[data-testimonial_company]").style.maxHeight =
+            "20rem";
+        }, 1500);
+      }
+    }
+  }, 2000);
+
+  let swapdelay = 8000;
+  let sw_i = 0;
+
+  setTimeout(() => {
+    if (sw_i <= testimonialArray.length - 1) {
+      displayTestimonial(testimonialArray[sw_i]);
+      sw_i++;
+    } else {
+      sw_i = 0;
+      displayTestimonial(testimonialArray[0]);
+    }
+  }, swapdelay);
 }
 
 // - - - - - - - - - - - get cases content  - - - - - - - - - - -

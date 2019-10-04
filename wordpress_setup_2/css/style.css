@@ -733,6 +733,9 @@ footer h1 {
 #intro .case_testimonial {
   font-family: "Economica", sans-serif;
   margin: 5rem 0 0;
+  transition: 2s ease-in-out;
+  height: 40rem;
+  position: relative;
 }
 
 /* #intro .case_testimonial .bubble {
@@ -745,9 +748,13 @@ footer h1 {
 #intro .case_testimonial .bubble {
   /* background-color: var(--bg_logo); */
   padding: 6rem 4rem 5rem 5rem;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   margin: 0 0 8.5rem;
   border: 1px solid var(--bg_purple_3);
+  transition: 2s ease-in-out;
 }
 
 #intro .case_testimonial .bubble::before {
@@ -793,6 +800,7 @@ footer h1 {
   font-size: 3rem;
   line-height: 4rem;
   margin: 0 0 1.5rem;
+  overflow: hidden;
 }
 
 #intro .case_testimonial .bubble .quote::after {
@@ -805,6 +813,9 @@ footer h1 {
   font-size: 3rem;
   line-height: 3rem;
   color: var(--bg_purple_3);
+  transition: 2s ease-in-out;
+  overflow: hidden;
+  max-height: 0;
 }
 
 /* what section */
