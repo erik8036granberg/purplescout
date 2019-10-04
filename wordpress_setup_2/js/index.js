@@ -142,7 +142,6 @@ function InsertPageContent(pageContent) {
 // - - - - - - - - - - - get Testimonials content  - - - - - - - - - - -
 
 let testimonialArray = [];
-let swapdelay = 10000;
 let sw_i = 0;
 
 function getTestimonialContent() {
@@ -155,62 +154,67 @@ function getTestimonialContent() {
 }
 
 function displayTestimonial(testimonial) {
-  document.querySelector("#intro .bubble").style.opacity = "0";
-  document.querySelector("[data-testimonial_name]").style.maxHeight = "0";
-  document.querySelector("[data-testimonial_company]").style.maxHeight = "0";
-  setTimeout(() => {
-    document.querySelector("[data-testimonial_quote]").innerHTML = "";
-    document.querySelector("[data-testimonial_name]").innerHTML = "";
-    document.querySelector("[data-testimonial_company]").innerHTML = "";
-    document.querySelector("#intro .bubble").style.opacity = "1";
-    document.querySelector("[data-testimonial_name]").textContent =
-      testimonial.acf.testimonial_name;
-    if (testimonial.acf.testimonial_title) {
-      document.querySelector("[data-testimonial_company]").textContent =
-        testimonial.acf.testimonial_title +
-        ", " +
-        testimonial.acf.testimonial_company;
+  document
+    .querySelector("[data-testimonial_name]")
+    .classList.remove("quote_expand");
+  document
+    .querySelector("[data-testimonial_company]")
+    .classList.remove("quote_expand");
+  document.querySelector("[data-testimonial_quote]").innerHTML = "";
+  document.querySelector("[data-testimonial_name]").innerHTML = "";
+  document.querySelector("[data-testimonial_company]").innerHTML = "";
+  document.querySelector("#intro .quote_wrapper").style.opacity = "1";
+  document.querySelector("[data-testimonial_name]").textContent =
+    testimonial.acf.testimonial_name;
+  if (testimonial.acf.testimonial_title) {
+    document.querySelector("[data-testimonial_company]").textContent =
+      testimonial.acf.testimonial_title +
+      ", " +
+      testimonial.acf.testimonial_company;
+  } else {
+    document.querySelector("[data-testimonial_company]").textContent =
+      testimonial.acf.testimonial_company;
+  }
+
+  let nr = 0;
+  let speed = 15;
+  let quote = testimonial.acf.testimonial_quote;
+
+  typeWriter();
+
+  function typeWriter() {
+    if (nr < quote.length) {
+      document.querySelector(
+        "[data-testimonial_quote]"
+      ).innerHTML += quote.charAt(nr);
+      nr++;
+      setTimeout(typeWriter, speed);
     } else {
-      document.querySelector("[data-testimonial_company]").textContent =
-        testimonial.acf.testimonial_company;
-    }
-
-    let nr = 0;
-    let speed = 15;
-    let quote = testimonial.acf.testimonial_quote;
-
-    typeWriter();
-
-    function typeWriter() {
-      if (nr < quote.length) {
-        document.querySelector(
-          "[data-testimonial_quote]"
-        ).innerHTML += quote.charAt(nr);
-        nr++;
-        setTimeout(typeWriter, speed);
-      } else {
+      setTimeout(() => {
+        document.querySelector("[data-testimonial_name]").style.opacity = "1";
+        document
+          .querySelector("[data-testimonial_name]")
+          .classList.add("quote_expand");
+        document.querySelector("[data-testimonial_company]").style.opacity =
+          "1";
+        document
+          .querySelector("[data-testimonial_company]")
+          .classList.add("quote_expand");
         setTimeout(() => {
-          document.querySelector("[data-testimonial_name]").style.opacity = "1";
-          document.querySelector("[data-testimonial_name]").style.maxHeight =
-            "20rem";
-          document.querySelector("[data-testimonial_company]").style.opacity =
-            "1";
-          document.querySelector("[data-testimonial_company]").style.maxHeight =
-            "20rem";
-        }, 1500);
-      }
+          document.querySelector("#intro .quote_wrapper").style.opacity = "0";
+          setTimeout(() => {
+            sw_i++;
+            if (sw_i <= testimonialArray.length - 1) {
+              displayTestimonial(testimonialArray[sw_i]);
+            } else {
+              sw_i = 0;
+              displayTestimonial(testimonialArray[0]);
+            }
+          }, 2000);
+        }, 2000);
+      }, 1500);
     }
-  }, 3000);
-
-  setTimeout(() => {
-    sw_i++;
-    if (sw_i <= testimonialArray.length - 1) {
-      displayTestimonial(testimonialArray[sw_i]);
-    } else {
-      sw_i = 0;
-      displayTestimonial(testimonialArray[0]);
-    }
-  }, swapdelay);
+  }
 }
 
 // - - - - - - - - - - - get cases content  - - - - - - - - - - -
