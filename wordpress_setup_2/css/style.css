@@ -754,7 +754,7 @@ footer h1 {
   width: 100%;
   margin: 0 0 8.5rem;
   border: 1px solid var(--bg_purple_3);
-  transition: 2s ease-in-out;
+  transition: 3s ease-in-out;
 }
 
 #intro .case_testimonial .bubble::before {

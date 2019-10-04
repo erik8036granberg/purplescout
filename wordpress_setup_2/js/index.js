@@ -142,23 +142,19 @@ function InsertPageContent(pageContent) {
 // - - - - - - - - - - - get Testimonials content  - - - - - - - - - - -
 
 let testimonialArray = [];
+let swapdelay = 10000;
+let sw_i = 0;
 
 function getTestimonialContent() {
-  console.log("get Testimonials content");
-
   fetch("/wordpress/wp-json/wp/v2/testimonial?per_page=100")
     .then(response => response.json())
     .then(myJson => {
       testimonialArray = myJson;
-      console.log(testimonialArray);
-      console.log("testimonialArray");
       displayTestimonial(testimonialArray[0]);
     });
 }
 
 function displayTestimonial(testimonial) {
-  console.log("displayTestimonial");
-
   document.querySelector("#intro .bubble").style.opacity = "0";
   document.querySelector("[data-testimonial_name]").style.maxHeight = "0";
   document.querySelector("[data-testimonial_company]").style.maxHeight = "0";
@@ -204,15 +200,12 @@ function displayTestimonial(testimonial) {
         }, 1500);
       }
     }
-  }, 2000);
-
-  let swapdelay = 8000;
-  let sw_i = 0;
+  }, 3000);
 
   setTimeout(() => {
+    sw_i++;
     if (sw_i <= testimonialArray.length - 1) {
       displayTestimonial(testimonialArray[sw_i]);
-      sw_i++;
     } else {
       sw_i = 0;
       displayTestimonial(testimonialArray[0]);
