@@ -28,7 +28,8 @@ const pageHeader = `
 const pageFooter = `
 <h1>Contact</h1>
     <div class="content">
-      <div class="contact_wrapper">
+      <div class="contact_wrapper" data-aos="fade-up"
+      data-aos-duration="500">
         <div class="contact">
           <h2>Purple Scout Copenhagen</h2>
           <a href="tel:+45 2674 4609" class="icon phone">+45 2674 4609</a>
@@ -39,15 +40,16 @@ const pageFooter = `
         <div class="links">
           <h2>Purple Scout corporate website</h2>
           <a href="https://www.purplescout.se/" class="icon link"
-            >www.purplescout.se/</a
+            >www.purplescout.se</a
           >
           <a href="https://www.purplescout.dk/" class="icon link"
-            >www.purplescout.dk/</a
+            >www.purplescout.dk</a
           >
           <div class="some"></div>
         </div>
       </div>
-      <div class="about">
+      <div class="about" data-aos="fade-up"
+      data-aos-duration="500">
         <h2>About</h2>
         <p>
           Purple Scout is a consulting company specialized in programming and
@@ -60,7 +62,8 @@ const pageFooter = `
           create the perfect solution for your projects.
         </p>
       </div>
-      <div class="location_wrapper">
+      <div class="location_wrapper" data-aos="fade-up"
+      data-aos-duration="500">
         <img src="../img/location_map.svg" alt="map" class="localtion_map" />
         <div class="address_wrapper">
           <div class="address">
@@ -122,14 +125,12 @@ const pageSome = `
 `;
 
 document.addEventListener("DOMContentLoaded", function(event) {
-  // response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-  // response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-  // response.setHeader("Expires", "0"); // Proxies.
   document.querySelector("header").innerHTML = pageHeader;
   document.querySelector("footer").innerHTML = pageFooter;
   document.querySelector("footer .some").innerHTML = pageSome;
   navMenu();
   fadeMenu();
+  setAOS();
   document.querySelector("#logo").addEventListener("click", () => {
     window.location = "/index.html#showreel";
     if (mobileMenu === "open") {
@@ -186,4 +187,15 @@ function fadeMenu() {
       }, 1250);
     }
   }
+}
+
+function setAOS() {
+  setTimeout(function() {
+    let script = document.createElement("script");
+    script.src = "https://unpkg.com/aos@2.3.1/dist/aos.js";
+    document.body.appendChild(script);
+    script.onload = function() {
+      AOS.init();
+    };
+  }, 2000);
 }
