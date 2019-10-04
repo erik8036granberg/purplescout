@@ -104,6 +104,7 @@ function InsertPageContent(pageContent) {
       testimonialArray = myJson;
       console.log(testimonialArray);
       console.log("testimonialArray");
+      displayTestimonial(testimonialArray[0]);
       swapTestimonials();
     });
 
@@ -111,28 +112,33 @@ function InsertPageContent(pageContent) {
   let i = 0;
   function swapTestimonials() {
     i++;
+    console.log("swapTestimonials");
     setTimeout(() => {
-      if (i <= testimonialArray.length) {
+      if (i <= testimonialArray.length - 1) {
         displayTestimonial(testimonialArray[i]);
+        swapTestimonials();
       } else {
         i = 0;
-        displayTestimonial(testimonialArray[i]);
+        swapTestimonials();
       }
     }, swapTime);
   }
 
   function displayTestimonial(testimonial) {
     console.log("displayTestimonial");
+
     dest.querySelector("[data-testimonial_quote]").textContent =
       testimonial.acf.testimonial_quote;
     dest.querySelector("[data-testimonial_name]").textContent =
       testimonial.acf.testimonial_name;
     if (testimonial.acf.testimonial_title) {
       dest.querySelector("[data-testimonial_company]").textContent =
-        testimonial.acf.testimonial_title + ", " + testimonial.acf.company;
+        testimonial.acf.testimonial_title +
+        ", " +
+        testimonial.acf.testimonial_company;
     } else {
       dest.querySelector("[data-testimonial_company]").textContent =
-        testimonial.acf.company;
+        testimonial.acf.testimonial_company;
     }
   }
 
