@@ -93,6 +93,49 @@ function InsertPageContent(pageContent) {
   dest.querySelector("[data-intro_text]").innerHTML =
     pageContent.acf.intro_text;
 
+  // - - - - - - - - - - - get Testimonials content  - - - - - - - - - - -
+
+  let testimonialArray = [];
+  console.log("get Testimonials content");
+
+  fetch("/wordpress/wp-json/wp/v2/testimonial?per_page=100")
+    .then(response => response.json())
+    .then(myJson => {
+      testimonialArray = myJson;
+      console.log(testimonialArray);
+      console.log("testimonialArray");
+      swapTestimonials();
+    });
+
+  let swapTime = 3000;
+  let i = 0;
+  function swapTestimonials() {
+    i++;
+    setTimeout(() => {
+      if (i <= testimonialArray.length) {
+        displayTestimonial(testimonialArray[i]);
+      } else {
+        i = 0;
+        displayTestimonial(testimonialArray[i]);
+      }
+    }, swapTime);
+  }
+
+  function displayTestimonial(testimonial) {
+    console.log("displayTestimonial");
+    dest.querySelector("[data-testimonial_quote]").textContent =
+      testimonial.acf.testimonial_quote;
+    dest.querySelector("[data-testimonial_name]").textContent =
+      testimonial.acf.testimonial_name;
+    if (testimonial.acf.testimonial_title) {
+      dest.querySelector("[data-testimonial_company]").textContent =
+        testimonial.acf.testimonial_title + ", " + testimonial.acf.company;
+    } else {
+      dest.querySelector("[data-testimonial_company]").textContent =
+        testimonial.acf.company;
+    }
+  }
+
   // - - - - - - - - - - - cases section  - - - - - - - - - - -
 
   dest.querySelector("[data-cases_header]").textContent =
