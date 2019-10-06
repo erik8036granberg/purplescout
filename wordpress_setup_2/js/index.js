@@ -26,16 +26,12 @@ function init() {
 
 // - - - - - - - - - - - get page content  - - - - - - - - - - -
 
-function getPageContent() {
-  fetch("/wordpress/wp-json/wp/v2/pages/6")
-    .then(response => response.json())
-    .then(myJson => {
-      const pageContent = myJson;
-      InsertPageContent(pageContent);
-    });
+async function getPageContent() {
+  let pageContent = await fetchWP("pages/6");
+  insertPageContent(pageContent);
 }
 
-function InsertPageContent(pageContent) {
+function insertPageContent(pageContent) {
   let dest = document.querySelector("[data-container]");
 
   // - - - - - - - - - - - page title & description - - - - - - - - - - -
@@ -144,13 +140,9 @@ function InsertPageContent(pageContent) {
 let testimonialArray = [];
 let sw_i = 0;
 
-function getTestimonialContent() {
-  fetch("/wordpress/wp-json/wp/v2/testimonial?per_page=100")
-    .then(response => response.json())
-    .then(myJson => {
-      testimonialArray = myJson;
-      displayTestimonial(testimonialArray[0]);
-    });
+async function getTestimonialContent() {
+  testimonialArray = await fetchWP("testimonial?per_page=100");
+  displayTestimonial(testimonialArray[0]);
 }
 
 function displayTestimonial(testimonial) {
@@ -219,24 +211,17 @@ function displayTestimonial(testimonial) {
 
 // - - - - - - - - - - - get cases content  - - - - - - - - - - -
 
-function getCaseContent() {
+async function getCaseContent() {
   let caseArray = [];
-
-  // get cases
-  fetch("/wordpress/wp-json/wp/v2/case?per_page=100")
-    .then(response => response.json())
-    .then(myJson => {
-      let getCases = myJson;
-      //fix id
-      getCases.forEach(caseItem => {
-        caseItem.id = caseItem.slug;
-      });
-      caseArray = getCases;
-      caseArray.forEach(showCases);
-      if (caseArray.length === getCases.length) {
-        casesScollEffect();
-      }
-    });
+  let getCases = await fetchWP("case?per_page=100");
+  getCases.forEach(caseItem => {
+    caseItem.id = caseItem.slug;
+  });
+  caseArray = getCases;
+  caseArray.forEach(showCases);
+  if (caseArray.length === getCases.length) {
+    casesScollEffect();
+  }
 }
 
 // - - - - - - - - - - - - - display cases - - - - - - - - - - - - -
@@ -262,21 +247,15 @@ function showCases(caseItem) {
 
 // - - - - - - - - - - - get work areas content  - - - - - - - - - - -
 
-function getWorkareaContent() {
+async function getWorkareaContent() {
   let workareaArray = [];
-
-  // get cases
-  fetch("/wordpress/wp-json/wp/v2/workareas?per_page=100")
-    .then(response => response.json())
-    .then(myJson => {
-      let getWorkareas = myJson;
-      //fix id
-      getWorkareas.forEach(workareaItem => {
-        workareaItem.id = workareaItem.slug;
-      });
-      workareaArray = getWorkareas;
-      workareaArray.forEach(showWorkareas);
-    });
+  let getWorkareas = await fetchWP("workareas?per_page=100");
+  //fix id
+  getWorkareas.forEach(workareaItem => {
+    workareaItem.id = workareaItem.slug;
+  });
+  workareaArray = getWorkareas;
+  workareaArray.forEach(showWorkareas);
 }
 
 // - - - - - - - - - - - - - display work areas - - - - - - - - - - - - -
@@ -340,16 +319,9 @@ function fullVideo() {
 
 let getCtaArray;
 
-function getCtaContent() {
-  // get getCtaContent
-  fetch("/wordpress/wp-json/wp/v2/cta?per_page=100")
-    .then(response => response.json())
-    .then(myJson => {
-      getCtaArray = myJson;
-      console.log("getCtaArray");
-      console.log(getCtaArray);
-      ctaButtons();
-    });
+async function getCtaContent() {
+  getCtaArray = await fetchWP("cta?per_page=100");
+  ctaButtons();
 }
 
 // - - - - - - - - - - - - - set CTA elements - - - - - - - - - - - - -
@@ -730,4 +702,15 @@ function convert(str) {
   str = str.replace(/"/g, "&quot;");
   str = str.replace(/'/g, "&#039;");
   return str;
+}
+
+function fetchWP(wpPath) {
+  return new Promise(resolve => {
+    fetch("/wordpress/wp-json/wp/v2/" + wpPath)
+      .then(response => response.json())
+      .then(myJson => {
+        let wpContent = myJson;
+        resolve(wpContent);
+      });
+  });
 }

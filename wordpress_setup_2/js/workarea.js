@@ -14,26 +14,20 @@ let showreelButton = false;
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
-  console.log("init");
   getPageContent();
+  getCaseContent();
   document.querySelector("#showreel .explore").addEventListener("click", () => {
     window.location = "#workarea";
   });
 }
 
-function getPageContent() {
-  console.log("getPageContent");
-  fetch(`/wordpress/wp-json/wp/v2/workareas?slug=${urlWorkarea}`)
-    .then(response => response.json())
-    .then(myJson => {
-      const pageContent = myJson[0];
-      console.log("pageContent from URL-filter");
-      console.log(pageContent);
-      InsertPageContent(pageContent);
-    });
+async function getPageContent() {
+  let pageContent = await fetchWP(`workareas?slug=${urlWorkarea}`);
+  pageContent = pageContent[0];
+  insertPageContent(pageContent);
 }
 
-function InsertPageContent(pageContent) {
+function insertPageContent(pageContent) {
   let dest = document.querySelector("[data-container]");
 
   // - - - - - - - - - - - page title & description - - - - - - - - - - -
@@ -66,29 +60,23 @@ function InsertPageContent(pageContent) {
   dest.querySelector("[data-area_main_text]").innerHTML =
     pageContent.acf.area_main_text;
 
-  // - - - - - - - - - - - get related cases - - - - - - - - - - -
+  getCaseContent(pageContent.id);
+}
 
-  // get cases
-  fetch("/wordpress/wp-json/wp/v2/case?per_page=100")
-    .then(response => response.json())
-    .then(myJson => {
-      let caseArray = myJson;
-      caseArray.forEach(caseItem => {
-        console.log(caseItem.acf.work_areas_symbols);
-        console.log(caseItem.acf.work_areas_symbols.includes(pageContent.id));
-        if (caseItem.acf.work_areas_symbols.includes(pageContent.id)) {
-          showRelatedCases(caseItem);
-        }
-      });
-    });
+// - - - - - - - - - - - get related cases - - - - - - - - - - -
+
+async function getCaseContent(pageContent_id) {
+  let caseArray = await fetchWP("case?per_page=100");
+  caseArray.forEach(caseItem => {
+    if (caseItem.acf.work_areas_symbols.includes(pageContent_id)) {
+      showRelatedCases(caseItem);
+    }
+  });
 }
 
 // - - - - - - - - - - - - - display related cases - - - - - - - - - - - - -
 
 function showRelatedCases(caseItem) {
-  console.log("showRelatedCases");
-  console.log("Case match workarea-ID");
-  console.log(caseItem);
   const template = document.querySelector("[data-related_template]").content;
   const clone = template.cloneNode(true);
   clone
@@ -109,4 +97,15 @@ function showRelatedCases(caseItem) {
     window.sessionStorage.setItem("caseLink", caseItem.slug);
   });
   document.querySelector("[data-related_container]").appendChild(clone);
+}
+
+function fetchWP(wpPath) {
+  return new Promise(resolve => {
+    fetch("/wordpress/wp-json/wp/v2/" + wpPath)
+      .then(response => response.json())
+      .then(myJson => {
+        let wpContent = myJson;
+        resolve(wpContent);
+      });
+  });
 }

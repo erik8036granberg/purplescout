@@ -806,6 +806,7 @@ footer h1 {
   line-height: 4rem;
   margin: 0 0 1.5rem;
   overflow: hidden;
+  transition: 2s ease-in-out;
 }
 
 #intro .case_testimonial .bubble .quote::after {

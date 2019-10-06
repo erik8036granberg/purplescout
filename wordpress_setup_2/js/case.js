@@ -22,16 +22,11 @@ function init() {
   });
 }
 
-function getPageContent() {
+async function getPageContent() {
   console.log("getPageContent");
-  fetch(`/wordpress/wp-json/wp/v2/case?slug=${urlCase}`)
-    .then(response => response.json())
-    .then(myJson => {
-      const pageContent = myJson[0];
-      console.log("pageContent from URL-filter");
-      console.log(pageContent);
-      InsertPageContent(pageContent);
-    });
+  let pageContent = await fetchWP(`case?slug=${urlCase}`);
+  pageContent = pageContent[0];
+  InsertPageContent(pageContent);
 }
 
 function InsertPageContent(pageContent) {
@@ -102,16 +97,12 @@ function InsertPageContent(pageContent) {
   factPoints.forEach(getFactPoints);
   let factArray = [];
   console.log(factArray);
-  function getFactPoints(factPoint_id) {
-    fetch(`/wordpress/wp-json/wp/v2/facts/${factPoint_id}`)
-      .then(response => response.json())
-      .then(myJson => {
-        let factPoint = myJson;
-        factArray.push(factPoint);
-        if (factArray.length === factPoints.length) {
-          insertFact();
-        }
-      });
+  async function getFactPoints(factPoint_id) {
+    let factPoint = await fetchWP(`facts/${factPoint_id}`);
+    factArray.push(factPoint);
+    if (factArray.length === factPoints.length) {
+      insertFact();
+    }
   }
 
   // - - - - - - - - - - - insert fact points - - - - - - - - - - -
@@ -182,16 +173,12 @@ function InsertPageContent(pageContent) {
   workAreas.forEach(getWorkareas);
   let workAreaArray = [];
 
-  function getWorkareas(workarea_id) {
-    fetch(`/wordpress/wp-json/wp/v2/workareas/${workarea_id}`)
-      .then(response => response.json())
-      .then(myJson => {
-        let workarea = myJson;
-        workAreaArray.push(workarea);
-        if (workAreaArray.length === workAreas.length) {
-          insertWorkaraSymbols();
-        }
-      });
+  async function getWorkareas(workarea_id) {
+    let workarea = await fetchWP(`workareas/${workarea_id}`);
+    workAreaArray.push(workarea);
+    if (workAreaArray.length === workAreas.length) {
+      insertWorkaraSymbols();
+    }
   }
 
   // - - - - - - - - - - - insert Work area symbols - - - - - - - - - - -
@@ -231,5 +218,16 @@ function showreelCta() {
         inview = false;
       }
     });
+  });
+}
+
+function fetchWP(wpPath) {
+  return new Promise(resolve => {
+    fetch("/wordpress/wp-json/wp/v2/" + wpPath)
+      .then(response => response.json())
+      .then(myJson => {
+        let wpContent = myJson;
+        resolve(wpContent);
+      });
   });
 }
