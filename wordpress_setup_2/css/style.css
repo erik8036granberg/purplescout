@@ -563,7 +563,6 @@ footer h1 {
 #cta_modal .phone,
 #cta_modal .mail {
   color: var(--bg_lightblue);
-  font-size: 1rem;
   word-break: break-all;
 }
 
@@ -1460,34 +1459,17 @@ footer .copyright {
 }
 
 #case .case_images {
-  margin: 0 0 -12%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 3rem;
 }
 
 #case .case_images img {
-  width: 95%;
-  position: relative;
   border: 2px solid var(--bg_logo);
 }
 
 #case .case_images .noborder {
   border: 0 none transparent;
-}
-
-#case .case_images img:nth-child(odd) {
-  margin: 0 0 0 0;
-  z-index: 100;
-}
-
-#case .case_images img:nth-child(even) {
-  margin: 0 0 0 0;
-}
-
-#case .case_images img:not(:first-child) {
-  transform: translateY(0);
-}
-
-#case .case_images img:last-child {
-  margin-bottom: -6vw;
 }
 
 #case .point_text {
@@ -1820,6 +1802,11 @@ footer .copyright {
 
   footer .links .link::before {
     margin: 0 1rem 0 0;
+  }
+
+  #case .case_images {
+    display: block;
+    margin: 0 0 -12%;
   }
 
   #case .case_images img {

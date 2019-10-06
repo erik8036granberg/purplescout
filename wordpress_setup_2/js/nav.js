@@ -131,6 +131,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   navMenu();
   fadeMenu();
   setAOS();
+  scrollToAnchor();
   document.querySelector("#logo").addEventListener("click", () => {
     window.location = "/index.html#showreel";
     if (mobileMenu === "open") {
@@ -198,4 +199,19 @@ function setAOS() {
       AOS.init();
     };
   }, 2000);
+}
+
+function scrollToAnchor() {
+  let currentUrl = document.URL;
+  console.log("currentUrl");
+  console.log(currentUrl);
+  if (currentUrl.includes("#")) {
+    const achor = "#" + currentUrl.split("#")[1];
+    console.log(achor);
+    setTimeout(function() {
+      document.querySelector(achor).scrollIntoView({
+        behavior: "smooth"
+      });
+    }, 1000);
+  }
 }
