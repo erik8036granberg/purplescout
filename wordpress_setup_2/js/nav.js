@@ -1,5 +1,97 @@
 let mobileMenu = "closed";
 
+document.addEventListener("DOMContentLoaded", function(event) {
+  document.querySelector("header").innerHTML = pageHeader;
+  document.querySelector("footer").innerHTML = pageFooter;
+  document.querySelector("footer .some").innerHTML = pageSome;
+  navMenu();
+  fadeMenu();
+  setAOS();
+  scrollToAnchor();
+  document.querySelector("#logo").addEventListener("click", () => {
+    window.location = "/index.html#showreel";
+    if (mobileMenu === "open") {
+      closeMenu();
+    }
+  });
+  document.querySelector("#logotext .holder").addEventListener("click", () => {
+    window.location = "/index.html#showreel";
+    if (mobileMenu === "open") {
+      closeMenu();
+    }
+  });
+  document.querySelector(".year").innerHTML = new Date().getFullYear();
+});
+
+function navMenu() {
+  document.querySelector(".burger").addEventListener("click", openMenu);
+  document.querySelector("nav ul").addEventListener("click", closeMenu);
+}
+
+function openMenu() {
+  document.querySelector(".burger").classList.add("change");
+  document.querySelector("nav").classList.add("show");
+  document.querySelector("html").classList.add("fixed");
+  document.querySelector(".burger").removeEventListener("click", openMenu);
+  document.querySelector(".burger").addEventListener("click", closeMenu);
+  mobileMenu = "open";
+}
+
+function closeMenu() {
+  document.querySelector(".burger").removeEventListener("click", closeMenu);
+  document.querySelector(".burger").addEventListener("click", openMenu);
+  document.querySelector(".burger").classList.remove("change");
+  document.querySelector("nav").classList.remove("show");
+  document.querySelector("html").classList.remove("fixed");
+  mobileMenu = "closed";
+  fadeMenu();
+}
+
+function fadeMenu() {
+  window.addEventListener("scroll", scrolled);
+
+  function scrolled() {
+    window.removeEventListener("scroll", scrolled);
+    if (mobileMenu !== "open") {
+      document.querySelector("#gradiant").classList.remove("show_gradiant");
+      document.querySelector("header").classList.add("hide_scroll_nav");
+      document.querySelector("#gradiant").classList.add("hide_gradiant");
+      setTimeout(function() {
+        document.querySelector("#gradiant").classList.remove("hide_gradiant");
+        document.querySelector("header").classList.remove("hide_scroll_nav");
+        document.querySelector("#gradiant").classList.add("show_gradiant");
+        fadeMenu();
+      }, 1250);
+    }
+  }
+}
+
+function setAOS() {
+  setTimeout(function() {
+    let script = document.createElement("script");
+    script.src = "https://unpkg.com/aos@2.3.1/dist/aos.js";
+    document.body.appendChild(script);
+    script.onload = function() {
+      AOS.init();
+    };
+  }, 2000);
+}
+
+function scrollToAnchor() {
+  let currentUrl = document.URL;
+  console.log("currentUrl");
+  console.log(currentUrl);
+  if (currentUrl.includes("#")) {
+    const achor = "#" + currentUrl.split("#")[1];
+    console.log(achor);
+    setTimeout(function() {
+      document.querySelector(achor).scrollIntoView({
+        behavior: "smooth"
+      });
+    }, 1000);
+  }
+}
+
 const pageHeader = `
 <div id="logo"></div>
       <div class="burger">
@@ -123,95 +215,3 @@ const pageSome = `
       ><i class="fab fa-linkedin"></i
     ></a>
 `;
-
-document.addEventListener("DOMContentLoaded", function(event) {
-  document.querySelector("header").innerHTML = pageHeader;
-  document.querySelector("footer").innerHTML = pageFooter;
-  document.querySelector("footer .some").innerHTML = pageSome;
-  navMenu();
-  fadeMenu();
-  setAOS();
-  scrollToAnchor();
-  document.querySelector("#logo").addEventListener("click", () => {
-    window.location = "/index.html#showreel";
-    if (mobileMenu === "open") {
-      closeMenu();
-    }
-  });
-  document.querySelector("#logotext .holder").addEventListener("click", () => {
-    window.location = "/index.html#showreel";
-    if (mobileMenu === "open") {
-      closeMenu();
-    }
-  });
-  document.querySelector(".year").innerHTML = new Date().getFullYear();
-});
-
-function navMenu() {
-  document.querySelector(".burger").addEventListener("click", openMenu);
-  document.querySelector("nav ul").addEventListener("click", closeMenu);
-}
-
-function openMenu() {
-  document.querySelector(".burger").classList.add("change");
-  document.querySelector("nav").classList.add("show");
-  document.querySelector("html").classList.add("fixed");
-  document.querySelector(".burger").removeEventListener("click", openMenu);
-  document.querySelector(".burger").addEventListener("click", closeMenu);
-  mobileMenu = "open";
-}
-
-function closeMenu() {
-  document.querySelector(".burger").removeEventListener("click", closeMenu);
-  document.querySelector(".burger").addEventListener("click", openMenu);
-  document.querySelector(".burger").classList.remove("change");
-  document.querySelector("nav").classList.remove("show");
-  document.querySelector("html").classList.remove("fixed");
-  mobileMenu = "closed";
-  fadeMenu();
-}
-
-function fadeMenu() {
-  window.addEventListener("scroll", scrolled);
-
-  function scrolled() {
-    window.removeEventListener("scroll", scrolled);
-    if (mobileMenu !== "open") {
-      document.querySelector("#gradiant").classList.remove("show_gradiant");
-      document.querySelector("header").classList.add("hide_scroll_nav");
-      document.querySelector("#gradiant").classList.add("hide_gradiant");
-      setTimeout(function() {
-        document.querySelector("#gradiant").classList.remove("hide_gradiant");
-        document.querySelector("header").classList.remove("hide_scroll_nav");
-        document.querySelector("#gradiant").classList.add("show_gradiant");
-        fadeMenu();
-      }, 1250);
-    }
-  }
-}
-
-function setAOS() {
-  setTimeout(function() {
-    let script = document.createElement("script");
-    script.src = "https://unpkg.com/aos@2.3.1/dist/aos.js";
-    document.body.appendChild(script);
-    script.onload = function() {
-      AOS.init();
-    };
-  }, 2000);
-}
-
-function scrollToAnchor() {
-  let currentUrl = document.URL;
-  console.log("currentUrl");
-  console.log(currentUrl);
-  if (currentUrl.includes("#")) {
-    const achor = "#" + currentUrl.split("#")[1];
-    console.log(achor);
-    setTimeout(function() {
-      document.querySelector(achor).scrollIntoView({
-        behavior: "smooth"
-      });
-    }, 1000);
-  }
-}

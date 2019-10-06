@@ -139,13 +139,26 @@ function insertPageContent(pageContent) {
 
 let testimonialArray = [];
 let sw_i = 0;
+let tmInview = "false";
 
 async function getTestimonialContent() {
   testimonialArray = await fetchWP("testimonial?per_page=100");
-  displayTestimonial(testimonialArray[0]);
+  let tmObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.intersectionRatio > 0) {
+        tmInview = "true";
+        displayTestimonial(testimonialArray[sw_i]);
+      } else {
+        console.log("false");
+        tmInview = "false";
+      }
+    });
+  });
+  tmObserver.observe(document.querySelector("#intro .case_testimonial"));
 }
 
 function displayTestimonial(testimonial) {
+  console.log("display new testimonial");
   document
     .querySelector("[data-testimonial_name]")
     .classList.remove("quote_expand");
@@ -194,15 +207,19 @@ function displayTestimonial(testimonial) {
           .classList.add("quote_expand");
         setTimeout(() => {
           document.querySelector("#intro .quote_wrapper").style.opacity = "0";
-          setTimeout(() => {
-            sw_i++;
-            if (sw_i <= testimonialArray.length - 1) {
-              displayTestimonial(testimonialArray[sw_i]);
-            } else {
-              sw_i = 0;
-              displayTestimonial(testimonialArray[0]);
-            }
-          }, 2000);
+          if (tmInview === "true") {
+            setTimeout(() => {
+              if (tmInview === "true") {
+                sw_i++;
+                if (sw_i <= testimonialArray.length - 1) {
+                  displayTestimonial(testimonialArray[sw_i]);
+                } else {
+                  sw_i = 0;
+                  displayTestimonial(testimonialArray[0]);
+                }
+              }
+            }, 2000);
+          }
         }, 2000);
       }, 1500);
     }
