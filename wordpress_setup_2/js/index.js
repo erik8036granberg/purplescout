@@ -281,8 +281,8 @@ function displayTestimonial(testimonial) {
             sw_i = 0;
             displayTestimonial(testimonialArray[0]);
           }
-        }, 1500);
-      }, 4000);
+        }, 3000);
+      }, 5000);
     }, 1000);
   }, 500);
 }

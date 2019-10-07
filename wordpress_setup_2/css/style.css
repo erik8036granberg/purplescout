@@ -737,23 +737,15 @@ footer h1 {
   font-family: "Economica", sans-serif;
   margin: 5rem 0 0;
   transition: 1.5s ease-in-out;
-  overflow: hidden;
 }
-
-/* #intro .case_testimonial .bubble {
-  background-color: var(--bg_logo);
-  padding: 6rem 4rem 5rem 5rem;
-  position: relative;
-  margin: 0 0 8.5rem;
-} */
 
 #intro .quote_wrapper {
   opacity: 0;
-  transition: 1.5s ease-in-out;
+  transition: 1s ease-in-out;
 }
 
 #intro .intro_text {
-  min-height: 50vh;
+  /* min-height: 50vh; */
 }
 
 #intro .case_testimonial .bubble {
@@ -765,6 +757,9 @@ footer h1 {
   border: 1px solid var(--bg_purple_3);
   transition: 2s ease-in-out;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #intro .case_testimonial .bubble::before {
@@ -778,19 +773,6 @@ footer h1 {
   padding: 0;
   margin: 0;
 }
-
-/* #intro .case_testimonial .bubble::after {
-  content: "";
-  position: absolute;
-  bottom: -8.5rem;
-  left: 5rem;
-  width: 15rem;
-  height: 8.5rem;
-  position: absolute;
-  background-image: url(../img/testimonial_bubble.svg);
-  background-size: cover;
-  background-repeat: no-repeat;
-} */
 
 #intro .case_testimonial .bubble::after {
   content: "";
@@ -822,7 +804,7 @@ footer h1 {
 
 #intro .case_testimonial .bubble .quote_person,
 #intro .case_testimonial .bubble .quote_company {
-  font-size: 2.5rem;
+  font-size: 2rem;
   line-height: 2.5rem;
   color: var(--bg_purple_3);
   overflow: hidden;
@@ -2039,7 +2021,7 @@ footer .copyright {
     grid-column-gap: 5rem;
   }
 
-  #intro .content h2 {
+  #intro .intro_header {
     grid-column: 1 / -1;
   }
 
@@ -2052,10 +2034,15 @@ footer .copyright {
     line-height: 4rem;
   }
 
-  #intro .case_testimonial .bubble .quote_person,
-  #intro .case_testimonial .bubble .quote_company {
+  #intro .case_testimonial .bubble .quote_person {
     font-size: 3rem;
     line-height: 3rem;
+  }
+
+  #intro .case_testimonial .bubble .quote_company {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    margin: 1rem 0 0;
   }
 
   #cases .showcase {
@@ -2320,6 +2307,7 @@ footer .copyright {
   #intro .content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr;
     grid-column-gap: 3vw;
   }
 
@@ -2335,6 +2323,7 @@ footer .copyright {
   #intro .case_testimonial {
     margin: 0 0 0;
     grid-column: 4 / span 2;
+    grid-row: 1 / span 2;
   }
 
   #cases #logo_wrapper,
