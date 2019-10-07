@@ -25,6 +25,7 @@ async function getPageContent() {
   let pageContent = await fetchWP(`workareas?slug=${urlWorkarea}`);
   pageContent = pageContent[0];
   insertPageContent(pageContent);
+  console.log(pageContent);
 }
 
 function insertPageContent(pageContent) {
@@ -40,10 +41,20 @@ function insertPageContent(pageContent) {
 
   // - - - - - - - - - - - show reel image & header - - - - - - - - - - -
 
-  dest.querySelector(
-    "[data-showreel_image]"
-  ).style.backgroundImage = `url(${pageContent.acf.showreel_image.url})`;
-
+  if (window.innerWidth > 1200) {
+    dest.querySelector(
+      "[data-showreel_image]"
+    ).style.backgroundImage = `url(${pageContent.acf.showreel_image.url})`;
+  } else if (window.innerWidth > 900) {
+    dest.querySelector(
+      "[data-showreel_image]"
+    ).style.backgroundImage = `url(${pageContent.acf.showreel_image.sizes.post -
+      thumbnail})`;
+  } else {
+    dest.querySelector(
+      "[data-showreel_image]"
+    ).style.backgroundImage = `url(${pageContent.acf.showreel_image.sizes.medium_large})`;
+  }
   dest.querySelector("[data-showreel_header]").textContent =
     pageContent.acf.area_header;
 

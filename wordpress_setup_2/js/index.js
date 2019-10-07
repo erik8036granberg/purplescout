@@ -148,15 +148,12 @@ async function getTestimonialContent() {
       if (entry.intersectionRatio > 0) {
         tmInview = "true";
         console.log("true");
-        document.querySelector(
-          "#intro .case_testimonial .bubble"
-        ).style.maxHeight = "100rem";
+        document.querySelector("#intro .case_testimonial").style.height =
+          "auto";
       } else {
         console.log("false");
         tmInview = "false";
-        document.querySelector(
-          "#intro .case_testimonial .bubble"
-        ).style.maxHeight = "0";
+        document.querySelector("#intro .case_testimonial").style.height = "0";
       }
     });
   });
@@ -227,9 +224,9 @@ function displayTestimonial(testimonial) {
             sw_i = 0;
             displayTestimonial(testimonialArray[0]);
           }
-        }, 2000);
+        }, 1500);
       }, 4000);
-    }, 1500);
+    }, 1000);
   }, 500);
 }
 

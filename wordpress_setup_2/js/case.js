@@ -27,6 +27,7 @@ async function getPageContent() {
   let pageContent = await fetchWP(`case?slug=${urlCase}`);
   pageContent = pageContent[0];
   InsertPageContent(pageContent);
+  console.log(pageContent);
 }
 
 function InsertPageContent(pageContent) {
@@ -80,6 +81,12 @@ function InsertPageContent(pageContent) {
       pageContent.acf.solution + " for " + pageContent.acf.company
     );
 
+  if (pageContent.acf.image_1_border === "border") {
+    dest.querySelector("[data-image_1]").classList.add("border");
+  } else if (pageContent.acf.image_1_border === "no_border") {
+    dest.querySelector("[data-image_1]").classList.add("noborder");
+  }
+
   dest
     .querySelector("[data-image_2]")
     .setAttribute("src", pageContent.acf.image_2.sizes.medium_large);
@@ -89,6 +96,12 @@ function InsertPageContent(pageContent) {
       "alt",
       pageContent.acf.solution + " for " + pageContent.acf.company
     );
+
+  if (pageContent.acf.image_2_border === "border") {
+    dest.querySelector("[data-image_2]").classList.add("border");
+  } else if (pageContent.acf.image_1_border === "no_border") {
+    dest.querySelector("[data-image_2]").classList.add("noborder");
+  }
 
   // - - - - - - - - - - - fact points - - - - - - - - - - -
 
