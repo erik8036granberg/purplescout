@@ -16,7 +16,6 @@ window.addEventListener("DOMContentLoaded", init);
 function init() {
   console.log("init");
   getPageContent();
-  showreelCta();
   document.querySelector("#showreel .explore").addEventListener("click", () => {
     window.location = "#case";
   });
@@ -26,11 +25,11 @@ async function getPageContent() {
   console.log("getPageContent");
   let pageContent = await fetchWP(`case?slug=${urlCase}`);
   pageContent = pageContent[0];
-  InsertPageContent(pageContent);
+  insertPageContent(pageContent);
   console.log(pageContent);
 }
 
-function InsertPageContent(pageContent) {
+function insertPageContent(pageContent) {
   let dest = document.querySelector("[data-container]");
 
   // - - - - - - - - - - - page title & description - - - - - - - - - - -
@@ -41,23 +40,46 @@ function InsertPageContent(pageContent) {
     .querySelector("[data-seo_description]")
     .setAttribute("content", pageContent.acf.seo_description);
 
-  // - - - - - - - - - - - video - - - - - - - - - - -
+  // - - - - - - - - - - - show reel image alternativ image or video sizes - - - - - - - - - - -
 
-  if (window.innerWidth > 1200) {
-    console.log("Large video");
-    dest
-      .querySelector("[data-showreel_video]")
-      .setAttribute("src", pageContent.acf.showreel_video_large);
-  } else if (window.innerWidth > 500) {
-    console.log("Medium video");
-    dest
-      .querySelector("[data-showreel_video]")
-      .setAttribute("src", pageContent.acf.showreel_video_medium);
+  if (pageContent.acf.showreel_image) {
+    console.log("showreel image is present");
+
+    document.querySelector("#overlay").classList.remove("hide");
+    document.querySelector("#showreel_image").classList.remove("hide");
+    document.querySelector("video").classList.add("hide");
+
+    if (window.innerWidth > 1200) {
+      dest.querySelector(
+        "[data-showreel_image]"
+      ).style.backgroundImage = `url(${pageContent.acf.showreel_image.url})`;
+    } else if (window.innerWidth > 900) {
+      dest.querySelector(
+        "[data-showreel_image]"
+      ).style.backgroundImage = `url(${pageContent.acf.showreel_image.sizes
+        .post - thumbnail})`;
+    } else {
+      dest.querySelector(
+        "[data-showreel_image]"
+      ).style.backgroundImage = `url(${pageContent.acf.showreel_image.sizes.medium_large})`;
+    }
   } else {
-    console.log("Small video");
-    dest
-      .querySelector("[data-showreel_video]")
-      .setAttribute("src", pageContent.acf.showreel_video_small);
+    if (window.innerWidth > 1200) {
+      console.log("Large video");
+      dest
+        .querySelector("[data-showreel_video]")
+        .setAttribute("src", pageContent.acf.showreel_video_large);
+    } else if (window.innerWidth > 500) {
+      console.log("Medium video");
+      dest
+        .querySelector("[data-showreel_video]")
+        .setAttribute("src", pageContent.acf.showreel_video_medium);
+    } else {
+      console.log("Small video");
+      dest
+        .querySelector("[data-showreel_video]")
+        .setAttribute("src", pageContent.acf.showreel_video_small);
+    }
   }
 
   // - - - - - - - - - - - case header - - - - - - - - - - -
@@ -208,30 +230,6 @@ function InsertPageContent(pageContent) {
       document.querySelector("[data-work_areas_symbols]").appendChild(makeImg);
     });
   }
-}
-
-// - - - - - - - - - - - Showreel CTA - - - - - - - - - - -
-
-// TODO: modal code + correct CTA?
-
-function showreelCta() {
-  let inview;
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.intersectionRatio > 0) {
-        inview = true;
-        setTimeout(() => {
-          if (inview == true && showreelButton == false) {
-            console.log("Seen for 5 sec for the first time");
-            showreelButton = true;
-            document.querySelector("#showreel .cta").classList.add("appear");
-          }
-        }, 5000);
-      } else {
-        inview = false;
-      }
-    });
-  });
 }
 
 function fetchWP(wpPath) {

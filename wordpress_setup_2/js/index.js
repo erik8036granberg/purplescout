@@ -133,6 +133,63 @@ function insertPageContent(pageContent) {
     pageContent.acf.how_deliver_header;
   dest.querySelector("[data-how_deliver_text]").innerHTML =
     pageContent.acf.how_deliver_text;
+
+  // - - - - - - - - - - - how section backgournd images - - - - - - - - - - -
+
+  if (window.innerWidth > 1200) {
+    dest.querySelector(
+      "[data-discover_bg]"
+    ).style.backgroundImage = `url(${pageContent.acf.how_discover_image.url})`;
+    dest.querySelector(
+      "[data-data_bg]"
+    ).style.backgroundImage = `url(${pageContent.acf.how_data_image.url})`;
+    dest.querySelector(
+      "[data-design_bg]"
+    ).style.backgroundImage = `url(${pageContent.acf.how_design_image.url})`;
+    dest.querySelector(
+      "[data-develop_bg]"
+    ).style.backgroundImage = `url(${pageContent.acf.how_develop_image.url})`;
+    dest.querySelector(
+      "[data-deliver_bg]"
+    ).style.backgroundImage = `url(${pageContent.acf.how_deliver_image.url})`;
+  } else if (window.innerWidth > 900) {
+    dest.querySelector(
+      "[data-discover_bg]"
+    ).style.backgroundImage = `url(${pageContent.acf.how_discover_image.sizes
+      .post - thumbnail})`;
+    dest.querySelector(
+      "[data-data_bg]"
+    ).style.backgroundImage = `url(${pageContent.acf.how_data_image.sizes.post -
+      thumbnail})`;
+    dest.querySelector(
+      "[data-design_bg]"
+    ).style.backgroundImage = `url(${pageContent.acf.how_design_image.sizes
+      .post - thumbnail})`;
+    dest.querySelector(
+      "[data-develop_bg]"
+    ).style.backgroundImage = `url(${pageContent.acf.how_develop_image.sizes
+      .post - thumbnail})`;
+    dest.querySelector(
+      "[data-deliver_bg]"
+    ).style.backgroundImage = `url(${pageContent.acf.how_deliver_image.sizes
+      .post - thumbnail})`;
+  } else {
+    dest.querySelector(
+      "[data-discover_bg]"
+    ).style.backgroundImage = `url(${pageContent.acf.how_discover_image.sizes.medium_large})`;
+    dest.querySelector(
+      "[data-data_bg]"
+    ).style.backgroundImage = `url(${pageContent.acf.how_data_image.sizes.medium_large})`;
+    dest.querySelector(
+      "[data-design_bg]"
+    ).style.backgroundImage = `url(${pageContent.acf.how_design_image.sizes.medium_large})`;
+    dest.querySelector(
+      "[data-develop_bg]"
+    ).style.backgroundImage = `url(${pageContent.acf.how_develop_image.sizes.medium_large})`;
+    dest.querySelector(
+      "[data-deliver_bg]"
+    ).style.backgroundImage = `url(${pageContent.acf.how_deliver_image.sizes.medium_large})`;
+  }
 }
 
 // - - - - - - - - - - - get Testimonials content  - - - - - - - - - - -
