@@ -84,6 +84,8 @@ function insertPageContent(pageContent) {
   // - - - - - - - - - - - case header - - - - - - - - - - -
 
   dest.querySelector("[data-company]").textContent = pageContent.acf.company;
+  dest.querySelector("[data-description_header]").textContent =
+    pageContent.acf.description_header;
   dest.querySelector("[data-solution]").textContent = pageContent.acf.solution;
 
   // - - - - - - - - - - - main text - - - - - - - - - - -

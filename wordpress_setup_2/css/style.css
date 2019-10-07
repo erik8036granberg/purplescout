@@ -1475,12 +1475,21 @@ footer .copyright {
   color: var(--bg_lightblue);
 }
 
+#case .company {
+  font-family: "Economica", sans-serif;
+  font-size: 3rem;
+  text-transform: uppercase;
+  color: #fff;
+}
+
 #case h2 {
   text-transform: uppercase;
   margin-bottom: 1rem;
 }
 
 #case .case_header .solution {
+  font-family: "Economica", sans-serif;
+  font-size: 2rem;
   text-transform: uppercase;
   color: var(--bg_lightblue);
 }
@@ -2042,7 +2051,7 @@ footer .copyright {
   #intro .case_testimonial .bubble .quote_company {
     font-size: 2rem;
     line-height: 2.5rem;
-    margin: 1rem 0 0;
+    margin: 0.5rem 0 0;
   }
 
   #cases .showcase {
