@@ -45,9 +45,7 @@ function insertPageContent(pageContent) {
   if (pageContent.acf.showreel_image) {
     console.log("showreel image is present");
 
-    document.querySelector("#overlay").classList.remove("hide");
-    document.querySelector("#showreel_image").classList.remove("hide");
-    document.querySelector("video").classList.add("hide");
+    document.querySelector("video").style.display = "none";
 
     if (window.innerWidth > 1200) {
       dest.querySelector(
@@ -64,6 +62,7 @@ function insertPageContent(pageContent) {
       ).style.backgroundImage = `url(${pageContent.acf.showreel_image.sizes.medium_large})`;
     }
   } else {
+    document.querySelector("#showreel_image").style.display = "none";
     if (window.innerWidth > 1200) {
       console.log("Large video");
       dest

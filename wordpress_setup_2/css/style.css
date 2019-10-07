@@ -82,6 +82,10 @@ a:hover {
   transition: 0.5s;
 }
 
+.hide {
+  display: none;
+}
+
 /* header */
 
 header {
@@ -402,7 +406,7 @@ footer h1 {
   transform-origin: right top;
   text-transform: uppercase;
   color: var(--bg_purple_2);
-  opacity: 0.6;
+  opacity: 0.2;
   z-index: 20;
 }
 
@@ -1092,6 +1096,7 @@ h2 {
 
 #how .hide {
   opacity: 0;
+  pointer-events: none;
 }
 
 #how .background {
@@ -1888,6 +1893,11 @@ footer .copyright {
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - media queries 700px - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
 @media screen and (min-width: 700px) {
+  main h1,
+  footer h1 {
+    opacity: 0.6;
+  }
+
   #showreel .header {
     line-height: 6rem;
   }
