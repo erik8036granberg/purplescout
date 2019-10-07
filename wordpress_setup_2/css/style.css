@@ -959,7 +959,7 @@ h2 {
 #cases h3 {
   text-transform: uppercase;
   font-family: "Economica", sans-serif;
-  font-size: 3rem;
+  font-size: 2.75rem;
   margin: 0;
   padding: 0;
   color: #fff;
@@ -1361,6 +1361,10 @@ footer .address_wrapper {
   grid-gap: 10vw;
 }
 
+footer .content {
+  overflow: visible;
+}
+
 footer h2 {
   color: var(--bg_lightblue);
   font-family: "Economica", sans-serif;
@@ -1378,13 +1382,14 @@ footer h3 {
 
 footer .icon {
   display: block;
+  white-space: nowrap;
 }
 
 footer .icon::before {
-  display: block;
+  display: inline-flex;
   position: relative;
   top: 1rem;
-  margin: 1rem 0 1.5rem;
+  margin: 1rem 1rem 0 0;
   content: "";
   background-size: cover;
   background-repeat: no-repeat;
@@ -1783,6 +1788,8 @@ footer .copyright {
 #workareapage #workarea .related_wrapper h4 {
   color: var(--bg_lightblue);
   text-transform: uppercase;
+  font-family: "Economica", sans-serif;
+  font-size: 2.2rem;
 }
 
 #workareapage #workarea .arrow {

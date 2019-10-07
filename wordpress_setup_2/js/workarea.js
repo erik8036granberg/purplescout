@@ -100,8 +100,8 @@ function showRelatedCases(caseItem) {
       caseItem.acf.solution + " for " + caseItem.acf.company
     );
   clone.querySelector("[data-company]").textContent = caseItem.acf.company;
-  clone.querySelector("[data-thumb_description]").textContent =
-    caseItem.acf.thumb_description;
+  clone.querySelector("[data-description_header]").textContent =
+    caseItem.acf.description_header;
   clone.querySelector("[data-solution]").textContent = caseItem.acf.solution;
   clone.querySelector("[data-related_link]").addEventListener("click", () => {
     window.location.href = "/case.html?id=" + caseItem.slug;
