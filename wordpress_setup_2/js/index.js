@@ -315,6 +315,8 @@ function showCases(caseItem) {
     .querySelector("[data-video_still_image]")
     .setAttribute("alt", caseItem.acf.company);
   clone.querySelector("[data-company]").textContent = caseItem.acf.company;
+  clone.querySelector("[data-description_header]").textContent =
+    caseItem.acf.description_header;
   clone.querySelector("[data-solution]").textContent = caseItem.acf.solution;
   clone.querySelector("[data-id]").addEventListener("click", () => {
     window.location.href = "case.html?id=" + caseItem.slug;

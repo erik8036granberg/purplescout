@@ -744,10 +744,6 @@ footer h1 {
   transition: 1s ease-in-out;
 }
 
-#intro .intro_text {
-  /* min-height: 50vh; */
-}
-
 #intro .case_testimonial .bubble {
   /* background-color: var(--bg_logo); */
   padding: 6rem 4rem 5rem 5rem;
@@ -953,9 +949,27 @@ h2 {
   padding: 0;
 }
 
+#cases .company {
+  font-family: "Economica", sans-serif;
+  font-size: 2.25rem;
+  text-transform: uppercase;
+  color: var(--bg_purple_3);
+}
+
 #cases h3 {
+  text-transform: uppercase;
+  font-family: "Economica", sans-serif;
   font-size: 3rem;
-  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+#cases .solution {
+  font-family: "Economica", sans-serif;
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: #fff;
 }
 
 #cases .arrow {
@@ -1480,6 +1494,7 @@ footer .copyright {
   font-size: 3rem;
   text-transform: uppercase;
   color: #fff;
+  margin: 0 0 0.5rem;
 }
 
 #case h2 {
