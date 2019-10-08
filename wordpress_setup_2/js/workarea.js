@@ -99,7 +99,9 @@ function showRelatedCases(caseItem) {
       caseItem.acf.description_header + " for " + caseItem.acf.company
     );
   let trimLength;
-  if (window.innerWidth > 1200) {
+  if (window.innerWidth > 1500) {
+    trimLength = 50;
+  } else if (window.innerWidth > 1200) {
     trimLength = 40;
   } else if (window.innerWidth > 500) {
     trimLength = 70;

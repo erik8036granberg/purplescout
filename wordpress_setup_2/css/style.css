@@ -712,6 +712,17 @@ footer h1 {
   z-index: 0;
 }
 
+#showreel #dots {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><circle cx='3' cy='3' r='1'/></svg>")
+    repeat;
+}
+
 .fullscreen-bg_video {
   min-height: 100vh;
   min-width: 100vw;
@@ -729,6 +740,7 @@ footer h1 {
   bottom: 0;
   left: 0;
   background-image: linear-gradient(transparent, var(--bg_purple_4));
+  z-index: 5;
 }
 
 /* intro section */
