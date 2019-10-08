@@ -1465,14 +1465,13 @@ footer .copyright {
 
 #case .company {
   font-family: "Economica", sans-serif;
-  font-size: 3rem;
+  font-size: 2.5rem;
   text-transform: uppercase;
   color: #fff;
   margin: 0 0 0.5rem;
 }
 
 #case h2 {
-  text-transform: uppercase;
   margin: 0;
 }
 
@@ -1765,6 +1764,11 @@ footer .copyright {
   transform-origin: left center;
 }
 
+#workareapage #workarea .thumb_info {
+  display: flex;
+  align-items: center;
+}
+
 #workareapage #workarea .related_wrapper:hover {
   transform: scale(1.05);
 }
@@ -1775,13 +1779,18 @@ footer .copyright {
 
 #workareapage #workarea .related_wrapper h4 {
   color: #fff;
-  text-transform: uppercase;
   font-family: "Economica", sans-serif;
   font-size: 2.2rem;
 }
 
+#workareapage #workarea .related_wrapper .description {
+  display: block;
+}
+
 #workareapage #workarea .related_wrapper .company {
   color: var(--bg_lightblue);
+  text-transform: uppercase;
+  display: block;
 }
 
 #workareapage #workarea .arrow {

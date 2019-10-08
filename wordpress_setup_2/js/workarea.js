@@ -46,10 +46,9 @@ function insertPageContent(pageContent) {
       "[data-showreel_image]"
     ).style.backgroundImage = `url(${pageContent.acf.showreel_image.url})`;
   } else if (window.innerWidth > 900) {
-    dest.querySelector(
-      "[data-showreel_image]"
-    ).style.backgroundImage = `url(${pageContent.acf.showreel_image.sizes.post -
-      thumbnail})`;
+    dest.querySelector("[data-showreel_image]").style.backgroundImage = `url(${
+      pageContent.acf.showreel_image.sizes["post-thumbnail"]
+    })`;
   } else {
     dest.querySelector(
       "[data-showreel_image]"
@@ -99,9 +98,38 @@ function showRelatedCases(caseItem) {
       "alt",
       caseItem.acf.description_header + " for " + caseItem.acf.company
     );
-  clone.querySelector("[data-description_header]").textContent =
-    caseItem.acf.description_header;
-  clone.querySelector("[data-company]").textContent = caseItem.acf.company;
+  let trimLength;
+  if (window.innerWidth > 1200) {
+    trimLength = 40;
+  } else if (window.innerWidth > 500) {
+    trimLength = 70;
+  } else {
+    trimLength = 30;
+  }
+  if (caseItem.acf.description_header.length > trimLength) {
+    let trimmedDescription = caseItem.acf.description_header.substring(
+      0,
+      trimLength
+    );
+    trimmedDescription = trimmedDescription.substr(
+      0,
+      Math.min(trimmedDescription.length, trimmedDescription.lastIndexOf(" "))
+    );
+    clone.querySelector("[data-description_header]").textContent =
+      trimmedDescription + "...";
+  } else {
+    clone.querySelector("[data-description_header]").textContent =
+      caseItem.acf.description_header;
+  }
+  if (caseItem.acf.company.includes(" - ")) {
+    let justCompanyName = caseItem.acf.company.substring(
+      0,
+      caseItem.acf.company.indexOf(" - ")
+    );
+    clone.querySelector("[data-company]").textContent = justCompanyName;
+  } else {
+    clone.querySelector("[data-company]").textContent = caseItem.acf.company;
+  }
   clone.querySelector("[data-related_link]").addEventListener("click", () => {
     window.location.href = "/case.html?id=" + caseItem.slug;
     window.sessionStorage.setItem("caseLink", caseItem.slug);

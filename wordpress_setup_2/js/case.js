@@ -54,8 +54,9 @@ function insertPageContent(pageContent) {
     } else if (window.innerWidth > 900) {
       dest.querySelector(
         "[data-showreel_image]"
-      ).style.backgroundImage = `url(${pageContent.acf.showreel_image.sizes
-        .post - thumbnail})`;
+      ).style.backgroundImage = `url(${
+        pageContent.acf.showreel_image.sizes["post-thumbnail"]
+      })`;
     } else {
       dest.querySelector(
         "[data-showreel_image]"
