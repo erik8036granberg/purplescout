@@ -958,10 +958,9 @@ h2 {
 }
 
 #cases h3 {
-  text-transform: uppercase;
   font-family: "Economica", sans-serif;
-  font-size: 2.75rem;
-  margin: 0;
+  font-size: 3.5rem;
+  margin: 0 0 1rem;
   padding: 0;
   color: #fff;
 }
@@ -1108,27 +1107,6 @@ h2 {
   transition: 0.5s;
 }
 
-/* #how .discover_bg {
-  background-image: url(../img/how_discover.jpg);
-  z-index: 5;
-}
-#how .data_bg {
-  background-image: url(../img/how_data.jpg);
-  z-index: 4;
-}
-#how .design_bg {
-  background-image: url(../img/how_design.jpg);
-  z-index: 3;
-}
-#how .develop_bg {
-  background-image: url(../img/how_develup.jpg);
-  z-index: 2;
-}
-#how .deliver_bg {
-  background-image: url(../img/how_deliver.jpg);
-  z-index: 1;
-} */
-
 #how #active_item {
   position: absolute;
   left: 50%;
@@ -1177,14 +1155,6 @@ h2 {
   transition: 0.5s;
 }
 
-/* #how .fixedholder.active {
-  position: fixed;
-  width: 80%;
-  height: 80%;
-  top: 0;
-  z-index: 100;
-} */
-
 #how .orbit {
   position: absolute;
   top: 50%;
@@ -1194,7 +1164,6 @@ h2 {
   margin-top: -50%;
   margin-left: -50%;
   transition: 0.5s;
-  /* border: 1px solid red; */
   border-radius: 50%;
 }
 
@@ -1222,7 +1191,6 @@ h2 {
   transform-origin: center center;
   line-height: 0;
   overflow: visible;
-  /* background-color: red; */
   color: var(--bg_lightblue);
 }
 
@@ -2145,7 +2113,7 @@ footer .copyright {
   #cases #logo_wrapper,
   #activelogos,
   #hiddenlogos {
-    grid-column-gap: 5vw;
+    grid-column-gap: 15vw;
   }
 
   footer .copyright {
