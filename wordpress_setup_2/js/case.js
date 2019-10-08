@@ -220,19 +220,20 @@ function insertPageContent(pageContent) {
   // - - - - - - - - - - - insert Work area symbols - - - - - - - - - - -
 
   function insertWorkaraSymbols() {
+    console.log("insertWorkaraSymbols");
     workAreaArray.forEach(workareaItem => {
       const makeDiv = document.createElement("DIV");
-      makediv.setAttribute("class", "workarea_wrapper");
+      makeDiv.setAttribute("class", "workarea_wrapper");
       makeDiv.innerHTML = workareaItem.acf.area_header;
       makeDiv.addEventListener("click", () => {
         window.location.href = "/workarea.html?id=" + workareaItem.slug;
         window.sessionStorage.setItem("workAreaLink", workareaItem.slug);
       });
-      document.querySelector("[data-work_areas_symbols]").appendChild(makediv);
       const makeImg = document.createElement("IMG");
       makeImg.setAttribute("src", workareaItem.acf.area_symbol);
       makeImg.setAttribute("alt", workareaItem.acf.area_header);
-      document.querySelector(makediv).appendChild(makediv);
+      makeImg.appendChild(makeDiv);
+      document.querySelector("[data-work_areas_symbols]").appendChild(makeDiv);
     });
   }
 }
