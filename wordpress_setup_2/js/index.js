@@ -622,24 +622,6 @@ function autoTurn() {
   }
 }
 
-// test of IntersectionObserver for how-circle behavior
-
-function mobileHowCircle() {
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.intersectionRatio > 0) {
-        console.log("circle in");
-        document.querySelector("#how .fixedholder").classList.add("active");
-      } else {
-        console.log("circle out");
-        document.querySelector("#how .fixedholder").classList.remove("active");
-      }
-    });
-  });
-
-  observer.observe(document.querySelector("#how #discover_text"));
-}
-
 function casesScollEffect() {
   ScrollOut({
     targets: ".case",
