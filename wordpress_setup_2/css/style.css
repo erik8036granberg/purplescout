@@ -558,10 +558,10 @@ footer h1 {
 }
 
 #cta_modal .icon::before {
-  display: block;
+  display: inline-flex;
   position: relative;
   top: 1rem;
-  margin: 1rem 0 1.5rem;
+  margin: 1rem 1rem 1.5rem;
   content: "";
   background-size: cover;
   background-repeat: no-repeat;
@@ -572,6 +572,12 @@ footer h1 {
 #cta_modal .mail {
   color: var(--bg_lightblue);
   word-break: break-all;
+}
+
+#cta_modal .mail div {
+  display: inline-flex;
+  line-height: 2.5rem;
+  transform: translateY(-1rem);
 }
 
 #cta_modal .phone::before {

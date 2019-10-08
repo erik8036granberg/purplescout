@@ -457,7 +457,14 @@ function displayCta(ctaItem) {
   clone.querySelector("[data-cta_contact_person]").textContent =
     ctaItem.acf.cta_contact_person;
   clone.querySelector("[data-cta_phone]").textContent = ctaItem.acf.cta_phone;
-  clone.querySelector("[data-cta_mail]").textContent = ctaItem.acf.cta_mail;
+  if (window.innerWidth < 400) {
+    const mailLinebrak = ctaItem.acf.cta_mail.replace("@", "<br>@");
+    clone.querySelector(
+      "[data-cta_mail]"
+    ).innerHTML = `<div>${mailLinebrak}</div>`;
+  } else {
+    clone.querySelector("[data-cta_mail]").textContent = ctaItem.acf.cta_mail;
+  }
   clone
     .querySelector("[data-cta_mail]")
     .setAttribute("href", "mailto:" + ctaItem.acf.cta_mail);
