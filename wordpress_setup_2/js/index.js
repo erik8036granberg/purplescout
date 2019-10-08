@@ -200,21 +200,6 @@ let tmInview = "false";
 
 async function getTestimonialContent() {
   testimonialArray = await fetchWP("testimonial?per_page=100");
-  let tmObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.intersectionRatio > 0) {
-        tmInview = "true";
-        console.log("true");
-        document.querySelector("#intro .case_testimonial").style.height =
-          "auto";
-      } else {
-        console.log("false");
-        tmInview = "false";
-        document.querySelector("#intro .case_testimonial").style.height = "0";
-      }
-    });
-  });
-  tmObserver.observe(document.querySelector("#intro .case_testimonial"));
   displayTestimonial(testimonialArray[sw_i]);
 }
 
@@ -314,10 +299,9 @@ function showCases(caseItem) {
   clone
     .querySelector("[data-video_still_image]")
     .setAttribute("alt", caseItem.acf.company);
-  clone.querySelector("[data-company]").textContent = caseItem.acf.company;
   clone.querySelector("[data-description_header]").textContent =
     caseItem.acf.description_header;
-  clone.querySelector("[data-solution]").textContent = caseItem.acf.solution;
+  clone.querySelector("[data-company]").textContent = caseItem.acf.company;
   clone.querySelector("[data-id]").addEventListener("click", () => {
     window.location.href = "case.html?id=" + caseItem.slug;
     window.sessionStorage.setItem("caseLink", caseItem.slug);

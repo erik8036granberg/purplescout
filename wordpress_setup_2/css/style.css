@@ -737,6 +737,7 @@ footer h1 {
   font-family: "Economica", sans-serif;
   margin: 5rem 0 0;
   transition: 1.5s ease-in-out;
+  min-height: 50rem;
 }
 
 #intro .quote_wrapper {
@@ -938,7 +939,7 @@ h2 {
 
 #cases .label {
   border: 1px solid var(--bg_purple_3);
-  padding: 2rem;
+  padding: 2rem 7rem 2rem 2rem;
   position: relative;
   background-color: var(--bg_gray);
   line-height: 2.6rem;
@@ -1504,7 +1505,7 @@ footer .copyright {
 
 #case h2 {
   text-transform: uppercase;
-  margin-bottom: 1rem;
+  margin: 0;
 }
 
 #case .case_header .solution {
@@ -1613,8 +1614,33 @@ footer .copyright {
 }
 
 #case .case_workareas {
+  text-align: center;
+}
+
+#case .case_workareas .workarea_wrapper {
   display: inline-flex;
+  align-items: center;
   justify-content: center;
+  width: auto;
+  cursor: pointer;
+  margin: 0 2rem 0 0;
+}
+
+#case .case_workareas .workarea_wrapper:hover {
+  transform: scale(1.1);
+  transition: 1s;
+}
+
+#case .case_workareas .workarea_wrapper .center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15rem;
+  font-family: "Economica", sans-serif;
+  font-size: 1.5rem;
+  color: var(--bg_lightblue);
+  text-align: left;
+  text-transform: uppercase;
 }
 
 #case .case_workareas img {
@@ -1622,13 +1648,7 @@ footer .copyright {
   max-height: 6rem;
   border: 1px solid var(--bg_lightblue);
   border-radius: 50%;
-  margin: 1rem;
-  cursor: pointer;
-}
-
-#case .case_workareas img:hover {
-  transform: scale(1.1);
-  transition: 1s;
+  margin: 2rem;
 }
 
 #case .case_contact h3 {
@@ -1786,10 +1806,14 @@ footer .copyright {
 }
 
 #workareapage #workarea .related_wrapper h4 {
-  color: var(--bg_lightblue);
+  color: #fff;
   text-transform: uppercase;
   font-family: "Economica", sans-serif;
   font-size: 2.2rem;
+}
+
+#workareapage #workarea .related_wrapper .company {
+  color: var(--bg_lightblue);
 }
 
 #workareapage #workarea .arrow {
@@ -2361,7 +2385,7 @@ footer .copyright {
   #activelogos,
   #hiddenlogos {
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-column-gap: 6vw;
+    grid-column-gap: 7vw;
     grid-row-gap: 2vh;
   }
 

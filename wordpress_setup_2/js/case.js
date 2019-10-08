@@ -83,10 +83,9 @@ function insertPageContent(pageContent) {
 
   // - - - - - - - - - - - case header - - - - - - - - - - -
 
-  dest.querySelector("[data-company]").textContent = pageContent.acf.company;
   dest.querySelector("[data-description_header]").textContent =
     pageContent.acf.description_header;
-  dest.querySelector("[data-solution]").textContent = pageContent.acf.solution;
+  dest.querySelector("[data-company]").textContent = pageContent.acf.company;
 
   // - - - - - - - - - - - main text - - - - - - - - - - -
 
@@ -101,7 +100,7 @@ function insertPageContent(pageContent) {
     .querySelector("[data-image_1]")
     .setAttribute(
       "alt",
-      pageContent.acf.solution + " for " + pageContent.acf.company
+      pageContent.acf.description_header + " for " + pageContent.acf.company
     );
 
   if (pageContent.acf.image_1_border === "border") {
@@ -117,7 +116,7 @@ function insertPageContent(pageContent) {
     .querySelector("[data-image_2]")
     .setAttribute(
       "alt",
-      pageContent.acf.solution + " for " + pageContent.acf.company
+      pageContent.acf.description_header + " for " + pageContent.acf.company
     );
 
   if (pageContent.acf.image_2_border === "border") {
@@ -223,16 +222,20 @@ function insertPageContent(pageContent) {
     console.log("insertWorkaraSymbols");
     workAreaArray.forEach(workareaItem => {
       const makeDiv = document.createElement("DIV");
+      const makeImg = document.createElement("IMG");
+      makeImg.setAttribute("src", workareaItem.acf.area_symbol);
+      makeImg.setAttribute("alt", workareaItem.acf.area_header);
+      makeDiv.appendChild(makeImg);
+      const makeTextHolder = document.createElement("DIV");
+      makeTextHolder.setAttribute("class", "center");
+      makeDiv.appendChild(makeTextHolder);
+      const makeText = document.createTextNode(workareaItem.acf.area_header);
+      makeTextHolder.appendChild(makeText);
       makeDiv.setAttribute("class", "workarea_wrapper");
-      makeDiv.innerHTML = workareaItem.acf.area_header;
       makeDiv.addEventListener("click", () => {
         window.location.href = "/workarea.html?id=" + workareaItem.slug;
         window.sessionStorage.setItem("workAreaLink", workareaItem.slug);
       });
-      const makeImg = document.createElement("IMG");
-      makeImg.setAttribute("src", workareaItem.acf.area_symbol);
-      makeImg.setAttribute("alt", workareaItem.acf.area_header);
-      makeImg.appendChild(makeDiv);
       document.querySelector("[data-work_areas_symbols]").appendChild(makeDiv);
     });
   }

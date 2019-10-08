@@ -97,12 +97,11 @@ function showRelatedCases(caseItem) {
     .querySelector("[data-case_thumbnail]")
     .setAttribute(
       "alt",
-      caseItem.acf.solution + " for " + caseItem.acf.company
+      caseItem.acf.description_header + " for " + caseItem.acf.company
     );
-  clone.querySelector("[data-company]").textContent = caseItem.acf.company;
   clone.querySelector("[data-description_header]").textContent =
     caseItem.acf.description_header;
-  clone.querySelector("[data-solution]").textContent = caseItem.acf.solution;
+  clone.querySelector("[data-company]").textContent = caseItem.acf.company;
   clone.querySelector("[data-related_link]").addEventListener("click", () => {
     window.location.href = "/case.html?id=" + caseItem.slug;
     window.sessionStorage.setItem("caseLink", caseItem.slug);
