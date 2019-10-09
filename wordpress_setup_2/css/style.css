@@ -2049,6 +2049,8 @@ footer .copyright {
   }
 
   #cta_slider .close {
+    top: 4rem;
+    bottom: auto;
     right: 4rem;
   }
 

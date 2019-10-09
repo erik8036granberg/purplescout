@@ -16,7 +16,6 @@ window.addEventListener("DOMContentLoaded", init);
 function init() {
   console.log("init");
   getPageContent();
-  getCtaContent();
   document.querySelector("#showreel .explore").addEventListener("click", () => {
     window.location = "#case";
   });
@@ -29,6 +28,7 @@ async function getPageContent() {
   console.log("getPageContent");
   pageContent = await fetchWP(`case?slug=${urlCase}`);
   pageContent = pageContent[0];
+  console.log(pageContent);
   insertPageContent();
   console.log();
 }
@@ -143,6 +143,8 @@ function insertPageContent() {
     if (factArray.length === factPoints.length) {
       insertFact();
     }
+
+    getCtaContent();
   }
 
   // - - - - - - - - - - - insert fact points - - - - - - - - - - -
@@ -264,13 +266,14 @@ function caseCtaObserver() {
   document
     .querySelector("#cta_slider .cta_slider_button")
     .addEventListener("click", () => {
-      ctaClicked("howCta");
+      ctaClicked("caseCta");
     });
 
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.intersectionRatio > 0) {
         caseInview = true;
+        console.log("case in view");
         checkCtaSliderSeen = sessionStorage.getItem(pageContent.slug);
         setTimeout(() => {
           if (caseInview == true && checkCtaSliderSeen != "true") {
@@ -278,14 +281,14 @@ function caseCtaObserver() {
             console.log("how CTA target seen");
             ctaSliderModal(pageContent.acf.case_cta);
           }
-        }, 10000);
+        }, 5000);
       } else {
         caseInview = false;
       }
     });
   });
 
-  observer.observe(document.querySelector("#case"));
+  observer.observe(document.querySelector("body"));
 }
 
 // - - - - - - - - - - - Cta SliderModal show / hide  - - - - - - - - - - -
@@ -317,6 +320,7 @@ function closeSlider() {
 function ctaClicked(button_id) {
   let cta_id;
   if (button_id === "caseCta") {
+    closeSlider();
     cta_id = pageContent.acf.case_cta;
   }
   let ctaFilter = getCtaArray.filter(function(ctaItem) {

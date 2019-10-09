@@ -7,7 +7,6 @@ function init() {
   getTestimonialContent();
   getCaseContent();
   getWorkareaContent();
-  getCtaContent();
   circleTurn();
   autoTurn();
   logoSwap();
@@ -184,6 +183,7 @@ function insertPageContent() {
       "[data-deliver_bg]"
     ).style.backgroundImage = `url(${pageContent.acf.how_deliver_image.sizes.medium_large})`;
   }
+  getCtaContent();
 }
 
 // - - - - - - - - - - - get Testimonials content  - - - - - - - - - - -
@@ -198,7 +198,6 @@ async function getTestimonialContent() {
 }
 
 function displayTestimonial(testimonial) {
-  console.log("display new testimonial");
   document.querySelector("[data-testimonial_quote]").innerHTML = "";
   document.querySelector("[data-testimonial_name]").innerHTML = "";
   document.querySelector("[data-testimonial_company]").innerHTML = "";
