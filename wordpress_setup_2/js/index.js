@@ -11,9 +11,6 @@ function init() {
   circleTurn();
   autoTurn();
   logoSwap();
-  // if (window.innerWidth < 900) {
-  //   mobileHowCircle();
-  // }
   document.querySelector("#showreel .explore").addEventListener("click", () => {
     window.location = "#intro";
   });
@@ -381,53 +378,125 @@ let getCtaArray;
 
 async function getCtaContent() {
   getCtaArray = await fetchWP("cta?per_page=100");
-  ctaButtons();
+  showreelCta();
+  casesCta();
+  howCta();
 }
 
-// - - - - - - - - - - - - - set CTA elements - - - - - - - - - - - - -
+// - - - - - - - - - - - - - CTA showreel observer - - - - - - - - - - - - -
 
-let showreelButtonSeen = false;
+function showreelCta() {
+  let showreelButtonSeen = false;
+  let showreelInview;
 
-function ctaButtons() {
-  const ctaArray = [
-    {
-      id: "showreelCta",
-      seen: showreelButtonSeen,
-      path: "#showreel .cta",
-      target: "#showreel .header",
-      time: "5000"
-    }
-  ];
-  ctaArray.forEach(CtaButtonDelay);
-}
-
-// - - - - - - - - - - - - - CTA pop up delay - - - - - - - - - - - - -
-
-function CtaButtonDelay(ctaButon) {
-  let inview;
-
-  document.querySelector(ctaButon.path).addEventListener("click", () => {
-    ctaClicked(ctaButon.id);
+  document.querySelector("#showreel .cta").addEventListener("click", () => {
+    ctaClicked("showreelCta");
   });
 
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.intersectionRatio > 0) {
-        inview = true;
+        showreelInview = true;
         setTimeout(() => {
-          if (inview == true && ctaButon.seen == false) {
-            console.log("Seen for 5 sec for the first time");
-            ctaButon.seen = true;
-            document.querySelector(ctaButon.path).classList.add("appear");
+          if (showreelInview == true && showreelButtonSeen == false) {
+            console.log("Showreel CTA target seen");
+            showreelButtonSeen = true;
+            document
+              .querySelector("#showreel .cta")
+              .classList.add("show_showreel_cta");
           }
-        }, ctaButon.time);
+        }, 5000);
       } else {
-        inview = false;
+        showreelInview = false;
       }
     });
   });
 
-  observer.observe(document.querySelector(ctaButon.target));
+  observer.observe(document.querySelector("#showreel .header"));
+}
+
+let ctaSliderSeen = sessionStorage.getItem("ctaSliderSeen");
+
+// - - - - - - - - - - - - - CTA Cases observer - - - - - - - - - - - - -
+
+function casesCta() {
+  let casesInview;
+  document
+    .querySelector("#cta_slider .cta_slider_button")
+    .addEventListener("click", () => {
+      ctaClicked("casesCta");
+    });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.intersectionRatio > 0) {
+        casesInview = true;
+        setTimeout(() => {
+          if (casesInview == true && ctaSliderSeen != "true") {
+            console.log("Cases CTA target seen");
+            ctaSliderModal("350");
+          }
+        }, 5000);
+      } else {
+        casesInview = false;
+      }
+    });
+  });
+
+  observer.observe(document.querySelector("#cases"));
+}
+
+// - - - - - - - - - - - - - CTA How observer - - - - - - - - - - - - -
+
+function howCta() {
+  let howInview;
+  document
+    .querySelector("#cta_slider .cta_slider_button")
+    .addEventListener("click", () => {
+      ctaClicked("howCta");
+    });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.intersectionRatio > 0) {
+        howInview = true;
+        setTimeout(() => {
+          if (howInview == true && ctaSliderSeen != "true") {
+            console.log("Cases CTA target seen");
+            ctaSliderModal("350");
+          }
+        }, 5000);
+      } else {
+        howInview = false;
+      }
+    });
+  });
+
+  observer.observe(document.querySelector("#how"));
+}
+
+// - - - - - - - - - - - Cta SliderModal show / hide  - - - - - - - - - - -
+
+function ctaSliderModal(cta_id) {
+  let ctaFilter = getCtaArray.filter(function(ctaItem) {
+    return ctaItem.id == cta_id;
+  });
+  let activeCta = ctaFilter[0];
+  document.querySelector("[data-slider_ask]").textContent =
+    activeCta.acf.cta_header;
+  document.querySelector("#cta_slider").classList.add("show_cases_slider");
+  document
+    .querySelector("#cta_slider .close")
+    .addEventListener("click", closeSlider);
+}
+
+function closeSlider() {
+  console.log("closeSlider");
+  document
+    .querySelector("#cta_slider .close")
+    .removeEventListener("click", closeSlider);
+  document.querySelector("#cta_slider").classList.remove("show");
+  document.querySelector("#cta_slider").classList.remove("show_cases_slider");
+  window.sessionStorage.setItem("ctaSliderSeen", "true");
 }
 
 // - - - - - - - - - - - Cta button clicked  - - - - - - - - - - -
@@ -437,10 +506,18 @@ function ctaClicked(button_id) {
   if (button_id === "showreelCta") {
     cta_id = "293";
   }
+  if (button_id === "casesCta") {
+    closeSlider();
+    cta_id = "350";
+  }
+  if (button_id === "howCta") {
+    closeSlider();
+    cta_id = "350";
+  }
   let ctaFilter = getCtaArray.filter(function(ctaItem) {
     return ctaItem.id == cta_id;
   });
-  ctaFilter.forEach(displayCta);
+  displayCta(ctaFilter[0]);
   CtaModal();
 }
 
@@ -763,3 +840,45 @@ function fetchWP(wpPath) {
       });
   });
 }
+
+// function ctaButtons() {
+//   const ctaArray = [
+//     {
+//       id: "showreelCta",
+//       seen: showreelButtonSeen,
+//       path: "#showreel .cta",
+//       target: "#showreel .header",
+//       time: "5000"
+//     }
+//   ];
+//   ctaArray.forEach(CtaButtonDelay);
+// }
+
+// - - - - - - - - - - - - - CTA pop up delay - - - - - - - - - - - - -
+
+// function CtaButtonDelay(ctaButon) {
+//   let inview;
+
+//   document.querySelector(ctaButon.path).addEventListener("click", () => {
+//     ctaClicked(ctaButon.id);
+//   });
+
+// const observer = new IntersectionObserver(entries => {
+//   entries.forEach(entry => {
+//     if (entry.intersectionRatio > 0) {
+//       inview = true;
+//       setTimeout(() => {
+//         if (inview == true && ctaButon.seen == false) {
+//           console.log("Seen for 5 sec for the first time");
+//           ctaButon.seen = true;
+//           document.querySelector(ctaButon.path).classList.add("appear");
+//         }
+//       }, ctaButon.time);
+//     } else {
+//       inview = false;
+//     }
+//   });
+// });
+
+//   observer.observe(document.querySelector(ctaButon.target));
+// }
