@@ -13,6 +13,7 @@
   --bg_white_trs: rgba(255, 255, 255, 0.9);
   --bg_cta: #513675;
   --font_color: #cccccc;
+  scroll-behavior: Smooth;
 }
 
 html {
@@ -1726,7 +1727,7 @@ footer .copyright {
   max-height: 6rem;
   border: 1px solid var(--bg_lightblue);
   border-radius: 50%;
-  margin: 2rem;
+  margin: 2rem 1.5rem 2rem 2rem;
 }
 
 #case .case_contact h3 {
@@ -2020,9 +2021,6 @@ footer .copyright {
   #case .case_workareas img {
     max-width: 8rem;
     max-height: 8rem;
-    border: 1px solid var(--bg_lightblue);
-    border-radius: 50%;
-    margin: 2rem;
   }
 
   footer .address_wrapper {

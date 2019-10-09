@@ -143,8 +143,6 @@ function insertPageContent() {
     if (factArray.length === factPoints.length) {
       insertFact();
     }
-
-    getCtaContent();
   }
 
   // - - - - - - - - - - - insert fact points - - - - - - - - - - -
@@ -246,6 +244,7 @@ function insertPageContent() {
       document.querySelector("[data-work_areas_symbols]").appendChild(makeDiv);
     });
   }
+  getCtaContent();
 }
 
 // - - - - - - - - - - - get cta content  - - - - - - - - - - -
