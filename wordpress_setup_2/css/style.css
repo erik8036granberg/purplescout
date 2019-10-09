@@ -635,7 +635,6 @@ footer h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-image: linear-gradient(transparent, #000); */
   background-color: var(--bg_black_trs);
   transform: translateY(50rem);
   opacity: 0;
@@ -644,19 +643,19 @@ footer h1 {
 
 #cta_slider .cta_slider_wrapper {
   text-align: center;
-  filter: drop-shadow(0 0 100px #000);
-  /* position: absolute; */
   padding: 2rem;
   width: 100%;
 }
 
 #cta_slider .cta_slider_ask {
   font-size: 2rem;
+  margin: 0 0 0.5rem;
 }
 
 #cta_slider .cta_slider_button {
   font-family: "Economica", sans-serif;
   font-size: 3rem;
+  line-height: 2rem;
   font-weight: bold;
   text-align: center;
   color: var(--bg_purple_4);
@@ -684,10 +683,10 @@ footer h1 {
   position: absolute;
   bottom: 4rem;
   right: 2rem;
-  background-image: url(../img/close_modal.svg);
+  background-image: url(../img/close.svg);
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: var(--bg_white_trs);
+  background-color: var(--bg_black_trs);
   border-radius: 50%;
   z-index: 2000;
   transition: 0.5s;
@@ -2049,8 +2048,8 @@ footer .copyright {
   }
 
   #cta_slider .close {
-    top: 4rem;
     bottom: auto;
+    top: 1.5rem !important;
     right: 4rem;
   }
 
@@ -2644,6 +2643,16 @@ footer .copyright {
 
   #workareapage #showreel_image {
     animation: zoom 25s infinite linear;
+  }
+
+  #cta_slider .cta_slider_ask {
+    display: inline-block;
+    transform: translateY(-0.5rem);
+  }
+
+  #cta_slider .cta_slider_button {
+    display: inline-block;
+    margin: 0 2rem 0;
   }
 }
 

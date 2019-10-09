@@ -281,7 +281,7 @@ function caseCtaObserver() {
             console.log("how CTA target seen");
             ctaSliderModal(pageContent.acf.case_cta);
           }
-        }, 5000);
+        }, 10000);
       } else {
         caseInview = false;
       }
