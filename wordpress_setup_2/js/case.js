@@ -22,15 +22,18 @@ function init() {
   });
 }
 
+// - - - - - - - - - - - get page content  - - - - - - - - - - -
+let pageContent;
+
 async function getPageContent() {
   console.log("getPageContent");
-  let pageContent = await fetchWP(`case?slug=${urlCase}`);
+  pageContent = await fetchWP(`case?slug=${urlCase}`);
   pageContent = pageContent[0];
-  insertPageContent(pageContent);
-  console.log(pageContent);
+  insertPageContent();
+  console.log();
 }
 
-function insertPageContent(pageContent) {
+function insertPageContent() {
   let dest = document.querySelector("[data-container]");
 
   // - - - - - - - - - - - page title & description - - - - - - - - - - -
@@ -246,17 +249,18 @@ function insertPageContent(pageContent) {
 // - - - - - - - - - - - get cta content  - - - - - - - - - - -
 
 let getCtaArray;
-let ctaSliderSeen = sessionStorage.getItem("ctaSliderSeen");
+let checkCtaSliderSeen;
 
 async function getCtaContent() {
   getCtaArray = await fetchWP("cta?per_page=100");
-  howCta();
+  caseCtaObserver();
 }
 
-// - - - - - - - - - - - - - CTA How observer - - - - - - - - - - - - -
+// - - - - - - - - - - - - - CTA case observer - - - - - - - - - - - - -
 
-function caseCta() {
-  let howInview;
+function caseCtaObserver() {
+  console.log("caseCta");
+  let caseInview;
   document
     .querySelector("#cta_slider .cta_slider_button")
     .addEventListener("click", () => {
@@ -266,20 +270,112 @@ function caseCta() {
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.intersectionRatio > 0) {
-        howInview = true;
+        caseInview = true;
+        checkCtaSliderSeen = sessionStorage.getItem(pageContent.slug);
         setTimeout(() => {
-          if (howInview == true && ctaSliderSeen != "true") {
-            console.log("Cases CTA target seen");
-            ctaSliderModal("350");
+          if (caseInview == true && checkCtaSliderSeen != "true") {
+            window.sessionStorage.setItem(`${pageContent.slug}`, "true");
+            console.log("how CTA target seen");
+            ctaSliderModal(pageContent.acf.case_cta);
           }
-        }, 5000);
+        }, 10000);
       } else {
-        howInview = false;
+        caseInview = false;
       }
     });
   });
 
-  observer.observe(document.querySelector("#how"));
+  observer.observe(document.querySelector("#case"));
+}
+
+// - - - - - - - - - - - Cta SliderModal show / hide  - - - - - - - - - - -
+
+function ctaSliderModal(cta_id) {
+  let ctaFilter = getCtaArray.filter(function(ctaItem) {
+    return ctaItem.id == cta_id;
+  });
+  let activeCta = ctaFilter[0];
+  document.querySelector("[data-slider_ask]").textContent =
+    activeCta.acf.cta_header;
+  document.querySelector("#cta_slider").classList.add("show_cases_slider");
+  document
+    .querySelector("#cta_slider .close")
+    .addEventListener("click", closeSlider);
+}
+
+function closeSlider() {
+  console.log("closeSlider");
+  document
+    .querySelector("#cta_slider .close")
+    .removeEventListener("click", closeSlider);
+  document.querySelector("#cta_slider").classList.remove("show");
+  document.querySelector("#cta_slider").classList.remove("show_cases_slider");
+}
+
+// - - - - - - - - - - - Cta button clicked  - - - - - - - - - - -
+
+function ctaClicked(button_id) {
+  let cta_id;
+  if (button_id === "caseCta") {
+    cta_id = pageContent.acf.case_cta;
+  }
+  let ctaFilter = getCtaArray.filter(function(ctaItem) {
+    return ctaItem.id == cta_id;
+  });
+  displayCta(ctaFilter[0]);
+  CtaModal();
+}
+
+// - - - - - - - - - - - display Cta content   - - - - - - - - - - -
+
+function displayCta(ctaItem) {
+  console.log("displayCta");
+  console.log(ctaItem);
+  document.querySelector("[data-cta_container]").innerHTML = "";
+  const template = document.querySelector("[data-cta_template]").content;
+  const clone = template.cloneNode(true);
+  clone.querySelector("[data-cta_header]").textContent = ctaItem.acf.cta_header;
+  clone.querySelector("[data-cta_text]").innerHTML = ctaItem.acf.cta_text;
+  clone.querySelector("[data-cta_contact_person]").textContent =
+    ctaItem.acf.cta_contact_person;
+  clone.querySelector("[data-cta_phone]").textContent = ctaItem.acf.cta_phone;
+  if (window.innerWidth < 400) {
+    const mailLinebrak = ctaItem.acf.cta_mail.replace("@", "<br>@");
+    clone.querySelector(
+      "[data-cta_mail]"
+    ).innerHTML = `<div>${mailLinebrak}</div>`;
+  } else {
+    clone.querySelector("[data-cta_mail]").textContent = ctaItem.acf.cta_mail;
+  }
+  clone
+    .querySelector("[data-cta_mail]")
+    .setAttribute("href", "mailto:" + ctaItem.acf.cta_mail);
+  document.querySelector("[data-cta_container]").appendChild(clone);
+  document.querySelector("#cta_modal .some").innerHTML = pageSome;
+}
+
+// - - - - - - - - - - - Cta modal show / hide  - - - - - - - - - - -
+
+function CtaModal() {
+  document.querySelector("#cta_modal").classList.add("show");
+  document.querySelector("#cta_modal .modal_content").classList.add("show");
+  document.querySelector("#showreel #reel").pause();
+  document.querySelector("html").classList.add("fixed");
+  document
+    .querySelector("#cta_modal .close")
+    .addEventListener("click", closeModal);
+  function closeModal() {
+    console.log("closeModal");
+    document.querySelector("#showreel #reel").play();
+    document
+      .querySelector("#cta_modal .close")
+      .removeEventListener("click", closeModal);
+    document.querySelector("#cta_modal").classList.remove("show");
+    document
+      .querySelector("#cta_modal .modal_content")
+      .classList.remove("show");
+    document.querySelector("html").classList.remove("fixed");
+  }
 }
 
 function fetchWP(wpPath) {
