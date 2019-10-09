@@ -22,14 +22,15 @@ function init() {
 }
 
 // - - - - - - - - - - - get page content  - - - - - - - - - - -
+let pageContent;
 
 async function getPageContent() {
-  let pageContent = await fetchWP("pages/6");
-  insertPageContent(pageContent);
-  console.log(pageContent);
+  pageContent = await fetchWP("pages/6");
+  insertPageContent();
+  console.log();
 }
 
-function insertPageContent(pageContent) {
+function insertPageContent() {
   let dest = document.querySelector("[data-container]");
 
   // - - - - - - - - - - - page title & description - - - - - - - - - - -
@@ -375,18 +376,18 @@ function fullVideo() {
 // - - - - - - - - - - - get cta content  - - - - - - - - - - -
 
 let getCtaArray;
-let checkCtaSliderSeen = sessionStorage.getItem("ctaSliderSeen");
+let checkCtaSliderSeen;
 
 async function getCtaContent() {
   getCtaArray = await fetchWP("cta?per_page=100");
-  showreelCta();
-  casesCta();
-  howCta();
+  showreelCtaObserver();
+  casesCtaObserver();
+  howCtaObserver();
 }
 
 // - - - - - - - - - - - - - CTA showreel observer - - - - - - - - - - - - -
 
-function showreelCta() {
+function showreelCtaObserver() {
   let showreelButtonSeen = false;
   let showreelInview;
 
@@ -418,7 +419,7 @@ function showreelCta() {
 
 // - - - - - - - - - - - - - CTA Cases observer - - - - - - - - - - - - -
 
-function casesCta() {
+function casesCtaObserver() {
   let casesInview;
   document
     .querySelector("#cta_slider .cta_slider_button")
@@ -429,10 +430,12 @@ function casesCta() {
     entries.forEach(entry => {
       if (entry.intersectionRatio > 0) {
         casesInview = true;
+        checkCtaSliderSeen = sessionStorage.getItem("ctaSliderSeen");
         setTimeout(() => {
           if (casesInview == true && checkCtaSliderSeen != "true") {
+            window.sessionStorage.setItem("ctaSliderSeen", "true");
             console.log("Cases CTA target seen");
-            ctaSliderModal("350");
+            ctaSliderModal(pageContent.acf.cases_cta);
           }
         }, 5000);
       } else {
@@ -446,7 +449,7 @@ function casesCta() {
 
 // - - - - - - - - - - - - - CTA How observer - - - - - - - - - - - - -
 
-function howCta() {
+function howCtaObserver() {
   console.log("howCta");
   let howInview;
   document
@@ -459,10 +462,12 @@ function howCta() {
     entries.forEach(entry => {
       if (entry.intersectionRatio > 0) {
         howInview = true;
+        checkCtaSliderSeen = sessionStorage.getItem("ctaSliderSeen");
         setTimeout(() => {
           if (howInview == true && checkCtaSliderSeen != "true") {
+            window.sessionStorage.setItem("ctaSliderSeen", "true");
             console.log("how CTA target seen");
-            ctaSliderModal("350");
+            ctaSliderModal(pageContent.acf.how_cta);
           }
         }, 5000);
       } else {
@@ -496,7 +501,6 @@ function closeSlider() {
     .removeEventListener("click", closeSlider);
   document.querySelector("#cta_slider").classList.remove("show");
   document.querySelector("#cta_slider").classList.remove("show_cases_slider");
-  window.sessionStorage.setItem("ctaSliderSeen", "true");
 }
 
 // - - - - - - - - - - - Cta button clicked  - - - - - - - - - - -
@@ -504,15 +508,15 @@ function closeSlider() {
 function ctaClicked(button_id) {
   let cta_id;
   if (button_id === "showreelCta") {
-    cta_id = "293";
+    cta_id = pageContent.acf.show_reel_cta;
   }
   if (button_id === "casesCta") {
     closeSlider();
-    cta_id = "350";
+    cta_id = pageContent.acf.cases_cta;
   }
   if (button_id === "howCta") {
     closeSlider();
-    cta_id = "350";
+    cta_id = pageContent.acf.how_cta;
   }
   let ctaFilter = getCtaArray.filter(function(ctaItem) {
     return ctaItem.id == cta_id;
