@@ -375,6 +375,7 @@ function fullVideo() {
 // - - - - - - - - - - - get cta content  - - - - - - - - - - -
 
 let getCtaArray;
+let checkCtaSliderSeen = sessionStorage.getItem("ctaSliderSeen");
 
 async function getCtaContent() {
   getCtaArray = await fetchWP("cta?per_page=100");
@@ -415,8 +416,6 @@ function showreelCta() {
   observer.observe(document.querySelector("#showreel .header"));
 }
 
-let ctaSliderSeen = sessionStorage.getItem("ctaSliderSeen");
-
 // - - - - - - - - - - - - - CTA Cases observer - - - - - - - - - - - - -
 
 function casesCta() {
@@ -431,7 +430,7 @@ function casesCta() {
       if (entry.intersectionRatio > 0) {
         casesInview = true;
         setTimeout(() => {
-          if (casesInview == true && ctaSliderSeen != "true") {
+          if (casesInview == true && checkCtaSliderSeen != "true") {
             console.log("Cases CTA target seen");
             ctaSliderModal("350");
           }
@@ -448,6 +447,7 @@ function casesCta() {
 // - - - - - - - - - - - - - CTA How observer - - - - - - - - - - - - -
 
 function howCta() {
+  console.log("howCta");
   let howInview;
   document
     .querySelector("#cta_slider .cta_slider_button")
@@ -460,8 +460,8 @@ function howCta() {
       if (entry.intersectionRatio > 0) {
         howInview = true;
         setTimeout(() => {
-          if (howInview == true && ctaSliderSeen != "true") {
-            console.log("Cases CTA target seen");
+          if (howInview == true && checkCtaSliderSeen != "true") {
+            console.log("how CTA target seen");
             ctaSliderModal("350");
           }
         }, 5000);

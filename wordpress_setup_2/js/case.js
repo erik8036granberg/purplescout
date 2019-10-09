@@ -16,6 +16,7 @@ window.addEventListener("DOMContentLoaded", init);
 function init() {
   console.log("init");
   getPageContent();
+  getCtaContent();
   document.querySelector("#showreel .explore").addEventListener("click", () => {
     window.location = "#case";
   });
@@ -240,6 +241,45 @@ function insertPageContent(pageContent) {
       document.querySelector("[data-work_areas_symbols]").appendChild(makeDiv);
     });
   }
+}
+
+// - - - - - - - - - - - get cta content  - - - - - - - - - - -
+
+let getCtaArray;
+let ctaSliderSeen = sessionStorage.getItem("ctaSliderSeen");
+
+async function getCtaContent() {
+  getCtaArray = await fetchWP("cta?per_page=100");
+  howCta();
+}
+
+// - - - - - - - - - - - - - CTA How observer - - - - - - - - - - - - -
+
+function caseCta() {
+  let howInview;
+  document
+    .querySelector("#cta_slider .cta_slider_button")
+    .addEventListener("click", () => {
+      ctaClicked("howCta");
+    });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.intersectionRatio > 0) {
+        howInview = true;
+        setTimeout(() => {
+          if (howInview == true && ctaSliderSeen != "true") {
+            console.log("Cases CTA target seen");
+            ctaSliderModal("350");
+          }
+        }, 5000);
+      } else {
+        howInview = false;
+      }
+    });
+  });
+
+  observer.observe(document.querySelector("#how"));
 }
 
 function fetchWP(wpPath) {
