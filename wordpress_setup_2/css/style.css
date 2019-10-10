@@ -1740,7 +1740,6 @@ footer .copyright {
 #case .case_workareas .workarea_wrapper .center {
   display: flex;
   align-items: center;
-  justify-content: center;
   width: 15rem;
   font-family: "Economica", sans-serif;
   font-size: 1.5rem;
