@@ -834,52 +834,59 @@ footer h1 {
 #intro .case_testimonial {
   font-family: "Economica", sans-serif;
   margin: 5rem 0 0;
-  transition: 1.5s ease-in-out;
-  min-height: 50rem;
-}
-
-#intro .quote_wrapper {
-  opacity: 0;
-  transition: 1s ease-in-out;
+  transform: scale(0.85);
+  transform-origin: top right;
 }
 
 #intro .case_testimonial .bubble {
-  /* background-color: var(--bg_logo); */
-  padding: 6rem 4rem 5rem 5rem;
-  width: 100%;
-  max-height: 0;
-  margin: 0 0 8.5rem;
-  border: 1px solid var(--bg_purple_3);
-  transition: 2s ease-in-out;
+  padding-bottom: 129.6%;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 #intro .case_testimonial .bubble::before {
   content: '"';
   position: absolute;
-  top: 6rem;
+  top: 8rem;
   left: 2.5rem;
   line-height: 0;
-  font-size: 9rem;
+  font-size: 12rem;
   font-family: "Roboto", sans-serif;
   padding: 0;
   margin: 0;
 }
 
-#intro .case_testimonial .bubble::after {
-  content: "";
+#intro .swop_frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   position: absolute;
-  bottom: -6.999rem;
-  left: 5rem;
-  width: 12rem;
-  height: 7rem;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  z-index: 200;
+}
+
+#intro #quote_outline {
   position: absolute;
-  background-image: url(../img/testimonial_bubble_outline.svg);
-  background-size: cover;
-  background-repeat: no-repeat;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+#intro #quote_outline svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#intro .quote_wrapper {
+  position: relative;
+  transition: 1s ease-in-out;
+  max-width: 75%;
 }
 
 #intro .case_testimonial .bubble .quote {
@@ -887,9 +894,7 @@ footer h1 {
   font-size: 2.5rem;
   line-height: 3rem;
   margin: 0 0 1.5rem;
-  overflow: hidden;
-  transition: 2s ease-in-out;
-  max-height: 0;
+  width: auto;
 }
 
 #intro .case_testimonial .bubble .quote::after {
@@ -902,34 +907,56 @@ footer h1 {
   font-size: 2rem;
   line-height: 2.5rem;
   color: var(--bg_purple_3);
-  overflow: hidden;
-  max-height: 0;
-  transition: 1.5s ease-in-out;
 }
 
-#intro .quote_expand {
-  animation: quote_expand 2s ease-in-out forwards;
+#intro svg .outline {
+  fill: none;
+  stroke: var(--bg_purple_3);
+  stroke-miterlimit: 10;
+  stroke-dasharray: 3000;
+  stroke-dashoffset: 3000;
 }
 
-@keyframes quote_expand {
+.drawline {
+  animation: drawline 1s ease-in forwards;
+}
+
+@keyframes drawline {
   0% {
-    max-height: 0;
+    stroke-dashoffset: 3000;
   }
   100% {
-    max-height: 100rem;
+    stroke-dashoffset: 0;
   }
 }
 
-#intro .quote_contract {
-  animation: quote_contract 2s ease-in-out forwards;
+.move_in {
+  animation: move_in 1.5s ease-in-out forwards;
 }
 
-@keyframes quote_contract {
+@keyframes move_in {
   0% {
-    max-height: 100rem;
+    transform: translateX(100vw);
   }
   100% {
-    max-height: 0;
+    transform: translateX(0);
+  }
+}
+
+.move_out {
+  transform: translateX(100vw);
+}
+
+.fade_out {
+  animation: fade_out 2s ease-in-out forwards;
+}
+
+@keyframes fade_out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
@@ -1189,9 +1216,10 @@ h2 {
   position: relative;
 }
 
-#how .hide {
-  opacity: 0;
+#how .hide_bg {
+  opacity: 0 !important;
   pointer-events: none;
+  transition: 2s !important;
 }
 
 #how .background {
@@ -1203,7 +1231,8 @@ h2 {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  transition: 0.5s;
+  opacity: 1;
+  transition: 2s;
 }
 
 #how #active_item {
@@ -2197,7 +2226,7 @@ footer .copyright {
   }
 
   #intro .case_testimonial .bubble .quote {
-    font-size: 3rem;
+    font-size: 3.25rem;
     line-height: 4rem;
   }
 
@@ -2207,8 +2236,8 @@ footer .copyright {
   }
 
   #intro .case_testimonial .bubble .quote_company {
-    font-size: 2rem;
-    line-height: 2.5rem;
+    font-size: 2.5rem;
+    line-height: 3rem;
     margin: 0.5rem 0 0;
   }
 
@@ -2396,6 +2425,12 @@ footer .copyright {
   #case .case_text p,
   #case .case_production_info p {
     padding: 0 7vw 0 0;
+  }
+
+  #case .case_text p img {
+    margin: 3vw auto 2vw;
+    width: 500px;
+    max-width: 500px;
   }
 
   #case .case_points {
@@ -2659,5 +2694,13 @@ footer .copyright {
 @media screen and (min-width: 1500px) {
   #case .case_info {
     padding: 0 5vw 0 0;
+  }
+}
+
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - scroll accessibility- - - - - - - - - - - - - - - - - - - - - - - - - -*/
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }

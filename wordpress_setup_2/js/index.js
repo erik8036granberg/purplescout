@@ -190,33 +190,32 @@ function insertPageContent() {
 
 let testimonialArray = [];
 let sw_i = 0;
-let tmInview = "false";
 
 async function getTestimonialContent() {
   testimonialArray = await fetchWP("testimonial?per_page=100");
+  const bubble_ouline = `
+  <svg id="quote_line" xmlns="http://www.w3.org/2000/svg" width="448" height="580.8" viewBox="0 0 448 580.8">
+  <defs>
+    <style>
+    </style>
+  </defs>
+  <title>quote_line</title>
+  <polygon class="cls-1 outline" points="58.5 578.5 118.09 507.5 0.5 507.5 0.5 0.5 447.5 0.5 447.5 507.5 166.18 507.5 58.5 578.5"/>
+</svg>`;
+  document.querySelector("#intro #quote_outline").innerHTML = bubble_ouline;
   displayTestimonial(testimonialArray[sw_i]);
 }
 
 function displayTestimonial(testimonial) {
+  console.log("displayTestimonial");
+  document.querySelector("#intro .bubble").classList.remove("fade_out");
+  document.querySelector("#intro .bubble").classList.add("move_out");
   document.querySelector("[data-testimonial_quote]").innerHTML = "";
   document.querySelector("[data-testimonial_name]").innerHTML = "";
   document.querySelector("[data-testimonial_company]").innerHTML = "";
-  document
-    .querySelector("#intro .case_testimonial .bubble")
-    .classList.remove("quote_contract");
-  document
-    .querySelector("#intro .case_testimonial .bubble")
-    .classList.add("quote_expand");
-  document
-    .querySelector("[data-testimonial_quote]")
-    .classList.remove("quote_expand");
-  document
-    .querySelector("[data-testimonial_name]")
-    .classList.remove("quote_expand");
-  document
-    .querySelector("[data-testimonial_company]")
-    .classList.remove("quote_expand");
-  document.querySelector("#intro .quote_wrapper").style.opacity = "1";
+  document.querySelector("#intro .outline").classList.remove("drawline");
+  document.querySelector("[data-testimonial_quote]").innerHTML =
+    testimonial.acf.testimonial_quote;
   document.querySelector("[data-testimonial_name]").textContent =
     testimonial.acf.testimonial_name;
   if (testimonial.acf.testimonial_title) {
@@ -228,41 +227,24 @@ function displayTestimonial(testimonial) {
     document.querySelector("[data-testimonial_company]").textContent =
       testimonial.acf.testimonial_company;
   }
-  document.querySelector("[data-testimonial_quote]").innerHTML =
-    testimonial.acf.testimonial_quote;
+  document.querySelector("#intro .bubble").classList.remove("move_out");
+  document.querySelector("#intro .bubble").classList.add("move_in");
   setTimeout(() => {
-    document
-      .querySelector("[data-testimonial_quote]")
-      .classList.add("quote_expand");
+    document.querySelector("#intro .outline").classList.add("drawline");
     setTimeout(() => {
-      document.querySelector("[data-testimonial_name]").style.opacity = "1";
-      document
-        .querySelector("[data-testimonial_name]")
-        .classList.add("quote_expand");
-      document.querySelector("[data-testimonial_company]").style.opacity = "1";
-      document
-        .querySelector("[data-testimonial_company]")
-        .classList.add("quote_expand");
+      document.querySelector("#intro .bubble").classList.remove("move_in");
+      document.querySelector("#intro .bubble").classList.add("fade_out");
       setTimeout(() => {
-        document.querySelector("#intro .quote_wrapper").style.opacity = "0";
-        document
-          .querySelector("#intro .case_testimonial .bubble")
-          .classList.remove("quote_expand");
-        document
-          .querySelector("#intro .case_testimonial .bubble")
-          .classList.add("quote_contract");
-        setTimeout(() => {
-          sw_i++;
-          if (sw_i <= testimonialArray.length - 1) {
-            displayTestimonial(testimonialArray[sw_i]);
-          } else {
-            sw_i = 0;
-            displayTestimonial(testimonialArray[0]);
-          }
-        }, 3000);
-      }, 5000);
-    }, 1000);
-  }, 500);
+        sw_i++;
+        if (sw_i <= testimonialArray.length - 1) {
+          displayTestimonial(testimonialArray[sw_i]);
+        } else {
+          sw_i = 0;
+          displayTestimonial(testimonialArray[0]);
+        }
+      }, 2000);
+    }, 5000);
+  }, 1500);
 }
 
 // - - - - - - - - - - - get cases content  - - - - - - - - - - -
@@ -649,9 +631,9 @@ function textItem(number, id) {
 function changeBg(id) {
   const hideAllBgs = document.querySelectorAll("#how .background");
   hideAllBgs.forEach(el => {
-    el.classList.add("hide");
+    el.classList.add("hide_bg");
   });
-  document.querySelector("#how ." + id + "_bg").classList.remove("hide");
+  document.querySelector("#how ." + id + "_bg").classList.remove("hide_bg");
 }
 
 let autoTurnOn = "on";
@@ -884,4 +866,72 @@ function fetchWP(wpPath) {
 // });
 
 //   observer.observe(document.querySelector(ctaButon.target));
+// }
+
+// function displayTestimonial(testimonial) {
+//   document.querySelector("[data-testimonial_quote]").innerHTML = "";
+//   document.querySelector("[data-testimonial_name]").innerHTML = "";
+//   document.querySelector("[data-testimonial_company]").innerHTML = "";
+//   document
+//     .querySelector("#intro .case_testimonial .bubble")
+//     .classList.remove("quote_contract");
+//   document
+//     .querySelector("#intro .case_testimonial .bubble")
+//     .classList.add("quote_expand");
+//   document
+//     .querySelector("[data-testimonial_quote]")
+//     .classList.remove("quote_expand");
+//   document
+//     .querySelector("[data-testimonial_name]")
+//     .classList.remove("quote_expand");
+//   document
+//     .querySelector("[data-testimonial_company]")
+//     .classList.remove("quote_expand");
+//   document.querySelector("#intro .quote_wrapper").style.opacity = "1";
+//   document.querySelector("[data-testimonial_name]").textContent =
+//     testimonial.acf.testimonial_name;
+//   if (testimonial.acf.testimonial_title) {
+//     document.querySelector("[data-testimonial_company]").textContent =
+//       testimonial.acf.testimonial_title +
+//       ", " +
+//       testimonial.acf.testimonial_company;
+//   } else {
+//     document.querySelector("[data-testimonial_company]").textContent =
+//       testimonial.acf.testimonial_company;
+//   }
+//   document.querySelector("[data-testimonial_quote]").innerHTML =
+//     testimonial.acf.testimonial_quote;
+//   setTimeout(() => {
+//     document
+//       .querySelector("[data-testimonial_quote]")
+//       .classList.add("quote_expand");
+//     setTimeout(() => {
+//       document.querySelector("[data-testimonial_name]").style.opacity = "1";
+//       document
+//         .querySelector("[data-testimonial_name]")
+//         .classList.add("quote_expand");
+//       document.querySelector("[data-testimonial_company]").style.opacity = "1";
+//       document
+//         .querySelector("[data-testimonial_company]")
+//         .classList.add("quote_expand");
+//       setTimeout(() => {
+//         document.querySelector("#intro .quote_wrapper").style.opacity = "0";
+//         document
+//           .querySelector("#intro .case_testimonial .bubble")
+//           .classList.remove("quote_expand");
+//         document
+//           .querySelector("#intro .case_testimonial .bubble")
+//           .classList.add("quote_contract");
+//         setTimeout(() => {
+//           sw_i++;
+//           if (sw_i <= testimonialArray.length - 1) {
+//             displayTestimonial(testimonialArray[sw_i]);
+//           } else {
+//             sw_i = 0;
+//             displayTestimonial(testimonialArray[0]);
+//           }
+//         }, 3000);
+//       }, 5000);
+//     }, 1000);
+//   }, 500);
 // }

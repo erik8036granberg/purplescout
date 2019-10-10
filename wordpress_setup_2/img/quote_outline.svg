@@ -1,0 +1,13 @@
+<svg id="quote_line" xmlns="http://www.w3.org/2000/svg" width="448" height="471.8" viewBox="0 0 448 471.8">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #9b54fb;
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <title>quote_line</title>
+  <polygon class="cls-1" points="447.5 398.5 166.18 398.5 58.5 469.5 118.09 398.5 0.5 398.5 0.5 0.5 447.5 0.5 447.5 398.5"/>
+</svg>
