@@ -882,7 +882,7 @@ footer h1 {
 }
 
 .drawline {
-  animation: drawline 1s ease-in forwards;
+  animation: drawline 1.5s ease-in-out forwards;
 }
 
 @keyframes drawline {
@@ -895,24 +895,32 @@ footer h1 {
 }
 
 .move_in {
-  animation: move_in 1.5s ease-in-out forwards;
+  animation: move_in 2s ease-out forwards;
 }
 
 @keyframes move_in {
   0% {
     transform: translateX(100vw);
+    opacity: 0;
   }
+
+  75% {
+    opacity: 0;
+  }
+
   100% {
     transform: translateX(0);
+    opacity: 1;
   }
 }
 
 .move_out {
   transform: translateX(100vw);
+  opacity: 0;
 }
 
 .fade_out {
-  animation: fade_out 2s ease-in-out forwards;
+  animation: fade_out 2s linear forwards;
 }
 
 @keyframes fade_out {

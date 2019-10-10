@@ -244,7 +244,7 @@ function displayTestimonial(testimonial) {
         }
       }, 2000);
     }, 5000);
-  }, 1500);
+  }, 2500);
 }
 
 // - - - - - - - - - - - get cases content  - - - - - - - - - - -
