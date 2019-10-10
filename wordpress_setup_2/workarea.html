@@ -57,6 +57,27 @@
   <body id="workareapage">
     <header></header>
     <main>
+        <div id="cta_modal">
+          <div class="modal_content" data-cta_container></div>
+        </div>
+  
+        <template data-cta_template>
+          <div class="close"></div>
+          <h3 data-cta_header></h3>
+          <div class="cta_text" data-cta_text></div>
+          <div class="contact">
+            <p class="more_info">
+              Talk to:<br />
+              <span class="contakt_person" data-cta_contact_person></span>
+            </p>
+            <div>
+              <a href="" class="icon phone" data-cta_phone></a>
+              <a href="" class="icon mail" data-cta_mail></a>
+            </div>
+            <div class="some"></div>
+          </div>
+        </template>
+
       <section id="showreel">
         <div class="header">
           <div data-showreel_header></div>
@@ -102,6 +123,13 @@
             </div>
           </div>
       </template>
+      <div id="cta_slider">
+          <div class="cta_slider_wrapper">
+            <div class="close"></div>
+            <div class="cta_slider_ask" data-slider_ask></div>
+            <div class="cta_slider_button">Contact us</div>
+          </div>
+        </div>
     </main>
     <footer id="contact"></footer>
     <script src="/js/nav.js" data-nav_version></script>

@@ -9,8 +9,6 @@ console.log("urlID er: " + urlID);
 let urlCase = sessionStorage.getItem("caseLink");
 console.log(urlCase);
 
-let showreelButton = false;
-
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
@@ -277,7 +275,7 @@ function caseCtaObserver() {
         setTimeout(() => {
           if (caseInview == true && checkCtaSliderSeen != "true") {
             window.sessionStorage.setItem(`${pageContent.slug}`, "true");
-            console.log("how CTA target seen");
+            console.log("case CTA target seen");
             ctaSliderModal(pageContent.acf.case_cta);
           }
         }, 10000);
@@ -362,14 +360,26 @@ function displayCta(ctaItem) {
 function CtaModal() {
   document.querySelector("#cta_modal").classList.add("show");
   document.querySelector("#cta_modal .modal_content").classList.add("show");
-  document.querySelector("#showreel #reel").pause();
+  if (
+    pageContent.acf.showreel_video_large ||
+    pageContent.acf.showreel_video_medium ||
+    pageContent.acf.showreel_video_small
+  ) {
+    document.querySelector("#showreel #reel").pause();
+  }
   document.querySelector("html").classList.add("fixed");
   document
     .querySelector("#cta_modal .close")
     .addEventListener("click", closeModal);
   function closeModal() {
     console.log("closeModal");
-    document.querySelector("#showreel #reel").play();
+    if (
+      pageContent.acf.showreel_video_large ||
+      pageContent.acf.showreel_video_medium ||
+      pageContent.acf.showreel_video_small
+    ) {
+      document.querySelector("#showreel #reel").play();
+    }
     document
       .querySelector("#cta_modal .close")
       .removeEventListener("click", closeModal);

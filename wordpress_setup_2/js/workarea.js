@@ -9,26 +9,26 @@ console.log("urlID er: " + urlID);
 let urlWorkarea = sessionStorage.getItem("workAreaLink");
 console.log(urlWorkarea);
 
-let showreelButton = false;
-
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
   getPageContent();
-  getCaseContent();
   document.querySelector("#showreel .explore").addEventListener("click", () => {
     window.location = "#workarea";
   });
 }
 
+// - - - - - - - - - - - get page content  - - - - - - - - - - -
+let pageContent;
+
 async function getPageContent() {
-  let pageContent = await fetchWP(`workareas?slug=${urlWorkarea}`);
+  pageContent = await fetchWP(`workareas?slug=${urlWorkarea}`);
   pageContent = pageContent[0];
-  insertPageContent(pageContent);
+  insertPageContent();
   console.log(pageContent);
 }
 
-function insertPageContent(pageContent) {
+function insertPageContent() {
   let dest = document.querySelector("[data-container]");
 
   // - - - - - - - - - - - page title & description - - - - - - - - - - -
@@ -71,6 +71,7 @@ function insertPageContent(pageContent) {
     pageContent.acf.area_main_text;
 
   getCaseContent(pageContent.id);
+  getCtaContent();
 }
 
 // - - - - - - - - - - - get related cases - - - - - - - - - - -
@@ -137,6 +138,153 @@ function showRelatedCases(caseItem) {
     window.sessionStorage.setItem("caseLink", caseItem.slug);
   });
   document.querySelector("[data-related_container]").appendChild(clone);
+}
+
+// - - - - - - - - - - - get cta content  - - - - - - - - - - -
+
+let getCtaArray;
+let checkCtaSliderSeen;
+
+async function getCtaContent() {
+  getCtaArray = await fetchWP("cta?per_page=100");
+  console.log(getCtaArray);
+  workareaCtaObserver();
+}
+
+// - - - - - - - - - - - - - CTA workarea observer - - - - - - - - - - - - -
+
+function workareaCtaObserver() {
+  console.log("workareaCta");
+  let workareaInview;
+  document
+    .querySelector("#cta_slider .cta_slider_button")
+    .addEventListener("click", () => {
+      ctaClicked("workareaCta");
+    });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.intersectionRatio > 0) {
+        workareaInview = true;
+        console.log("workarea in view");
+        checkCtaSliderSeen = sessionStorage.getItem(pageContent.slug);
+        setTimeout(() => {
+          if (workareaInview == true && checkCtaSliderSeen != "true") {
+            window.sessionStorage.setItem(`${pageContent.slug}`, "true");
+            console.log("workarea CTA target seen");
+            ctaSliderModal(pageContent.acf.workarea_cta);
+          }
+        }, 10000);
+      } else {
+        workareaInview = false;
+      }
+    });
+  });
+
+  observer.observe(document.querySelector("body"));
+}
+
+// - - - - - - - - - - - Cta SliderModal show / hide  - - - - - - - - - - -
+
+function ctaSliderModal(cta_id) {
+  let ctaFilter = getCtaArray.filter(function(ctaItem) {
+    return ctaItem.id == cta_id;
+  });
+  let activeCta = ctaFilter[0];
+  document.querySelector("[data-slider_ask]").textContent =
+    activeCta.acf.cta_header;
+  document.querySelector("#cta_slider").classList.add("show_cases_slider");
+  document
+    .querySelector("#cta_slider .close")
+    .addEventListener("click", closeSlider);
+}
+
+function closeSlider() {
+  console.log("closeSlider");
+  document
+    .querySelector("#cta_slider .close")
+    .removeEventListener("click", closeSlider);
+  document.querySelector("#cta_slider").classList.remove("show");
+  document.querySelector("#cta_slider").classList.remove("show_cases_slider");
+}
+
+// - - - - - - - - - - - Cta button clicked  - - - - - - - - - - -
+
+function ctaClicked(button_id) {
+  let cta_id;
+  if (button_id === "workareaCta") {
+    closeSlider();
+    cta_id = pageContent.acf.workarea_cta;
+  }
+  let ctaFilter = getCtaArray.filter(function(ctaItem) {
+    return ctaItem.id == cta_id;
+  });
+  displayCta(ctaFilter[0]);
+  CtaModal();
+}
+
+// - - - - - - - - - - - display Cta content   - - - - - - - - - - -
+
+function displayCta(ctaItem) {
+  console.log("displayCta");
+  console.log(ctaItem);
+  document.querySelector("[data-cta_container]").innerHTML = "";
+  const template = document.querySelector("[data-cta_template]").content;
+  const clone = template.cloneNode(true);
+  clone.querySelector("[data-cta_header]").textContent = ctaItem.acf.cta_header;
+  clone.querySelector("[data-cta_text]").innerHTML = ctaItem.acf.cta_text;
+  clone.querySelector("[data-cta_contact_person]").textContent =
+    ctaItem.acf.cta_contact_person;
+  clone.querySelector("[data-cta_phone]").textContent = ctaItem.acf.cta_phone;
+  if (window.innerWidth < 400) {
+    const mailLinebrak = ctaItem.acf.cta_mail.replace("@", "<br>@");
+    clone.querySelector(
+      "[data-cta_mail]"
+    ).innerHTML = `<div>${mailLinebrak}</div>`;
+  } else {
+    clone.querySelector("[data-cta_mail]").textContent = ctaItem.acf.cta_mail;
+  }
+  clone
+    .querySelector("[data-cta_mail]")
+    .setAttribute("href", "mailto:" + ctaItem.acf.cta_mail);
+  document.querySelector("[data-cta_container]").appendChild(clone);
+  document.querySelector("#cta_modal .some").innerHTML = pageSome;
+}
+
+// - - - - - - - - - - - Cta modal show / hide  - - - - - - - - - - -
+
+function CtaModal() {
+  document.querySelector("#cta_modal").classList.add("show");
+  document.querySelector("#cta_modal .modal_content").classList.add("show");
+  if (
+    pageContent.acf.showreel_video_large ||
+    pageContent.acf.showreel_video_medium ||
+    pageContent.acf.showreel_video_small
+  ) {
+    document.querySelector("#showreel #reel").pause();
+  }
+  document.querySelector("html").classList.add("fixed");
+  document
+    .querySelector("#cta_modal .close")
+    .addEventListener("click", closeModal);
+  function closeModal() {
+    console.log("closeModal");
+    if (
+      pageContent.acf.showreel_video_large ||
+      pageContent.acf.showreel_video_medium ||
+      pageContent.acf.showreel_video_small
+    ) {
+      document.querySelector("#showreel #reel").play();
+    }
+    document
+      .querySelector("#cta_modal .close")
+      .removeEventListener("click", closeModal);
+    document.querySelector("#cta_modal").classList.remove("show");
+    document
+      .querySelector("#cta_modal .modal_content")
+      .classList.remove("show");
+    document.querySelector("html").classList.remove("fixed");
+  }
 }
 
 function fetchWP(wpPath) {
