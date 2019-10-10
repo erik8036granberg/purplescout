@@ -834,8 +834,6 @@ footer h1 {
 #intro .case_testimonial {
   font-family: "Economica", sans-serif;
   margin: 5rem 0 0;
-  transform: scale(0.85);
-  transform-origin: top right;
 }
 
 #intro .case_testimonial .bubble {
@@ -846,26 +844,18 @@ footer h1 {
 #intro .case_testimonial .bubble::before {
   content: '"';
   position: absolute;
-  top: 8rem;
-  left: 2.5rem;
+  top: 6rem;
+  left: 2rem;
   line-height: 0;
-  font-size: 12rem;
+  font-size: 8rem;
   font-family: "Roboto", sans-serif;
   padding: 0;
   margin: 0;
 }
 
-#intro .swop_frame {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 90%;
-  z-index: 200;
+#intro .case_testimonial .bubble .quote::after {
+  content: ' ..."';
+  margin-left: -0.5rem;
 }
 
 #intro #quote_outline {
@@ -881,32 +871,6 @@ footer h1 {
   position: absolute;
   top: 0;
   left: 0;
-}
-
-#intro .quote_wrapper {
-  position: relative;
-  transition: 1s ease-in-out;
-  max-width: 75%;
-}
-
-#intro .case_testimonial .bubble .quote {
-  text-transform: uppercase;
-  font-size: 2.5rem;
-  line-height: 3rem;
-  margin: 0 0 1.5rem;
-  width: auto;
-}
-
-#intro .case_testimonial .bubble .quote::after {
-  content: ' ..."';
-  margin-left: -0.5rem;
-}
-
-#intro .case_testimonial .bubble .quote_person,
-#intro .case_testimonial .bubble .quote_company {
-  font-size: 2rem;
-  line-height: 2.5rem;
-  color: var(--bg_purple_3);
 }
 
 #intro svg .outline {
@@ -958,6 +922,40 @@ footer h1 {
   100% {
     opacity: 0;
   }
+}
+
+#intro .swop_frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  z-index: 200;
+}
+
+#intro .quote_wrapper {
+  position: relative;
+  transition: 1s ease-in-out;
+  max-width: 75%;
+}
+
+#intro .case_testimonial .bubble .quote {
+  text-transform: uppercase;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  margin: 0 0 1.5rem;
+  width: auto;
+}
+
+#intro .case_testimonial .bubble .quote_person,
+#intro .case_testimonial .bubble .quote_company {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  color: var(--bg_purple_3);
 }
 
 /* what section */
@@ -1998,6 +1996,11 @@ footer .copyright {
     padding: 5vw;
   }
 
+  #intro .case_testimonial {
+    max-width: 400px;
+    margin: 5rem auto 0 0;
+  }
+
   footer .icon::before {
     display: inline-block;
     position: relative;
@@ -2078,6 +2081,23 @@ footer .copyright {
     bottom: auto;
     top: 1.5rem !important;
     right: 4rem;
+  }
+
+  #intro .case_testimonial {
+    max-width: auto;
+    margin: 5rem 0 0 0;
+  }
+
+  #intro .case_testimonial .bubble .quote {
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+
+  #intro .case_testimonial .bubble::before {
+    top: 8rem;
+    left: 2.5rem;
+    line-height: 0;
+    font-size: 12rem;
   }
 
   #cases #logo_wrapper,
@@ -2226,18 +2246,18 @@ footer .copyright {
   }
 
   #intro .case_testimonial .bubble .quote {
-    font-size: 3.25rem;
+    font-size: 2.5rem;
     line-height: 4rem;
   }
 
   #intro .case_testimonial .bubble .quote_person {
-    font-size: 3rem;
-    line-height: 3rem;
+    font-size: 2rem;
+    line-height: 2.5rem;
   }
 
   #intro .case_testimonial .bubble .quote_company {
-    font-size: 2.5rem;
-    line-height: 3rem;
+    font-size: 2rem;
+    line-height: 2.5rem;
     margin: 0.5rem 0 0;
   }
 
@@ -2526,6 +2546,34 @@ footer .copyright {
     margin: 0 0 0;
     grid-column: 4 / span 2;
     grid-row: 1 / span 2;
+  }
+
+  #intro .case_testimonial {
+    transform: scale(0.85);
+    transform-origin: top right;
+  }
+
+  #intro .case_testimonial .bubble::before {
+    top: 8rem;
+    left: 2.5rem;
+    line-height: 0;
+    font-size: 12rem;
+  }
+
+  #intro .case_testimonial .bubble .quote {
+    font-size: 3.25rem;
+    line-height: 4rem;
+  }
+
+  #intro .case_testimonial .bubble .quote_person {
+    font-size: 3rem;
+    line-height: 3rem;
+  }
+
+  #intro .case_testimonial .bubble .quote_company {
+    font-size: 2.5rem;
+    line-height: 3rem;
+    margin: 0.5rem 0 0;
   }
 
   #cases #logo_wrapper,
