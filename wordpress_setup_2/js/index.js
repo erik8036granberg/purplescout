@@ -10,6 +10,7 @@ function init() {
   circleTurn();
   autoTurn();
   logoSwap();
+  scrollPoint();
   document.querySelector("#showreel .explore").addEventListener("click", () => {
     window.location = "#intro";
   });
@@ -280,6 +281,7 @@ function showCases(caseItem) {
   clone.querySelector("[data-id]").addEventListener("click", () => {
     window.location.href = "case.html?id=" + caseItem.slug;
     window.sessionStorage.setItem("caseLink", caseItem.slug);
+    window.sessionStorage.setItem("indexScroll", indexScrollTop);
   });
   document.querySelector("[data-cases_container]").appendChild(clone);
 }
@@ -308,6 +310,7 @@ function showWorkareas(workareaItem) {
   clone.querySelector("[data-area_header]").addEventListener("click", () => {
     window.location.href = "workarea.html?id=" + workareaItem.slug;
     window.sessionStorage.setItem("workAreaLink", workareaItem.slug);
+    window.sessionStorage.setItem("indexScroll", indexScrollTop);
   });
   clone
     .querySelector("[data-area_symbol]")
@@ -315,6 +318,7 @@ function showWorkareas(workareaItem) {
   clone.querySelector("[data-area_symbol]").addEventListener("click", () => {
     window.location.href = "workarea.html?id=" + workareaItem.slug;
     window.sessionStorage.setItem("workAreaLink", workareaItem.slug);
+    window.sessionStorage.setItem("indexScroll", indexScrollTop);
   });
   clone
     .querySelector("[data-area_symbol]")
@@ -324,6 +328,7 @@ function showWorkareas(workareaItem) {
   clone.querySelector("[data-workarea_arrow]").addEventListener("click", () => {
     window.location.href = "workarea.html?id=" + workareaItem.slug;
     window.sessionStorage.setItem("workAreaLink", workareaItem.slug);
+    window.sessionStorage.setItem("indexScroll", indexScrollTop);
   });
   document.querySelector("[data-workareas_container]").appendChild(clone);
 }
@@ -425,7 +430,7 @@ function casesCtaObserver() {
     });
   });
 
-  observer.observe(document.querySelector("#cases"));
+  observer.observe(document.querySelector(".case"));
 }
 
 // - - - - - - - - - - - - - CTA How observer - - - - - - - - - - - - -
@@ -825,6 +830,44 @@ function fetchWP(wpPath) {
       });
   });
 }
+
+function scrollPoint() {
+  // const backLink = sessionStorage.getItem("indexScrollTop");
+  // const navLink = sessionStorage.getItem("navScroll");
+  // if (navLink != "") {
+  //   document.querySelector(navLink).scrollIntoView({
+  //     behavior: "smooth"
+  //   });
+  //   sessionStorage.removeItem("navScroll");
+  //   return;
+  // } else if (backLink != "") {
+  //   window.scrollTo({
+  //     top: backLink,
+  //     left: 0,
+  //     behavior: "smooth"
+  //   });
+  //   sessionStorage.removeItem("indexScrollTop");
+  // }
+}
+
+// function scrollToAnchor() {
+//   let currentUrl = document.URL;
+//   console.log("currentUrl");
+//   console.log(currentUrl);
+//   if (currentUrl.includes("#")) {
+//     const achor = "#" + currentUrl.split("#")[1];
+//     console.log(achor);
+//     setTimeout(function() {
+//       document.querySelector(achor).scrollIntoView({
+//         behavior: "smooth"
+//       });
+//     }, 1000);
+//   }
+// }
+
+// let indexScrollTop = window.scrollY || document.documentElement.scrollTop;
+// console.log(indexScrollTop);
+// window.sessionStorage.setItem("indexScroll", indexScrollTop);
 
 // function ctaButtons() {
 //   const ctaArray = [

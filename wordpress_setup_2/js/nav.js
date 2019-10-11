@@ -49,9 +49,12 @@ function closeMenu() {
 
 function fadeMenu() {
   window.addEventListener("scroll", scrolled);
+  let indexScrollTop;
 
   function scrolled() {
     window.removeEventListener("scroll", scrolled);
+    indexScrollTop = window.scrollY || document.documentElement.scrollTop;
+    console.log(indexScrollTop);
     if (mobileMenu !== "open") {
       document.querySelector("#gradiant").classList.remove("show_gradiant");
       document.querySelector("header").classList.add("hide_scroll_nav");
@@ -76,21 +79,6 @@ function setAOS() {
     };
   }, 2000);
 }
-
-// function scrollToAnchor() {
-//   let currentUrl = document.URL;
-//   console.log("currentUrl");
-//   console.log(currentUrl);
-//   if (currentUrl.includes("#")) {
-//     const achor = "#" + currentUrl.split("#")[1];
-//     console.log(achor);
-//     setTimeout(function() {
-//       document.querySelector(achor).scrollIntoView({
-//         behavior: "smooth"
-//       });
-//     }, 1000);
-//   }
-// }
 
 const pageHeader = `
 <div id="logo"></div>
