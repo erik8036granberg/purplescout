@@ -76,51 +76,6 @@ function setAOS() {
   }, 2000);
 }
 
-// const pageHeader = `
-// <div id="logo"></div>
-//       <div class="burger">
-//         <div class="bar1"></div>
-//         <div class="bar2"></div>
-//         <div class="bar3"></div>
-//       </div>
-//       <nav>
-//         <ul>
-//           <li><a href="/index.html#showreel" data-navLink="#showreel">Home</a></li>
-//           <li><a href="/index.html#cases" data-navLink="#cases">Cases</a></li>
-//           <li><a href="/index.html#what" data-navLink="#what">What</a></li>
-//           <li><a href="/index.html#how" data-navLink="#how">How</a></li>
-//           <li><a href="/index.html#contact" data-navLink="#contact">Contact</a></li>
-//         </ul>
-//       </nav>
-//       <div id="logotext">
-//         <div class="holder"></div>
-//       </div>
-//       <div id="gradiant">
-//         <div class="top"></div>
-//         <div class="fade"></div>
-//       </div>
-// `;
-
-// function mouseClick(event) {
-//   click = event.target.dataset.navLink;
-//   if (click === "#showreel") {
-//     console.log("showreel nav clicked");
-//     window.sessionStorage.setItem("navLink", "#showreel");
-//   }
-//   if (click === "#cases") {
-//     window.sessionStorage.setItem("navLink", "#cases");
-//   }
-//   if (click === "#what") {
-//     window.sessionStorage.setItem("navLink", "#what");
-//   }
-//   if (click === "#how") {
-//     window.sessionStorage.setItem("navLink", "#how");
-//   }
-//   if (click === "#contact") {
-//     window.sessionStorage.setItem("navLink", "#contact");
-//   }
-// }
-
 const pageFooter = `
 <h1>Contact</h1>
     <div class="content">

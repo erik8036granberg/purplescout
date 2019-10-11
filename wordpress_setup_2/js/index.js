@@ -851,7 +851,7 @@ function scrollPoint() {
       });
       sessionStorage.removeItem("navLink");
       sessionStorage.removeItem("indexScroll");
-    }, 2000);
+    }, 1500);
   } else {
     const indexScroll = sessionStorage.getItem("indexScroll");
     if (indexScroll != undefined) {
@@ -864,7 +864,7 @@ function scrollPoint() {
           behavior: "smooth"
         });
         sessionStorage.removeItem("indexScroll");
-      }, 2000);
+      }, 1500);
     } else {
       console.log("backLink is empty");
     }
