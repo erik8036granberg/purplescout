@@ -219,10 +219,10 @@ nav li:last-child {
 }
 
 nav a {
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: #fff;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: normal;
   transition: 0.5s ease;
   position: relative;
 }

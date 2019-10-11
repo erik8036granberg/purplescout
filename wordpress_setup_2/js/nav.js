@@ -1,13 +1,12 @@
 let mobileMenu = "closed";
 
 document.addEventListener("DOMContentLoaded", function(event) {
-  document.querySelector("header").innerHTML = pageHeader;
+  // document.querySelector("header").innerHTML = pageHeader;
   document.querySelector("footer").innerHTML = pageFooter;
   document.querySelector("footer .some").innerHTML = pageSome;
   navMenu();
   fadeMenu();
   setAOS();
-  // scrollToAnchor();
   document.querySelector("#logo").addEventListener("click", () => {
     window.location = "/index.html#showreel";
     if (mobileMenu === "open") {
@@ -49,12 +48,9 @@ function closeMenu() {
 
 function fadeMenu() {
   window.addEventListener("scroll", scrolled);
-  let indexScrollTop;
 
   function scrolled() {
     window.removeEventListener("scroll", scrolled);
-    indexScrollTop = window.scrollY || document.documentElement.scrollTop;
-    console.log(indexScrollTop);
     if (mobileMenu !== "open") {
       document.querySelector("#gradiant").classList.remove("show_gradiant");
       document.querySelector("header").classList.add("hide_scroll_nav");
@@ -80,30 +76,50 @@ function setAOS() {
   }, 2000);
 }
 
-const pageHeader = `
-<div id="logo"></div>
-      <div class="burger">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="/index.html#showreel">Home</a></li>
-          <li><a href="/index.html#cases">Cases</a></li>
-          <li><a href="/index.html#what">What</a></li>
-          <li><a href="/index.html#how">How</a></li>
-          <li><a href="/index.html#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <div id="logotext">
-        <div class="holder"></div>
-      </div>
-      <div id="gradiant">
-        <div class="top"></div>
-        <div class="fade"></div>
-      </div>
-`;
+// const pageHeader = `
+// <div id="logo"></div>
+//       <div class="burger">
+//         <div class="bar1"></div>
+//         <div class="bar2"></div>
+//         <div class="bar3"></div>
+//       </div>
+//       <nav>
+//         <ul>
+//           <li><a href="/index.html#showreel" data-navLink="#showreel">Home</a></li>
+//           <li><a href="/index.html#cases" data-navLink="#cases">Cases</a></li>
+//           <li><a href="/index.html#what" data-navLink="#what">What</a></li>
+//           <li><a href="/index.html#how" data-navLink="#how">How</a></li>
+//           <li><a href="/index.html#contact" data-navLink="#contact">Contact</a></li>
+//         </ul>
+//       </nav>
+//       <div id="logotext">
+//         <div class="holder"></div>
+//       </div>
+//       <div id="gradiant">
+//         <div class="top"></div>
+//         <div class="fade"></div>
+//       </div>
+// `;
+
+// function mouseClick(event) {
+//   click = event.target.dataset.navLink;
+//   if (click === "#showreel") {
+//     console.log("showreel nav clicked");
+//     window.sessionStorage.setItem("navLink", "#showreel");
+//   }
+//   if (click === "#cases") {
+//     window.sessionStorage.setItem("navLink", "#cases");
+//   }
+//   if (click === "#what") {
+//     window.sessionStorage.setItem("navLink", "#what");
+//   }
+//   if (click === "#how") {
+//     window.sessionStorage.setItem("navLink", "#how");
+//   }
+//   if (click === "#contact") {
+//     window.sessionStorage.setItem("navLink", "#contact");
+//   }
+// }
 
 const pageFooter = `
 <h1>Contact</h1>

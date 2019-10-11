@@ -2,6 +2,8 @@
 
 window.addEventListener("DOMContentLoaded", init);
 
+let indexScrollTop;
+
 function init() {
   getPageContent();
   getTestimonialContent();
@@ -367,8 +369,10 @@ let checkCtaSliderSeen;
 async function getCtaContent() {
   getCtaArray = await fetchWP("cta?per_page=100");
   showreelCtaObserver();
-  casesCtaObserver();
-  howCtaObserver();
+  setTimeout(() => {
+    casesCtaObserver();
+    howCtaObserver();
+  }, 2000);
 }
 
 // - - - - - - - - - - - - - CTA showreel observer - - - - - - - - - - - - -
@@ -430,7 +434,7 @@ function casesCtaObserver() {
     });
   });
 
-  observer.observe(document.querySelector(".case"));
+  observer.observe(document.querySelector(".showcase"));
 }
 
 // - - - - - - - - - - - - - CTA How observer - - - - - - - - - - - - -
@@ -832,149 +836,37 @@ function fetchWP(wpPath) {
 }
 
 function scrollPoint() {
-  // const backLink = sessionStorage.getItem("indexScrollTop");
-  // const navLink = sessionStorage.getItem("navScroll");
-  // if (navLink != "") {
-  //   document.querySelector(navLink).scrollIntoView({
-  //     behavior: "smooth"
-  //   });
-  //   sessionStorage.removeItem("navScroll");
-  //   return;
-  // } else if (backLink != "") {
-  //   window.scrollTo({
-  //     top: backLink,
-  //     left: 0,
-  //     behavior: "smooth"
-  //   });
-  //   sessionStorage.removeItem("indexScrollTop");
-  // }
+  console.log("scrollPoint");
+  window.addEventListener("scroll", getScrollValue);
+  function getScrollValue() {
+    indexScrollTop = window.scrollY || document.documentElement.scrollTop;
+  }
+  const navLink = sessionStorage.getItem("navLink");
+  if (navLink != undefined) {
+    console.log(navLink);
+    console.log("Srcolled to nav-ID");
+    setTimeout(() => {
+      document.querySelector("#" + navLink).scrollIntoView({
+        behavior: "smooth"
+      });
+      sessionStorage.removeItem("navLink");
+      sessionStorage.removeItem("indexScroll");
+    }, 2000);
+  } else {
+    const indexScroll = sessionStorage.getItem("indexScroll");
+    if (indexScroll != undefined) {
+      console.log(indexScroll);
+      console.log("Srcolled to link");
+      setTimeout(() => {
+        window.scrollTo({
+          top: indexScroll,
+          left: 0,
+          behavior: "smooth"
+        });
+        sessionStorage.removeItem("indexScroll");
+      }, 2000);
+    } else {
+      console.log("backLink is empty");
+    }
+  }
 }
-
-// function scrollToAnchor() {
-//   let currentUrl = document.URL;
-//   console.log("currentUrl");
-//   console.log(currentUrl);
-//   if (currentUrl.includes("#")) {
-//     const achor = "#" + currentUrl.split("#")[1];
-//     console.log(achor);
-//     setTimeout(function() {
-//       document.querySelector(achor).scrollIntoView({
-//         behavior: "smooth"
-//       });
-//     }, 1000);
-//   }
-// }
-
-// let indexScrollTop = window.scrollY || document.documentElement.scrollTop;
-// console.log(indexScrollTop);
-// window.sessionStorage.setItem("indexScroll", indexScrollTop);
-
-// function ctaButtons() {
-//   const ctaArray = [
-//     {
-//       id: "showreelCta",
-//       seen: showreelButtonSeen,
-//       path: "#showreel .cta",
-//       target: "#showreel .header",
-//       time: "5000"
-//     }
-//   ];
-//   ctaArray.forEach(CtaButtonDelay);
-// }
-
-// - - - - - - - - - - - - - CTA pop up delay - - - - - - - - - - - - -
-
-// function CtaButtonDelay(ctaButon) {
-//   let inview;
-
-//   document.querySelector(ctaButon.path).addEventListener("click", () => {
-//     ctaClicked(ctaButon.id);
-//   });
-
-// const observer = new IntersectionObserver(entries => {
-//   entries.forEach(entry => {
-//     if (entry.intersectionRatio > 0) {
-//       inview = true;
-//       setTimeout(() => {
-//         if (inview == true && ctaButon.seen == false) {
-//           console.log("Seen for 5 sec for the first time");
-//           ctaButon.seen = true;
-//           document.querySelector(ctaButon.path).classList.add("appear");
-//         }
-//       }, ctaButon.time);
-//     } else {
-//       inview = false;
-//     }
-//   });
-// });
-
-//   observer.observe(document.querySelector(ctaButon.target));
-// }
-
-// function displayTestimonial(testimonial) {
-//   document.querySelector("[data-testimonial_quote]").innerHTML = "";
-//   document.querySelector("[data-testimonial_name]").innerHTML = "";
-//   document.querySelector("[data-testimonial_company]").innerHTML = "";
-//   document
-//     .querySelector("#intro .case_testimonial .bubble")
-//     .classList.remove("quote_contract");
-//   document
-//     .querySelector("#intro .case_testimonial .bubble")
-//     .classList.add("quote_expand");
-//   document
-//     .querySelector("[data-testimonial_quote]")
-//     .classList.remove("quote_expand");
-//   document
-//     .querySelector("[data-testimonial_name]")
-//     .classList.remove("quote_expand");
-//   document
-//     .querySelector("[data-testimonial_company]")
-//     .classList.remove("quote_expand");
-//   document.querySelector("#intro .quote_wrapper").style.opacity = "1";
-//   document.querySelector("[data-testimonial_name]").textContent =
-//     testimonial.acf.testimonial_name;
-//   if (testimonial.acf.testimonial_title) {
-//     document.querySelector("[data-testimonial_company]").textContent =
-//       testimonial.acf.testimonial_title +
-//       ", " +
-//       testimonial.acf.testimonial_company;
-//   } else {
-//     document.querySelector("[data-testimonial_company]").textContent =
-//       testimonial.acf.testimonial_company;
-//   }
-//   document.querySelector("[data-testimonial_quote]").innerHTML =
-//     testimonial.acf.testimonial_quote;
-//   setTimeout(() => {
-//     document
-//       .querySelector("[data-testimonial_quote]")
-//       .classList.add("quote_expand");
-//     setTimeout(() => {
-//       document.querySelector("[data-testimonial_name]").style.opacity = "1";
-//       document
-//         .querySelector("[data-testimonial_name]")
-//         .classList.add("quote_expand");
-//       document.querySelector("[data-testimonial_company]").style.opacity = "1";
-//       document
-//         .querySelector("[data-testimonial_company]")
-//         .classList.add("quote_expand");
-//       setTimeout(() => {
-//         document.querySelector("#intro .quote_wrapper").style.opacity = "0";
-//         document
-//           .querySelector("#intro .case_testimonial .bubble")
-//           .classList.remove("quote_expand");
-//         document
-//           .querySelector("#intro .case_testimonial .bubble")
-//           .classList.add("quote_contract");
-//         setTimeout(() => {
-//           sw_i++;
-//           if (sw_i <= testimonialArray.length - 1) {
-//             displayTestimonial(testimonialArray[sw_i]);
-//           } else {
-//             sw_i = 0;
-//             displayTestimonial(testimonialArray[0]);
-//           }
-//         }, 3000);
-//       }, 5000);
-//     }, 1000);
-//   }, 500);
-// }

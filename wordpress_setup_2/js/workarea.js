@@ -9,6 +9,8 @@ console.log("urlID er: " + urlID);
 let urlWorkarea = sessionStorage.getItem("workAreaLink");
 console.log(urlWorkarea);
 
+let click;
+
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
@@ -16,6 +18,7 @@ function init() {
   document.querySelector("#showreel .explore").addEventListener("click", () => {
     window.location = "#workarea";
   });
+  document.querySelector("body").addEventListener("click", mouseClick);
 }
 
 // - - - - - - - - - - - get page content  - - - - - - - - - - -
@@ -34,7 +37,7 @@ function insertPageContent() {
   // - - - - - - - - - - - page title & description - - - - - - - - - - -
 
   dest.querySelector("[data-page_title]").textContent =
-    "Workarea - " + pageContent.acf.area_header;
+    pageContent.acf.seo_title;
   dest
     .querySelector("[data-seo_description]")
     .setAttribute("content", pageContent.acf.seo_description);
@@ -296,4 +299,29 @@ function fetchWP(wpPath) {
         resolve(wpContent);
       });
   });
+}
+
+function mouseClick(event) {
+  console.log("something was clicked");
+  click = event.target.dataset.navlink;
+  if (click === "showreel") {
+    console.log("showreel nav clicked");
+    window.sessionStorage.setItem("navLink", "showreel");
+  }
+  if (click === "cases") {
+    console.log("cases nav clicked");
+    window.sessionStorage.setItem("navLink", "cases");
+  }
+  if (click === "what") {
+    console.log("what nav clicked");
+    window.sessionStorage.setItem("navLink", "what");
+  }
+  if (click === "how") {
+    console.log("how nav clicked");
+    window.sessionStorage.setItem("navLink", "how");
+  }
+  if (click === "contact") {
+    console.log("how contact clicked");
+    window.sessionStorage.setItem("navLink", "contact");
+  }
 }
