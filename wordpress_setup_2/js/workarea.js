@@ -9,8 +9,6 @@ console.log("urlID er: " + urlID);
 let urlWorkarea = sessionStorage.getItem("workAreaLink");
 console.log(urlWorkarea);
 
-let click;
-
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
@@ -299,29 +297,4 @@ function fetchWP(wpPath) {
         resolve(wpContent);
       });
   });
-}
-
-function mouseClick(event) {
-  console.log("something was clicked");
-  click = event.target.dataset.navlink;
-  if (click === "showreel") {
-    console.log("showreel nav clicked");
-    window.sessionStorage.setItem("navLink", "showreel");
-  }
-  if (click === "cases") {
-    console.log("cases nav clicked");
-    window.sessionStorage.setItem("navLink", "cases");
-  }
-  if (click === "what") {
-    console.log("what nav clicked");
-    window.sessionStorage.setItem("navLink", "what");
-  }
-  if (click === "how") {
-    console.log("how nav clicked");
-    window.sessionStorage.setItem("navLink", "how");
-  }
-  if (click === "contact") {
-    console.log("how contact clicked");
-    window.sessionStorage.setItem("navLink", "contact");
-  }
 }

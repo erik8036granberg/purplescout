@@ -9,8 +9,6 @@ console.log("urlID er: " + urlID);
 let urlCase = sessionStorage.getItem("caseLink");
 console.log(urlCase);
 
-let click;
-
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
@@ -20,6 +18,19 @@ function init() {
     window.location = "#case";
   });
   document.querySelector("body").addEventListener("click", mouseClick);
+
+  document.querySelector("#logo").addEventListener("click", () => {
+    sessionStorage.removeItem("indexScroll");
+    alert("remove sessionStorage indexScroll");
+  });
+  document.querySelector("#logotext .holder").addEventListener("click", () => {
+    sessionStorage.removeItem("indexScroll");
+    alert("remove sessionStorage indexScroll");
+  });
+  document.querySelector("nav li").addEventListener("click", () => {
+    sessionStorage.removeItem("indexScroll");
+    alert("remove sessionStorage indexScroll");
+  });
 }
 
 // - - - - - - - - - - - get page content  - - - - - - - - - - -
@@ -403,29 +414,4 @@ function fetchWP(wpPath) {
         resolve(wpContent);
       });
   });
-}
-
-function mouseClick(event) {
-  console.log("something was clicked");
-  click = event.target.dataset.navlink;
-  if (click === "showreel") {
-    console.log("showreel nav clicked");
-    window.sessionStorage.setItem("navLink", "showreel");
-  }
-  if (click === "cases") {
-    console.log("cases nav clicked");
-    window.sessionStorage.setItem("navLink", "cases");
-  }
-  if (click === "what") {
-    console.log("what nav clicked");
-    window.sessionStorage.setItem("navLink", "what");
-  }
-  if (click === "how") {
-    console.log("how nav clicked");
-    window.sessionStorage.setItem("navLink", "how");
-  }
-  if (click === "contact") {
-    console.log("how contact clicked");
-    window.sessionStorage.setItem("navLink", "contact");
-  }
 }

@@ -9,16 +9,22 @@ document.addEventListener("DOMContentLoaded", function(event) {
   setAOS();
   document.querySelector("#logo").addEventListener("click", () => {
     window.location = "/index.html#showreel";
+    sessionStorage.removeItem("indexScroll");
     if (mobileMenu === "open") {
       closeMenu();
     }
   });
   document.querySelector("#logotext .holder").addEventListener("click", () => {
     window.location = "/index.html#showreel";
+    sessionStorage.removeItem("indexScroll");
     if (mobileMenu === "open") {
       closeMenu();
     }
   });
+  document.querySelector("nav ul").addEventListener("click", () => {
+    sessionStorage.removeItem("indexScroll");
+  });
+
   document.querySelector(".year").innerHTML = new Date().getFullYear();
 });
 

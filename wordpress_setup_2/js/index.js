@@ -1,10 +1,18 @@
 "use strict";
+let perfEntries = performance.getEntriesByType("navigation");
+console.log(perfEntries[0].type);
 
 window.addEventListener("DOMContentLoaded", init);
+window.onload = function() {
+  scrollToAnchor();
+};
 
 let indexScrollTop;
+let indexScroll = sessionStorage.getItem("indexScroll");
+let currentUrl = document.URL;
 
 function init() {
+  // anchorReset();
   getPageContent();
   getTestimonialContent();
   getCaseContent();
@@ -12,7 +20,6 @@ function init() {
   circleTurn();
   autoTurn();
   logoSwap();
-  scrollPoint();
   document.querySelector("#showreel .explore").addEventListener("click", () => {
     window.location = "#intro";
   });
@@ -835,38 +842,57 @@ function fetchWP(wpPath) {
   });
 }
 
-function scrollPoint() {
-  console.log("scrollPoint");
+function anchorReset() {
+  if (location.hash) {
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+  }
+}
+
+function scrollToAnchor() {
   window.addEventListener("scroll", getScrollValue);
   function getScrollValue() {
     indexScrollTop = window.scrollY || document.documentElement.scrollTop;
   }
-  const navLink = sessionStorage.getItem("navLink");
-  if (navLink != undefined) {
-    console.log(navLink);
-    console.log("Srcolled to nav-ID");
+  if (
+    perfEntries[0].type === "back_forward" ||
+    perfEntries[0].type === "reload"
+  ) {
+    console.log("history");
+    if (indexScroll != undefined) {
+      console.log("indexScroll pressent");
+      scrollToPossition();
+    } else {
+      console.log("no indexScroll");
+      scrollToID();
+    }
+  }
+  if (perfEntries[0].type === "navigate") {
+    scrollToID();
+  }
+}
+
+function scrollToPossition() {
+  console.log("scroll to possion");
+  setTimeout(() => {
+    window.scrollTo({
+      top: indexScroll,
+      left: 0,
+      behavior: "smooth"
+    });
+  }, 1500);
+}
+
+function scrollToID() {
+  console.log("scroll to URL-ID");
+  if (currentUrl.includes("#")) {
+    const achor = "#" + currentUrl.split("#")[1];
     setTimeout(() => {
-      document.querySelector("#" + navLink).scrollIntoView({
+      document.querySelector(achor).scrollIntoView({
         behavior: "smooth"
       });
-      sessionStorage.removeItem("navLink");
       sessionStorage.removeItem("indexScroll");
     }, 1500);
-  } else {
-    const indexScroll = sessionStorage.getItem("indexScroll");
-    if (indexScroll != undefined) {
-      console.log(indexScroll);
-      console.log("Srcolled to link");
-      setTimeout(() => {
-        window.scrollTo({
-          top: indexScroll,
-          left: 0,
-          behavior: "smooth"
-        });
-        sessionStorage.removeItem("indexScroll");
-      }, 1500);
-    } else {
-      console.log("backLink is empty");
-    }
   }
 }
