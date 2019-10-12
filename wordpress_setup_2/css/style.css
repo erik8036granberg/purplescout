@@ -708,7 +708,7 @@ footer h1 {
   background-image: url(../img/close_modal.svg);
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: var(--bg_black_trs);
+  background-color: var(--bg_white_trs);
   border-radius: 50%;
   z-index: 1010;
   transition: 0.5s;
