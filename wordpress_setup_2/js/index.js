@@ -473,7 +473,7 @@ function howCtaObserver() {
     });
   });
 
-  observer.observe(document.querySelector("#how"));
+  observer.observe(document.querySelector("#how .content"));
 }
 
 // - - - - - - - - - - - Cta SliderModal show / hide  - - - - - - - - - - -

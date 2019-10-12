@@ -16,7 +16,6 @@ function init() {
   document.querySelector("#showreel .explore").addEventListener("click", () => {
     window.location = "#workarea";
   });
-  document.querySelector("body").addEventListener("click", mouseClick);
 }
 
 // - - - - - - - - - - - get page content  - - - - - - - - - - -

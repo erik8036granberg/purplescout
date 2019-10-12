@@ -17,7 +17,6 @@ function init() {
   document.querySelector("#showreel .explore").addEventListener("click", () => {
     window.location = "#case";
   });
-  document.querySelector("body").addEventListener("click", mouseClick);
 
   document.querySelector("#logo").addEventListener("click", () => {
     sessionStorage.removeItem("indexScroll");
