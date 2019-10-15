@@ -1485,6 +1485,10 @@ footer h3 {
   padding: 0;
 }
 
+footer .address p {
+  margin: 0;
+}
+
 footer .icon {
   display: block;
   white-space: nowrap;

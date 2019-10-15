@@ -12,6 +12,7 @@ let currentUrl = document.URL;
 
 function init() {
   getPageContent();
+  getFooterContent();
   getTestimonialContent();
   getCaseContent();
   getWorkareaContent();
@@ -190,10 +191,80 @@ function insertPageContent() {
       "[data-deliver_bg]"
     ).style.backgroundImage = `url(${pageContent.acf.how_deliver_image.sizes.medium_large})`;
   }
-
-  // - - - - - - - - - - - get footer content - - - - - - - - - - -
-
   getCtaContent();
+}
+
+// - - - - - - - - - - - get footer content  - - - - - - - - - -
+
+let footerContent;
+
+async function getFooterContent() {
+  footerContent = await fetchWP("pages/412");
+  insertFooterContent();
+}
+
+function insertFooterContent() {
+  console.log(footerContent);
+  let dest = document.querySelector("[data-footer_container]");
+  dest.querySelector("[data-cph_phone]").textContent =
+    footerContent.acf.cph_phone;
+  dest
+    .querySelector("[data-cph_phone]")
+    .setAttribute("href", "tel:" + footerContent.acf.cph_phone);
+
+  dest.querySelector("[data-chp_mail]").textContent =
+    footerContent.acf.chp_mail;
+  dest
+    .querySelector("[data-chp_mail]")
+    .setAttribute("href", "mailto:" + footerContent.acf.chp_mail);
+  dest.querySelector(
+    "[data-website_se]"
+  ).textContent = footerContent.acf.website_se.split("//")[1];
+  dest
+    .querySelector("[data-website_se]")
+    .setAttribute("href", footerContent.acf.website_se);
+  dest.querySelector(
+    "[data-website_dk]"
+  ).textContent = footerContent.acf.website_dk.split("//")[1];
+  dest
+    .querySelector("[data-website_dk]")
+    .setAttribute("href", footerContent.acf.website_dk);
+  dest
+    .querySelector("[data-some_facebook]")
+    .setAttribute("href", footerContent.acf.some_facebook);
+  dest
+    .querySelector("[data-some_instagram]")
+    .setAttribute("href", footerContent.acf.some_instagram);
+  dest
+    .querySelector("[data-some_twitter]")
+    .setAttribute("href", footerContent.acf.some_twitter);
+  dest
+    .querySelector("[data-some_linkedin]")
+    .setAttribute("href", footerContent.acf.some_linkedin);
+  dest.querySelector("[data-about_text]").innerHTML =
+    footerContent.acf.about_text;
+  dest
+    .querySelector("[data-footer_location_map]")
+    .setAttribute("src", footerContent.acf.footer_location_map);
+  dest
+    .querySelector("[data-footer_location_map]")
+    .setAttribute("alt", "Purple Scout location map");
+  dest.querySelector("[data-contact_header_copenhagen]").textContent =
+    footerContent.acf.contact_header_copenhagen;
+  dest.querySelector("[data-contact_address_copenhagen]").innerHTML =
+    footerContent.acf.contact_address_copenhagen;
+  dest.querySelector("[data-contact_header_malmo]").textContent =
+    footerContent.acf.contact_header_malmo;
+  dest.querySelector("[data-contact_address_malmo]").innerHTML =
+    footerContent.acf.contact_address_malmo;
+  dest.querySelector("[data-contact_header_gothenburg]").textContent =
+    footerContent.acf.contact_header_gothenburg;
+  dest.querySelector("[data-contact_address_gothenburg]").innerHTML =
+    footerContent.acf.contact_address_gothenburg;
+  dest.querySelector("[data-contact_header_boras]").textContent =
+    footerContent.acf.contact_header_boras;
+  dest.querySelector("[data-contact_address_boras]").innerHTML =
+    footerContent.acf.contact_address_boras;
 }
 
 // - - - - - - - - - - - get Testimonials content  - - - - - - - - - - -
@@ -831,14 +902,6 @@ function fetchWP(wpPath) {
         resolve(wpContent);
       });
   });
-}
-
-function anchorReset() {
-  if (location.hash) {
-    if ("scrollRestoration" in history) {
-      history.scrollRestoration = "manual";
-    }
-  }
 }
 
 function scrollToAnchor() {
