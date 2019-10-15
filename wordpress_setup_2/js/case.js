@@ -85,6 +85,21 @@ function insertPageContent() {
 
   dest.querySelector("[data-main_text]").innerHTML = pageContent.acf.main_text;
 
+  if (pageContent.acf.main_text.includes("<img")) {
+    let p_image = dest.querySelector("p > img");
+
+    // Create a new element
+    let newNode = p_image;
+
+    // Get the reference node
+    let referenceNode = document.querySelector(p_image.parentNode);
+
+    // Insert the new node before the reference node
+    referenceNode.after(newNode);
+
+    p_image.parentNode.removeChild(p_image);
+  }
+
   // - - - - - - - - - - - images - - - - - - - - - - -
 
   dest
