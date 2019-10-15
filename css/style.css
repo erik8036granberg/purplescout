@@ -2465,10 +2465,10 @@ footer .copyright {
     padding: 0 7vw 0 0;
   }
 
-  #case .case_text p img {
-    margin: 3vw auto 2vw;
-    width: 500px;
-    max-width: 500px;
+  #case .case_text img {
+    margin: 3vw auto 2vw !important;
+    width: 500px !important;
+    max-width: 500px !important;
   }
 
   #case .case_points {
