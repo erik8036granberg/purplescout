@@ -1,13 +1,13 @@
 "use strict";
 
-//	URL stuff
-let urlParams = new URLSearchParams(window.location.search);
-let urlID = urlParams.get("id");
-console.log("urlID er: " + urlID);
-
-// sessionStorrage pagelink
-let urlWorkarea = sessionStorage.getItem("workAreaLink");
-console.log(urlWorkarea);
+let urlID = document.URL;
+let urlWorkarea;
+if (urlID.includes("/workarea/")) {
+  urlID = urlID.split("workarea/")[1];
+  urlWorkarea = urlID;
+} else {
+  urlWorkarea = sessionStorage.getItem("caseLink");
+}
 
 window.addEventListener("DOMContentLoaded", init);
 
@@ -25,7 +25,6 @@ async function getPageContent() {
   pageContent = await fetchWP(`workareas?slug=${urlWorkarea}`);
   pageContent = pageContent[0];
   insertPageContent();
-  console.log(pageContent);
 }
 
 function insertPageContent() {
@@ -147,14 +146,12 @@ let checkCtaSliderSeen;
 
 async function getCtaContent() {
   getCtaArray = await fetchWP("cta?per_page=100");
-  console.log(getCtaArray);
   workareaCtaObserver();
 }
 
 // - - - - - - - - - - - - - CTA workarea observer - - - - - - - - - - - - -
 
 function workareaCtaObserver() {
-  console.log("workareaCta");
   let workareaInview;
   document
     .querySelector("#cta_slider .cta_slider_button")
@@ -166,12 +163,10 @@ function workareaCtaObserver() {
     entries.forEach(entry => {
       if (entry.intersectionRatio > 0) {
         workareaInview = true;
-        console.log("workarea in view");
         checkCtaSliderSeen = sessionStorage.getItem(pageContent.slug);
         setTimeout(() => {
           if (workareaInview == true && checkCtaSliderSeen != "true") {
             window.sessionStorage.setItem(`${pageContent.slug}`, "true");
-            console.log("workarea CTA target seen");
             ctaSliderModal(pageContent.acf.workarea_cta);
           }
         }, 10000);
@@ -200,7 +195,6 @@ function ctaSliderModal(cta_id) {
 }
 
 function closeSlider() {
-  console.log("closeSlider");
   document
     .querySelector("#cta_slider .close")
     .removeEventListener("click", closeSlider);
@@ -226,8 +220,6 @@ function ctaClicked(button_id) {
 // - - - - - - - - - - - display Cta content   - - - - - - - - - - -
 
 function displayCta(ctaItem) {
-  console.log("displayCta");
-  console.log(ctaItem);
   document.querySelector("[data-cta_container]").innerHTML = "";
   const template = document.querySelector("[data-cta_template]").content;
   const clone = template.cloneNode(true);
@@ -268,7 +260,6 @@ function CtaModal() {
     .querySelector("#cta_modal .close")
     .addEventListener("click", closeModal);
   function closeModal() {
-    console.log("closeModal");
     if (
       pageContent.acf.showreel_video_large ||
       pageContent.acf.showreel_video_medium ||

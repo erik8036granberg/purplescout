@@ -1,34 +1,20 @@
 "use strict";
 
-//	URL stuff
-let urlParams = new URLSearchParams(window.location.search);
-let urlID = urlParams.get("id");
-console.log("urlID er: " + urlID);
-
-// sessionStorrage pagelink
-let urlCase = sessionStorage.getItem("caseLink");
-console.log(urlCase);
+let urlID = document.URL;
+let urlCase;
+if (urlID.includes("/case/")) {
+  urlID = urlID.split("case/")[1];
+  urlCase = urlID;
+} else {
+  urlCase = sessionStorage.getItem("caseLink");
+}
 
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
-  console.log("init");
   getPageContent();
   document.querySelector("#showreel .explore").addEventListener("click", () => {
     window.location = "#case";
-  });
-
-  document.querySelector("#logo").addEventListener("click", () => {
-    sessionStorage.removeItem("indexScroll");
-    alert("remove sessionStorage indexScroll");
-  });
-  document.querySelector("#logotext .holder").addEventListener("click", () => {
-    sessionStorage.removeItem("indexScroll");
-    alert("remove sessionStorage indexScroll");
-  });
-  document.querySelector("nav li").addEventListener("click", () => {
-    sessionStorage.removeItem("indexScroll");
-    alert("remove sessionStorage indexScroll");
   });
 }
 
@@ -36,12 +22,9 @@ function init() {
 let pageContent;
 
 async function getPageContent() {
-  console.log("getPageContent");
   pageContent = await fetchWP(`case?slug=${urlCase}`);
   pageContent = pageContent[0];
-  console.log(pageContent);
   insertPageContent();
-  console.log();
 }
 
 function insertPageContent() {
@@ -58,10 +41,7 @@ function insertPageContent() {
   // - - - - - - - - - - - show reel image alternativ image or video sizes - - - - - - - - - - -
 
   if (pageContent.acf.showreel_image) {
-    console.log("showreel image is present");
-
     document.querySelector("video").style.display = "none";
-
     if (window.innerWidth > 1200) {
       dest.querySelector(
         "[data-showreel_image]"
@@ -80,17 +60,14 @@ function insertPageContent() {
   } else {
     document.querySelector("#showreel_image").style.display = "none";
     if (window.innerWidth > 1200) {
-      console.log("Large video");
       dest
         .querySelector("[data-showreel_video]")
         .setAttribute("src", pageContent.acf.showreel_video_large);
     } else if (window.innerWidth > 500) {
-      console.log("Medium video");
       dest
         .querySelector("[data-showreel_video]")
         .setAttribute("src", pageContent.acf.showreel_video_medium);
     } else {
-      console.log("Small video");
       dest
         .querySelector("[data-showreel_video]")
         .setAttribute("src", pageContent.acf.showreel_video_small);
@@ -144,10 +121,8 @@ function insertPageContent() {
   // - - - - - - - - - - - fact points - - - - - - - - - - -
 
   let factPoints = pageContent.acf.fact_points;
-  console.log(factPoints);
   factPoints.forEach(getFactPoints);
   let factArray = [];
-  console.log(factArray);
   async function getFactPoints(factPoint_id) {
     let factPoint = await fetchWP(`facts/${factPoint_id}`);
     factArray.push(factPoint);
@@ -159,8 +134,6 @@ function insertPageContent() {
   // - - - - - - - - - - - insert fact points - - - - - - - - - - -
 
   function insertFact() {
-    console.log("insertFact");
-    console.log(factArray);
     factArray.forEach(factItem => {
       const newFactPoint = document.createElement("DIV");
       newFactPoint.setAttribute("class", "point");
@@ -235,7 +208,6 @@ function insertPageContent() {
   // - - - - - - - - - - - insert Work area symbols - - - - - - - - - - -
 
   function insertWorkaraSymbols() {
-    console.log("insertWorkaraSymbols");
     workAreaArray.forEach(workareaItem => {
       const makeDiv = document.createElement("DIV");
       const makeImg = document.createElement("IMG");
@@ -271,7 +243,6 @@ async function getCtaContent() {
 // - - - - - - - - - - - - - CTA case observer - - - - - - - - - - - - -
 
 function caseCtaObserver() {
-  console.log("caseCta");
   let caseInview;
   document
     .querySelector("#cta_slider .cta_slider_button")
@@ -283,12 +254,10 @@ function caseCtaObserver() {
     entries.forEach(entry => {
       if (entry.intersectionRatio > 0) {
         caseInview = true;
-        console.log("case in view");
         checkCtaSliderSeen = sessionStorage.getItem(pageContent.slug);
         setTimeout(() => {
           if (caseInview == true && checkCtaSliderSeen != "true") {
             window.sessionStorage.setItem(`${pageContent.slug}`, "true");
-            console.log("case CTA target seen");
             ctaSliderModal(pageContent.acf.case_cta);
           }
         }, 10000);
@@ -317,7 +286,6 @@ function ctaSliderModal(cta_id) {
 }
 
 function closeSlider() {
-  console.log("closeSlider");
   document
     .querySelector("#cta_slider .close")
     .removeEventListener("click", closeSlider);
@@ -343,8 +311,6 @@ function ctaClicked(button_id) {
 // - - - - - - - - - - - display Cta content   - - - - - - - - - - -
 
 function displayCta(ctaItem) {
-  console.log("displayCta");
-  console.log(ctaItem);
   document.querySelector("[data-cta_container]").innerHTML = "";
   const template = document.querySelector("[data-cta_template]").content;
   const clone = template.cloneNode(true);
@@ -385,7 +351,6 @@ function CtaModal() {
     .querySelector("#cta_modal .close")
     .addEventListener("click", closeModal);
   function closeModal() {
-    console.log("closeModal");
     if (
       pageContent.acf.showreel_video_large ||
       pageContent.acf.showreel_video_medium ||

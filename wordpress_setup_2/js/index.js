@@ -1,6 +1,5 @@
 "use strict";
 let perfEntries = performance.getEntriesByType("navigation");
-console.log(perfEntries[0].type);
 
 window.addEventListener("DOMContentLoaded", init);
 window.onload = function() {
@@ -12,7 +11,6 @@ let indexScroll = sessionStorage.getItem("indexScroll");
 let currentUrl = document.URL;
 
 function init() {
-  // anchorReset();
   getPageContent();
   getTestimonialContent();
   getCaseContent();
@@ -36,7 +34,6 @@ let pageContent;
 async function getPageContent() {
   pageContent = await fetchWP("pages/6");
   insertPageContent();
-  console.log();
 }
 
 function insertPageContent() {
@@ -193,6 +190,9 @@ function insertPageContent() {
       "[data-deliver_bg]"
     ).style.backgroundImage = `url(${pageContent.acf.how_deliver_image.sizes.medium_large})`;
   }
+
+  // - - - - - - - - - - - get footer content - - - - - - - - - - -
+
   getCtaContent();
 }
 
@@ -217,7 +217,6 @@ async function getTestimonialContent() {
 }
 
 function displayTestimonial(testimonial) {
-  console.log("displayTestimonial");
   document.querySelector("#intro .bubble").classList.remove("fade_out");
   document.querySelector("#intro .bubble").classList.add("move_out");
   document.querySelector("[data-testimonial_quote]").innerHTML = "";
@@ -398,7 +397,6 @@ function showreelCtaObserver() {
         showreelInview = true;
         setTimeout(() => {
           if (showreelInview == true && showreelButtonSeen == false) {
-            console.log("Showreel CTA target seen");
             showreelButtonSeen = true;
             document
               .querySelector("#showreel .cta")
@@ -431,7 +429,6 @@ function casesCtaObserver() {
         setTimeout(() => {
           if (casesInview == true && checkCtaSliderSeen != "true") {
             window.sessionStorage.setItem("ctaSliderSeen", "true");
-            console.log("Cases CTA target seen");
             ctaSliderModal(pageContent.acf.cases_cta);
           }
         }, 5000);
@@ -447,7 +444,6 @@ function casesCtaObserver() {
 // - - - - - - - - - - - - - CTA How observer - - - - - - - - - - - - -
 
 function howCtaObserver() {
-  console.log("howCta");
   let howInview;
   document
     .querySelector("#cta_slider .cta_slider_button")
@@ -463,7 +459,6 @@ function howCtaObserver() {
         setTimeout(() => {
           if (howInview == true && checkCtaSliderSeen != "true") {
             window.sessionStorage.setItem("ctaSliderSeen", "true");
-            console.log("how CTA target seen");
             ctaSliderModal(pageContent.acf.how_cta);
           }
         }, 5000);
@@ -492,7 +487,6 @@ function ctaSliderModal(cta_id) {
 }
 
 function closeSlider() {
-  console.log("closeSlider");
   document
     .querySelector("#cta_slider .close")
     .removeEventListener("click", closeSlider);
@@ -525,8 +519,6 @@ function ctaClicked(button_id) {
 // - - - - - - - - - - - display Cta content   - - - - - - - - - - -
 
 function displayCta(ctaItem) {
-  console.log("displayCta");
-  console.log(ctaItem);
   document.querySelector("[data-cta_container]").innerHTML = "";
   const template = document.querySelector("[data-cta_template]").content;
   const clone = template.cloneNode(true);
@@ -561,7 +553,6 @@ function CtaModal() {
     .querySelector("#cta_modal .close")
     .addEventListener("click", closeModal);
   function closeModal() {
-    console.log("closeModal");
     document.querySelector("#showreel #reel").play();
     document
       .querySelector("#cta_modal .close")
@@ -859,12 +850,9 @@ function scrollToAnchor() {
     perfEntries[0].type === "back_forward" ||
     perfEntries[0].type === "reload"
   ) {
-    console.log("history");
     if (indexScroll != undefined) {
-      console.log("indexScroll pressent");
       scrollToPossition();
     } else {
-      console.log("no indexScroll");
       scrollToID();
     }
   }
@@ -874,7 +862,6 @@ function scrollToAnchor() {
 }
 
 function scrollToPossition() {
-  console.log("scroll to possion");
   setTimeout(() => {
     window.scrollTo({
       top: indexScroll,
@@ -885,7 +872,6 @@ function scrollToPossition() {
 }
 
 function scrollToID() {
-  console.log("scroll to URL-ID");
   if (currentUrl.includes("#")) {
     const achor = "#" + currentUrl.split("#")[1];
     setTimeout(() => {
