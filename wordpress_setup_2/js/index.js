@@ -203,6 +203,8 @@ async function getFooterContent() {
   insertFooterContent();
 }
 
+// - - - - - - - - - - - insert footer content  - - - - - - - - - -
+
 function insertFooterContent() {
   console.log(footerContent);
   let dest = document.querySelector("[data-footer_container]");
