@@ -3,15 +3,14 @@ let perfEntries = performance.getEntriesByType("navigation");
 let clientUrl = new URLSearchParams(window.location.search);
 let clientID = clientUrl.get("go");
 let clientActive = sessionStorage.getItem("clientSettings");
+let indexScrollTop;
+let indexScroll = sessionStorage.getItem("indexScroll");
+let currentUrl = document.URL;
 
 window.addEventListener("DOMContentLoaded", init);
 window.onload = function() {
   scrollToAnchor();
 };
-
-let indexScrollTop;
-let indexScroll = sessionStorage.getItem("indexScroll");
-let currentUrl = document.URL;
 
 function init() {
   checkClientSettings();
@@ -44,7 +43,7 @@ function checkClientSettings() {
   }
 }
 
-// - - - - - - - - - - - get client content  - - - - - - - - - - -
+// - - - - - - - - - - - get client settings  - - - - - - - - - - -
 
 let clientSetting;
 
@@ -53,7 +52,6 @@ async function getClientContent(clientID) {
   clientArray.forEach(clientItem => {
     if (clientItem.acf.setting_name_number.includes(clientID)) {
       clientSetting = clientItem;
-      console.log(clientSetting);
       window.sessionStorage.setItem("clientSettings", clientID);
     }
   });
@@ -408,13 +406,21 @@ function showCases(caseItem) {
 
 async function getWorkareaContent() {
   let workareaArray = [];
+  let clientSettingsFilter = sessionStorage.getItem("clientSettings");
   let getWorkareas = await fetchWP("workareas?per_page=100");
-  //fix id
-  getWorkareas.forEach(workareaItem => {
-    workareaItem.id = workareaItem.slug;
-  });
-  workareaArray = getWorkareas;
-  workareaArray.forEach(showWorkareas);
+  if (clientSettingsFilter != undefined) {
+    let clientSettingArray = clientSetting.acf.show_workareas;
+    clientSettingArray.forEach(clientWorkarea => {
+      getWorkareas.forEach(clientItem => {
+        if (clientItem.id === clientWorkarea) {
+          showWorkareas(clientItem);
+        }
+      });
+    });
+  } else {
+    workareaArray = getWorkareas;
+    workareaArray.forEach(showWorkareas);
+  }
 }
 
 // - - - - - - - - - - - - - display work areas - - - - - - - - - - - - -
