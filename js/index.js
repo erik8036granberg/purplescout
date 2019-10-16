@@ -32,7 +32,7 @@ function init() {
     });
 }
 
-// - - - - - - - - - - - get client content  - - - - - - - - - - -
+// - - - - - - - - - - - check for URL & session settings  - - - - - - - - - - -
 
 function checkClientSettings() {
   if (clientActive != undefined) {
