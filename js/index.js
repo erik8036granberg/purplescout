@@ -1,5 +1,8 @@
 "use strict";
 let perfEntries = performance.getEntriesByType("navigation");
+let clientUrl = new URLSearchParams(window.location.search);
+let clientID = clientUrl.get("go");
+let clientActive = sessionStorage.getItem("clientSettings");
 
 window.addEventListener("DOMContentLoaded", init);
 window.onload = function() {
@@ -11,10 +14,10 @@ let indexScroll = sessionStorage.getItem("indexScroll");
 let currentUrl = document.URL;
 
 function init() {
+  checkClientSettings();
   getPageContent();
   getFooterContent();
   getTestimonialContent();
-  getCaseContent();
   getWorkareaContent();
   circleTurn();
   autoTurn();
@@ -27,6 +30,34 @@ function init() {
     .addEventListener("click", () => {
       fullVideo();
     });
+}
+
+// - - - - - - - - - - - get client content  - - - - - - - - - - -
+
+function checkClientSettings() {
+  if (clientActive != undefined) {
+    getClientContent(clientActive);
+  } else if (clientID != undefined) {
+    getClientContent(clientID);
+  } else {
+    getCaseContent();
+  }
+}
+
+// - - - - - - - - - - - get client content  - - - - - - - - - - -
+
+let clientSetting;
+
+async function getClientContent(clientID) {
+  let clientArray = await fetchWP("client_settings?per_page=100");
+  clientArray.forEach(clientItem => {
+    if (clientItem.acf.setting_name_number.includes(clientID)) {
+      clientSetting = clientItem;
+      console.log(clientSetting);
+      window.sessionStorage.setItem("clientSettings", clientID);
+    }
+  });
+  getCaseContent();
 }
 
 // - - - - - - - - - - - get page content  - - - - - - - - - - -
@@ -206,7 +237,6 @@ async function getFooterContent() {
 // - - - - - - - - - - - insert footer content  - - - - - - - - - -
 
 function insertFooterContent() {
-  console.log(footerContent);
   let dest = document.querySelector("[data-footer_container]");
   dest.querySelector("[data-cph_phone]").textContent =
     footerContent.acf.cph_phone;
@@ -333,15 +363,22 @@ function displayTestimonial(testimonial) {
 
 async function getCaseContent() {
   let caseArray = [];
+  let clientSettingsFilter = sessionStorage.getItem("clientSettings");
   let getCases = await fetchWP("case?per_page=100");
-  getCases.forEach(caseItem => {
-    caseItem.id = caseItem.slug;
-  });
-  caseArray = getCases;
-  caseArray.forEach(showCases);
-  if (caseArray.length === getCases.length) {
-    casesScollEffect();
+  if (clientSettingsFilter != undefined) {
+    let clientSettingArray = clientSetting.acf.show_cases;
+    clientSettingArray.forEach(clientCase => {
+      getCases.forEach(clientItem => {
+        if (clientItem.id === clientCase) {
+          showCases(clientItem);
+        }
+      });
+    });
+  } else {
+    caseArray = getCases;
+    caseArray.forEach(showCases);
   }
+  casesScollEffect();
 }
 
 // - - - - - - - - - - - - - display cases - - - - - - - - - - - - -

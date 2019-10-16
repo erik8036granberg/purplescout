@@ -1637,9 +1637,9 @@ footer .copyright {
 
 #case .case_text img {
   display: block;
-  margin: 2vw 0 2vw;
-  width: 70%;
-  max-width: 70%;
+  margin: 3vw 0 3vw;
+  width: 85%;
+  max-width: 85%;
 }
 
 #case .case_images {
@@ -2163,10 +2163,8 @@ footer .copyright {
   }
 
   #case .case_text img {
-    margin: 2vw auto 2vw;
     width: 70%;
     max-width: 70%;
-    transform: translateX(-3vw);
   }
 
   #case .case_points {
@@ -2482,7 +2480,6 @@ footer .copyright {
   #case .case_text img {
     width: 450px;
     max-width: 450px;
-    transform: translateX(-3vw);
   }
 
   #case .case_points {
@@ -2648,6 +2645,11 @@ footer .copyright {
   #case .case_text {
     grid-row: 2 / span 1;
     grid-column: 1 / span 4;
+  }
+
+  #case .case_text img {
+    margin: 3vw auto 3vw;
+    transform: translateX(-3vw);
   }
 
   #case .case_text p,
