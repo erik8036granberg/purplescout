@@ -655,7 +655,8 @@ function displayCta(ctaItem) {
     .querySelector("[data-cta_mail]")
     .setAttribute("href", "mailto:" + ctaItem.acf.cta_mail);
   document.querySelector("[data-cta_container]").appendChild(clone);
-  document.querySelector("#cta_modal .some").innerHTML = pageSome;
+  let footer_some = document.querySelector("footer .some").innerHTML;
+  document.querySelector("#cta_modal .some").innerHTML = footer_some;
 }
 
 // - - - - - - - - - - - Cta modal show / hide  - - - - - - - - - - -
