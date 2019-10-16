@@ -84,7 +84,6 @@ function insertPageContent() {
   // - - - - - - - - - - - main text - - - - - - - - - - -
 
   dest.querySelector("[data-main_text]").innerHTML = pageContent.acf.main_text;
-
   if (pageContent.acf.main_text.includes("<img")) {
     let p_image = dest.querySelector("p > img");
     dest.querySelector("p > img").parentNode.after(p_image);
