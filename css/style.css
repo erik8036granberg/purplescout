@@ -19,10 +19,13 @@
 html {
   scroll-behavior: Smooth;
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 
-* {
-  box-sizing: border-box;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 /* watch out for accecebility */
@@ -118,8 +121,8 @@ header {
 }
 
 #logo {
-  width: 7rem;
-  height: 8rem;
+  width: 6rem;
+  height: 7rem;
   position: absolute;
   background-image: url(../img/logo.svg);
   background-size: cover;
@@ -142,12 +145,12 @@ header {
 }
 
 #logotext .holder {
-  width: 14rem;
-  height: 2.5rem;
+  width: 12rem;
+  height: 2.2rem;
   position: absolute;
   left: 50%;
   top: 50%;
-  margin: 6rem 0 0;
+  margin: 5.5rem 0 0;
   transform: translate(-50%, -50%);
   background-image: url(../img/logo_text.svg);
   background-size: cover;
@@ -168,7 +171,7 @@ main {
   cursor: pointer;
   border: none;
   position: fixed;
-  top: 4rem;
+  top: 3.5rem;
   right: 4rem;
   z-index: 999;
   transform: scale(1.33);
@@ -1995,9 +1998,43 @@ footer .copyright {
 
 /*- - - - - - - - - - - - - - - media queries - - - - - - - - - - - - - -*/
 
+@media only screen and (max-width: 1080px) and (max-height: 600px) and (orientation: landscape) {
+  #showreel .full_video {
+    margin: 2rem 0 0;
+    display: inline-block;
+    line-height: 0;
+    overflow: hidden;
+  }
+
+  #showreel .show_showreel_cta {
+    margin: 2rem 0 0 1.5rem;
+    display: inline-block;
+    line-height: 0;
+    overflow: hidden;
+    border: 1px solid #fff;
+  }
+}
+
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - media queries 500px - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 @media screen and (min-width: 500px) {
+  #logo {
+    width: 7rem;
+    height: 8rem;
+    top: 2rem;
+    left: 2rem;
+  }
+
+  #logotext .holder {
+    width: 14rem;
+    height: 2.5rem;
+    margin: 6rem 0 0;
+  }
+
+  .burger {
+    top: 4rem;
+  }
+
   h2 {
     font-size: 4rem;
   }
