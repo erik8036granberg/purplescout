@@ -1999,6 +1999,10 @@ footer .copyright {
 /*- - - - - - - - - - - - - - - media queries - - - - - - - - - - - - - -*/
 
 @media only screen and (max-width: 1080px) and (max-height: 600px) and (orientation: landscape) {
+  nav {
+    overflow: scroll;
+  }
+
   #showreel .full_video {
     margin: 2rem 0 0;
     display: inline-block;
