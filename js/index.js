@@ -16,7 +16,6 @@ function init() {
   checkClientSettings();
   getPageContent();
   getFooterContent();
-  getTestimonialContent();
   getWorkareaContent();
   circleTurn();
   autoTurn();
@@ -220,6 +219,7 @@ function insertPageContent() {
       "[data-deliver_bg]"
     ).style.backgroundImage = `url(${pageContent.acf.how_deliver_image.sizes.medium_large})`;
   }
+  getTestimonialContent();
   getCtaContent();
 }
 
@@ -330,16 +330,26 @@ async function getTestimonialContent() {
   <polygon class="cls-1 outline" points="58.5 578.5 118.09 507.5 0.5 507.5 0.5 0.5 447.5 0.5 447.5 507.5 166.18 507.5 58.5 578.5"/>
 </svg>`;
   document.querySelector("#intro #quote_outline").innerHTML = bubble_ouline;
-  // document.querySelector("#intro .swop_frame").onmouseenter = function() {
-  //   document.querySelector("#intro svg .outline").classList.add("hover");
-  // };
-  // document.querySelector("#intro .swop_frame").onmouseleave = function() {
-  //   document.querySelector("#intro svg .outline").classList.remove("hover");
-  // };
+  document.querySelector("#intro .swop_frame").onmouseenter = function() {
+    document.querySelector("#intro svg .outline").classList.add("hover");
+  };
+  document.querySelector("#intro .swop_frame").onmouseleave = function() {
+    document.querySelector("#intro svg .outline").classList.remove("hover");
+  };
   displayTestimonial(filteredTestimonialArray[sw_i]);
 }
 
 function displayTestimonial(testimonial) {
+  caseArray.forEach(caseItem => {
+    if (testimonial.acf.related_case.includes(caseItem.id)) {
+      console.log("case & quote match");
+      document.querySelector("#intro .bubble").addEventListener("click", () => {
+        window.location.href = "case.html?id=" + caseItem.slug;
+        window.sessionStorage.setItem("caseLink", caseItem.slug);
+        window.sessionStorage.setItem("indexScroll", indexScrollTop);
+      });
+    }
+  });
   document.querySelector("#intro .bubble").classList.remove("fade_out");
   document.querySelector("#intro .bubble").classList.add("move_out");
   document.querySelector("[data-testimonial_quote]").innerHTML = "";
@@ -381,8 +391,9 @@ function displayTestimonial(testimonial) {
 
 // - - - - - - - - - - - get cases content  - - - - - - - - - - -
 
+let caseArray = [];
+
 async function getCaseContent() {
-  let caseArray = [];
   let clientSettingsFilter = sessionStorage.getItem("clientSettings");
   let getCases = await fetchWP("case?per_page=100");
   if (clientSettingsFilter != undefined) {
