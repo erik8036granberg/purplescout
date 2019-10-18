@@ -300,10 +300,29 @@ function insertFooterContent() {
 // - - - - - - - - - - - get Testimonials content  - - - - - - - - - - -
 
 let testimonialArray = [];
+let filteredTestimonialArray = [];
 let sw_i = 0;
 
 async function getTestimonialContent() {
   testimonialArray = await fetchWP("testimonial?per_page=100");
+  testimonialArray.forEach(testimonialItem => {
+    filteredTestimonialArray.push(testimonialItem);
+    if (testimonialItem.acf.testimonial_short_quote_2) {
+      let deepClone = JSON.parse(JSON.stringify(testimonialItem));
+      deepClone.acf.testimonial_short_quote =
+        testimonialItem.acf.testimonial_short_quote_2;
+      filteredTestimonialArray.push(deepClone);
+    }
+    if (testimonialItem.acf.testimonial_short_quote_3) {
+      let deepClone = JSON.parse(JSON.stringify(testimonialItem));
+      deepClone.acf.testimonial_short_quote =
+        testimonialItem.acf.testimonial_short_quote_3;
+      filteredTestimonialArray.push(deepClone);
+    }
+  });
+  console.log(filteredTestimonialArray);
+  console.log(filteredTestimonialArray[0].acf.testimonial_short_quote);
+  console.log(filteredTestimonialArray[1].acf.testimonial_short_quote);
   const bubble_ouline = `
   <svg id="quote_line" xmlns="http://www.w3.org/2000/svg" width="448" height="580.8" viewBox="0 0 448 580.8">
   <defs>
@@ -314,7 +333,7 @@ async function getTestimonialContent() {
   <polygon class="cls-1 outline" points="58.5 578.5 118.09 507.5 0.5 507.5 0.5 0.5 447.5 0.5 447.5 507.5 166.18 507.5 58.5 578.5"/>
 </svg>`;
   document.querySelector("#intro #quote_outline").innerHTML = bubble_ouline;
-  displayTestimonial(testimonialArray[sw_i]);
+  displayTestimonial(filteredTestimonialArray[sw_i]);
 }
 
 function displayTestimonial(testimonial) {
@@ -325,7 +344,7 @@ function displayTestimonial(testimonial) {
   document.querySelector("[data-testimonial_company]").innerHTML = "";
   document.querySelector("#intro .outline").classList.remove("drawline");
   document.querySelector("[data-testimonial_quote]").innerHTML =
-    testimonial.acf.testimonial_quote;
+    testimonial.acf.testimonial_short_quote;
   document.querySelector("[data-testimonial_name]").textContent =
     testimonial.acf.testimonial_name;
   if (testimonial.acf.testimonial_title) {
@@ -346,11 +365,11 @@ function displayTestimonial(testimonial) {
       document.querySelector("#intro .bubble").classList.add("fade_out");
       setTimeout(() => {
         sw_i++;
-        if (sw_i <= testimonialArray.length - 1) {
-          displayTestimonial(testimonialArray[sw_i]);
+        if (sw_i <= filteredTestimonialArray.length - 1) {
+          displayTestimonial(filteredTestimonialArray[sw_i]);
         } else {
           sw_i = 0;
-          displayTestimonial(testimonialArray[0]);
+          displayTestimonial(filteredTestimonialArray[0]);
         }
       }, 2000);
     }, 5000);
@@ -797,14 +816,12 @@ function autoTurn() {
 
 function casesScollEffect() {
   if (window.innerWidth > 700) {
-    console.log("normal-scrollOut");
     ScrollOut({
       targets: ".case",
-      threshold: 0.8,
+      threshold: 0.9,
       once: false
     });
   } else {
-    console.log("mobil-scrollOut");
     ScrollOut({
       targets: ".case",
       threshold: 0.2,

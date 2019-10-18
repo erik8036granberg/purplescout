@@ -25,6 +25,7 @@ let pageContent;
 async function getPageContent() {
   pageContent = await fetchWP(`case?slug=${urlCase}`);
   pageContent = pageContent[0];
+  console.log(pageContent);
   insertPageContent();
 }
 
@@ -161,25 +162,6 @@ function insertPageContent() {
     });
   }
 
-  // - - - - - - - - - - - testimonial - - - - - - - - - - -
-
-  if (pageContent.acf.testimonial_quote === "") {
-    dest.querySelector(".case_testimonial").style.display = "none";
-  } else {
-    if (pageContent.acf.testimonial_quote) {
-      dest.querySelector("[data-testimonial_quote]").innerHTML =
-        pageContent.acf.testimonial_quote;
-    }
-    if (pageContent.acf.testimonial_person) {
-      dest.querySelector("[data-testimonial_person]").innerHTML =
-        pageContent.acf.testimonial_person;
-    }
-    if (pageContent.acf.testimonial_company) {
-      dest.querySelector("[data-testimonial_company]").innerHTML =
-        pageContent.acf.testimonial_company;
-    }
-  }
-
   // - - - - - - - - - - - Tech text section - - - - - - - - - - -
 
   dest.querySelector("[data-tech_header]").textContent =
@@ -232,7 +214,47 @@ function insertPageContent() {
       document.querySelector("[data-work_areas_symbols]").appendChild(makeDiv);
     });
   }
+  getTestimonialContent();
   getCtaContent();
+}
+
+// - - - - - - - - - - - testimonial - - - - - - - - - - -
+
+async function getTestimonialContent() {
+  let testimonialArray = await fetchWP("testimonial?per_page=100");
+  console.log(testimonialArray);
+  testimonialArray.forEach(quoteItem => {
+    console.log("pageContent.id :" + pageContent.id);
+    console.log(
+      "related case from testimonialArray :" + quoteItem.acf.related_case
+    );
+    if (quoteItem.acf.related_case.includes(pageContent.id)) {
+      insertTestimonial(quoteItem);
+    }
+  });
+}
+
+function insertTestimonial(quoteItem) {
+  let dest = document.querySelector("[data-testimonial_container]");
+  if (quoteItem.acf.testimonial_long_quote === "") {
+    dest.querySelector(".case_testimonial_long_quote").style.display = "none";
+  } else {
+    if (quoteItem.acf.testimonial_long_quote) {
+      dest.querySelector("[data-testimonial_long_quote]").innerHTML =
+        quoteItem.acf.testimonial_long_quote;
+    }
+    dest.querySelector("[data-testimonial_name]").textContent =
+      quoteItem.acf.testimonial_name;
+    if (quoteItem.acf.testimonial_title) {
+      dest.querySelector("[data-testimonial_company]").textContent =
+        quoteItem.acf.testimonial_title +
+        ", " +
+        quoteItem.acf.testimonial_company;
+    } else {
+      dest.querySelector("[data-testimonial_company]").textContent =
+        quoteItem.acf.testimonial_company;
+    }
+  }
 }
 
 // - - - - - - - - - - - get footer content  - - - - - - - - - -

@@ -19,13 +19,12 @@
 html {
   scroll-behavior: Smooth;
   overflow-x: hidden;
-  box-sizing: border-box;
 }
 
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 /* watch out for accecebility */
