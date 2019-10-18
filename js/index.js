@@ -320,9 +320,6 @@ async function getTestimonialContent() {
       filteredTestimonialArray.push(deepClone);
     }
   });
-  console.log(filteredTestimonialArray);
-  console.log(filteredTestimonialArray[0].acf.testimonial_short_quote);
-  console.log(filteredTestimonialArray[1].acf.testimonial_short_quote);
   const bubble_ouline = `
   <svg id="quote_line" xmlns="http://www.w3.org/2000/svg" width="448" height="580.8" viewBox="0 0 448 580.8">
   <defs>
@@ -333,6 +330,12 @@ async function getTestimonialContent() {
   <polygon class="cls-1 outline" points="58.5 578.5 118.09 507.5 0.5 507.5 0.5 0.5 447.5 0.5 447.5 507.5 166.18 507.5 58.5 578.5"/>
 </svg>`;
   document.querySelector("#intro #quote_outline").innerHTML = bubble_ouline;
+  // document.querySelector("#intro .swop_frame").onmouseenter = function() {
+  //   document.querySelector("#intro svg .outline").classList.add("hover");
+  // };
+  // document.querySelector("#intro .swop_frame").onmouseleave = function() {
+  //   document.querySelector("#intro svg .outline").classList.remove("hover");
+  // };
   displayTestimonial(filteredTestimonialArray[sw_i]);
 }
 
@@ -458,6 +461,9 @@ function showWorkareas(workareaItem) {
   clone
     .querySelector("[data-area_symbol]")
     .setAttribute("src", workareaItem.acf.area_symbol);
+  clone
+    .querySelector("[data-area_symbol]")
+    .setAttribute("alt", "symbol for" + workareaItem.acf.area_header);
   clone.querySelector("[data-area_symbol]").addEventListener("click", () => {
     window.location.href = "workarea.html?id=" + workareaItem.slug;
     window.sessionStorage.setItem("workAreaLink", workareaItem.slug);

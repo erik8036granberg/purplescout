@@ -881,6 +881,7 @@ footer h1 {
   stroke-miterlimit: 10;
   stroke-dasharray: 3000;
   stroke-dashoffset: 3000;
+  transition: fill 1s;
 }
 
 .drawline {
