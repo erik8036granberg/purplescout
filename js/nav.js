@@ -33,6 +33,10 @@ function navMenu() {
 function openMenu() {
   document.querySelector(".burger").classList.add("change");
   document.querySelector("nav").classList.add("show");
+  const allToBlur = document.querySelectorAll("div:not(.noblur)");
+  allToBlur.forEach(el => {
+    el.classList.add("blur");
+  });
   document.querySelector("html").classList.add("fixed");
   document.querySelector(".burger").removeEventListener("click", openMenu);
   document.querySelector(".burger").addEventListener("click", closeMenu);
@@ -44,6 +48,10 @@ function closeMenu() {
   document.querySelector(".burger").addEventListener("click", openMenu);
   document.querySelector(".burger").classList.remove("change");
   document.querySelector("nav").classList.remove("show");
+  const allToBlur = document.querySelectorAll("div:not(.noblur)");
+  allToBlur.forEach(el => {
+    el.classList.remove("blur");
+  });
   document.querySelector("html").classList.remove("fixed");
   mobileMenu = "closed";
   fadeMenu();
