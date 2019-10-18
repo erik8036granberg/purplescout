@@ -796,11 +796,22 @@ function autoTurn() {
 }
 
 function casesScollEffect() {
-  ScrollOut({
-    targets: ".case",
-    threshold: 0.8,
-    once: false
-  });
+  if (window.innerWidth > 700) {
+    console.log("normal-scrollOut");
+    ScrollOut({
+      targets: ".case",
+      threshold: 0.8,
+      once: false
+    });
+  } else {
+    console.log("mobil-scrollOut");
+    ScrollOut({
+      targets: ".case",
+      threshold: 0.2,
+      once: false,
+      offset: 0
+    });
+  }
 }
 
 // - - - - - - - - - - - Case logo swap - - - - - - - - - - -
