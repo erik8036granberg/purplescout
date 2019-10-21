@@ -504,6 +504,9 @@ footer h1 {
   background-color: var(--bg_black_trs);
   width: 100vw;
   height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
   position: fixed;
   z-index: 1000;
   pointer-events: none;
@@ -2070,12 +2073,6 @@ footer .copyright {
 
   h3 {
     font-size: 4rem;
-  }
-
-  #cta_modal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
   #cta_modal .modal_content {

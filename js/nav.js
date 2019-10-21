@@ -33,10 +33,6 @@ function navMenu() {
 function openMenu() {
   document.querySelector(".burger").classList.add("change");
   document.querySelector("nav").classList.add("show");
-  // const allToBlur = document.querySelectorAll("div:not(.noblur)");
-  // allToBlur.forEach(el => {
-  //   el.classList.add("blur");
-  // });
   document.querySelector("html").classList.add("fixed");
   document.querySelector(".burger").removeEventListener("click", openMenu);
   document.querySelector(".burger").addEventListener("click", closeMenu);
@@ -52,10 +48,6 @@ function closeMenu() {
   document.querySelector("nav").classList.remove("show");
   document.querySelector("nav ul").style.transform = "translateY(-50vh)";
   document.querySelector("nav ul").style.opacity = "0";
-  // const allToBlur = document.querySelectorAll(".blur");
-  // allToBlur.forEach(el => {
-  //   el.classList.remove("blur");
-  // });
   document.querySelector("html").classList.remove("fixed");
   mobileMenu = "closed";
   fadeMenu();
