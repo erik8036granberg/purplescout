@@ -625,16 +625,14 @@ footer h1 {
 }
 
 #cta_modal .close {
-  width: 5rem;
-  height: 5rem;
+  width: 6rem;
+  height: 6rem;
   position: absolute;
-  top: 2rem;
-  right: 2rem;
-  background-image: url(../img/close_modal.svg);
+  top: 1.5rem;
+  right: 1.5rem;
+  background-image: url(../img/close_cta.svg);
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: var(--bg_white_trs);
-  border-radius: 50%;
   z-index: 2000;
   transition: 0.5s;
   pointer-events: all;
@@ -702,8 +700,6 @@ footer h1 {
   background-image: url(../img/close.svg);
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: var(--bg_black_trs);
-  border-radius: 50%;
   z-index: 2000;
   transition: 0.5s;
   pointer-events: all;
@@ -2300,6 +2296,8 @@ footer .copyright {
 
   nav ul {
     margin-top: 0rem;
+    transform: translateY(0);
+    opacity: 1;
   }
 
   nav li {

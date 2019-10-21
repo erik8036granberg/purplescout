@@ -36,8 +36,10 @@ function openMenu() {
   document.querySelector("html").classList.add("fixed");
   document.querySelector(".burger").removeEventListener("click", openMenu);
   document.querySelector(".burger").addEventListener("click", closeMenu);
-  document.querySelector("nav ul").style.transform = "translateY(0)";
-  document.querySelector("nav ul").style.opacity = "1";
+  if (window.innerWidth < 900) {
+    document.querySelector("nav ul").style.transform = "translateY(0)";
+    document.querySelector("nav ul").style.opacity = "1";
+  }
   mobileMenu = "open";
 }
 
@@ -46,8 +48,10 @@ function closeMenu() {
   document.querySelector(".burger").addEventListener("click", openMenu);
   document.querySelector(".burger").classList.remove("change");
   document.querySelector("nav").classList.remove("show");
-  document.querySelector("nav ul").style.transform = "translateY(-50vh)";
-  document.querySelector("nav ul").style.opacity = "0";
+  if (window.innerWidth < 900) {
+    document.querySelector("nav ul").style.transform = "translateY(-50vh)";
+    document.querySelector("nav ul").style.opacity = "0";
+  }
   document.querySelector("html").classList.remove("fixed");
   mobileMenu = "closed";
   fadeMenu();
