@@ -984,7 +984,7 @@ footer h1 {
 #intro .case_testimonial .bubble .quote_person,
 #intro .case_testimonial .bubble .quote_company {
   font-size: 2rem;
-  line-height: 2.5rem;
+  line-height: 2rem;
   color: var(--bg_purple_3);
 }
 
@@ -2088,6 +2088,18 @@ footer .copyright {
     margin: 5rem auto 0 0;
   }
 
+  #intro .case_testimonial .bubble .quote {
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+
+  #intro .case_testimonial .bubble .quote_person,
+  #intro .case_testimonial .bubble .quote_company {
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+    color: var(--bg_purple_3);
+  }
+
   footer .icon::before {
     display: inline-block;
     position: relative;
@@ -2173,11 +2185,6 @@ footer .copyright {
   #intro .case_testimonial {
     max-width: auto;
     margin: 5rem 0 0 0;
-  }
-
-  #intro .case_testimonial .bubble .quote {
-    font-size: 2.5rem;
-    line-height: 3rem;
   }
 
   #intro .case_testimonial .bubble::before {
@@ -2323,6 +2330,10 @@ footer .copyright {
   #workarea,
   footer {
     padding: 10rem 10vw;
+  }
+
+  #cta_modal {
+    align-items: center;
   }
 
   #cta_modal .cta_text {

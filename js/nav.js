@@ -71,7 +71,7 @@ function fadeMenu() {
         document.querySelector("header").classList.remove("hide_scroll_nav");
         document.querySelector("#gradiant").classList.add("show_gradiant");
         fadeMenu();
-      }, 1250);
+      }, 1000);
     }
   }
 }
