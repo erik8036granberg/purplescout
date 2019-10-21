@@ -120,8 +120,8 @@ header {
 }
 
 #logo {
-  width: 6rem;
-  height: 7rem;
+  width: 5rem;
+  height: 6rem;
   position: absolute;
   background-image: url(../img/logo.svg);
   background-size: cover;
@@ -173,11 +173,32 @@ main {
   top: 3.5rem;
   right: 4rem;
   z-index: 999;
-  transform: scale(1.33);
+  transform: scale(1.15);
+}
+
+.bar1,
+.bar2,
+.bar3 {
+  height: 2px;
+  margin: 8px 0;
+  transition: 0.4s;
+  background-color: #fff;
+}
+
+.bar1 {
+  width: 30px;
+}
+
+.bar2 {
+  width: 30px;
+}
+
+.bar3 {
+  width: 30px;
 }
 
 .burger:hover {
-  transform: scale(1.66);
+  transform: scale(1.33);
   transition: 0.5s;
 }
 
@@ -235,27 +256,6 @@ nav a {
 nav a:hover {
   color: var(--bg_purple_2);
   transition: 0.5s ease;
-}
-
-.bar1,
-.bar2,
-.bar3 {
-  height: 2px;
-  margin: 8px 0;
-  transition: 0.4s;
-  background-color: #fff;
-}
-
-.bar1 {
-  width: 30px;
-}
-
-.bar2 {
-  width: 30px;
-}
-
-.bar3 {
-  width: 30px;
 }
 
 nav.show {
@@ -2065,6 +2065,14 @@ footer .copyright {
 
   .burger {
     top: 4rem;
+  }
+
+  .burger {
+    transform: scale(1.35);
+  }
+
+  .burger:hover {
+    transform: scale(1.66);
   }
 
   h2 {

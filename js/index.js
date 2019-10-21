@@ -78,8 +78,14 @@ function insertPageContent() {
 
   // - - - - - - - - - - - Show reel - - - - - - - - - - -
 
-  dest.querySelector("[data-show_reel_header]").textContent =
-    pageContent.acf.show_reel_header;
+  if (pageContent.acf.show_reel_header.includes("...")) {
+    dest.querySelector(
+      "[data-show_reel_header]"
+    ).innerHTML = pageContent.acf.show_reel_header.replace("...", "&nbsp;...");
+  } else {
+    dest.querySelector("[data-show_reel_header]").textContent =
+      pageContent.acf.show_reel_header;
+  }
 
   // - - - - - - - - - - - video - - - - - - - - - - -
   let fullVideo = dest.querySelector("[data-show_reel_full_video]");
