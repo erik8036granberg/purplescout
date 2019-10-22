@@ -25,8 +25,6 @@ let pageContent;
 async function getPageContent() {
   pageContent = await fetchWP(`case?slug=${urlCase}`);
   pageContent = pageContent[0];
-  console.log("pageContent");
-  console.log(pageContent);
   insertPageContent();
 }
 
