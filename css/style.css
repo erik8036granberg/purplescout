@@ -12,6 +12,7 @@
   --bg_black_trs: #000000b4;
   --bg_white_trs: rgba(255, 255, 255, 0.9);
   --bg_cta: #513675;
+  --bg_nav: #331a57ea;
   --font_color: #cccccc;
   scroll-behavior: Smooth;
 }
@@ -109,13 +110,13 @@ header {
 #gradiant .top {
   height: 5rem;
   width: 100vw;
-  background-color: var(--bg_black_trs);
+  background-color: var(--bg_nav);
   pointer-events: none;
 }
 #gradiant .fade {
   height: 8rem;
   width: 100vw;
-  background-image: linear-gradient(var(--bg_black_trs), transparent);
+  background-image: linear-gradient(var(--bg_nav), transparent);
   pointer-events: none;
 }
 
@@ -1065,7 +1066,7 @@ h2 {
 }
 
 #cases .case[data-scroll="out"] {
-  transform: translateY(0) scale(0.75);
+  transform: translateY(0) scale(0.9);
   opacity: 0.25;
 }
 
@@ -2376,7 +2377,7 @@ footer .copyright {
   }
 
   #cases .showcase .case:not(:first-child) {
-    margin-top: -10vw;
+    margin-top: -5vw;
   }
 
   #cases .showcase .case:nth-child(4n + 1) {
@@ -2409,7 +2410,7 @@ footer .copyright {
   }
 
   #cases .case[data-scroll="out"] {
-    transform: translateY(0) scale(0.75);
+    transform: translateY(0) scale(0.9);
   }
 
   #cases #logo_wrapper,
