@@ -25,6 +25,8 @@ let pageContent;
 async function getPageContent() {
   pageContent = await fetchWP(`case?slug=${urlCase}`);
   pageContent = pageContent[0];
+  console.log("pageContent");
+  console.log(pageContent);
   insertPageContent();
 }
 
@@ -219,15 +221,20 @@ function insertPageContent() {
 
 // - - - - - - - - - - - testimonial - - - - - - - - - - -
 
+let testimonialArray;
+let getQuote = false;
+
 async function getTestimonialContent() {
-  let testimonialArray = await fetchWP("testimonial?per_page=100");
+  testimonialArray = await fetchWP("testimonial?per_page=100");
   testimonialArray.forEach(quoteItem => {
     if (quoteItem.acf.related_case.includes(pageContent.id)) {
       insertTestimonial(quoteItem);
-    } else {
-      document.querySelector(".case_testimonial").style.display = "none";
+      getQuote = true;
     }
   });
+  if (getQuote == false) {
+    document.querySelector(".case_testimonial").style.display = "none";
+  }
 }
 
 function insertTestimonial(quoteItem) {

@@ -336,6 +336,9 @@ async function getTestimonialContent() {
   <polygon class="cls-1 outline" points="58.5 578.5 118.09 507.5 0.5 507.5 0.5 0.5 447.5 0.5 447.5 507.5 166.18 507.5 58.5 578.5"/>
 </svg>`;
   document.querySelector("#intro #quote_outline").innerHTML = bubble_ouline;
+  filteredTestimonialArray.sort(function() {
+    return 0.5 - Math.random();
+  });
   displayTestimonial(filteredTestimonialArray[sw_i]);
 }
 

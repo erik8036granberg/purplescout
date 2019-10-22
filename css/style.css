@@ -2207,7 +2207,7 @@ footer .copyright {
   }
 
   #cases .showcase .case:not(:first-child) {
-    margin-top: -10vw;
+    margin-top: -15vw;
   }
 
   #cases .showcase .case:nth-child(odd) {
