@@ -2420,10 +2420,11 @@ footer .copyright {
   }
 
   #cases #display {
+    position: relative;
     font-family: "Economica", sans-serif;
     font-size: 2rem;
     margin: 4rem 0 0;
-    z-index: 1000;
+    z-index: 1000 !important;
   }
 
   #cases .filter_nav {
@@ -2431,7 +2432,6 @@ footer .copyright {
     font-family: "Economica", sans-serif;
     font-size: 2rem;
     margin: 4rem 0 0;
-    z-index: 1000;
   }
 
   #cases .filter_nav .filter {
@@ -2452,33 +2452,35 @@ footer .copyright {
   #cases .filter_nav .dropdown > ul {
     display: inline-block;
     margin-left: -1.5rem;
-    max-height: 0;
     width: auto;
-    opacity: 0;
     display: block;
     position: absolute;
-    z-index: 50;
     padding: 15px;
     overflow: hidden;
     transition: 0.5s ease-in-out;
   }
 
-  #cases .filter_nav .dropdown > ul li {
+  #cases .filter_nav .dropdown ul li {
     white-space: nowrap;
     padding: 1rem;
     font-size: 1em;
-    border: 2px solid var(--bg_gray);
+    margin: 0 0 2px 0;
     background-color: var(--bg_purple_4);
     cursor: pointer;
   }
 
-  #cases .filter_nav .dropdown:hover > ul {
+  #cases .open {
     max-height: 100rem;
     overflow: visible;
     opacity: 1;
   }
 
-  #cases .filter_nav .dropdown:hover > ul li:hover {
+  #cases .closed {
+    max-height: 0;
+    opacity: 0;
+  }
+
+  #cases .filter_nav .dropdown:hover ul li:hover {
     background-color: var(--bg_logo);
   }
 

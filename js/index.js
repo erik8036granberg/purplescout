@@ -417,6 +417,25 @@ async function getCaseContent() {
     caseArray.forEach(showCases);
   }
   casesScollEffect();
+
+  document.querySelector("#cases .filter").addEventListener("mouseover", () => {
+    document.querySelector("#cases .filter_nav ul").classList.remove("closed");
+    document.querySelector("#cases .filter_nav ul").classList.add("open");
+  });
+
+  document
+    .querySelector("#cases .dropdown")
+    .addEventListener("mouseleave", () => {
+      document.querySelector("#cases .filter_nav ul").classList.remove("open");
+      document.querySelector("#cases .filter_nav ul").classList.add("closed");
+    });
+
+  document
+    .querySelector("#cases .filter_nav ul")
+    .addEventListener("click", () => {
+      document.querySelector("#cases .filter_nav ul").classList.remove("open");
+      document.querySelector("#cases .filter_nav ul").classList.add("closed");
+    });
 }
 
 // - - - - - - - - - - - - - display cases - - - - - - - - - - - - -
