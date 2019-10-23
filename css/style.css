@@ -131,11 +131,11 @@ header {
   left: 2rem;
   z-index: 999;
   cursor: pointer;
+  transition: 0.5s;
 }
 
 #logo:hover {
   transform: scale(1.1);
-  transition: 0.5s;
 }
 
 #logotext {
@@ -175,6 +175,7 @@ main {
   right: 4rem;
   z-index: 999;
   transform: scale(1.15);
+  transition: 0.5s;
 }
 
 .bar1,
@@ -200,7 +201,6 @@ main {
 
 .burger:hover {
   transform: scale(1.33);
-  transition: 0.5s;
 }
 
 .burger:hover .bar2 {
@@ -895,12 +895,12 @@ footer h1 {
   stroke-miterlimit: 10;
   stroke-dasharray: 3000;
   stroke-dashoffset: 3000;
-  transition: fill 1s;
+  transition: 1s;
   pointer-events: all;
 }
 
 #intro svg .outline.hover {
-  transition: fill 1s;
+  transition: 1s;
   fill: var(--bg_purple_4);
 }
 
@@ -2417,6 +2417,69 @@ footer .copyright {
   #activelogos,
   #hiddenlogos {
     grid-column-gap: 15vw;
+  }
+
+  #cases #display {
+    font-family: "Economica", sans-serif;
+    font-size: 2rem;
+    margin: 4rem 0 0;
+    z-index: 1000;
+  }
+
+  #cases .filter_nav {
+    cursor: pointer;
+    font-family: "Economica", sans-serif;
+    font-size: 2rem;
+    margin: 4rem 0 0;
+    z-index: 1000;
+  }
+
+  #cases .filter_nav .filter {
+    font-size: 2rem;
+    color: #fff;
+    border: 1px solid var(--bg_purple_3);
+    line-height: 0;
+    padding: 1rem;
+    width: auto;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+
+  #cases .filter_nav {
+    display: inline-block;
+  }
+
+  #cases .filter_nav .dropdown > ul {
+    display: inline-block;
+    margin-left: -1.5rem;
+    max-height: 0;
+    width: auto;
+    opacity: 0;
+    display: block;
+    position: absolute;
+    z-index: 50;
+    padding: 15px;
+    overflow: hidden;
+    transition: 0.5s ease-in-out;
+  }
+
+  #cases .filter_nav .dropdown > ul li {
+    white-space: nowrap;
+    padding: 1rem;
+    font-size: 1em;
+    border: 2px solid var(--bg_gray);
+    background-color: var(--bg_purple_4);
+    cursor: pointer;
+  }
+
+  #cases .filter_nav .dropdown:hover > ul {
+    max-height: 100rem;
+    overflow: visible;
+    opacity: 1;
+  }
+
+  #cases .filter_nav .dropdown:hover > ul li:hover {
+    background-color: var(--bg_logo);
   }
 
   footer .copyright {

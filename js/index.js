@@ -272,9 +272,6 @@ function insertFooterContent() {
     .querySelector("[data-some_instagram]")
     .setAttribute("href", footerContent.acf.some_instagram);
   dest
-    .querySelector("[data-some_twitter]")
-    .setAttribute("href", footerContent.acf.some_twitter);
-  dest
     .querySelector("[data-some_linkedin]")
     .setAttribute("href", footerContent.acf.some_linkedin);
   dest.querySelector("[data-about_text]").innerHTML =
