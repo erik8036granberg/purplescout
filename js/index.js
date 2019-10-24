@@ -62,6 +62,7 @@ let pageContent;
 
 async function getPageContent() {
   pageContent = await fetchWP("pages/6");
+  console.log(pageContent);
   insertPageContent();
 }
 
@@ -399,6 +400,7 @@ function displayTestimonial(testimonial) {
 // - - - - - - - - - - - get cases content  - - - - - - - - - - -
 
 let caseArray = [];
+let activeFilter;
 
 async function getCaseContent() {
   let clientSettingsFilter = sessionStorage.getItem("clientSettings");
@@ -414,9 +416,16 @@ async function getCaseContent() {
     });
   } else {
     caseArray = getCases;
+    console.log(caseArray);
     caseArray.forEach(showCases);
   }
   casesScollEffect();
+  filtercaseNav();
+}
+
+function filtercaseNav() {
+  console.log("filtercaseNav");
+  // filter dropdown nav - mouseover setup
 
   document.querySelector("#cases .filter").addEventListener("mouseover", () => {
     document.querySelector("#cases .filter_nav ul").classList.remove("closed");
@@ -436,6 +445,64 @@ async function getCaseContent() {
       document.querySelector("#cases .filter_nav ul").classList.remove("open");
       document.querySelector("#cases .filter_nav ul").classList.add("closed");
     });
+  document
+    .querySelector(".filter_nav #filter_all")
+    .addEventListener("click", () => {
+      filterCases("all");
+    });
+  document
+    .querySelector(".filter_nav #filter_197")
+    .addEventListener("click", () => {
+      filterCases("197");
+    });
+  document
+    .querySelector(".filter_nav #filter_202")
+    .addEventListener("click", () => {
+      filterCases("202");
+    });
+  document
+    .querySelector(".filter_nav #filter_203")
+    .addEventListener("click", () => {
+      filterCases("203");
+    });
+  document
+    .querySelector(".filter_nav #filter_204")
+    .addEventListener("click", () => {
+      filterCases("204");
+    });
+  document
+    .querySelector(".filter_nav #filter_205")
+    .addEventListener("click", () => {
+      filterCases("205");
+    });
+  document
+    .querySelector(".filter_nav #filter_206")
+    .addEventListener("click", () => {
+      filterCases("206");
+    });
+  document
+    .querySelector(".filter_nav #filter_207")
+    .addEventListener("click", () => {
+      filterCases("207");
+    });
+}
+
+function filterCases(filterID) {
+  document.querySelector("#cases .showcase").innerHTML = "";
+  activeFilter = filterID;
+  let activeLabel = document.querySelector(`#filter_${filterID}`).textContent;
+  document.querySelector("#cases .filter").textContent = activeLabel;
+  if (filterID == "all") {
+    caseArray.forEach(showCases);
+  } else {
+    caseArray.forEach(caseItem => {
+      caseItem.acf.work_areas_symbols.forEach(function(workareaID) {
+        if (workareaID == filterID) {
+          showCases(caseItem);
+        }
+      });
+    });
+  }
 }
 
 // - - - - - - - - - - - - - display cases - - - - - - - - - - - - -
@@ -443,6 +510,19 @@ async function getCaseContent() {
 function showCases(caseItem) {
   const template = document.querySelector("[data-cases_template]").content;
   const clone = template.cloneNode(true);
+
+  // if (caseItem.acf.work_areas_symbols) {
+  //   console.log("the case includes workares");
+  //   let filterClasses = caseItem.acf.work_areas_symbols;
+  //   let filter_i = 0;
+  //   filterClasses.forEach(filterWorkArea => {
+  //     clone
+  //       .querySelector("[data-id]")
+  //       .classList.add("filter_" + filterClasses[filter_i]);
+  //     filter_i++;
+  //   });
+  // }
+
   clone.querySelector("[data-id]").setAttribute("id", caseItem.slug);
   clone
     .querySelector("[data-video_still_image]")

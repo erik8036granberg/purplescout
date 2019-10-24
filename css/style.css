@@ -1055,6 +1055,72 @@ h2 {
 
 /* cases */
 
+#cases #display {
+  position: relative;
+  font-family: "Economica", sans-serif;
+  font-size: 2rem;
+  margin: 4rem 0 0;
+  z-index: 1000 !important;
+}
+
+#cases .filter_nav {
+  cursor: pointer;
+  font-family: "Economica", sans-serif;
+  font-size: 2rem;
+  margin: 4rem 0 0;
+}
+
+#cases .filter_nav .filter {
+  font-size: 2rem;
+  color: #fff;
+  border: 1px solid var(--bg_purple_3);
+  line-height: 0;
+  padding: 1rem;
+  width: auto;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+#cases .filter_nav {
+  display: inline-block;
+}
+
+#cases .filter_nav .dropdown ul {
+  display: inline-block;
+  width: auto;
+  display: block;
+  position: absolute;
+  transition: 0.5s ease-in-out;
+  padding: 1rem 0 0;
+}
+
+#cases .filter_nav .dropdown ul li {
+  white-space: nowrap;
+  font-size: 1em;
+  margin: 0 0 2px 0;
+  padding: 1rem;
+  background-color: var(--bg_purple_4);
+  cursor: pointer;
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.5);
+}
+
+#cases .filter_nav .dropdown:hover ul li:hover {
+  background-color: var(--bg_logo);
+}
+
+#cases .closed {
+  max-height: 0;
+  width: 0;
+  opacity: 0;
+}
+
+#cases .open {
+  width: auto;
+  max-height: 100rem;
+  overflow: visible;
+  opacity: 1;
+}
+
 #cases .case[data-scroll] {
   transition: all 0.5s ease-in-out;
   transform-origin: center top;
@@ -2206,6 +2272,10 @@ footer .copyright {
     grid-template-columns: 1fr 1fr 1fr;
   }
 
+  #cases .showcase * {
+    transition: 1s;
+  }
+
   #cases .showcase .case:not(:first-child) {
     margin-top: -15vw;
   }
@@ -2417,71 +2487,6 @@ footer .copyright {
   #activelogos,
   #hiddenlogos {
     grid-column-gap: 15vw;
-  }
-
-  #cases #display {
-    position: relative;
-    font-family: "Economica", sans-serif;
-    font-size: 2rem;
-    margin: 4rem 0 0;
-    z-index: 1000 !important;
-  }
-
-  #cases .filter_nav {
-    cursor: pointer;
-    font-family: "Economica", sans-serif;
-    font-size: 2rem;
-    margin: 4rem 0 0;
-  }
-
-  #cases .filter_nav .filter {
-    font-size: 2rem;
-    color: #fff;
-    border: 1px solid var(--bg_purple_3);
-    line-height: 0;
-    padding: 1rem;
-    width: auto;
-    transition: 0.5s;
-    cursor: pointer;
-  }
-
-  #cases .filter_nav {
-    display: inline-block;
-  }
-
-  #cases .filter_nav .dropdown > ul {
-    display: inline-block;
-    margin-left: -1.5rem;
-    width: auto;
-    display: block;
-    position: absolute;
-    padding: 15px;
-    overflow: hidden;
-    transition: 0.5s ease-in-out;
-  }
-
-  #cases .filter_nav .dropdown ul li {
-    white-space: nowrap;
-    padding: 1rem;
-    font-size: 1em;
-    margin: 0 0 2px 0;
-    background-color: var(--bg_purple_4);
-    cursor: pointer;
-  }
-
-  #cases .open {
-    max-height: 100rem;
-    overflow: visible;
-    opacity: 1;
-  }
-
-  #cases .closed {
-    max-height: 0;
-    opacity: 0;
-  }
-
-  #cases .filter_nav .dropdown:hover ul li:hover {
-    background-color: var(--bg_logo);
   }
 
   footer .copyright {
