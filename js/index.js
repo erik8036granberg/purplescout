@@ -402,6 +402,7 @@ function displayTestimonial(testimonial) {
 let caseArray = [];
 let activeFilter;
 let filterID = "all";
+let caseCount;
 
 async function getCaseContent() {
   let clientSettingsFilter = sessionStorage.getItem("clientSettings");
@@ -412,6 +413,7 @@ async function getCaseContent() {
       getCases.forEach(clientItem => {
         if (clientItem.id === clientCase) {
           showCases(clientItem);
+          caseCount++;
         }
       });
     });
@@ -419,6 +421,7 @@ async function getCaseContent() {
     caseArray = getCases;
     console.log(caseArray);
     caseArray.forEach(showCases);
+    caseCount = caseArray.length;
   }
   filtercaseNav();
 }
@@ -496,6 +499,7 @@ function filtercaseNav() {
 }
 
 function filterCases() {
+  let caseCount = 0;
   if (filterID !== activeFilter) {
     activeFilter = filterID;
     let activeLabel = document.querySelector(`#filter_${filterID}`).textContent;
@@ -514,9 +518,17 @@ function filterCases() {
           caseItem.acf.work_areas_symbols.forEach(workareaID => {
             if (workareaID == filterID) {
               showCases(caseItem);
+              caseCount++;
             }
           });
         });
+      }
+      if (caseCount == 0) {
+        console.log("no cases displayed");
+        const makeDiv = document.createElement("DIV");
+        makeDiv.setAttribute("class", "case_count_message");
+        makeDiv.innerHTML = `No cases related to <span>${activeLabel}</span> published yet.`;
+        document.querySelector("#cases .showcase").appendChild(makeDiv);
       }
     }, 1000);
   }

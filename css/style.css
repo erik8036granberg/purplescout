@@ -1164,6 +1164,31 @@ h2 {
   transform: scale(1) !important;
 }
 
+#cases .case_count_message {
+  opacity: 0;
+  pointer-events: none;
+  transition: 1s;
+  padding: 3vw 0 3vw;
+  width: auto;
+  min-height: 30vh;
+  grid-column: 1 / -1;
+  animation: case_count_message 1s forwards;
+}
+
+@keyframes case_count_message {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#cases .case_count_message span {
+  font-weight: bold;
+  color: var(--bg_lightblue);
+}
+
 #cases .case[data-scroll] {
   transition: all 0.5s ease-in-out;
   transform-origin: center top;
