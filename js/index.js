@@ -401,6 +401,7 @@ function displayTestimonial(testimonial) {
 
 let caseArray = [];
 let activeFilter;
+let filterID = "all";
 
 async function getCaseContent() {
   let clientSettingsFilter = sessionStorage.getItem("clientSettings");
@@ -419,7 +420,6 @@ async function getCaseContent() {
     console.log(caseArray);
     caseArray.forEach(showCases);
   }
-  casesScollEffect();
   filtercaseNav();
 }
 
@@ -448,60 +448,77 @@ function filtercaseNav() {
   document
     .querySelector(".filter_nav #filter_all")
     .addEventListener("click", () => {
-      filterCases("all");
+      filterID = "all";
+      filterCases();
     });
   document
     .querySelector(".filter_nav #filter_197")
     .addEventListener("click", () => {
-      filterCases("197");
+      filterID = "197";
+      filterCases();
     });
   document
     .querySelector(".filter_nav #filter_202")
     .addEventListener("click", () => {
-      filterCases("202");
+      filterID = "202";
+      filterCases();
     });
   document
     .querySelector(".filter_nav #filter_203")
     .addEventListener("click", () => {
-      filterCases("203");
+      filterID = "203";
+      filterCases();
     });
   document
     .querySelector(".filter_nav #filter_204")
     .addEventListener("click", () => {
-      filterCases("204");
+      filterID = "204";
+      filterCases();
     });
   document
     .querySelector(".filter_nav #filter_205")
     .addEventListener("click", () => {
-      filterCases("205");
+      filterID = "205";
+      filterCases();
     });
   document
     .querySelector(".filter_nav #filter_206")
     .addEventListener("click", () => {
-      filterCases("206");
+      filterID = "206";
+      filterCases();
     });
   document
     .querySelector(".filter_nav #filter_207")
     .addEventListener("click", () => {
-      filterCases("207");
+      filterID = "207";
+      filterCases();
     });
 }
 
-function filterCases(filterID) {
-  document.querySelector("#cases .showcase").innerHTML = "";
-  activeFilter = filterID;
-  let activeLabel = document.querySelector(`#filter_${filterID}`).textContent;
-  document.querySelector("#cases .filter").textContent = activeLabel;
-  if (filterID == "all") {
-    caseArray.forEach(showCases);
-  } else {
-    caseArray.forEach(caseItem => {
-      caseItem.acf.work_areas_symbols.forEach(function(workareaID) {
-        if (workareaID == filterID) {
-          showCases(caseItem);
-        }
-      });
+function filterCases() {
+  if (filterID !== activeFilter) {
+    activeFilter = filterID;
+    let activeLabel = document.querySelector(`#filter_${filterID}`).textContent;
+    document.querySelector("#cases .filter").textContent = activeLabel;
+    const caseItems = document.querySelectorAll("#cases .showcase .case");
+    caseItems.forEach(el => {
+      el.classList.remove("zoomup");
+      el.classList.add("zoomdown");
     });
+    setTimeout(() => {
+      document.querySelector("#cases .showcase").innerHTML = "";
+      if (filterID == "all") {
+        caseArray.forEach(showCases);
+      } else {
+        caseArray.forEach(caseItem => {
+          caseItem.acf.work_areas_symbols.forEach(workareaID => {
+            if (workareaID == filterID) {
+              showCases(caseItem);
+            }
+          });
+        });
+      }
+    }, 1000);
   }
 }
 
@@ -510,19 +527,6 @@ function filterCases(filterID) {
 function showCases(caseItem) {
   const template = document.querySelector("[data-cases_template]").content;
   const clone = template.cloneNode(true);
-
-  // if (caseItem.acf.work_areas_symbols) {
-  //   console.log("the case includes workares");
-  //   let filterClasses = caseItem.acf.work_areas_symbols;
-  //   let filter_i = 0;
-  //   filterClasses.forEach(filterWorkArea => {
-  //     clone
-  //       .querySelector("[data-id]")
-  //       .classList.add("filter_" + filterClasses[filter_i]);
-  //     filter_i++;
-  //   });
-  // }
-
   clone.querySelector("[data-id]").setAttribute("id", caseItem.slug);
   clone
     .querySelector("[data-video_still_image]")
@@ -539,6 +543,7 @@ function showCases(caseItem) {
     window.sessionStorage.setItem("indexScroll", indexScrollTop);
   });
   document.querySelector("[data-cases_container]").appendChild(clone);
+  casesScollEffect();
 }
 
 // - - - - - - - - - - - get work areas content  - - - - - - - - - - -

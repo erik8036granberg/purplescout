@@ -1071,18 +1071,39 @@ h2 {
 }
 
 #cases .filter_nav .filter {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #fff;
   border: 1px solid var(--bg_purple_3);
   line-height: 0;
-  padding: 1rem;
+  padding: 1rem 1.5rem 1rem 1rem;
   width: auto;
-  transition: 0.5s;
+  transition: all 1s;
   cursor: pointer;
+  white-space: nowrap;
+}
+
+#cases .filter_nav .filter::before {
+  display: inline-flex;
+  position: relative;
+  top: 0.75rem;
+  margin: 0 0.5rem 0 0;
+  content: "";
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(../img/filter.svg);
+  width: 2rem;
+  height: 2rem;
 }
 
 #cases .filter_nav {
   display: inline-block;
+  transition: 0.5s;
+}
+
+#cases .filter_nav:hover {
+  display: inline-block;
+  transform: scale(1.05);
 }
 
 #cases .filter_nav .dropdown ul {
@@ -1112,6 +1133,7 @@ h2 {
   max-height: 0;
   width: 0;
   opacity: 0;
+  pointer-events: none;
 }
 
 #cases .open {
@@ -1119,6 +1141,27 @@ h2 {
   max-height: 100rem;
   overflow: visible;
   opacity: 1;
+  pointer-events: all;
+}
+
+#cases .zoomdown {
+  animation: zoomdown 1s forwards;
+  transform-origin: center center !important;
+}
+
+@keyframes zoomdown {
+  0% {
+    opacity: 1;
+  }
+  50% {
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+#cases .zoomdown:hover {
+  transform: scale(1) !important;
 }
 
 #cases .case[data-scroll] {
@@ -2193,6 +2236,17 @@ footer .copyright {
     margin: 0 1rem 0 0;
   }
 
+  #cases .filter_nav .filter {
+    font-size: 1.5rem;
+  }
+
+  #cases .filter_nav .filter::before {
+    top: 0.75rem;
+    margin: 0 0.5rem 0 0;
+    width: 2rem;
+    height: 2rem;
+  }
+
   #case .case_images {
     display: block;
     margin: 0 0 -12%;
@@ -2265,6 +2319,17 @@ footer .copyright {
   #activelogos,
   #hiddenlogos {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  #cases .filter_nav .filter {
+    font-size: 2rem;
+  }
+
+  #cases .filter_nav .filter::before {
+    top: 1rem;
+    margin: 0 1.5rem 0 0;
+    width: 3rem;
+    height: 3rem;
   }
 
   #cases .showcase {
