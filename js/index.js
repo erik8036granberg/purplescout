@@ -62,7 +62,6 @@ let pageContent;
 
 async function getPageContent() {
   pageContent = await fetchWP("pages/6");
-  console.log(pageContent);
   insertPageContent();
 }
 
@@ -413,6 +412,7 @@ async function getCaseContent() {
       getCases.forEach(clientItem => {
         if (clientItem.id === clientCase) {
           showCases(clientItem);
+          caseArray.push(clientItem);
           caseCount++;
         }
       });
@@ -427,21 +427,17 @@ async function getCaseContent() {
 }
 
 function filtercaseNav() {
-  console.log("filtercaseNav");
   // filter dropdown nav - mouseover setup
-
   document.querySelector("#cases .filter").addEventListener("mouseover", () => {
     document.querySelector("#cases .filter_nav ul").classList.remove("closed");
     document.querySelector("#cases .filter_nav ul").classList.add("open");
   });
-
   document
     .querySelector("#cases .dropdown")
     .addEventListener("mouseleave", () => {
       document.querySelector("#cases .filter_nav ul").classList.remove("open");
       document.querySelector("#cases .filter_nav ul").classList.add("closed");
     });
-
   document
     .querySelector("#cases .filter_nav ul")
     .addEventListener("click", () => {
@@ -504,15 +500,27 @@ function filterCases() {
     activeFilter = filterID;
     let activeLabel = document.querySelector(`#filter_${filterID}`).textContent;
     document.querySelector("#cases .filter").textContent = activeLabel;
-    const caseItems = document.querySelectorAll("#cases .showcase .case");
-    caseItems.forEach(el => {
-      el.classList.remove("zoomup");
-      el.classList.add("zoomdown");
-    });
+    document.querySelector("#cases .filter").style.color = "#fff";
+    document.querySelector("#cases .filter").classList.remove("filter_off");
+    document.querySelector("#cases .showcase").classList.remove("zoomup");
+    document.querySelector("#cases .filter").classList.add("filter_on");
+    document.querySelector("#cases .showcase").classList.add("zoomdown");
     setTimeout(() => {
       document.querySelector("#cases .showcase").innerHTML = "";
+      document.querySelector("#cases .showcase").classList.remove("zoomdown");
+      document.querySelector("#cases .showcase").classList.add("zoomup");
       if (filterID == "all") {
         caseArray.forEach(showCases);
+        caseCount = caseArray.length;
+        setTimeout(() => {
+          document
+            .querySelector("#cases .filter")
+            .classList.remove("filter_on");
+          document.querySelector("#cases .filter").classList.add("filter_off");
+          document.querySelector("#cases .filter").style.color =
+            "var(--bg_purple_3)";
+          document.querySelector("#cases .filter").textContent = "Filter cases";
+        }, 3000);
       } else {
         caseArray.forEach(caseItem => {
           caseItem.acf.work_areas_symbols.forEach(workareaID => {
@@ -524,13 +532,12 @@ function filterCases() {
         });
       }
       if (caseCount == 0) {
-        console.log("no cases displayed");
         const makeDiv = document.createElement("DIV");
         makeDiv.setAttribute("class", "case_count_message");
         makeDiv.innerHTML = `No cases related to <span>${activeLabel}</span> published yet.`;
         document.querySelector("#cases .showcase").appendChild(makeDiv);
       }
-    }, 1000);
+    }, 500);
   }
 }
 

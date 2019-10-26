@@ -313,12 +313,6 @@ nav.show {
   transform: rotate(45deg) translate(-8px, -8px);
 }
 
-.blur {
-  -o-filter: blur(5px);
-  filter: blur(5px);
-  -webkit-filter: blur(5px);
-}
-
 /* sections */
 
 .content {
@@ -1072,7 +1066,7 @@ h2 {
 
 #cases .filter_nav .filter {
   font-size: 1.5rem;
-  color: #fff;
+  color: var(--bg_purple_3);
   border: 1px solid var(--bg_purple_3);
   line-height: 0;
   padding: 1rem 1.5rem 1rem 1rem;
@@ -1085,15 +1079,23 @@ h2 {
 #cases .filter_nav .filter::before {
   display: inline-flex;
   position: relative;
-  top: 0.75rem;
+  top: 0.5rem;
   margin: 0 0.5rem 0 0;
   content: "";
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url(../img/filter.svg);
   width: 2rem;
   height: 2rem;
+  transition: all 1s;
+}
+
+#cases .filter_off::before {
+  background-image: url(../img/filter_purple3.svg);
+}
+
+#cases .filter_on::before {
+  background-image: url(../img/filter.svg);
 }
 
 #cases .filter_nav {
@@ -1145,7 +1147,7 @@ h2 {
 }
 
 #cases .zoomdown {
-  animation: zoomdown 1s forwards;
+  animation: zoomdown 0.5s forwards;
   transform-origin: center center !important;
 }
 
@@ -1153,10 +1155,22 @@ h2 {
   0% {
     opacity: 1;
   }
-  50% {
-  }
   100% {
     opacity: 0;
+  }
+}
+
+#cases .zoomup {
+  animation: zoomup 0.5s forwards;
+  transform-origin: center center !important;
+}
+
+@keyframes zoomup {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
@@ -1165,23 +1179,10 @@ h2 {
 }
 
 #cases .case_count_message {
-  opacity: 0;
-  pointer-events: none;
-  transition: 1s;
   padding: 3vw 0 3vw;
   width: auto;
   min-height: 30vh;
   grid-column: 1 / -1;
-  animation: case_count_message 1s forwards;
-}
-
-@keyframes case_count_message {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 
 #cases .case_count_message span {
@@ -2266,7 +2267,7 @@ footer .copyright {
   }
 
   #cases .filter_nav .filter::before {
-    top: 0.75rem;
+    top: 0.5rem;
     margin: 0 0.5rem 0 0;
     width: 2rem;
     height: 2rem;
@@ -2351,10 +2352,10 @@ footer .copyright {
   }
 
   #cases .filter_nav .filter::before {
-    top: 1rem;
-    margin: 0 1.5rem 0 0;
-    width: 3rem;
-    height: 3rem;
+    top: 0.5rem;
+    margin: 0 0.6rem 0 0;
+    width: 2.5rem;
+    height: 2.5rem;
   }
 
   #cases .showcase {
