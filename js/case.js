@@ -181,37 +181,58 @@ function insertPageContent() {
 
   let workAreas = pageContent.acf.work_areas_symbols;
   workAreas.forEach(getWorkareas);
-  let workAreaArray = [];
 
   async function getWorkareas(workarea_id) {
     let workarea = await fetchWP(`workareas/${workarea_id}`);
-    workAreaArray.push(workarea);
-    if (workAreaArray.length === workAreas.length) {
-      insertWorkaraSymbols();
-    }
+    insertWorkaraSymbols(workarea);
   }
 
   // - - - - - - - - - - - insert Work area symbols - - - - - - - - - - -
 
-  function insertWorkaraSymbols() {
-    workAreaArray.forEach(workareaItem => {
-      const makeDiv = document.createElement("DIV");
-      const makeImg = document.createElement("IMG");
-      makeImg.setAttribute("src", workareaItem.acf.area_symbol);
-      makeImg.setAttribute("alt", workareaItem.acf.area_header);
-      makeDiv.appendChild(makeImg);
-      const makeTextHolder = document.createElement("DIV");
-      makeTextHolder.setAttribute("class", "center");
-      makeDiv.appendChild(makeTextHolder);
-      const makeText = document.createTextNode(workareaItem.acf.area_header);
-      makeTextHolder.appendChild(makeText);
-      makeDiv.setAttribute("class", "workarea_wrapper");
-      makeDiv.addEventListener("click", () => {
-        window.location.href = "/workarea.html?id=" + workareaItem.slug;
-        window.sessionStorage.setItem("workAreaLink", workareaItem.slug);
-      });
-      document.querySelector("[data-work_areas_symbols]").appendChild(makeDiv);
+  function insertWorkaraSymbols(workareaItem) {
+    const template = document.querySelector("[data-workareas_template]")
+      .content;
+    const clone = template.cloneNode(true);
+    clone
+      .querySelector("[data-link]")
+      .setAttribute(
+        "href",
+        `https://explore.purplescout.dk/workarea/${workareaItem.slug}`
+      );
+    clone.querySelector("[data-area_header]").addEventListener("click", () => {
+      window.sessionStorage.setItem("workAreaLink", workareaItem.slug);
     });
+    clone
+      .querySelector("[data-area_symbol]")
+      .setAttribute("src", workareaItem.acf.area_symbol);
+    clone
+      .querySelector("[data-area_symbol]")
+      .setAttribute("alt", "symbol for" + workareaItem.acf.area_header);
+    clone.querySelector("[data-area_symbol]").addEventListener("click", () => {
+      window.sessionStorage.setItem("workAreaLink", workareaItem.slug);
+    });
+    clone.querySelector("[data-area_header]").textContent =
+      workareaItem.acf.area_header;
+    document.querySelector("[data-work_areas_symbols]").appendChild(clone);
+
+    // workAreaArray.forEach(workareaItem => {
+    //   const makeDiv = document.createElement("DIV");
+    //   const makeImg = document.createElement("IMG");
+    //   makeImg.setAttribute("src", workareaItem.acf.area_symbol);
+    //   makeImg.setAttribute("alt", workareaItem.acf.area_header);
+    //   makeDiv.appendChild(makeImg);
+    //   const makeTextHolder = document.createElement("DIV");
+    //   makeTextHolder.setAttribute("class", "center");
+    //   makeDiv.appendChild(makeTextHolder);
+    //   const makeText = document.createTextNode(workareaItem.acf.area_header);
+    //   makeTextHolder.appendChild(makeText);
+    //   makeDiv.setAttribute("class", "workarea_wrapper");
+    //   makeDiv.addEventListener("click", () => {
+    //     window.location.href = "/workarea.html?id=" + workareaItem.slug;
+    //     window.sessionStorage.setItem("workAreaLink", workareaItem.slug);
+    //   });
+    //   document.querySelector("[data-work_areas_symbols]").appendChild(makeDiv);
+    // });
   }
   getTestimonialContent();
   getCtaContent();

@@ -204,8 +204,13 @@ function showRelatedCases(caseItem) {
   } else {
     clone.querySelector("[data-company]").textContent = caseItem.acf.company;
   }
+  clone
+    .querySelector("[data-link]")
+    .setAttribute(
+      "href",
+      `https://explore.purplescout.dk/case/${caseItem.slug}`
+    );
   clone.querySelector("[data-related_link]").addEventListener("click", () => {
-    window.location.href = "/case.html?id=" + caseItem.slug;
     window.sessionStorage.setItem("caseLink", caseItem.slug);
   });
   document.querySelector("[data-related_container]").appendChild(clone);

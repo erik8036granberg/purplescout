@@ -342,8 +342,13 @@ async function getTestimonialContent() {
 function displayTestimonial(testimonial) {
   caseArray.forEach(caseItem => {
     if (testimonial.acf.related_case.includes(caseItem.id)) {
+      document
+        .querySelector("[data-quote_link]")
+        .setAttribute(
+          "href",
+          `https://explore.purplescout.dk/case/${caseItem.slug}`
+        );
       document.querySelector("#intro .bubble").addEventListener("click", () => {
-        window.location.href = "case.html?id=" + caseItem.slug;
         window.sessionStorage.setItem("caseLink", caseItem.slug);
         window.sessionStorage.setItem("indexScroll", indexScrollTop);
       });
@@ -546,7 +551,18 @@ function filterCases() {
 function showCases(caseItem) {
   const template = document.querySelector("[data-cases_template]").content;
   const clone = template.cloneNode(true);
+
   clone.querySelector("[data-id]").setAttribute("id", caseItem.slug);
+  clone
+    .querySelector("[data-link]")
+    .setAttribute(
+      "href",
+      `https://explore.purplescout.dk/case/${caseItem.slug}`
+    );
+  clone.querySelector("[data-id]").addEventListener("click", () => {
+    window.sessionStorage.setItem("caseLink", caseItem.slug);
+    window.sessionStorage.setItem("indexScroll", indexScrollTop);
+  });
   clone
     .querySelector("[data-video_still_image]")
     .setAttribute("src", caseItem.acf.video_still_image.sizes.medium_large);
@@ -556,11 +572,6 @@ function showCases(caseItem) {
   clone.querySelector("[data-description_header]").textContent =
     caseItem.acf.description_header;
   clone.querySelector("[data-company]").textContent = caseItem.acf.company;
-  clone.querySelector("[data-id]").addEventListener("click", () => {
-    window.location.href = "case.html?id=" + caseItem.slug;
-    window.sessionStorage.setItem("caseLink", caseItem.slug);
-    window.sessionStorage.setItem("indexScroll", indexScrollTop);
-  });
   document.querySelector("[data-cases_container]").appendChild(clone);
   casesScollEffect();
 }
@@ -595,7 +606,6 @@ function showWorkareas(workareaItem) {
   clone.querySelector("[data-area_header]").textContent =
     workareaItem.acf.area_header;
   clone.querySelector("[data-area_header]").addEventListener("click", () => {
-    window.location.href = "workarea.html?id=" + workareaItem.slug;
     window.sessionStorage.setItem("workAreaLink", workareaItem.slug);
     window.sessionStorage.setItem("indexScroll", indexScrollTop);
   });
@@ -606,7 +616,6 @@ function showWorkareas(workareaItem) {
     .querySelector("[data-area_symbol]")
     .setAttribute("alt", "symbol for" + workareaItem.acf.area_header);
   clone.querySelector("[data-area_symbol]").addEventListener("click", () => {
-    window.location.href = "workarea.html?id=" + workareaItem.slug;
     window.sessionStorage.setItem("workAreaLink", workareaItem.slug);
     window.sessionStorage.setItem("indexScroll", indexScrollTop);
   });
@@ -615,8 +624,13 @@ function showWorkareas(workareaItem) {
     .setAttribute("alt", workareaItem.acf.area_header);
   clone.querySelector("[data-area_abstract]").innerHTML =
     workareaItem.acf.area_abstract;
+  clone
+    .querySelector("[data-area_link]")
+    .setAttribute(
+      "href",
+      `https://explore.purplescout.dk/workarea/${workareaItem.slug}`
+    );
   clone.querySelector("[data-workarea_arrow]").addEventListener("click", () => {
-    window.location.href = "workarea.html?id=" + workareaItem.slug;
     window.sessionStorage.setItem("workAreaLink", workareaItem.slug);
     window.sessionStorage.setItem("indexScroll", indexScrollTop);
   });
