@@ -164,12 +164,18 @@ function showRelatedCases(caseItem) {
   clone
     .querySelector("[data-case_thumbnail]")
     .setAttribute("src", caseItem.acf.case_thumbnail.sizes.medium);
-  clone
-    .querySelector("[data-case_thumbnail]")
-    .setAttribute(
-      "alt",
-      caseItem.acf.description_header + " for " + caseItem.acf.company
-    );
+  if (caseItem.acf.case_thumbnail.alt) {
+    clone
+      .querySelector("[data-case_thumbnail]")
+      .setAttribute("alt", caseItem.acf.case_thumbnail.alt);
+  } else {
+    clone
+      .querySelector("[data-case_thumbnail]")
+      .setAttribute(
+        "alt",
+        caseItem.acf.description_header + " for " + caseItem.acf.company
+      );
+  }
   let trimLength;
   if (window.innerWidth > 1500) {
     trimLength = 50;

@@ -566,9 +566,16 @@ function showCases(caseItem) {
   clone
     .querySelector("[data-video_still_image]")
     .setAttribute("src", caseItem.acf.video_still_image.sizes.medium_large);
-  clone
-    .querySelector("[data-video_still_image]")
-    .setAttribute("alt", caseItem.acf.company);
+
+  if (caseItem.acf.video_still_image.alt) {
+    clone
+      .querySelector("[data-video_still_image]")
+      .setAttribute("alt", caseItem.acf.video_still_image.alt);
+  } else {
+    clone
+      .querySelector("[data-video_still_image]")
+      .setAttribute("alt", caseItem.acf.company);
+  }
   clone.querySelector("[data-description_header]").textContent =
     caseItem.acf.description_header;
   clone.querySelector("[data-company]").textContent = caseItem.acf.company;

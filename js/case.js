@@ -94,13 +94,18 @@ function insertPageContent() {
   dest
     .querySelector("[data-image_1]")
     .setAttribute("src", pageContent.acf.image_1.sizes.medium_large);
-  dest
-    .querySelector("[data-image_1]")
-    .setAttribute(
-      "alt",
-      pageContent.acf.description_header + " for " + pageContent.acf.company
-    );
-
+  if (pageContent.acf.video_still_image.alt) {
+    dest
+      .querySelector("[data-image_1]")
+      .setAttribute("alt", pageContent.acf.image_1.alt);
+  } else {
+    dest
+      .querySelector("[data-image_1]")
+      .setAttribute(
+        "alt",
+        pageContent.acf.description_header + " for " + pageContent.acf.company
+      );
+  }
   if (pageContent.acf.image_1_border === "border") {
     dest.querySelector("[data-image_1]").classList.add("border");
   } else if (pageContent.acf.image_1_border === "no_border") {
@@ -110,12 +115,18 @@ function insertPageContent() {
   dest
     .querySelector("[data-image_2]")
     .setAttribute("src", pageContent.acf.image_2.sizes.medium_large);
-  dest
-    .querySelector("[data-image_2]")
-    .setAttribute(
-      "alt",
-      pageContent.acf.description_header + " for " + pageContent.acf.company
-    );
+  if (pageContent.acf.video_still_image.alt) {
+    dest
+      .querySelector("[data-image_2]")
+      .setAttribute("alt", pageContent.acf.image_2.alt);
+  } else {
+    dest
+      .querySelector("[data-image_2]")
+      .setAttribute(
+        "alt",
+        pageContent.acf.description_header + " for " + pageContent.acf.company
+      );
+  }
 
   if (pageContent.acf.image_2_border === "border") {
     dest.querySelector("[data-image_2]").classList.add("border");
@@ -214,25 +225,6 @@ function insertPageContent() {
     clone.querySelector("[data-area_header]").textContent =
       workareaItem.acf.area_header;
     document.querySelector("[data-work_areas_symbols]").appendChild(clone);
-
-    // workAreaArray.forEach(workareaItem => {
-    //   const makeDiv = document.createElement("DIV");
-    //   const makeImg = document.createElement("IMG");
-    //   makeImg.setAttribute("src", workareaItem.acf.area_symbol);
-    //   makeImg.setAttribute("alt", workareaItem.acf.area_header);
-    //   makeDiv.appendChild(makeImg);
-    //   const makeTextHolder = document.createElement("DIV");
-    //   makeTextHolder.setAttribute("class", "center");
-    //   makeDiv.appendChild(makeTextHolder);
-    //   const makeText = document.createTextNode(workareaItem.acf.area_header);
-    //   makeTextHolder.appendChild(makeText);
-    //   makeDiv.setAttribute("class", "workarea_wrapper");
-    //   makeDiv.addEventListener("click", () => {
-    //     window.location.href = "/workarea.html?id=" + workareaItem.slug;
-    //     window.sessionStorage.setItem("workAreaLink", workareaItem.slug);
-    //   });
-    //   document.querySelector("[data-work_areas_symbols]").appendChild(makeDiv);
-    // });
   }
   getTestimonialContent();
   getCtaContent();
