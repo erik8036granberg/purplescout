@@ -214,7 +214,7 @@ function showRelatedCases(caseItem) {
     .querySelector("[data-link]")
     .setAttribute(
       "href",
-      `https://explore.purplescout.dk/case/${caseItem.slug}`
+      `https://explore.purplescout.dk/case.html?id=${caseItem.slug}`
     );
   clone.querySelector("[data-related_link]").addEventListener("click", () => {
     window.sessionStorage.setItem("caseLink", caseItem.slug);

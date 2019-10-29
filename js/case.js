@@ -208,7 +208,7 @@ function insertPageContent() {
       .querySelector("[data-link]")
       .setAttribute(
         "href",
-        `https://explore.purplescout.dk/workarea/${workareaItem.slug}`
+        `https://explore.purplescout.dk/workarea.html?id=${workareaItem.slug}`
       );
     clone.querySelector("[data-area_header]").addEventListener("click", () => {
       window.sessionStorage.setItem("workAreaLink", workareaItem.slug);

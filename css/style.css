@@ -1054,14 +1054,40 @@ h2 {
   font-family: "Economica", sans-serif;
   font-size: 2rem;
   margin: 4rem 0 0;
+  width: 100%;
   z-index: 1000 !important;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 #cases .filter_nav {
   cursor: pointer;
   font-family: "Economica", sans-serif;
   font-size: 2rem;
-  margin: 4rem 0 0;
+  margin: 0 0 2rem;
+}
+
+#cases .view_nav {
+  display: flex;
+  width: auto;
+}
+
+#cases .view_nav div {
+  background-size: cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  height: 3.3rem;
+  width: 3.3rem;
+  transition: 0.5s;
+}
+
+#cases .view_nav div:first-child {
+  margin: 0 1.75rem 0 0;
+}
+
+#cases .view_nav div:hover {
+  transform: scale(1.1);
 }
 
 #cases .filter_nav .filter {
@@ -1104,7 +1130,6 @@ h2 {
 }
 
 #cases .filter_nav:hover {
-  display: inline-block;
   transform: scale(1.05);
 }
 
@@ -1144,6 +1169,21 @@ h2 {
   overflow: visible;
   opacity: 1;
   pointer-events: all;
+}
+
+#cases .view_nav #boxview.active_on {
+  background-image: url(../img/boxview.svg);
+}
+
+#cases .view_nav #boxview.active_off {
+  background-image: url(../img/boxview_purple3.svg);
+}
+
+#cases .view_nav #listview.active_on {
+  background-image: url(../img/listview.svg);
+}
+#cases .view_nav #listview.active_off {
+  background-image: url(../img/listview_purple3.svg);
 }
 
 #cases .zoomdown {
@@ -1206,7 +1246,7 @@ h2 {
 }
 
 #cases .showcase {
-  margin: 5rem 0 0;
+  margin: 3rem 0 0;
 }
 
 #cases img {
@@ -2266,6 +2306,10 @@ footer .copyright {
     font-size: 1.5rem;
   }
 
+  #cases .filter_nav {
+    margin: 0 0 0;
+  }
+
   #cases .filter_nav .filter::before {
     top: 0.5rem;
     margin: 0 0.5rem 0 0;
@@ -2361,6 +2405,7 @@ footer .copyright {
   #cases .showcase {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    margin: 5rem 0 0;
   }
 
   #cases .showcase * {
