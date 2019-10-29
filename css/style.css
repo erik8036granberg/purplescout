@@ -1082,7 +1082,7 @@ h2 {
   transition: 0.5s;
 }
 
-#cases .view_nav div:first-child {
+#cases .view_nav div:not(:last-child) {
   margin: 0 1.75rem 0 0;
 }
 
@@ -1169,6 +1169,18 @@ h2 {
   overflow: visible;
   opacity: 1;
   pointer-events: all;
+}
+
+#cases .view_nav #blockview.active_on {
+  background-image: url(../img/blockview.svg);
+}
+
+#cases .view_nav #blockview.active_off {
+  background-image: url(../img/blockview_purple3.svg);
+}
+
+#cases .view_nav #boxview {
+  display: none;
 }
 
 #cases .view_nav #boxview.active_on {
@@ -2575,6 +2587,10 @@ footer .copyright {
     font-size: 2rem;
     line-height: 2.5rem;
     margin: 0.5rem 0 0;
+  }
+
+  #cases .view_nav #boxview {
+    display: block;
   }
 
   #cases .showcase {

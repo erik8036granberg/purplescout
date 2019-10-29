@@ -425,10 +425,11 @@ async function getCaseContent() {
   } else {
     caseArray = getCases;
     console.log(caseArray);
-    caseArray.forEach(caseView);
+    caseArray.forEach(showCases);
     caseCount = caseArray.length;
   }
   filtercaseNav();
+  caseViewNav();
 }
 
 function filtercaseNav() {
@@ -543,6 +544,33 @@ function filterCases() {
         document.querySelector("#cases .showcase").appendChild(makeDiv);
       }
     }, 500);
+  }
+}
+
+function caseViewNav() {
+  console.log("caseViewNav");
+  document.querySelector("#blockview").addEventListener("click", () => {
+    viewChange("#blockview");
+  });
+  document.querySelector("#boxview").addEventListener("click", () => {
+    viewChange("#boxview");
+  });
+  document.querySelector("#listview").addEventListener("click", () => {
+    viewChange("#listview");
+  });
+
+  function viewChange(activeView) {
+    const setAll = document.querySelectorAll(".viewnav");
+    let counter = 0;
+    setAll.forEach(el => {
+      counter++;
+      el.classList.remove("active_on");
+      el.classList.add("active_off");
+      if (counter === setAll.length) {
+        document.querySelector(activeView).classList.remove("active_off");
+        document.querySelector(activeView).classList.add("active_on");
+      }
+    });
   }
 }
 
