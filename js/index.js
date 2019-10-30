@@ -574,14 +574,20 @@ function caseViewNav() {
         document.querySelector(activeView).classList.add("active_on");
       }
     });
-    document.querySelector("#cases .showcase").classList.remove("blockview");
-    document.querySelector("#cases .showcase").classList.remove("boxview");
-    document.querySelector("#cases .showcase").classList.remove("listview");
-    document
-      .querySelector("#cases .showcase")
-      .classList.add(activeView.substring(1));
-    document.querySelector("#cases .showcase").innerHTML = "";
-    caseArray.forEach(showCases);
+    document.querySelector("#cases .showcase").classList.remove("zoomup");
+    document.querySelector("#cases .showcase").classList.add("zoomdown");
+    setTimeout(() => {
+      document.querySelector("#cases .showcase").innerHTML = "";
+      document.querySelector("#cases .showcase").classList.remove("blockview");
+      document.querySelector("#cases .showcase").classList.remove("boxview");
+      document.querySelector("#cases .showcase").classList.remove("listview");
+      document.querySelector("#cases .showcase").classList.remove("zoomdown");
+      document.querySelector("#cases .showcase").classList.add("zoomup");
+      document
+        .querySelector("#cases .showcase")
+        .classList.add(activeView.substring(1));
+      caseArray.forEach(showCases);
+    }, 500);
   }
 }
 
@@ -590,8 +596,6 @@ function caseViewNav() {
 function showCases(caseItem) {
   const template = document.querySelector("[data-cases_template]").content;
   const clone = template.cloneNode(true);
-  console.log(caseItem);
-
   clone.querySelector("[data-id]").setAttribute("id", caseItem.slug);
   clone
     .querySelector("[data-link]")
