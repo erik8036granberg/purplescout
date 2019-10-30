@@ -1271,6 +1271,7 @@ h2 {
   margin: 0 0 5rem;
   line-height: 0;
   transition-timing-function: ease-in-out;
+  transition: 1s;
 }
 
 #cases .case:hover {
@@ -1278,6 +1279,10 @@ h2 {
   transition: 0.5s;
   cursor: pointer;
   transform: scale(1.05);
+}
+
+#cases .showcase {
+  margin: 3rem 0 0;
 }
 
 #cases .label {
@@ -2414,7 +2419,7 @@ footer .copyright {
     height: 2.5rem;
   }
 
-  #cases .showcase {
+  #cases .showcase.blockview {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     margin: 5rem 0 0;
@@ -2424,16 +2429,16 @@ footer .copyright {
     transition: 1s;
   }
 
-  #cases .showcase .case:not(:first-child) {
+  #cases .showcase.blockview .case:not(:first-child) {
     margin-top: -15vw;
   }
 
-  #cases .showcase .case:nth-child(odd) {
+  #cases .showcase.blockview .case:nth-child(odd) {
     grid-column: 1 / span 2;
     transform-origin: left;
   }
 
-  #cases .showcase .case:nth-child(even) {
+  #cases .showcase.blockview .case:nth-child(even) {
     grid-column: 2 / span 2;
     transform-origin: right;
   }
@@ -2593,26 +2598,26 @@ footer .copyright {
     display: block;
   }
 
-  #cases .showcase {
+  #cases .showcase.blockview {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 
-  #cases .showcase .case:not(:first-child) {
+  #cases .showcase.blockview .case:not(:first-child) {
     margin-top: -5vw;
   }
 
-  #cases .showcase .case:nth-child(4n + 1) {
+  #cases .showcase.blockview .case:nth-child(4n + 1) {
     grid-column: 1 / span 2;
     transform-origin: left;
   }
 
-  #cases .showcase .case:nth-child(even) {
+  #cases .showcase.blockview .case:nth-child(even) {
     grid-column: 2 / span 2;
     transform-origin: center;
   }
 
-  #cases .showcase .case:nth-child(4n + 3) {
+  #cases .showcase.blockview .case:nth-child(4n + 3) {
     grid-column: 3 / span 2;
     transform-origin: right;
   }

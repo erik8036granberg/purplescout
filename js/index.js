@@ -571,6 +571,12 @@ function caseViewNav() {
         document.querySelector(activeView).classList.add("active_on");
       }
     });
+    document.querySelector("#cases .showcase").classList.remove("blockview");
+    document.querySelector("#cases .showcase").classList.remove("boxview");
+    document.querySelector("#cases .showcase").classList.remove("listview");
+    document
+      .querySelector("#cases .showcase")
+      .classList.add(activeView.substring(1));
   }
 }
 
