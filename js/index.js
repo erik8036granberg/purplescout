@@ -424,7 +424,6 @@ async function getCaseContent() {
     });
   } else {
     caseArray = getCases;
-    console.log(caseArray);
     caseArray.forEach(showCases);
     caseCount = caseArray.length;
   }
@@ -547,19 +546,23 @@ function filterCases() {
   }
 }
 
+let activeView;
+
 function caseViewNav() {
-  console.log("caseViewNav");
   document.querySelector("#blockview").addEventListener("click", () => {
-    viewChange("#blockview");
+    activeView = "#blockview";
+    viewChange();
   });
   document.querySelector("#boxview").addEventListener("click", () => {
-    viewChange("#boxview");
+    activeView = "#boxview";
+    viewChange();
   });
   document.querySelector("#listview").addEventListener("click", () => {
-    viewChange("#listview");
+    activeView = "#listview";
+    viewChange();
   });
 
-  function viewChange(activeView) {
+  function viewChange() {
     const setAll = document.querySelectorAll(".viewnav");
     let counter = 0;
     setAll.forEach(el => {
@@ -577,6 +580,8 @@ function caseViewNav() {
     document
       .querySelector("#cases .showcase")
       .classList.add(activeView.substring(1));
+    document.querySelector("#cases .showcase").innerHTML = "";
+    caseArray.forEach(showCases);
   }
 }
 
@@ -585,6 +590,7 @@ function caseViewNav() {
 function showCases(caseItem) {
   const template = document.querySelector("[data-cases_template]").content;
   const clone = template.cloneNode(true);
+  console.log(caseItem);
 
   clone.querySelector("[data-id]").setAttribute("id", caseItem.slug);
   clone
@@ -597,10 +603,15 @@ function showCases(caseItem) {
     window.sessionStorage.setItem("caseLink", caseItem.slug);
     window.sessionStorage.setItem("indexScroll", indexScrollTop);
   });
-  clone
-    .querySelector("[data-video_still_image]")
-    .setAttribute("src", caseItem.acf.video_still_image.sizes.medium_large);
-
+  if (activeView == "#listview") {
+    clone
+      .querySelector("[data-video_still_image]")
+      .setAttribute("src", caseItem.acf.case_thumbnail.sizes.medium);
+  } else {
+    clone
+      .querySelector("[data-video_still_image]")
+      .setAttribute("src", caseItem.acf.video_still_image.sizes.medium_large);
+  }
   if (caseItem.acf.video_still_image.alt) {
     clone
       .querySelector("[data-video_still_image]")
@@ -610,9 +621,52 @@ function showCases(caseItem) {
       .querySelector("[data-video_still_image]")
       .setAttribute("alt", caseItem.acf.company);
   }
-  clone.querySelector("[data-description_header]").textContent =
-    caseItem.acf.description_header;
-  clone.querySelector("[data-company]").textContent = caseItem.acf.company;
+  if (activeView == "#listview") {
+    let trimLength;
+    if (window.innerWidth > 1500) {
+      trimLength = 200;
+    } else if (window.innerWidth > 1200) {
+      trimLength = 40;
+    } else if (window.innerWidth > 500) {
+      trimLength = 70;
+    } else {
+      trimLength = 30;
+    }
+    if (caseItem.acf.description_header.length > trimLength) {
+      let trimmedDescription = caseItem.acf.description_header.substring(
+        0,
+        trimLength
+      );
+      trimmedDescription = trimmedDescription.substr(
+        0,
+        Math.min(trimmedDescription.length, trimmedDescription.lastIndexOf(" "))
+      );
+      clone.querySelector("[data-description_header]").textContent =
+        trimmedDescription + "...";
+    } else {
+      clone.querySelector("[data-description_header]").textContent =
+        caseItem.acf.description_header;
+    }
+    if (window.innerWidth < 700) {
+      if (caseItem.acf.company.includes(" - ")) {
+        let justCompanyName = caseItem.acf.company.substring(
+          0,
+          caseItem.acf.company.indexOf(" - ")
+        );
+        clone.querySelector("[data-company]").textContent = justCompanyName;
+      } else {
+        clone.querySelector("[data-company]").textContent =
+          caseItem.acf.company;
+      }
+    } else {
+      clone.querySelector("[data-company]").textContent = caseItem.acf.company;
+    }
+  } else {
+    clone.querySelector("[data-description_header]").textContent =
+      caseItem.acf.description_header;
+    clone.querySelector("[data-company]").textContent = caseItem.acf.company;
+  }
+
   document.querySelector("[data-cases_container]").appendChild(clone);
   casesScollEffect();
 }
