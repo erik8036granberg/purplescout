@@ -81,9 +81,14 @@ h3 {
   line-height: 3.5rem;
 }
 
-a:hover {
+.content p a {
+  font-weight: bold;
   color: var(--bg_purple_3);
   transition: 0.5s;
+}
+
+.content p a:hover {
+  color: var(--bg_purple_3);
 }
 
 .hide {
@@ -437,16 +442,23 @@ footer h1 {
   z-index: 500;
 }
 
+#showreel .button_wrapper {
+  transition: 0.5s;
+}
+
 #showreel .cta {
   font-size: 3rem;
   font-weight: bold;
   color: var(--bg_purple_4);
   background-color: #fff;
+  border: 1px solid #fff;
   line-height: 0;
-  width: 0;
-  overflow: hidden;
-  transform: scale(0);
+  padding: 2rem 3rem 2.25rem;
+  margin: 2rem auto 0;
   cursor: pointer;
+  width: 20rem;
+  min-height: 4rem;
+  transition: 0.5s;
 }
 
 #showreel .full_video {
@@ -455,10 +467,10 @@ footer h1 {
   border: 1px solid #fff;
   line-height: 0;
   padding: 2rem 3rem 2.25rem;
-  margin: 3rem auto 0;
+  margin: 2rem auto 0;
   cursor: pointer;
   width: 20rem;
-  height: auto;
+  min-height: 4rem;
   transition: 0.5s;
 }
 
@@ -737,15 +749,6 @@ footer h1 {
   z-index: 1000;
 }
 
-#showreel .show_showreel_cta {
-  transform: scale(1);
-  transition: 0.5s;
-  padding: 2rem 3rem 2.25rem;
-  margin: 3rem auto 0;
-  width: 20rem;
-  height: auto;
-}
-
 #showreel .explore {
   width: 100%;
   height: auto;
@@ -774,18 +777,18 @@ footer h1 {
 }
 
 .pulse {
-  animation: pulse 3s infinite;
+  animation: pulse 4s infinite ease-in-out;
 }
 
 @keyframes pulse {
   0% {
     transform: scale(1);
   }
-  80% {
+  60% {
     transform: scale(1);
   }
-  90% {
-    transform: scale(1.2);
+  63% {
+    transform: scale(1.1);
   }
   100% {
     transform: scale(1);
@@ -1269,6 +1272,7 @@ h2 {
 
 #cases .showcase.listview {
   grid-template-columns: 1fr;
+  grid-gap: 0;
 }
 
 #cases .showcase.listview .img_wrapper {
@@ -2901,8 +2905,9 @@ footer .copyright {
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - media queries 1200px - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
 @media screen and (min-width: 1200px) {
-  #showreel .full_video {
+  #showreel .button_wrapper {
     position: absolute;
+    width: auto;
     bottom: 8rem;
     right: 8rem;
     pointer-events: all;
@@ -3139,6 +3144,19 @@ footer .copyright {
   #cta_slider .cta_slider_button {
     display: inline-block;
     margin: 0 2rem 0;
+  }
+}
+
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - media queries 1400px- - - - - - - - - - - - - - - - - - - - - - - - - -*/
+
+@media screen and (min-width: 1400px) {
+  #showreel .button_wrapper {
+    display: flex;
+  }
+
+  #showreel .button_wrapper > div:first-child {
+    height: auto;
+    margin-right: 2rem;
   }
 }
 

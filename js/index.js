@@ -404,7 +404,9 @@ function displayTestimonial(testimonial) {
 // - - - - - - - - - - - get cases content  - - - - - - - - - - -
 
 let caseArray = [];
+let activeCaseArray = [];
 let activeFilter;
+let activeLabel;
 let filterID = "all";
 let caseCount;
 
@@ -416,16 +418,16 @@ async function getCaseContent() {
     clientSettingArray.forEach(clientCase => {
       getCases.forEach(clientItem => {
         if (clientItem.id === clientCase) {
-          showCases(clientItem);
           caseArray.push(clientItem);
-          caseCount++;
+          activeCaseArray.push(clientItem);
+          showCases(clientItem);
         }
       });
     });
   } else {
     caseArray = getCases;
-    caseArray.forEach(showCases);
-    caseCount = caseArray.length;
+    activeCaseArray = getCases;
+    activeCaseArray.forEach(showCases);
   }
   filtercaseNav();
   caseViewNav();
@@ -433,10 +435,14 @@ async function getCaseContent() {
 
 function filtercaseNav() {
   // filter dropdown nav - mouseover setup
-  document.querySelector("#cases .filter").addEventListener("mouseover", () => {
-    document.querySelector("#cases .filter_nav ul").classList.remove("closed");
-    document.querySelector("#cases .filter_nav ul").classList.add("open");
-  });
+  document
+    .querySelector("#cases .filter")
+    .addEventListener("mouseenter", () => {
+      document
+        .querySelector("#cases .filter_nav ul")
+        .classList.remove("closed");
+      document.querySelector("#cases .filter_nav ul").classList.add("open");
+    });
   document
     .querySelector("#cases .dropdown")
     .addEventListener("mouseleave", () => {
@@ -500,10 +506,11 @@ function filtercaseNav() {
 }
 
 function filterCases() {
-  let caseCount = 0;
+  caseCount = 0;
   if (filterID !== activeFilter) {
     activeFilter = filterID;
-    let activeLabel = document.querySelector(`#filter_${filterID}`).textContent;
+    activeCaseArray = [];
+    activeLabel = document.querySelector(`#filter_${filterID}`).textContent;
     document.querySelector("#cases .filter").textContent = activeLabel;
     document.querySelector("#cases .filter").style.color = "#fff";
     document.querySelector("#cases .filter").classList.remove("filter_off");
@@ -515,7 +522,8 @@ function filterCases() {
       document.querySelector("#cases .showcase").classList.remove("zoomdown");
       document.querySelector("#cases .showcase").classList.add("zoomup");
       if (filterID == "all") {
-        caseArray.forEach(showCases);
+        activeCaseArray = caseArray;
+        activeCaseArray.forEach(showCases);
         caseCount = caseArray.length;
         setTimeout(() => {
           document
@@ -531,16 +539,14 @@ function filterCases() {
           caseItem.acf.work_areas_symbols.forEach(workareaID => {
             if (workareaID == filterID) {
               showCases(caseItem);
+              activeCaseArray.push(caseItem);
               caseCount++;
             }
           });
         });
       }
-      if (caseCount == 0) {
-        const makeDiv = document.createElement("DIV");
-        makeDiv.setAttribute("class", "case_count_message");
-        makeDiv.innerHTML = `No cases related to <span>${activeLabel}</span> published yet.`;
-        document.querySelector("#cases .showcase").appendChild(makeDiv);
+      if (activeCaseArray.length == 0) {
+        noCases();
       }
     }, 500);
   }
@@ -586,7 +592,12 @@ function caseViewNav() {
       document
         .querySelector("#cases .showcase")
         .classList.add(activeView.substring(1));
-      caseArray.forEach(showCases);
+      console.log(activeCaseArray);
+      console.log("activeCaseArray har " + activeCaseArray.length + " poster");
+      activeCaseArray.forEach(showCases);
+      if (activeCaseArray.length == 0) {
+        noCases();
+      }
     }, 500);
   }
 }
@@ -670,9 +681,15 @@ function showCases(caseItem) {
       caseItem.acf.description_header;
     clone.querySelector("[data-company]").textContent = caseItem.acf.company;
   }
-
   document.querySelector("[data-cases_container]").appendChild(clone);
   casesScollEffect();
+}
+
+function noCases() {
+  const makeDiv = document.createElement("DIV");
+  makeDiv.setAttribute("class", "case_count_message");
+  makeDiv.innerHTML = `No cases related to <span>${activeLabel}</span> published yet.`;
+  document.querySelector("#cases .showcase").appendChild(makeDiv);
 }
 
 // - - - - - - - - - - - get work areas content  - - - - - - - - - - -
@@ -793,9 +810,7 @@ function showreelCtaObserver() {
         setTimeout(() => {
           if (showreelInview == true && showreelButtonSeen == false) {
             showreelButtonSeen = true;
-            document
-              .querySelector("#showreel .cta")
-              .classList.add("show_showreel_cta");
+            document.querySelector("#showreel .cta").classList.add("pulse");
           }
         }, 5000);
       } else {
