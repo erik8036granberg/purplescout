@@ -1175,11 +1175,11 @@ h2 {
 }
 
 #cases .view_nav #blockview.active_on {
-  background-image: url(../img/blockview.svg);
+  background-image: url(../img/blockview_mobile.svg);
 }
 
 #cases .view_nav #blockview.active_off {
-  background-image: url(../img/blockview_purple3.svg);
+  background-image: url(../img/blockview_purple3_mobile.svg);
 }
 
 #cases .view_nav #boxview {
@@ -1187,11 +1187,11 @@ h2 {
 }
 
 #cases .view_nav #boxview.active_on {
-  background-image: url(../img/boxview.svg);
+  background-image: url(../img/boxview_medium.svg);
 }
 
 #cases .view_nav #boxview.active_off {
-  background-image: url(../img/boxview_purple3.svg);
+  background-image: url(../img/boxview_medium_purple3.svg);
 }
 
 #cases .view_nav #listview.active_on {
@@ -2358,7 +2358,7 @@ footer .copyright {
   }
 
   #cases .filter_nav .filter {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
 
   #cases .filter_nav {
@@ -2505,6 +2505,14 @@ footer .copyright {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 4vw;
+  }
+
+  #cases .view_nav #blockview.active_on {
+    background-image: url(../img/blockview.svg);
+  }
+
+  #cases .view_nav #blockview.active_off {
+    background-image: url(../img/blockview_purple3.svg);
   }
 
   #cases h3 {
@@ -3005,6 +3013,14 @@ footer .copyright {
 
   #what .area_header div {
     align-items: center;
+  }
+
+  #cases .view_nav #boxview.active_on {
+    background-image: url(../img/boxview.svg);
+  }
+
+  #cases .view_nav #boxview.active_off {
+    background-image: url(../img/boxview_purple3.svg);
   }
 
   #cases .showcase.boxview {
