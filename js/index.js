@@ -503,6 +503,7 @@ function filtercaseNav() {
       filterID = "207";
       filterCases();
     });
+  // filterModal();
 }
 
 function filterCases() {
@@ -691,6 +692,22 @@ function noCases() {
   makeDiv.innerHTML = `No cases related to <span>${activeLabel}</span> published yet.`;
   document.querySelector("#cases .showcase").appendChild(makeDiv);
 }
+
+// function filterModal() {
+//   if (window.innerWidth < 900) {
+//     console.log("filterMenu");
+//     let filterMenuContent = document.querySelector("[data-filter_container]")
+//       .innerHTML;
+//     document.querySelector(
+//       "#casefilter_modal .modal_content"
+//     ).innerHTML = filterMenuContent;
+//     // let closeModalButton = document.createElement("DIV");
+//     // closeModalButton.setAttribute("class", "close");
+//     // document.document
+//     //   .querySelector("#casefilter_modal .modal_content")
+//     //   .appendChild(closeModalButton);
+//   }
+// }
 
 // - - - - - - - - - - - get work areas content  - - - - - - - - - - -
 

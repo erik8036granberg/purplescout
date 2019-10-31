@@ -1052,6 +1052,70 @@ h2 {
 
 /* cases */
 
+/*
+#casefilter_modal {
+  background-color: var(--bg_logo);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: fixed;
+  z-index: 1500;
+  pointer-events: none;
+  opacity: 1;
+  transition: 1s;
+  overflow: auto;
+}
+
+ #casefilter_modal .modal_content {
+  height: auto;
+  margin: 3rem;
+  transform: translateY(-100vh);
+  padding: 3rem;
+  color: #fff;
+  pointer-events: none;
+  transition: 1s;
+  opacity: 0;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 2rem;
+}
+
+#casefilter_modal.show {
+  pointer-events: all;
+  width: 100vw;
+  height: 100vh;
+  opacity: 1;
+  z-index: 2000;
+  pointer-events: all;
+  opacity: 1;
+}
+
+#casefilter_modal .modal_content.show {
+  opacity: 1;
+  z-index: 2000;
+  background-color: var(--bg_cta);
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+#casefilter_modal .close {
+  width: 6rem;
+  height: 6rem;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background-image: url(../img/close_cta.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 2000;
+  transition: 0.5s;
+  pointer-events: all;
+  cursor: pointer;
+} */
+
 #cases #display {
   position: relative;
   font-family: "Economica", sans-serif;
