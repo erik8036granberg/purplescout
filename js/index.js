@@ -435,26 +435,41 @@ async function getCaseContent() {
 
 function filtercaseNav() {
   // filter dropdown nav - mouseover setup
-  document
-    .querySelector("#cases .filter")
-    .addEventListener("mouseenter", () => {
+  if (window.innerWidth <= 900) {
+    document.querySelector("#cases .filter").addEventListener("click", () => {
       document
         .querySelector("#cases .filter_nav ul")
-        .classList.remove("closed");
-      document.querySelector("#cases .filter_nav ul").classList.add("open");
+        .classList.toggle("closed");
+      document.querySelector("#cases .filter_nav ul").classList.toggle("open");
     });
-  document
-    .querySelector("#cases .dropdown")
-    .addEventListener("mouseleave", () => {
+  } else {
+    document
+      .querySelector("#cases .filter")
+      .addEventListener("mouseenter", () => {
+        document
+          .querySelector("#cases .filter_nav ul")
+          .classList.remove("closed");
+        document.querySelector("#cases .filter_nav ul").classList.add("open");
+      });
+    document
+      .querySelector("#cases .dropdown")
+      .addEventListener("mouseleave", () => {
+        document
+          .querySelector("#cases .filter_nav ul li")
+          .classList.remove("open");
+        document
+          .querySelector("#cases .filter_nav ul li")
+          .classList.add("closed");
+      });
+  }
+  const allItems = document.querySelectorAll("#cases .filter_nav ul li");
+  allItems.forEach(el => {
+    el.addEventListener("click", () => {
       document.querySelector("#cases .filter_nav ul").classList.remove("open");
       document.querySelector("#cases .filter_nav ul").classList.add("closed");
     });
-  document
-    .querySelector("#cases .filter_nav ul")
-    .addEventListener("click", () => {
-      document.querySelector("#cases .filter_nav ul").classList.remove("open");
-      document.querySelector("#cases .filter_nav ul").classList.add("closed");
-    });
+  });
+
   document
     .querySelector(".filter_nav #filter_all")
     .addEventListener("click", () => {
@@ -503,7 +518,6 @@ function filtercaseNav() {
       filterID = "207";
       filterCases();
     });
-  // filterModal();
 }
 
 function filterCases() {
@@ -696,16 +710,11 @@ function noCases() {
 // function filterModal() {
 //   if (window.innerWidth < 900) {
 //     console.log("filterMenu");
-//     let filterMenuContent = document.querySelector("[data-filter_container]")
+//     let filterMenuContent = document.querySelector("#cases #filter_items")
 //       .innerHTML;
 //     document.querySelector(
-//       "#casefilter_modal .modal_content"
+//       "#casefilter_modal .modal_content ul"
 //     ).innerHTML = filterMenuContent;
-//     // let closeModalButton = document.createElement("DIV");
-//     // closeModalButton.setAttribute("class", "close");
-//     // document.document
-//     //   .querySelector("#casefilter_modal .modal_content")
-//     //   .appendChild(closeModalButton);
 //   }
 // }
 

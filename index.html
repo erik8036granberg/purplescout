@@ -112,12 +112,10 @@
             class="modal_video"
             id="full"
             data-show_reel_full_video
-          >
-            <!-- <source src="" type="video/mp4" /> -->
-          </video>
+          ></video>
         </div>
         <div class="header">
-          <div data-show_reel_header></div>
+          <h1 data-show_reel_header></h1>
           <div class="button_wrapper">
             <div class="cta">Call us</div>
             <div class="full_video">Full video</div>
@@ -143,7 +141,6 @@
       </section>
 
       <section id="intro">
-        <!-- <h1>Intro</h1> -->
         <div class="content">
           <h2 class="intro_header" data-intro_header></h2>
           <div
@@ -173,8 +170,13 @@
         </div>
       </section>
 
-      <!-- <div id="casefilter_modal">
-          <div class="modal_content"></div>
+      <!-- <div id="casefilter_modal" class="show">
+        <div class="close"></div>
+        <div class="modal_content show">
+          <ul>
+            HEJ
+          </ul>
+        </div>
       </div> -->
 
       <section id="cases">
@@ -189,7 +191,7 @@
               <div class="filter_nav">
                 <div class="dropdown">
                   <span class="filter filter_off">Filter cases</span>
-                  <ul class="closed" data-filter_container>
+                  <ul id="filter_items" class="closed" data-filter_container>
                     <li id="filter_all">All cases</li>
                     <li id="filter_197">UI/UX, Graphics & Experience Design</li>
                     <li id="filter_202">

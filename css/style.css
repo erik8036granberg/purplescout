@@ -408,8 +408,8 @@ footer {
   background-image: linear-gradient(var(--bg_purple_4), transparent);
 }
 
-main h1,
-footer h1 {
+section > h1,
+footer > h1 {
   padding: 0;
   line-height: 0;
   position: absolute;
@@ -432,14 +432,22 @@ footer h1 {
   color: #fff;
 }
 
-#showreel .header {
+#showreel .header,
+#showreel .header h1 {
   font-family: "Economica", sans-serif;
+  font-weight: normal;
   text-align: center;
   font-size: 4.5rem;
   line-height: 5rem;
   width: 100%;
-  margin: 0 0 5vh;
+  margin: 0 0 10vh;
   z-index: 500;
+  opacity: 1;
+}
+
+#showreel .header h1 {
+  transform: scale(0.8);
+  margin: 0 0 0;
 }
 
 #showreel .button_wrapper {
@@ -459,6 +467,7 @@ footer h1 {
   width: 20rem;
   min-height: 4rem;
   transition: 0.5s;
+  transform: scale(0.9);
 }
 
 #showreel .full_video {
@@ -472,6 +481,7 @@ footer h1 {
   width: 20rem;
   min-height: 4rem;
   transition: 0.5s;
+  transform: scale(0.9);
 }
 
 #showreel .cta:hover,
@@ -758,11 +768,11 @@ footer h1 {
   text-align: center;
   cursor: pointer;
   z-index: 400;
+  transition: 1s;
 }
 
 #showreel .explore:hover {
-  transform: translateY(-2rem);
-  transition: 1s;
+  transform: scale(1.3);
 }
 
 #showreel .arrow,
@@ -773,7 +783,7 @@ footer h1 {
   background-image: url(../img/down_arrow.svg);
   background-size: cover;
   background-repeat: no-repeat;
-  margin: 1rem auto 5vh;
+  margin: 1rem auto 8vh;
 }
 
 .pulse {
@@ -782,16 +792,16 @@ footer h1 {
 
 @keyframes pulse {
   0% {
-    transform: scale(1);
+    transform: scale(0.9);
   }
   60% {
-    transform: scale(1);
+    transform: scale(0.9);
   }
   63% {
-    transform: scale(1.1);
+    transform: scale(1);
   }
   100% {
-    transform: scale(1);
+    transform: scale(0.9);
   }
 }
 
@@ -1052,11 +1062,10 @@ h2 {
 
 /* cases */
 
-/*
-#casefilter_modal {
-  background-color: var(--bg_logo);
+/* #casefilter_modal {
   width: 100vw;
   height: 100vh;
+  background-color: var(--bg_logo);
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -1066,54 +1075,6 @@ h2 {
   opacity: 1;
   transition: 1s;
   overflow: auto;
-}
-
- #casefilter_modal .modal_content {
-  height: auto;
-  margin: 3rem;
-  transform: translateY(-100vh);
-  padding: 3rem;
-  color: #fff;
-  pointer-events: none;
-  transition: 1s;
-  opacity: 0;
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 2rem;
-}
-
-#casefilter_modal.show {
-  pointer-events: all;
-  width: 100vw;
-  height: 100vh;
-  opacity: 1;
-  z-index: 2000;
-  pointer-events: all;
-  opacity: 1;
-}
-
-#casefilter_modal .modal_content.show {
-  opacity: 1;
-  z-index: 2000;
-  background-color: var(--bg_cta);
-  pointer-events: all;
-  transform: translateY(0);
-}
-
-#casefilter_modal .close {
-  width: 6rem;
-  height: 6rem;
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  background-image: url(../img/close_cta.svg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  z-index: 2000;
-  transition: 0.5s;
-  pointer-events: all;
-  cursor: pointer;
 } */
 
 #cases #display {
@@ -1157,6 +1118,17 @@ h2 {
   transform: scale(1.1);
 }
 
+/* #cases #filter_items {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg_logo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+} */
+
 #cases .filter_nav .filter {
   font-size: 1.5rem;
   color: var(--bg_purple_3);
@@ -1166,6 +1138,7 @@ h2 {
   width: auto;
   transition: all 1s;
   cursor: pointer;
+  pointer-events: all;
   white-space: nowrap;
 }
 
@@ -2376,6 +2349,37 @@ footer .copyright {
 
   #cta_modal .modal_content {
     padding: 5vw;
+  }
+
+  #showreel .header h1 {
+    transform: scale(1);
+  }
+
+  #showreel .cta {
+    transform: scale(1);
+  }
+
+  #showreel .full_video {
+    transform: scale(1);
+  }
+
+  .pulse {
+    animation: pulse 4s infinite ease-in-out;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    60% {
+      transform: scale(1);
+    }
+    63% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
 
   #intro .case_testimonial {
