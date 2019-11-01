@@ -78,7 +78,7 @@
       <div id="gradiant">
         <div class="top"></div>
         <div class="fade"></div>
-      </div> 
+      </div>
     </header>
     <main>
       <div id="cta_modal">
@@ -86,20 +86,20 @@
       </div>
 
       <template data-cta_template>
-          <div class="close"></div>
-          <h3 data-cta_header></h3>
-          <div class="cta_text" data-cta_text></div>
-          <div class="contact">
-              <p class="more_info">
-                  Talk to:<br />
-                  <span class="contakt_person" data-cta_contact_person></span>
-              </p>
-            <div>
-              <a href="" class="icon phone" data-cta_phone></a>
-              <a href="" class="icon mail" data-cta_mail></a>
-            </div>
-            <div class="some"></div>
+        <div class="close"></div>
+        <h3 data-cta_header></h3>
+        <div class="cta_text" data-cta_text></div>
+        <div class="contact">
+          <p class="more_info">
+            Talk to:<br />
+            <span class="contakt_person" data-cta_contact_person></span>
+          </p>
+          <div>
+            <a href="" class="icon phone" data-cta_phone></a>
+            <a href="" class="icon mail" data-cta_mail></a>
           </div>
+          <div class="some"></div>
+        </div>
       </template>
 
       <section id="showreel">
@@ -146,20 +146,27 @@
         <!-- <h1>Intro</h1> -->
         <div class="content">
           <h2 class="intro_header" data-intro_header></h2>
-          <div class="intro_text" data-intro_text data-aos="fade-up"
-          data-aos-duration="500"></div>
-          <div class="case_testimonial" data-aos="fade-up"
-          data-aos-duration="500">
+          <div
+            class="intro_text"
+            data-intro_text
+            data-aos="fade-up"
+            data-aos-duration="500"
+          ></div>
+          <div
+            class="case_testimonial"
+            data-aos="fade-up"
+            data-aos-duration="500"
+          >
             <div class="bubble">
               <a href="" data-quote_link>
-            <div id="quote_outline"></div>
-              <div class="swop_frame">
-                <div class="quote_wrapper">
-                  <div class="quote" data-testimonial_quote></div>
-                  <div class="quote_person" data-testimonial_name></div>
-                  <div class="quote_company" data-testimonial_company></div>
+                <div id="quote_outline"></div>
+                <div class="swop_frame">
+                  <div class="quote_wrapper">
+                    <div class="quote" data-testimonial_quote></div>
+                    <div class="quote_person" data-testimonial_name></div>
+                    <div class="quote_company" data-testimonial_company></div>
+                  </div>
                 </div>
-              </div>
               </a>
             </div>
           </div>
@@ -177,49 +184,53 @@
             <h2 class="top" data-cases_header></h2>
             <p data-cases_text></p>
           </div>
-          <div data-aos="fade-up"
-          data-aos-duration="500">
-          <div id="display">
-            <div class="filter_nav">
-                <div class="dropdown"><span class="filter filter_off">Filter cases</span>
+          <div data-aos="fade-up" data-aos-duration="500">
+            <div id="display">
+              <div class="filter_nav">
+                <div class="dropdown">
+                  <span class="filter filter_off">Filter cases</span>
                   <ul class="closed" data-filter_container>
                     <li id="filter_all">All cases</li>
                     <li id="filter_197">UI/UX, Graphics & Experience Design</li>
-                    <li id="filter_202">App, mobile development & digital solutions</li>
-                    <li id="filter_203">Film, 3D animation & motion graphics</li>
+                    <li id="filter_202">
+                      App, mobile development & digital solutions
+                    </li>
+                    <li id="filter_203">
+                      Film, 3D animation & motion graphics
+                    </li>
                     <li id="filter_204">Spatial Computing - AR/VR/MR</li>
                     <li id="filter_205">Cloud Solutions & AWS partner</li>
                     <li id="filter_206">AI & machine learning</li>
                     <li id="filter_207">Concept Creation & Design Sprints</li>
                   </ul>
                 </div>
+              </div>
+              <div class="view_nav">
+                <div id="blockview" class="viewnav active_on"></div>
+                <div id="boxview" class="viewnav active_off"></div>
+                <div id="listview" class="viewnav active_off"></div>
+              </div>
             </div>
-            <div class="view_nav">
-              <div id="blockview" class="viewnav active_on"></div>
-              <div id="boxview" class="viewnav active_off"></div>
-              <div id="listview" class="viewnav active_off"></div>
+            <div class="showcase blockview" data-cases_container></div>
+            <div id="logowrapper">
+              <div id="activelogos"></div>
+              <div id="hiddenlogos"></div>
             </div>
-          </div>
-          <div class="showcase blockview" data-cases_container></div>
-          <div id="logowrapper">
-            <div id="activelogos"></div>
-            <div id="hiddenlogos"></div>
           </div>
         </div>
-      </div>
       </section>
 
       <template data-cases_template>
         <div class="case" id="" data-id>
           <a href="" data-link>
-          <div class="img_wrapper">
-           <img src="" alt="" data-video_still_image />
-          </div>
-           <div class="label">
-             <h3 data-description_header></h3>
-             <div class="company" data-company></div>
-             <div class="arrow"></div>
-           </div>
+            <div class="img_wrapper">
+              <img src="" alt="" data-video_still_image />
+            </div>
+            <div class="label">
+              <h3 data-description_header></h3>
+              <div class="company" data-company></div>
+              <div class="arrow"></div>
+            </div>
           </a>
         </div>
       </template>
@@ -232,6 +243,7 @@
             <div data-what_text></div>
           </div>
           <div class="area_wrapper" data-workareas_container></div>
+        </div>
       </section>
 
       <template data-workareas_template>
@@ -242,21 +254,25 @@
           data-area_id
         >
           <a href="" data-area_link>
-          <div class="area_header">
-            <img src="" class="area_symbol" alt="" data-area_symbol />
-            <h3 data-area_header></h3>
-          </div>
-          <div
-            class="area_text"
-            data-area_abstract
-            data-aos="fade-up"
-            data-aos-duration="750"
-          ></div>
-          <div class="arrow_wrapper" data-workarea_arrow data-aos="fade-up"
-          data-aos-duration="500">
-          <div class="arrow"></div>
-        </div>
-        </a>
+            <div class="area_header">
+              <img src="" class="area_symbol" alt="" data-area_symbol />
+              <h3 data-area_header></h3>
+            </div>
+            <div
+              class="area_text"
+              data-area_abstract
+              data-aos="fade-up"
+              data-aos-duration="750"
+            ></div>
+            <div
+              class="arrow_wrapper"
+              data-workarea_arrow
+              data-aos="fade-up"
+              data-aos-duration="500"
+            >
+              <div class="arrow"></div>
+            </div>
+          </a>
         </div>
       </template>
 
@@ -364,82 +380,98 @@
     </main>
     <footer id="contact" data-footer_container>
       <h1>Contact</h1>
-    <div class="content">
-      <div class="contact_wrapper" data-aos="fade-up"
-      data-aos-duration="500">
-        <div class="contact">
-          <h2>Purple Scout Copenhagen</h2>
-          <a href="" class="icon phone" data-cph_phone></a>
-          <a href="" class="icon mail" data-chp_mail></a>
-        </div>
-        <div class="links">
-          <h2>Purple Scout corporate website</h2>
-          <a href="https://www.purplescout.se" class="icon link" data-website_se>https://www.purplescout.se</a>
-          <a href="https://www.purplescout.dk" class="icon link" data-website_dk>https://www.purplescout.dk</a>
-          <div class="some">
+      <div class="content">
+        <div class="contact_wrapper" data-aos="fade-up" data-aos-duration="500">
+          <div class="contact">
+            <h2>Purple Scout Copenhagen</h2>
+            <a href="" class="icon phone" data-cph_phone></a>
+            <a href="" class="icon mail" data-chp_mail></a>
+          </div>
+          <div class="links">
+            <h2>Purple Scout corporate website</h2>
             <a
-      href="https://da-dk.facebook.com/purplescout"
-      target="_blank"
-      rel="noopener"
-      aria-label="Purple Scout facebook"
-      class="some_icon"
-      data-some_facebook
-      ><i class="fab fa-facebook-square"></i
-    ></a>
-    <a
-      href="https://www.instagram.com/purple_scout_ab/"
-      target="_blank"
-      rel="noopener"
-      aria-label="Purple Scout instagram"
-      class="some_icon"
-      data-some_instagram
-      ><i class="fab fa-instagram"></i
-    ></a>
-    <a
-      href="https://www.linkedin.com/company/purple-scout-ab/"
-      target="_blank"
-      rel="noopener"
-      aria-label="Purple Scout linkedin"
-      class="some_icon"
-      data-some_linkedin
-      ><i class="fab fa-linkedin"></i
-    ></a>
+              href="https://www.purplescout.se"
+              class="icon link"
+              data-website_se
+              >https://www.purplescout.se</a
+            >
+            <a
+              href="https://www.purplescout.dk"
+              class="icon link"
+              data-website_dk
+              >https://www.purplescout.dk</a
+            >
+            <div class="some">
+              <a
+                href="https://da-dk.facebook.com/purplescout"
+                target="_blank"
+                rel="noopener"
+                aria-label="Purple Scout facebook"
+                class="some_icon"
+                data-some_facebook
+                ><i class="fab fa-facebook-square"></i
+              ></a>
+              <a
+                href="https://www.instagram.com/purple_scout_ab/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Purple Scout instagram"
+                class="some_icon"
+                data-some_instagram
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/company/purple-scout-ab/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Purple Scout linkedin"
+                class="some_icon"
+                data-some_linkedin
+                ><i class="fab fa-linkedin"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="about" data-aos="fade-up" data-aos-duration="500">
+          <h2>About</h2>
+          <div data-about_text></div>
+        </div>
+        <div
+          class="location_wrapper"
+          data-aos="fade-up"
+          data-aos-duration="500"
+        >
+          <img
+            src="../img/location_map.svg"
+            alt="map"
+            class="localtion_map"
+            data-footer_location_map
+          />
+          <div class="address_wrapper">
+            <div class="address">
+              <h3 data-contact_header_copenhagen></h3>
+              <div data-contact_address_copenhagen></div>
+            </div>
+            <div class="address">
+              <h3 data-contact_header_malmo></h3>
+              <div data-contact_address_malmo></div>
+            </div>
+            <div class="address">
+              <h3 data-contact_header_gothenburg></h3>
+              <div data-contact_address_gothenburg></div>
+            </div>
+            <div class="address">
+              <h3 data-contact_header_boras></h3>
+              <div data-contact_address_boras></div>
+            </div>
+          </div>
+          <div class="copyright">
+            Copyright <span class="year"></span> © Purple Scout ApS
           </div>
         </div>
       </div>
-      <div class="about" data-aos="fade-up"
-      data-aos-duration="500">
-        <h2>About</h2>
-        <div data-about_text>
-        </div>
-      </div>
-      <div class="location_wrapper" data-aos="fade-up"
-      data-aos-duration="500">
-        <img src="../img/location_map.svg" alt="map" class="localtion_map" data-footer_location_map />
-        <div class="address_wrapper">
-          <div class="address">
-            <h3 data-contact_header_copenhagen></h3>
-            <div data-contact_address_copenhagen></div>
-          </div>
-          <div class="address">
-            <h3 data-contact_header_malmo></h3>
-            <div data-contact_address_malmo></div>
-          </div>
-          <div class="address">
-            <h3 data-contact_header_gothenburg></h3>
-            <div data-contact_address_gothenburg></div>
-          </div>
-          <div class="address">
-            <h3 data-contact_header_boras></h3>
-            <div data-contact_address_boras></div>
-          </div>
-        </div>
-      <div class="copyright">
-        Copyright <span class="year"></span> © Purple Scout ApS
-      </div>
-    </div>
     </footer>
-    <script src="js/index.js" data-index_version></script>
-    <script src="js/nav.js" data-nav_version></script>
+    <script src="js/index.js"></script>
+    <script src="js/nav.js"></script>
   </body>
 </html>
