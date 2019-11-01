@@ -1902,6 +1902,34 @@ footer .copyright {
   margin: 0 0 0.5rem;
 }
 
+/* #case .case_header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+#case .company_logo_wrapper {
+  width: 17rem;
+  position: relative;
+  overflow: visible;
+  grid-column: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 3rem 1rem 0;
+}
+
+#case .company_logo {
+  width: 17rem;
+  height: 14rem;
+  position: absolute;
+  background-image: url(../img/coop_test.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+} */
+
 #case h2 {
   margin: 0;
 }
