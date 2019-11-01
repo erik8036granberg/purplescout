@@ -455,11 +455,9 @@ function filtercaseNav() {
       .querySelector("#cases .dropdown")
       .addEventListener("mouseleave", () => {
         document
-          .querySelector("#cases .filter_nav ul li")
+          .querySelector("#cases .filter_nav ul")
           .classList.remove("open");
-        document
-          .querySelector("#cases .filter_nav ul li")
-          .classList.add("closed");
+        document.querySelector("#cases .filter_nav ul").classList.add("closed");
       });
   }
   const allItems = document.querySelectorAll("#cases .filter_nav ul li");
@@ -469,7 +467,6 @@ function filtercaseNav() {
       document.querySelector("#cases .filter_nav ul").classList.add("closed");
     });
   });
-
   document
     .querySelector(".filter_nav #filter_all")
     .addEventListener("click", () => {
